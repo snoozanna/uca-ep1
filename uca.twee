@@ -1,0 +1,806 @@
+:: StoryTitle
+UCA Episode 2
+
+
+:: StoryData
+{
+	"ifid": "8a8811e5-4d1b-4c67-9f23-57d8c826f3a2",
+	"format": "SugarCube",
+	"format-version": "2.30.0",
+	"start": "Start",
+	"tag-colors": {
+		"green": "green"
+	},
+	"zoom": 0.6
+}
+
+:: Story Stylesheet [stylesheet]
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Contrail+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+@import url("styles/generics.css");
+@import url("styles/styles.css");
+
+
+:: Story JavaScript [script]
+$('#ui-bar').remove();
+$(document.head).find('#style-ui-bar').remove();
+
+!function() {
+    postrender.typewriter = function (b) {
+        if (this.tags) {
+            var r = new RegExp("t8n.typewriter.([0-9]+)(?:[^0-9]|$)","g");
+            var t = r.exec(this.tags.toString());
+            if (t) {
+                typeout(b, t[1]+0);
+            }
+        }
+        return b;
+    };
+    var typeout = function(c,t) {
+        var Furl = function(current) {
+            this.n = current;
+            this.out = false;
+            this.data = current.nodeValue;
+            current.nodeValue = "";
+            this.kids = [];
+            var cn = current.childNodes;
+            if (current.style && current.style.display=="none") {
+                return;
+            }
+            while (cn.length>0) {
+                var f = new Furl(cn[0]);
+                current.removeChild(cn[0]);
+                f.out = true;this.kids.push(f);
+            }
+        };
+        var nodes = new Furl(c);
+        var unfurl = function(furled,d) {
+            var n = furled.n;
+            if (furled.out) {
+                d.appendChild(n);
+                furled.out = false;
+            }
+            if (furled.data) {
+                n.nodeValue += furled.data[0];
+                furled.data = furled.data.slice(1);
+                return true;
+            }
+            for (var j=0; j<furled.kids.length; j++) {
+                var ret = unfurl(furled.kids[j],n);
+                if (ret) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        var title = passage();
+        var intr = setInterval (
+            function() {
+                if (passage() == title && unfurl(nodes,null)) {
+                    return;
+                }
+                clearInterval(intr);
+            }
+        ,t);
+    };
+}();
+
+
+:: StoryInit
+<<cacheaudio "ping1" "../assets/sound/ping1.mp3">>
+<<cacheaudio "ticker3" "../assets/sound/ticker3.mp3">>
+<<cacheaudio "correct" "../assets/sound/keep2.mp3">>
+<<cacheaudio "uploading" "../assets/sound/uploading.mp3">>
+<<cacheaudio "complete" "../assets/sound/uploadcomplete.mp3">>
+<<cacheaudio "game" "../assets/sound/Game.mp3">>
+<<cacheaudio "signal" "../assets/sound/signal.mp3">>
+<<cacheaudio "newsignal" "../assets/sound/signalprocess3.mp3">>
+
+<<waitforaudio>>
+
+
+:: Start [purple nobr]
+<<audio ":all" stop>>
+<<set $prevpass to "Start">>
+<<set $pass to "Start">>
+<<set $nextpass to "ucalab">>
+<main><messagebox2>[img[assets/img/intercom2.png][entrance]]</messagebox2>
+
+</main>
+
+
+:: footer [nobr]
+<footer>
+   [[Back to the start|Start]]
+<div class="logo-wrapper">
+  <div class="uca-logo">
+     <img src="assets/img/logobutton.png" alt="logo"/>
+     </div>
+     <div class="uca-logo-text">
+     <img src="assets/img/logotitle.png" alt="logo"/>
+  </div>
+</div>
+
+
+</footer>  
+
+:: portalfooter [nobr]
+  [[Back to the start|Start]]
+<div class="uca-logo">
+   <img src="assets/img/logobutton.png" alt="logo"/>
+   </div>
+   <div class="uca-logo-text">
+   <img src="assets/img/logotitle.png" alt="logo"/>
+   </div>
+
+:: rotatelogo[nobr]
+
+<div class="rotate-logo-wrapper">
+<div class="animated rotateInDownLeft overlay-image">[img[assets/img/logobutton.png]]</div>
+<div class="animated fadeInLeftBig overlay-image one" >[img[assets/img/undercover.png]]</div><div
+        class="animated fadeInRightBig overlay-image two">[img[assets/img/caretaker.png]]</div><div
+        class="animated fadeInLeftBig overlay-image three">[img[assets/img/agency.png]]</div>
+
+</div>
+
+
+
+:: entrance [nobr purple]
+<<audio ":all" stop>>
+<<set $prevpass to "Start">>
+<<set $pass to "ucalab">>
+<main class="ucalab">
+
+<div class="uca-logo" >
+     <img src="assets/img/logobutton.png" alt="logo"/>
+     </div>
+<div class="ucalab-wrapper">
+  <h3>Access for authorised individuals only. </h3>
+  <p>Please enter the codeword to gain access. 
+ </p>
+  
+  <<include "codeword1">>
+</div>
+</main>
+
+
+:: codeword1 [nobr]
+
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input">
+<<textbox "$code" "">>
+<<button "Enter">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "STATIC" or $code is "STATIC ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto "video1">><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "STATIC" and $code isnot "STATIC ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+<br/>
+<div id="coderesult"></div>
+
+
+:: video1 [purple nobr]
+<<set $prevpass to "entrance">>
+<<set $pass to "video1">>
+<<set $nextpass to "video2">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 1 */
+
+      <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"> Video 1</div>
+  <div class="chat-input" id="inputMount">
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 1s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">User</span>
+        <p> Your choice is needed.</p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+
+<<timed 3s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">User</span>
+        <p> If you want to help, click WE ARE IN or CLOSE to go back to schoolwork?  </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 4s>>
+  <<replace "#inputMount">>
+  <<include "choice1">>
+  <</replace>>
+<</timed>>
+
+:: choice1 [nobr]
+
+<div class="choice-container nav-wrapper">
+<<button "WE ARE IN">>
+    <<goto $nextpass>>
+<</button>>
+<<button "CLOSE">>
+    <<timed 0.5s>>
+        <<replace "#inputMount">>
+        <</replace>>
+        <<replace "#messagesContainer">>
+        <</replace>>
+    <</timed>>
+    <<timed 2s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">User</span>
+            <p>Oh really?</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+    <<timed 3s>>
+    <<replace "#inputMount">>
+<div class="choice-container nav-wrapper">
+    <<button "JOKING, WE ARE IN">><</button>>
+    <<button "NOT TODAY">>
+        <<timed 0.5s>>
+            <<replace "#inputMount">>
+            <</replace>>
+            <<replace "#messagesContainer">>
+            <</replace>>
+        <</timed>>
+        <<timed 2s>>
+            <<replace "#messagesContainer">>
+                <div class="message">
+                <div class="avatar">
+                    <img src="assets/img/user.png" alt="avatar"/>
+                </div>
+                <div class="message-container" >
+                    <span class="sender">User</span>
+                    <p>OK – thank you anyway.</p>
+                </div>
+                </div>
+            <</replace>>
+        <</timed>>
+        <<timed 5s>>
+        <<goto "Start">>
+         <</timed>>
+    <</button>>
+    </div>
+    <</replace>>
+    <</timed>>
+<</button>>
+</div>
+
+:: video2 [purple nobr]
+<<set $prevpass to "video1">>
+<<set $pass to "video2">>
+<<set $nextpass to "ucatok1">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 2: */
+
+      <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"> Video 2</div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 1s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">User</span>
+        <p> Enter compartment 1’s codeword. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+
+<<timed 3s>>
+  <<replace "#inputMount">>
+  <<include "codewordvideo2">>
+  <</replace>>
+<</timed>>
+
+:: codewordvideo2 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "MOVE" or $code is "MOVE ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "MOVE" and $code isnot "MOVE ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: ucatok1 [purple nobr]
+<<set $prevpass to "video2">>
+<<set $pass to "ucatok1">>
+<<set $nextpass to "ucatok2">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+<<timed 1s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>Move?</p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 2s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>It seems we need to Move by doing something called the UCA TOK. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 4s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>Oh yes - we did this in our training.</p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 5s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>Wait, there’s a video file here to share. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 6s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>I can load it up for you.</p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 7s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>You might want to stand up behind your chairs. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+
+
+<<timed 8s>>
+  <<replace "#inputMount">>
+    <div class="choice-container nav-wrapper">
+        <<button "READY">>
+            <<timed 0.5s>>
+                <<replace "#messagesContainer">>
+                    <</replace>>
+                 <<replace "#inputMount">>
+                    <</replace>>
+                <<replace "#hero">>
+                    <<include "videoucatok">>
+                <</replace>>
+             <</timed>>
+
+               <<timed 5s>>
+                 <<replace "#inputMount">>
+                    <<button "NEXT">>
+                        <<goto $nextpass>>
+                        <</button>>
+                    <</replace>>
+               
+             <</timed>>
+        <</button>>
+    </div>
+  <</replace>>
+<</timed>>
+
+
+:: videoucatok
+
+ <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/531954959?h=40746c6772&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+
+:: ucatok2 [purple nobr]
+<<set $prevpass to "ucatok1">>
+<<set $pass to "ucatok2">>
+<<set $nextpass to "video3">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+<<timed 1s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>Wow - that was Anne - she is our UCA Mentor. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 3s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>She was running our training to become UCA Agents.  </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 5s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>It seems we need to learn the UCA TOK altogether. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 7s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>Inside compartment 1 is the instructions and also…</p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 9s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>A button! </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 12s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>Yes, our first one. Hold onto that.  </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+
+<<timed 13s>>
+    <<replace "#inputMount">>
+<div class="choice-container nav-wrapper">
+    <<button "NEXT">>
+       <<replace "#inputMount">><</replace>>
+        <<timed 0.5s>>
+        <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p> Want to rewatch Anne do the UCA TOK? Click <<button "Here">>
+            <<timed 0.5s>>
+                <<replace "#inputMount">><</replace>>
+                    <<replace "#hero">>
+                    <<include "videoucatok">>
+                <</replace>>
+             <</timed>>
+            <</button>>  
+            </p>
+         </div>
+        </div>
+       <</replace>>
+        <<timed 2.5s>>
+            <<append "#messagesContainer">>
+            <div class="message">
+            <div class="avatar">
+                <img src="assets/img/user.png" alt="avatar"/>
+            </div>
+            <div class="message-container" >
+                <span class="sender">Jay</span>
+            <p>When you have learnt the UCA TOK and are ready to run it with me, click the UCA TOK button <<button "Here">>
+                <<timed 0.5s>>
+                 <<goto $nextpass>>
+                 <</timed>>
+                <</button>>
+            </p>
+            </div>
+            </div>
+        <</append>>
+        <</timed>>
+        <</timed>>
+    <</button>>
+ <</replace>>
+<</timed>>
+
+
+
+
+
+
+:: video3 [purple nobr]
+<<set $prevpass to "ucatok2">>
+<<set $pass to "video3">>
+<<set $nextpass to "ucatelecom">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 3: */
+
+      <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+  Video 3</div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 1s>>
+  <<replace "#inputMount">>
+        <<button "NEXT">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+<</timed>>
+
+
+
+:: ucatelecom [nobr]
+<<set $prevpass to "video3">>
+<<set $pass to "ucatelecom">>
+<<set $nextpass to "">>
+
+<main>
+    <div class="pager-container">
+        <div class="pager retro-box">
+        <h2>UCA TELCOM</h2>
+          <div class="screen">
+           <div class="typewriter-text">
+                    <p>This is a pager</p>
+                  </div></div>
+           <div class="buttons-container">
+            <div class="options-btn-container">
+                <div class="options-btn key"><span>Yes</span></div>
+                  <div class="options-btn key"><span>No</span></div>
+             </div>
+    
+            <div class="phone-keyboard">
+                <div class="key">
+                1
+                <span>&nbsp;</span>
+                </div>
+                <div class="key">
+                2
+                <span>ABC</span>
+                </div>
+                <div class="key">
+                3
+                <span>DEF</span>
+                </div>
+                <div class="key">
+                4
+                <span>GHI</span>
+                </div>
+                <div class="key">
+                5
+                <span>JKL</span>
+                </div>
+                <div class="key">
+                6
+                <span>MNO</span>
+                </div>
+                <div class="key">
+                7
+                <span>PQRS</span>
+                </div>
+                <div class="key">
+                8
+                <span>TUV</span>
+                </div>
+                <div class="key">
+                9
+                <span>WXYZ</span>
+                </div>
+                <div class="key zero">
+                0
+                <span>+</span>
+            </div>
+           </div>
+             
+            <div class="speed-dial-btn-container">
+                <div class="speed-dial-btn key"><span>Anne</span></div>
+                 <div class="speed-dial"><span>Speed Dial</span> </div>
+                  <div class="speed-dial-btn key"><span>Mal</span></div>
+             </div>
+           </div>
+        </div>
+    </div>
+
+
+
+</main>
