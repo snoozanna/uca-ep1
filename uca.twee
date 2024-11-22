@@ -15,8 +15,8 @@ UCA Episode 2
 }
 
 :: Story Stylesheet [stylesheet]
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Contrail+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Young+Serif&display=swap');
@@ -126,6 +126,14 @@ $(document.head).find('#style-ui-bar').remove();
 </div>
 
 
+</footer>
+
+:: footernext [nobr]
+<footer>
+   [[Next|$nextpass]]
+
+
+
 </footer>  
 
 :: portalfooter [nobr]
@@ -146,6 +154,9 @@ $(document.head).find('#style-ui-bar').remove();
         class="animated fadeInLeftBig overlay-image three">[img[assets/img/agency.png]]</div>
 
 </div>
+
+:: unlocked
+MISSION UNLOCKED LOGO CHANGE
 
 
 
@@ -289,7 +300,7 @@ $(document.head).find('#style-ui-bar').remove();
     <<timed 3s>>
     <<replace "#inputMount">>
 <div class="choice-container nav-wrapper">
-    <<button "JOKING, WE ARE IN">><</button>>
+    <<button "JOKING, WE ARE IN">>  <<goto $nextpass>><</button>>
     <<button "NOT TODAY">>
         <<timed 0.5s>>
             <<replace "#inputMount">>
@@ -728,28 +739,8 @@ $(document.head).find('#style-ui-bar').remove();
     <</replace>>
 <</timed>>
 
-
-
-:: ucatelecom [nobr]
-<<set $prevpass to "video3">>
-<<set $pass to "ucatelecom">>
-<<set $nextpass to "">>
-
-<main>
-    <div class="pager-container">
-        <div class="pager retro-box">
-        <h2>UCA TELCOM</h2>
-          <div class="screen">
-           <div class="typewriter-text">
-                    <p>This is a pager</p>
-                  </div></div>
-           <div class="buttons-container">
-            <div class="options-btn-container">
-                <div class="options-btn key"><span>Yes</span></div>
-                  <div class="options-btn key"><span>No</span></div>
-             </div>
-    
-            <div class="phone-keyboard">
+:: phonekeyboard [nobr]
+ <div class="phone-keyboard">
                 <div class="key">
                 1
                 <span>&nbsp;</span>
@@ -791,16 +782,2693 @@ $(document.head).find('#style-ui-bar').remove();
                 <span>+</span>
             </div>
            </div>
-             
+
+:: ucatelecom [nobr]
+<<set $prevpass to "video3">>
+<<set $pass to "ucatelecom">>
+<<set $nextpass to "button">>
+
+<main>
+    <div class="pager-container">
+        <div class="pager retro-box">
+        <h2>UCA TELCOM</h2>
+          <div class="screen" id="screen">
+        </div>
+           <div class="buttons-container">
+            <div class="options-btn-container" id="options">
+                <div class="options-btn key"><span>Yes</span></div>
+                  <div class="options-btn key"><span>No</span></div>
+             </div>
+    <<include "phonekeyboard">>
             <div class="speed-dial-btn-container">
-                <div class="speed-dial-btn key"><span>Anne</span></div>
+                <div class="speed-dial-btn key active pulse" id="anneBtn">
+                <<link "Anne">>
+                    <<replace "#screen">>
+                        <<include "callingAnne">>
+                        <</replace>>
+                <</link>>
+                    </div>
                  <div class="speed-dial"><span>Speed Dial</span> </div>
-                  <div class="speed-dial-btn key"><span>Mal</span></div>
+                  <div class="speed-dial-btn key  active pulse" id="malBtn">
+                  <<link "Mal">>
+                     <<replace "#screen">>
+                        <<include "callingMal">>
+                        <</replace>>
+                  <</link>></div>
              </div>
            </div>
         </div>
     </div>
-
-
-
 </main>
+
+<<include "footernext">>
+
+
+:: callingAnne [nobr]
+<<removeclass "#anneBtn" "pulse">>
+<<removeclass "#anneBtn" "active">>
+<span>Calling...</span>
+<img src="assets/img/call.png" alt="calling icon"/>
+<span>Anne</span>
+
+<<timed 3s>>
+    <<replace "#screen">>
+        <span>No answer.</span>
+        <</replace>>
+    <</timed>>
+
+<<timed 5s>>
+    <<replace "#screen">>
+        <</replace>>
+    <</timed>>
+
+:: callingMal [nobr]
+<<removeclass "#malBtn" "pulse">>
+<<removeclass "#anneBtn" "pulse">>
+<span>Calling...</span>
+<img src="assets/img/call.png" alt="calling icon"/>
+<span>Mal</span>
+
+<<timed 3s>>
+    <<removeclass "#anneBtn" "active">>
+    <<addclass "#screen" "active">>
+    <<replace "#screen">>
+        <<type 60ms>><p>Hello, I don’t recognise this number, are you trying to sell me Bouncy Castle insurance?</p>
+               <</type>>
+        <</replace>>
+    <</timed>>
+ <<timed 10s>>
+    <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "Yes">>
+               <<replace "#screen">>
+                <<include "callingMal2">>
+                <</replace>>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "No">>
+                    <<replace "#screen">>
+                <<include "callingMal2">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+
+:: callingMal2 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Good, I don’t need any more bouncy castle insurance. </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 5s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Are you a friend of Jay?</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 9s>>
+       <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "Yes">>
+               <<replace "#screen">>
+                <<include "callingMal3">>
+                <</replace>>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "No">>
+                    <<replace "#screen">>
+                <<include "callingMal3">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: callingMal3 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>I know she is trying to reach me but I just don’t feel up to it at the moment. </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 7s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I know she was wanting to help though. Are you trying to help too? </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 12s>>
+       <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "Yes">>
+               <<replace "#screen">>
+                <<include "callingMal4">>
+                <</replace>>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "No">>
+                    <<replace "#screen">>
+                <<include "callingMal4">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: callingMal4 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>That’s so kind of you - I don’t even know you</p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Have you got any idea what could help?  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 9s>>
+       <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "UCA TOK">>
+               <<replace "#screen">>
+                <<include "callingMal5">>
+                <</replace>>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "MOVING">>
+                    <<replace "#screen">>
+                <<include "callingMal5">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: callingMal5 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>The UCA TOK - that was part of our training at UCA - led by our mentor Anne. </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I will give it a try. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+    <<timed 9s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Say thanks to Jay for me. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+    <<timed 13s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I’m just not ready to speak to her. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+      <<timed 16s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>But, tell her not to eat too much rhubarb. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 16s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>In fact, if you message her that word it will probably remind her to not over do it! </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 18s>>
+       <<replace "#options">>
+         <div class="options-btn key" id="yesBtn">
+            <<link "...">>
+        
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "End call">>
+               <<goto $nextpass>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+:: button [nobr]
+<<set $prevpass to "ucatelecom">>
+<<set $pass to "button">>
+<<set $nextpass to "video4">>
+
+<main>
+<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
+<p>1/6</p>
+<br/>
+    <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    
+</main>
+:: video4 [purple nobr]
+<<set $prevpass to "ucatok2">>
+<<set $pass to "video4">>
+<<set $nextpass to "compartment2">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 3: */
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+  Video 4
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 0.1s>>
+  <<replace "#inputMount">>
+      <<include "codewordvideo4">>
+    <</replace>>
+<</timed>>
+
+
+:: video4vid
+   <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+
+:: codewordvideo4 [nobr]
+<div id="coderesult">Enter codeword:</div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "RHUBARB" or $code is "RHUBARB ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>>
+        <<replace "#hero">>
+            <<include "video4vid">>
+            <</replace>>
+         <<replace "#inputMount">>
+            <</replace>>
+        <<timed 5s>>
+        <<append "#messagesContainer">>
+            <div class="message">
+            <div class="avatar">
+                <img src="assets/img/user.png" alt="avatar"/>
+            </div>
+            <div class="message-container" >
+                <span class="sender">Jay</span>
+                <p> Teacher, can you make sure everyone understands what the static is please? </p>
+            </div>
+            </div>
+        <</append>>
+        <</timed>>
+        <<timed 7s>>
+        <<append "#messagesContainer">>
+           <<button "Everyone understands">>
+            <<timed 0.5s>>
+                 <<goto $nextpass>>
+             <</timed>>
+            <</button>>  
+         <</append>>
+         <</timed>>
+    <</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "RHUBARB" and $code isnot "RHUBARB ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: compartment2 [purple nobr]
+<<set $prevpass to "video4">>
+<<set $pass to "compartment2">>
+<<set $nextpass to "compartment2b">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 2s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Ok - so compartment 2 - what is it called? </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Type it below and I’ll load up what we need to know. 
+</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+  <<replace "#inputMount">>
+  <<include "codewordcomp2">>
+  <</replace>>
+<</timed>>
+
+
+:: codewordcomp2 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "CONNECT" or $code is "CONNECT ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "CONNECT" and $code isnot "CONNECT ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+
+:: compartment2b [purple nobr]
+<<set $prevpass to "compartment2a">>
+<<set $pass to "compartment2b">>
+<<set $nextpass to "">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Connect.  </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>We can do that. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Well, You know me. I’m Jay, I love Rhubarb. Let’s get to know you. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>There’s a game to play. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 11s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>A game we played at UCA Training actually.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 14s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It’s called Secret Club.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<include "compartment2c">>
+      <<replace "#inputMount">>
+        <</replace>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: compartment2c [ nobr]
+<<timed 1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>You’ll have to find something you all have in common. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 3s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Maybe you all like Rhubarb like me. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Wishful thinking! </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<include "compartment2d">>
+      <<replace "#inputMount">>
+        <</replace>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: compartment2d [ nobr]
+<<timed 1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>You can open Compartment 2 now. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 3s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>The instructions for Secret Club are in there - and yes - a second button! </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 5s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto "enterclubname">>
+
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: enterclubname [green -t8n-typewriter-4] {"position":"915,397.6666666666668","size":"100,100"}
+<<include "typewriter">>
+       <beaconicon>[img[assets/img/beacon-2.png]]</beaconicon>
+       <messageboxlarge>
+      Enter our Secret Club Name here
+
+      <<textbox "$clubname" "">>
+
+      <<button [[Enter|clubname]]>><</button>>
+       
+      </messageboxlarge>
+
+
+:: clubname [green] {"position":"688,2304","size":"100,100"}
+
+<audio src="https://remote.co.com/UCA/assets/audio/taperecorder.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+      <messageboxreel>
+
+      <<timed 11s>><div class="animated fadeInDownBig">
+      <name><b>WELCOME $clubname</b></name>
+      <button>[[Next|button2]]</button></div><</timed>></messageboxreel>
+      <<include "reeltoreel">>
+      <messagescreen><span id="message">Thank you</span>
+      <<timed 2s>><<replace "#message">>Sending Secret Club Name<</replace>>\
+      <<next 2s>><<replace "#message">>Uploading<</replace>>\
+      <<next 2s>><<replace "#message">>Sending to UCA HQ<</replace>>\
+      <<next 2s>><<replace "#message">>Receiving<</replace>>\
+      <<next 2s>><<replace "#message">>Sending Complete<</replace>>\
+      <</timed>></messagescreen>
+
+
+:: typewriter {"position":"160,34.33333333333333","size":"100,100"}
+<typewriter>[img[https://remote.co.com/UCA/assets/img/typewriter1.png]]</typewriter>
+
+
+:: reeltoreel {"position":"385,35","size":"100,100"}
+<reeltoreel>[img[https://remote.co.com/UCA/assets/img/reeltoreel2.gif]]</reeltoreel>
+
+:: button2 [nobr]
+<<set $prevpass to "clubname">>
+<<set $pass to "button2">>
+<<set $nextpass to "postbutton2">>
+
+<main>
+<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
+<p>2/6</p>
+    <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    
+</main>
+
+:: postbutton2 [purple nobr]
+<<set $prevpass to "button2">>
+<<set $pass to "postbutton2">>
+<<set $nextpass to "postbutton2b">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>I understand now - that game is about connections.  </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Having friends and family is key to countering the Static.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>That’s why I miss Mal so much. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>The static can make you feel very lonely. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 11s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>When I lose touch with others, sometimes I lose touch with myself - I can't even remember what my favourite Rhubarb topping was... Mushy Peas? Ice Cream? </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 14s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Can you remember? </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+  <<include "codewordpostbutton2">>
+  <</replace>>
+<</timed>>
+
+
+:: codewordpostbutton2 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "CUSTARD" or $code is "CUSTARD ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "CUSTARD" and $code isnot "CUSTARD ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: postbutton2b [purple nobr]
+<<set $prevpass to "postbutton2">>
+<<set $pass to "postbutton2b">>
+<<set $nextpass to "video5">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Yes </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Of course it was - Custard. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Thank you - you see The Static can pop up in all of us. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>But I’m determined to help Mal. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 11s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Send me the name on the next compartment. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 14s>>
+  <<replace "#inputMount">>
+  <<include "codewordpostbutton2b">>
+  <</replace>>
+<</timed>>
+
+:: codewordpostbutton2b [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "DISCOVER" or $code is "DISCOVER ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "DISCOVER" and $code isnot "DISCOVER ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: video5 [purple nobr]
+<<set $prevpass to "postbutton2b">>
+<<set $pass to "video5">>
+<<set $nextpass to "ucatelecom2">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 5 */
+
+      <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"> Video 5</div>
+  <div class="chat-input" id="inputMount">
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 5s>>
+   <<replace "#inputMount">>
+      <<button "NEXT">>
+          <<goto $nextpass>>
+          <</button>>
+      <</replace>>
+  <</timed>>
+
+
+:: ucatelecom2 [nobr]
+<<set $prevpass to "video5">>
+<<set $pass to "ucatelecom2">>
+<<set $nextpass to "button3">>
+
+<main>
+<div id="mount"></div>
+    <div class="pager-container">
+        <div class="pager retro-box">
+        <h2>UCA TELCOM</h2>
+          <div class="screen" id="screen">
+        </div>
+           <div class="buttons-container">
+            <div class="options-btn-container" id="options">
+                <div class="options-btn key"><span>Yes</span></div>
+                  <div class="options-btn key"><span>No</span></div>
+             </div>
+    <<include "phonekeyboard">>
+            <div class="speed-dial-btn-container">
+                <div class="speed-dial-btn key active pulse" id="anneBtn">
+                <<link "Anne">>
+                    <<replace "#screen">>
+                        <<include "callingAnne">>
+                        <</replace>>
+                <</link>>
+                    </div>
+                 <div class="speed-dial"><span>Speed Dial</span> </div>
+                  <div class="speed-dial-btn key  active pulse" id="malBtn">
+                  <<link "Mal">>
+                     <<replace "#screen">>
+                        <<include "2callingMal">>
+                        <</replace>>
+                  <</link>></div>
+             </div>
+           </div>
+        </div>
+    </div>
+</main>
+<<include "footernext">>
+
+
+:: 2callingMal [nobr]
+<<removeclass "#malBtn" "pulse">>
+<<removeclass "#anneBtn" "pulse">>
+<span>Calling...</span>
+<img src="assets/img/call.png" alt="calling icon"/>
+<span>Mal</span>
+
+<<timed 3s>>
+    <<removeclass "#anneBtn" "active">>
+    <<addclass "#screen" "active">>
+    <<replace "#screen">>
+        <<type 60ms>><p>I thought I told you I don’t want Bouncy Castle insurance...</p>
+               <</type>>
+        <</replace>>
+    <</timed>>
+
+<<timed 9s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Oh sorry it’s you again. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 14s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Thank you for your help last time. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 18s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>The UCA TOK did help.</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 22s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>What else should I try?</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+ <<timed 28s>>
+    <<replace "#options">>
+         <div class="options-btn key" id="yesBtn">
+            <<link "...">>
+           
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "UCA BREATH">>
+                    <<replace "#screen">>
+                <<include "2callingMal2">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+
+:: 2callingMal2 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Oh - the secret salute - that Anne taught us.  </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Ok - but I haven’t done it in a while. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 12s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Can we do it altogether? </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 17s>>
+       <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "Yes">>
+               <<replace "#screen">>
+                <<include "2callingMal3">>
+                <</replace>>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "No">>
+                    <<replace "#screen">>
+                <<include "2callingMal3">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+:: 2callingMal3 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Ok - 3 - 2 - 1 </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 5s>>
+     <<replace "#mount">>
+      <<include "ucabreath">>
+    <</replace>>
+     <<replace "#screen">>
+    <</replace>>
+
+ <</timed>>
+
+  <<timed 20s>>
+     <<replace "#mount">>
+    <</replace>>
+ <</timed>>
+
+  <<timed 24s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Thank you for reminding me about the UCA Breath </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 30s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Its so important when the world is so loud to keep discovering and taking time to breathe.</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 39s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>If you are feeling stressed by the static, you can always do the UCA Breath. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+ <<timed 46s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>It helps.  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 50s>>
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Next">>
+                    <<replace "#screen">>
+                <<include "2callingMal4">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: ucabreath [nobr ]
+
+<div class="uca-breath-container">
+    <<type 60ms>><p>Open Hand – focus on your hand</p><</type>>
+    <<type 60ms>><p>Up the mountain Breathe in</p><</type>>
+    <<type 60ms>><p>Down the mountain breathe out through mouth</p><</type>>
+    <<type 60ms>><p>Up the mountain breathe in</p><</type>>
+    <<type 60ms>><p>Down the waterfall - shhhhhhh</p><</type>>
+    <<type 60ms>><p>Whisper UCA UCA UCA</p><</type>>
+</div>
+
+
+:: 2callingMal4 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>I’ve been beginning to recognise that something hasn’t felt right for a while. </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 8s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>It started a few months ago, when Jay & I were doing our UCA training. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 16s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>It was only something small at first… a few unhelpful thoughts</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 23s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Worrying people would laugh at me or I’d say something wrong. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 30s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>But I didn’t know what to do</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 35s>>
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Next">>
+                    <<replace "#screen">>
+                <<include "2callingMal5">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 2callingMal5 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+
+  <<timed 1s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Then there was the presentation...</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 7s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>The one that finishes UCA Training</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 15s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>That’s when those thoughts started swirling around </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 22s>>
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Next">>
+                    <<replace "#screen">>
+                <<include "2callingMal6">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 2callingMal6 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>I started feeling anxious</p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>And uncomfortable in my body. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 13s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>So I left...</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 18s>>
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Next">>
+                    <<replace "#screen">>
+                <<include "2callingMal7">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 2callingMal7 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>I didn’t want people to see me like this</p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I didn’t know what was happening</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 13s>>
+
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Next">>
+                    <<replace "#screen">>
+                <<include "2callingMal8">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 2callingMal8 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Sorry</p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I should go</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 11s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Another call is coming in</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 13s>>
+
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Next">>
+                    <<replace "#screen">>
+                <<include "2callingMal9">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 2callingMal9 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Probably that person calling about the bouncy castle! </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Thank you for helping me explain my feelings. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 13s>>
+
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "End Call">>
+                    <<replace "#screen">>
+               <<goto "button3">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: button3 [nobr]
+<<set $prevpass to "ucatelecom2">>
+<<set $pass to "button3">>
+<<set $nextpass to "postbutton3">>
+
+<main>
+<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
+<p>3/6</p>
+    <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    
+</main>
+
+
+:: postbutton3 [purple nobr]
+<<set $prevpass to "button3">>
+<<set $pass to "postbutton3">>
+<<set $nextpass to "postbutton3b">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>I hope what we are doing is helping Mal. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>We need to keep going.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>The Static needs to be beaten.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>And the Beacon holds the key to doing that. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 11s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>We’ve got 3 buttons now - 3 to go!  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 14s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>What’s the name of the compartment we are opening now?</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+  <<include "codewordpostbutton3">>
+  <</replace>>
+<</timed>>
+
+
+:: codewordpostbutton3 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "NOTICE" or $code is "NOTICE ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "NOTICE" and $code isnot "NOTICE ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+:: postbutton3b [purple nobr]
+<<set $prevpass to "postbutton3">>
+<<set $pass to "postbutton3b">>
+<<set $nextpass to "button4">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>The next compartment seems to be something that would have been reserved for UCA Agents - but seeing as the Beacon has been sent to you then perhaps you have to fill them out? </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>UCA Agent Cards.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>These cards will need you to use Curiosity. Noticing things about yourself. Being curious.</p>
+<p>I guess if we can reflect on ourselves, we can appreciate what is around us. </p>
+<p>And see the superpowers in ourselves, and in our friends, that we have to spark change in our world. </p>
+
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+          <p> Teacher, you might want to share some of these superpowers so we know what we have in the room to face the Static. </p>
+<p>When you have done let me know by clicking below</p>
+
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+  <<button "We’ve finished">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: button4 [nobr]
+<<set $prevpass to "postbutton3b">>
+<<set $pass to "button4">>
+<<set $nextpass to "ucamissionunlocked">>
+
+<main>
+<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
+<p>4/6</p>
+    <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    
+</main>
+
+
+:: postbutton4 [purple nobr]
+<<set $prevpass to "button3">>
+<<set $pass to "postbutton4">>
+<<set $nextpass to "mission">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>The last compartment. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>But still two buttons to uncover - If we complete this maybe we’ll find out where that last button is.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>What is the last compartment called? </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 8s>>
+  <<replace "#inputMount">>
+  <<include "codewordpostbutton4">>
+  <</replace>>
+<</timed>>
+
+
+:: codewordpostbutton4 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "GIVE" or $code is "GIVE ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "GIVE" and $code isnot "GIVE ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: ucamissionunlocked
+<<set $prevpass to "postbutton4">>
+<<set $pass to "ucamissionunlocked">>
+<<set $nextpass to "postbutton4b">>
+UCA Mission Unlocked
+<<timed 4s>>
+  <<goto $nextpass>>
+  <</timed>>
+
+
+:: postbutton4b [purple nobr]
+<<set $prevpass to "ucamissionunlocked">>
+<<set $pass to "postbutton4b">>
+<<set $nextpass to "mission1">>
+<main class="main portal grid-container mission">
+  <section class="hero" id="hero">
+
+<<include "unlocked">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>UCA Mission. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I wasn’t expecting this.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>But you aren’t full agents. Do you think you have what it takes to complete this mission?</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 8s>>
+  <<replace "#inputMount">>
+  <<include "choicemission">>
+  <</replace>>
+<</timed>>
+
+
+:: choicemission [nobr]
+
+<div class="choice-container nav-wrapper">
+<<button "YES">>
+    <<goto $nextpass>>
+<</button>>
+<<button "No">>
+    <<timed 0.5s>>
+        <<replace "#inputMount">>
+        <</replace>>
+        <<replace "#messagesContainer">>
+        <</replace>>
+    <</timed>>
+    <<timed 2s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Oh really?</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+    <<timed 3s>>
+    <<replace "#inputMount">>
+<div class="choice-container nav-wrapper">
+    <<button "JOKING, YES">>  <<goto $nextpass>><</button>>
+    <<button "NO">>
+        <<timed 0.5s>>
+            <<replace "#inputMount">>
+            <</replace>>
+            <<replace "#messagesContainer">>
+            <</replace>>
+        <</timed>>
+        <<timed 2s>>
+            <<replace "#messagesContainer">>
+                <div class="message">
+                <div class="avatar">
+                    <img src="assets/img/user.png" alt="avatar"/>
+                </div>
+                <div class="message-container" >
+                    <span class="sender">Jay</span>
+                    <p>Sorry I'll have to insist.</p>
+                </div>
+                </div>
+            <</replace>>
+        <</timed>>
+        <<timed 5s>>
+        <<goto $nextpass>>
+         <</timed>>
+    <</button>>
+    </div>
+    <</replace>>
+    <</timed>>
+<</button>>
+</div>
+
+
+:: mission1 [purple nobr]
+<<set $prevpass to "postbutton4b">>
+<<set $pass to "mission1">>
+<<set $nextpass to "video6">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "unlocked">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>I know you aren’t officially agents but I’m going to need you to pretend to be to complete this mission. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I guess you have got Agent Cards, know the UCA Breath, have a secret club name and are experts at the UCA TOK… so maybe you are Agent already?!</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I’ll load up the Mission Brief. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 8s>>
+  <<replace "#hero">>
+  <<include "choicemission">>
+  <</replace>>
+<</timed>>
+
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+  <<button "Mission Understood">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: missionbrief
+
+Your Mission Should You Choose To Accept It
+
+<p>Your mission is to make a Gift. </p>
+<p>From the Undercover CareTaker Agency to the people around you. </p>
+<p>As Agents you need to think about who you want to receive the gift.</p>
+<p>And decide what type of gift they would like to receive.</p>
+<p>A gift that will help improve their wellbeing. </p>
+
+
+
+:: video6 [purple nobr]
+<<set $prevpass to "mission1">>
+<<set $pass to "video6">>
+<<set $nextpass to "button5">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 6: */
+
+      <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"> Video 6</div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 1s>>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p> Enter compartment codeword. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+
+<<timed 3s>>
+  <<replace "#inputMount">>
+  <<include "codewordvideo6">>
+  <</replace>>
+<</timed>>
+
+
+:: codewordvideo6 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "MAPPED" or $code is "MAPPED ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "MAPPED" and $code isnot "MAPPED ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+:: button5 [nobr]
+<<set $prevpass to "video6">>
+<<set $pass to "button5">>
+<<set $nextpass to "postbutton6">>
+
+<main>
+<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
+<p>5/6</p>
+    <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    
+</main>
+
+
+:: postbutton6 [purple nobr]
+<<set $prevpass to "button3">>
+<<set $pass to "postbutton6">>
+<<set $nextpass to "ucatelecom3">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>We are nearly there now. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>This is the last push.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>You are so close to lighting the beacon.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>One more button </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 11s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>And maybe if we complete the Gifting Mission we will find out where it is. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 14s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Let’s let Mal know. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+  <<include "codewordpostbutton3">>
+  <</replace>>
+<</timed>>
+
+
+
+:: ucatelecom3 [nobr]
+<<set $prevpass to "postbutton6">>
+<<set $pass to "ucatelecom3">>
+<<set $nextpass to "button3">>
+
+<main>
+<div id="mount"></div>
+    <div class="pager-container">
+        <div class="pager retro-box">
+        <h2>UCA TELCOM</h2>
+          <div class="screen" id="screen">
+        </div>
+           <div class="buttons-container">
+            <div class="options-btn-container" id="options">
+                <div class="options-btn key"><span>Yes</span></div>
+                  <div class="options-btn key"><span>No</span></div>
+             </div>
+    <<include "phonekeyboard">>
+            <div class="speed-dial-btn-container">
+                <div class="speed-dial-btn key active pulse" id="anneBtn">
+                <<link "Anne">>
+                    <<replace "#screen">>
+                        <<include "callingAnne">>
+                        <</replace>>
+                <</link>>
+                    </div>
+                 <div class="speed-dial"><span>Speed Dial</span> </div>
+                  <div class="speed-dial-btn key  active pulse" id="malBtn">
+                  <<link "Mal">>
+                     <<replace "#screen">>
+                        <<include "3callingMal">>
+                        <</replace>>
+                  <</link>></div>
+             </div>
+           </div>
+        </div>
+    </div>
+</main>
+<<include "footernext">>
+
+
+
+:: 3callingMal [nobr]
+<<removeclass "#malBtn" "pulse">>
+<<removeclass "#anneBtn" "pulse">>
+<span>Calling...</span>
+<img src="assets/img/call.png" alt="calling icon"/>
+<span>Mal</span>
+
+<<timed 3s>>
+    <<removeclass "#anneBtn" "active">>
+    <<addclass "#screen" "active">>
+    <<replace "#screen">>
+        <<type 60ms>><p>Hello - I’m glad you messaged me. </p>
+               <</type>>
+        <</replace>>
+    <</timed>>
+
+<<timed 9s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I’m feeling something lifting.  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 14s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Something that I wasn’t sure about. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 18s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Maybe it’s the static. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+<<timed 22s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Maybe what you have recommended to me is getting rid of it. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+ <<timed 28s>>
+    <<replace "#options">>
+         <div class="options-btn key" id="yesBtn">
+            <<link "...">>
+           
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Next">>
+                    <<replace "#screen">>
+                <<include "3callingMal2">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 3callingMal2 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>The Moving in the UCA TOK </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>The Connection we are making</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 12s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>And the Discovery of the UCA Breath.</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 15s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Is there anything else you have discovered? </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 18s>>
+       <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "...">>
+             
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Notice">>
+                    <<replace "#screen">>
+                <<include "3callingMal3">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 3callingMal3 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Ah yes - being curious about yourself and what is around you. </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>When the world is loud, it is sometimes good to come back to being curious about what is around you. To notice.  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 12s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I’ve been noticing I’m missing Jay...
+ </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 20s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>And wondering whether she will forgive me for running away during our presentation. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 27s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Do you think she will? 
+ </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 31s>>
+       <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "Yes">>
+               <<replace "#screen">>
+                <<include "3callingMal4yes">>
+                <</replace>>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "No">>
+                    <<replace "#screen">>
+                <<include "3callingMal4no">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 3callingMal4yes [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Oh I hope you are right. </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>	I want to be friends with her </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 13s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I want to jump on my bouncy castle with my friend!  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 20s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I’m going to try. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 26s>>
+
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "End Call">>
+                    <<replace "#screen">>
+               <<goto "button3">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+
+:: 3callingMal4no [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+  <<replace "#screen">>
+        <<type 60ms>><p>I hope that isn’t the case</p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 6s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>	I want to be friends with her </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 13s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I want to jump on my bouncy castle with my friend!  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 20s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>I’m going to try. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 26s>>
+
+       <<replace "#options">>
+         <div class="options-btn key " id="yesBtn">
+            <<link "...">>
+            
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "End Call">>
+                    <<replace "#screen">>
+               <<goto "button3">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+:: video7 [purple nobr]
+<<set $prevpass to "ucatelecom3">>
+<<set $pass to "video7">>
+<<set $nextpass to "missionplanner">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 7: */
+
+      <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"> Video 7</div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+
+
+<<timed 3s>>
+  <<replace "#inputMount">>
+  <<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: missionplanner
+
+Planning
+Making
+Delivery
+
+[[Start]]

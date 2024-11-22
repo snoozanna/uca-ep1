@@ -101,6 +101,7 @@ h3 {
 
 p {
   font-size: 1.6rem;
+  font-family: var(--font-body);
 }
 
 .purple {
@@ -146,6 +147,41 @@ messagebox2 {
   justify-content: center;
 }
 
+messageboxlarge {
+  background-image: url("../assets/img/paperbackground.jpg");
+  width: 45vw;
+  font-size: x-large;
+  padding: 1vw 1vh;
+  position: fixed; 
+    bottom: 17vh; 
+    left: 27vw; 
+  box-shadow: -5px -10px 8px black;
+}
+
+messageboxreel {
+  background-image: url("../assets/img/paperbackground.jpg");
+  width: 48vw;
+  font-size: x-large;
+  padding: 1vw 1vh;
+  position: fixed; 
+    bottom: 3vh; 
+    left: 25vw; 
+  box-shadow: -5px -10px 8px black;
+}
+
+messagescreen {
+  background-color: #090a14;
+  height: fit-content;
+  width: 40vw;
+	color: white;
+  font-size: x-large;
+  padding: 1vw 1vh;
+  position: fixed; 
+    top: 50vh; 
+    left:29.5vw; 
+} 
+
+
 .staticgif {
   box-shadow: -150px #fff;
   width: 300px;
@@ -160,6 +196,34 @@ messagebox2 {
   z-index: 1;
 }
 
+typewriter {
+  width: 70vw;
+  font-size: x-large;
+  position: fixed; 
+    bottom: -35vh; 
+    left: 15vw; 
+}
+
+reeltoreel {
+  width: 70vw;
+  font-size: x-large;
+  position: fixed; 
+    top: -40vh; 
+    left: 15vw; 
+}
+
+beaconicon {
+  background: none;
+ background-image: none;
+ padding: 0;
+ position: fixed; 
+   bottom: 2vh; 
+   right: 2vw; 
+}
+
+beaconicon > img {
+width: 8vw
+}
 /* footer  */
 footer {
   display: flex;
@@ -1513,9 +1577,15 @@ main.ucalab > .ucalab-wrapper > h3 {
   border-radius: 5px;
   box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.2),
               inset 2px 2px 6px rgba(0, 0, 0, 0.6);
-  margin: 10px auto 0;
+
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2rem;
+  font-family: monospace;
 }
 
 .screen:after {
@@ -1530,6 +1600,14 @@ main.ucalab > .ucalab-wrapper > h3 {
   opacity: 0.5;
 }
 
+.screen > img{
+  max-width: 30%;
+  filter: grayscale(1);
+}
+
+.screen.active{
+  background: linear-gradient(to bottom, #7fb2d9, #545997);
+}
 
 
 .typewriter-text {
@@ -1589,7 +1667,7 @@ main.ucalab > .ucalab-wrapper > h3 {
 
 }
 
-.speed-dial-btn.key > span, .options-btn.key > span {
+.speed-dial-btn.key > a, .options-btn.key > a {
   font-size: 2rem;
   margin-top: 0;
 }
@@ -1624,7 +1702,7 @@ main.ucalab > .ucalab-wrapper > h3 {
   line-height: 1.8rem;
 }
 
-.key span {
+.key > a {
   font-size: 10px;
   color: rgba(255, 255, 255, 0.7);
 
@@ -1635,3 +1713,46 @@ main.ucalab > .ucalab-wrapper > h3 {
   width: auto;
 }
 
+.key.active{
+  background: linear-gradient(135deg, hotpink, #cc86dc);
+}
+
+.key.active >a{
+  color: black;
+}
+
+
+/* UCA BREATH  */
+.uca-breath-container{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: aqua;
+  z-index: 99999;
+  background: linear-gradient(to bottom, #7fb2d9, #545997);
+  background-size: 100% 200%; /* Double height for smooth vertical movement */
+  animation: moveGradient 20s ease-in-out infinite;
+}
+
+.uca-breath-container > .macro-type  > p{
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
