@@ -21,6 +21,7 @@ UCA Episode 2
 @import url('https://fonts.googleapis.com/css2?family=Contrail+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Young+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&family=Titan+One&display=swap');
 @import url("styles/generics.css");
 @import url("styles/styles.css");
 
@@ -290,7 +291,7 @@ MISSION UNLOCKED LOGO CHANGE
             <img src="assets/img/user.png" alt="avatar"/>
         </div>
         <div class="message-container" >
-            <span class="sender">User</span>
+            <span class="sender">Jay</span>
             <p>Oh really?</p>
         </div>
         </div>
@@ -315,7 +316,7 @@ MISSION UNLOCKED LOGO CHANGE
                     <img src="assets/img/user.png" alt="avatar"/>
                 </div>
                 <div class="message-container" >
-                    <span class="sender">User</span>
+                    <span class="sender">Jay</span>
                     <p>OK – thank you anyway.</p>
                 </div>
                 </div>
@@ -2571,7 +2572,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: postbutton4 [purple nobr]
-<<set $prevpass to "button3">>
+<<set $prevpass to "button4">>
 <<set $pass to "postbutton4">>
 <<set $nextpass to "mission">>
 <main class="main portal grid-container">
@@ -2821,7 +2822,7 @@ UCA Mission Unlocked
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
-<<include "unlocked">>
+/* <<include "unlocked">> */
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer">
@@ -2856,7 +2857,7 @@ UCA Mission Unlocked
             <img src="assets/img/user.png" alt="avatar"/>
         </div>
         <div class="message-container" >
-            <p>I guess you have got Agent Cards, know the UCA Breath, have a secret club name and are experts at the UCA TOK… so maybe you are Agent already?!</p>
+            <p>I guess you have got Agent Cards, know the UCA Breath, have a secret club name and are experts at the UCA TOK...</p>
         </div>
         </div>
     <</append>>
@@ -2869,17 +2870,30 @@ UCA Mission Unlocked
             <img src="assets/img/user.png" alt="avatar"/>
         </div>
         <div class="message-container" >
-            <p>I’ll load up the Mission Brief. </p>
+            <p>So maybe you are Agent already?!</p>
         </div>
         </div>
     <</append>>
     <</timed>>
 
+<<timed 12s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I’ll load up the Mission Brief. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
 
 
-<<timed 8s>>
+
+<<timed 14s>>
   <<replace "#hero">>
-  <<include "choicemission">>
+  <<include "missionbrief">>
   <</replace>>
 <</timed>>
 
@@ -2892,15 +2906,28 @@ UCA Mission Unlocked
   <</replace>>
 <</timed>>
 
-:: missionbrief
 
-Your Mission Should You Choose To Accept It
 
-<p>Your mission is to make a Gift. </p>
-<p>From the Undercover CareTaker Agency to the people around you. </p>
-<p>As Agents you need to think about who you want to receive the gift.</p>
-<p>And decide what type of gift they would like to receive.</p>
-<p>A gift that will help improve their wellbeing. </p>
+:: missionbrief [nobr]
+<div class="clipboard ">
+ <div class="clip-container "> <img src="assets/img/clip.png" alt="clip"/></div>
+  <div class="mission-brief letterpaper">
+ <div class="mission-brief-section">
+    <h2>Mission Brief</h2>
+      <p>Your mission is to make a Gift. </p>
+      <p>From the Undercover CareTaker Agency to the people around you. </p>
+      <p>As Agents you need to think about who you want to receive the gift.</p>
+      <p>And decide what type of gift they would like to receive.</p>
+      <p>A gift that will help improve their wellbeing. </p>
+    
+    </div>
+     <div class="mission-brief-section">
+     /* <h2>YOUR MISSION </h2>
+     <span> should you choose to accept it</span> */
+       <div class="uca-stamp"><img src="assets/img/UCA-stamp-text.png" alt="UCA stamp"/></div>
+     </div>
+ </div>
+</div>
 
 
 
@@ -2996,7 +3023,7 @@ Your Mission Should You Choose To Accept It
 
 
 :: postbutton6 [purple nobr]
-<<set $prevpass to "button3">>
+<<set $prevpass to "button5">>
 <<set $pass to "postbutton6">>
 <<set $nextpass to "ucatelecom3">>
 <main class="main portal grid-container">
@@ -3098,7 +3125,9 @@ Your Mission Should You Choose To Accept It
 
 <<timed 16s>>
   <<replace "#inputMount">>
-  <<include "codewordpostbutton3">>
+    <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
   <</replace>>
 <</timed>>
 
@@ -3107,7 +3136,7 @@ Your Mission Should You Choose To Accept It
 :: ucatelecom3 [nobr]
 <<set $prevpass to "postbutton6">>
 <<set $pass to "ucatelecom3">>
-<<set $nextpass to "button3">>
+<<set $nextpass to "video7">>
 
 <main>
 <div id="mount"></div>
@@ -3423,7 +3452,7 @@ Your Mission Should You Choose To Accept It
          <div class="options-btn key active pulse"  id="noBtn">
             <<link "End Call">>
                     <<replace "#screen">>
-               <<goto "button3">>
+               <<goto $nextpass>>
                 <</replace>>
                 <</link>>
                 </div>
@@ -3433,7 +3462,10 @@ Your Mission Should You Choose To Accept It
 :: video7 [purple nobr]
 <<set $prevpass to "ucatelecom3">>
 <<set $pass to "video7">>
-<<set $nextpass to "missionplanner">>
+<<set $nextpass to "missionplanner1">>
+<<set $planning to false>>
+<<set $making to false>>
+<<set $delivery to false>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 /* VIDEO 7: */
@@ -3465,10 +3497,991 @@ Your Mission Should You Choose To Accept It
 <</timed>>
 
 
-:: missionplanner
+:: missionplanner1 [nobr]
+<<set $prevpass to "postbutton4b">>
+<<set $pass to "mission1">>
+<<set $nextpass to "video6">>
+<main class="mission-planner letter">
+<<include "missionplanner">>
+  </main>
 
-Planning
-Making
-Delivery
 
-[[Start]]
+
+:: missionplanner [nobr]
+
+<div class="clipboard ">
+ <div class="clip-container "> <img src="assets/img/clip.png" alt="clip"/></div>
+  <div class="mission-brief letterpaper">
+ <div class="mission-brief-section">
+    <h2>Mission Planner</h2>
+      <ul>
+        <li class="mission-item">
+            <span>Planning</span>
+            <<if $planning is false>>
+              <span>To do</span>
+              <<button "Go">>
+                <<goto "missionplanner-planning">>
+                <</button>>
+              <</if>>
+            <<if $planning is true>>
+              <span>Complete</span>
+              <</if>>
+           </li>
+         <li class="mission-item">
+            <span>Making</span>
+            <<if $making is false>>
+              <span>To do</span>
+                <<button "Go">>
+                <<goto "missionplanner-making">>
+                <</button>>
+              <</if>>
+            <<if $making is true>>
+              <span>Complete</span>
+              <</if>>
+           </li>
+
+         <li class="mission-item">
+            <span>Delivery</span>
+            <<if $delivery is false>>
+              <span>To do</span>
+                <<button "Go">>
+                <<goto "missionplanner-delivery">>
+                <</button>>
+              <</if>>
+            <<if $delivery is true>>
+              <span>Complete</span>
+              <</if>>
+           </li>
+    
+      </ul>
+    
+    </div>
+     <div class="mission-brief-section">
+     /* <h2>YOUR MISSION </h2>
+     <span> should you choose to accept it</span> */
+    <<if $delivery is true and $planning is true and $making is true>>
+     <<include "stampcomplete">>
+         <<else>>
+        <<include "stamp">>    
+          <</if>>
+      <<if previous() is "delivery3">>
+        <<timed 4s>>
+        <<goto "missioncompletetext">>
+        <</timed>>
+      <</if>>
+     </div>
+ </div>
+</div>
+
+:: stamp [nobr]
+<div class="uca-stamp" id="stamp">
+  <img src="assets/img/UCA-stamp.png" alt="UCA stamp"/>
+   </div>
+:: stampcomplete [nobr]
+ <div class="uca-stamp" id="stamp">
+  <img src="assets/img/UCA-complete.png" alt="mission complete UCA stamp"/>
+   </div>
+:: missionplanner-planning [nobr]
+<<set $prevpass to "missionplanner1">>
+<<set $pass to "missionplanner-planning">>
+<<set $nextpass to "missionplanner1">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+<div id="responses">PLANNING</div>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Welcome to the Planning Stage of the Mission. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>You will need to decide what you are making before you can move on.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>You may want to write these on your board before confirming below.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 8s>>
+  <<replace "#inputMount">>
+    <<button "Next">>
+         <<replace "#messagesContainer">>
+          <</replace>>
+          <<include "planning1">>
+          <<replace "#inputMount">>
+          <</replace>>
+        <</button>>
+  <</replace>>
+<</timed>>
+
+:: checkresponses [nobr]
+<<replace "#responses">><</replace>>
+<<if $p1 is true>>
+  <<append "#responses">>
+    <h2>Planning</h2>
+    <div class="response-item">
+       <h3>Recepient</h3>
+      <span>$p1text</span>
+    </div>
+    <</append>>
+<</if>>
+
+<<if $p2 is true>>
+  <<append "#responses">>
+  <div class="response-item">
+   <h3> What do you think they like?</h3>
+    <span>$p2text</span>
+  </div>
+    <</append>>
+<</if>>
+
+<<if $p3 is true>>
+  <<append "#responses">>
+  <div class="response-item">
+     <h3>What do you think your class could make?</h3>
+    <span>$p3text</span>
+  </div>
+    <</append>>
+<</if>>
+
+<<if $p4 is true>>
+  <<append "#responses">>
+  <div class="response-item">
+     <h3>Location</h3>
+    <span>$p4text</span>
+  </div>
+    <</append>>
+
+<</if>>
+
+
+
+
+:: planning1 [nobr]
+<<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>From your mapping you will have chosen a few options for who is right to receive the Gift.  </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Who have you decided to share it with? </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 7s>>
+  <<replace "#inputMount">>
+      <<include "inputplanning1">>
+    <</replace>>
+<</timed>>
+
+
+:: inputplanning1 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% INPUT %/
+<div class="code-input chat-code">
+<<textbox "$p1text" "Your answer">>
+<<button "Send">>
+</div>
+<<set $p1text to $p1text.toUpperCase().trim()>>
+/% INPUT ENTERED %/
+<<if $p1text isnot "">> 
+
+
+    <<timed 2s>>
+      <<set $p1 to true>>
+      <<addclass "#responses" "letterpaper">>
+      <<addclass "#responses" "responses">>
+      <<include "checkresponses">>
+      <<replace "#inputMount">><</replace>>
+      <<replace "#messagesContainer">>
+        <<include "planning2">>
+      <</replace>>
+    <</timed>>
+<</if>>
+/% INPUT NOT ENTERED %/
+<<if $p1text is "">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">Please enter your answer.</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: planning2 [nobr]
+<<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Using all of your expert knowledge, what do you think they like? 
+ </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 4s>>
+  <<replace "#inputMount">>
+      <<include "inputplanning2">>
+    <</replace>>
+<</timed>>
+
+
+:: inputplanning2 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% INPUT %/
+<div class="code-input chat-code">
+<<textbox "$p2text" "Your answer">>
+<<button "Send">>
+</div>
+<<set $p2text to $p2text.toUpperCase().trim()>>
+/% INPUT ENTERED %/
+<<if $p2text isnot "">> 
+
+
+    <<timed 2s>>
+      <<set $p2 to true>>
+      <<include "checkresponses">>
+        <<replace "#inputMount">><</replace>>
+      <<replace "#messagesContainer">>
+        <<include "planning3">>
+      <</replace>>
+    <</timed>>
+<</if>>
+/% INPUT NOT ENTERED %/
+<<if $p2text is "">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">Please enter your answer.</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: planning3 [nobr]
+<<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>You have lots of skills and superpowers in the room - what do you think your class could make? </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 4s>>
+  <<replace "#inputMount">>
+      <<include "inputplanning3">>
+    <</replace>>
+<</timed>>
+
+
+:: inputplanning3 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% INPUT %/
+<div class="code-input chat-code">
+<<textbox "$p3text" "Your answer">>
+<<button "Send">>
+</div>
+<<set $p3text to $p3text.toUpperCase().trim()>>
+/% INPUT ENTERED %/
+<<if $p3text isnot "">> 
+
+
+    <<timed 2s>>
+      <<set $p3 to true>>
+      <<include "checkresponses">>
+        <<replace "#inputMount">><</replace>>
+      <<replace "#messagesContainer">>
+        <<include "planning4">>
+      <</replace>>
+    <</timed>>
+<</if>>
+/% INPUT NOT ENTERED %/
+<<if $p3text is "">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">Please enter your answer.</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: planning4 [nobr]
+<<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Where in the school is a good place for your mission to take place or for the gift to be delivered? </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 4s>>
+  <<replace "#inputMount">>
+      <<include "inputplanning4">>
+    <</replace>>
+<</timed>>
+
+
+:: inputplanning4 [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% INPUT %/
+<div class="code-input chat-code">
+<<textbox "$p4text" "Your answer">>
+<<button "Send">>
+</div>
+<<set $p4text to $p4text.toUpperCase().trim()>>
+/% INPUT ENTERED %/
+<<if $p4text isnot "">> 
+
+
+    <<timed 2s>>
+      <<set $p4 to true>>
+      <<include "checkresponses">>
+        <<replace "#inputMount">><</replace>>
+      <<replace "#messagesContainer">>
+        <<include "planning5">>
+      <</replace>>
+    <</timed>>
+<</if>>
+/% INPUT NOT ENTERED %/
+<<if $p4text is "">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">Please enter your answer.</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: planning5 [nobr]
+<<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>This looks like a good plan – are you ready to send it off to UCA HQ for sign off? </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 4s>>
+  <<replace "#inputMount">>
+      <<button "SEND PLAN TO UCA HQ">>
+        <<goto "sending">>
+        <</button>>
+    <</replace>>
+<</timed>>
+
+
+:: sending [nobr green]
+
+<audio src="https://remote.co.com/UCA/assets/audio/taperecorder.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+      <messageboxreel>
+
+      <<timed 13s>><div class="animated fadeInDownBig">
+      <name><b>UCA Mission Plan Agreed</b></name>
+      <button>[[Next|missionplanner1]]</button></div><</timed>></messageboxreel>
+      <<include "reeltoreel">>
+      <messagescreen><span id="message">Sending</span>
+      <<timed 2s>><<replace "#message">>Mission Plan Received<</replace>>
+      <<set $planning to true>>
+      <<next 2s>><<replace "#message">>Checking Mission<</replace>>
+      <<next 2s>><<replace "#message">>Checking Mission<</replace>>
+      <<next 2s>><<replace "#message">>Having a cup of tea. <</replace>>
+      <<next 2s>><<replace "#message">>Checking Mission<</replace>>
+         <<next 2s>><<replace "#message">>Check Complete<</replace>>
+      <</timed>></messagescreen>
+
+
+:: missionplanner-making [nobr]
+<<set $prevpass to "missionplanner1">>
+<<set $pass to "missionplanner-making">>
+<<set $nextpass to "missionplanner1">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+MAKING
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>It is now time for you to make your gift</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Gather your tools, use your superpowers and get making.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Remember you are making something for other people  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Hold onto your plan </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 10s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>And make something that they will like.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 13s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>When ready click below.</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 15s>>
+  <<replace "#inputMount">>
+    <<button "Finished">>
+       <<set $making to true>>
+       <<goto "missionplanner1">>
+        <</button>>
+  <</replace>>
+<</timed>>
+
+:: missionplanner-delivery [nobr]
+<<set $prevpass to "missionplanner1">>
+<<set $pass to "missionplanner-deliver">>
+<<set $nextpass to "missionplanner1">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+DELIVERY
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Great work. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It is nearly time.</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Time to deliver your gift.</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I hope you are excited. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 10s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I am - this is the last part before we find that final button and light the beacon!</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 13s>>
+  <<replace "#inputMount">>
+    <<button "Next">>
+      <<replace "#inputMount">><</replace>>
+      <<timed 0.5s>>
+       <<replace "#messagesContainer">>
+        <<include "delivery2">>
+        <</replace>>
+        <</timed>>
+        <</button>>
+  <</replace>>
+<</timed>>
+
+:: delivery2 [ nobr]
+<<timed 1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Before you head out - I need to remind you of something</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 3s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Remember we are an Undercover Agency – so work out how you might deliver your gift secretly if you can. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Good luck. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<include "delivery3">>
+      <<replace "#inputMount">>
+        <</replace>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: delivery3 [ nobr]
+<<timed 1s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>When you have delivered - or have everything ready for a future delivery - enter the word MAL below. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 3s>>
+  <<replace "#inputMount">>
+    <<include "codewordDelivery">>
+  <</replace>>
+
+<</timed>>
+
+
+:: codewordDelivery [nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "MAL" or $code is "MAL ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<set $delivery to true>>
+    <<timed 2s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "MAL" and $code isnot "MAL ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: missioncompletetext [nobr]
+<<set $prevpass to "missionplanner1">>
+<<set $pass to "missioncompletetext">>
+<<set $nextpass to "button6">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+<<include "missionplanner">>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+ <<timed 0.5s>>
+    <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>It’s time to shine a light on the truth</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 2s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It’s time to light the Beacon.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>The final button is hiding in plain sight – under the Beacon. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 8s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Light the beacon and enter the word.</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 10s>>
+  <<replace "#inputMount">>
+    <<button "Next">>
+     
+          <<goto $nextpass>>
+       
+        <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: button6 [nobr]
+<<set $prevpass to "ucatelecom2">>
+<<set $pass to "missioncompletetext">>
+<<set $nextpass to "video8">>
+
+<main>
+<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
+<p>6/6</p>
+    <<include "codewordBeacon">>
+    
+</main>
+
+
+:: codewordBeacon[nobr]
+<div id="coderesult"></div>
+ <div id="resultbutton">
+/% CODEWORD INPUT %/
+<div class="code-input chat-code">
+<<textbox "$code" "">>
+<<button "Send">>
+</div>
+ /% PASSWORD CODE %/
+<<set $code to $code.toUpperCase().trim()>>
+/% CODEWORD CORRECT %/
+<<if $code isnot "">> 
+  <<if $code is "CARE" or $code is "CARE ">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<timed 2s>><<goto $nextpass>><</timed>>
+   
+<</if>>
+<</if>>
+/% CODEWORD INCORRECT %/
+<<if $code isnot "">>
+  <<if $code isnot "CARE" and $code isnot "CARE ">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
+  <</if>>
+  <</if>>
+<</button>>
+</div>
+
+</div>
+
+
+:: video8 [purple nobr]
+<<set $prevpass to "missioncompletetext">>
+<<set $pass to "video8">>
+<<set $nextpass to "ucalogo">>
+<<set $planning to false>>
+<<set $making to false>>
+<<set $delivery to false>>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 8: */
+
+      <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"> Video 8</div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+
+
+<<timed 3s>>
+  <<replace "#inputMount">>
+  <<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: ucalogo [nobr green]
+<main class="logo-alone">
+  <<include "rotatelogo">>
+  <<timed 2s>>
+  <<button "Back to Front Door">>
+    <<goto "Start">>
+    <</button >>
+    <</timed>>
+</main>

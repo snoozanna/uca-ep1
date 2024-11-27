@@ -13,6 +13,7 @@
   --greeny: #cde96f;
   --main-bg-color: rgb(14, 9, 14);
   --font-headings: "JetBrains Mono", monospace;
+  --font-decorative-headings: "Contrail One",cursive;
   --font-body: "Poppins", sans-serif;
   --padding: 2rem;
   --base: desaturate(#f3cc8b, 20%);
@@ -1756,3 +1757,95 @@ main.ucalab > .ucalab-wrapper > h3 {
     background-position: 0% 0%;
   }
 }
+
+
+/* MISSION BRIEF */
+
+.clipboard{
+  position: relative;
+  display: flex;
+    justify-content: center;
+ 
+}
+.clip-container{
+  position: absolute;
+  left: 39%;
+  top: -30%;
+  z-index: 1;
+  max-width: 20%;
+}
+
+.mission-brief.letterpaper{
+  box-shadow: 0px 2px 38px rgb(0 0 0 / 93%);
+  transform: rotate(-4deg);
+  display: flex;
+  gap:2rem;
+  /* max-width: 90%; */
+}
+
+.mission-brief.letterpaper > .mission-brief-section > h2{
+  text-transform:uppercase ;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.mission-brief.letterpaper > .mission-brief-section > .uca-stamp{
+max-width: 100%;
+}
+
+.mission-brief.letterpaper > .mission-brief-section:last-child{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+  width: 45%;
+}
+
+.mission-brief.letterpaper > .mission-brief-section:last-child > span{
+  text-align: right;
+  font-family: var( --font-decorative-headings);
+  text-transform: uppercase;
+  font-weight: bold;
+
+}
+
+.mission-brief.letterpaper > .mission-brief-section:last-child > h2{
+  line-height: 3.5rem;
+  text-align: right;
+}
+
+
+/* MISSION PLANNER */
+
+.response-item{
+  margin-block-end: 1rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.response-item > h3{
+  margin-block-end: 0;
+
+}
+
+.responses.letterpaper{
+  background: var(--pink);
+  width: 60%;
+}
+
+
+/* LOGO ALONE */
+
+main.logo-alone{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  gap:4rem
+}
+
