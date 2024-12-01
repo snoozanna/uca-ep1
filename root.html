@@ -173,7 +173,7 @@ $(document.head).find('#style-ui-bar').remove();
             }
         ,t);
     };
-}();</script><tw-tag name="green" color="green"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;ping1&quot; &quot;../assets/sound/ping1.mp3&quot;&gt;&gt;
+}();</script><tw-tag name="green" color="green"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;ping&quot; &quot;../assets/sound/ping1.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;ticker3&quot; &quot;../assets/sound/ticker3.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;correct&quot; &quot;../assets/sound/keep2.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;uploading&quot; &quot;../assets/sound/uploading.mp3&quot;&gt;&gt;
@@ -186,20 +186,11 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;set $prevpass to &quot;Start&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;Start&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video9&quot;&gt;&gt;
-&lt;main&gt;
-&lt;messagebox&gt;&lt;div
-      class=&quot;animated
-      rotateIn&quot;&gt;[img[https://remote.co.com/UCA/assets/img/logobutton.png]]&lt;/div&gt;&lt;/messagebox&gt;
-      &lt;messagebox&gt;
-      &lt;div class=&quot;animated
-      fadeInLeftBig&quot;&gt;[img[https://remote.co.com/UCA/assets/img/undercover.png]]&lt;/div&gt;&lt;div
-      class=&quot;animated
-      fadeInRightBig&quot;&gt;[img[https://remote.co.com/UCA/assets/img/caretaker.png]]&lt;/div&gt;&lt;div
-      class=&quot;animated
-      fadeInLeftBig&quot;&gt;[img[https://remote.co.com/UCA/assets/img/agency.png]]&lt;/div&gt;&lt;/messagebox&gt;
-      
-      &lt;&lt;timed 4s&gt;&gt;&lt;&lt;include &quot;codewordPart2&quot;&gt;&gt; &lt;&lt;/timed&gt;&gt;
-
+&lt;main class=&quot;logo-alone&quot;&gt;
+&lt;div&gt;&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;&lt;/div&gt;
+&lt;div&gt;
+      &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;include &quot;codewordPart2&quot;&gt;&gt; &lt;&lt;/timed&gt;&gt;
+&lt;/div&gt;
 &lt;/main&gt;</tw-passagedata><tw-passagedata pid="3" name="footer" tags="nobr" position="350,100" size="100,100">&lt;footer&gt;
    [[Back to the start|Start]]
 &lt;div class=&quot;logo-wrapper&quot;&gt;
@@ -217,19 +208,19 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 
-&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="5" name="portalfooter" tags="nobr" position="600,100" size="100,100">[[Back to the start|Start]]
-&lt;div class=&quot;uca-logo&quot;&gt;
-   &lt;img src=&quot;assets/img/logobutton.png&quot; alt=&quot;logo&quot;/&gt;
-   &lt;/div&gt;
-   &lt;div class=&quot;uca-logo-text&quot;&gt;
-   &lt;img src=&quot;assets/img/logotitle.png&quot; alt=&quot;logo&quot;/&gt;
-   &lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="rotatelogo" tags="nobr" position="725,100" size="100,100">&lt;div class=&quot;rotate-logo-wrapper&quot;&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="5" name="rotatelogo" tags="nobr" position="600,100" size="100,100">&lt;div class=&quot;rotate-logo-wrapper&quot;&gt;
 &lt;div class=&quot;animated rotateInDownLeft overlay-image&quot;&gt;[img[assets/img/logobutton.png]]&lt;/div&gt;
 &lt;div class=&quot;animated fadeInLeftBig overlay-image one&quot; &gt;[img[assets/img/undercover.png]]&lt;/div&gt;&lt;div
         class=&quot;animated fadeInRightBig overlay-image two&quot;&gt;[img[assets/img/caretaker.png]]&lt;/div&gt;&lt;div
         class=&quot;animated fadeInLeftBig overlay-image three&quot;&gt;[img[assets/img/agency.png]]&lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="unlocked" tags="" position="850,100" size="100,100">MISSION UNLOCKED LOGO CHANGE</tw-passagedata><tw-passagedata pid="8" name="codewordPart2" tags="nobr" position="975,100" size="100,100">&lt;div id=&quot;resultbutton&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="staticlogo" tags="nobr" position="725,100" size="100,100">&lt;div class=&quot;rotate-logo-wrapper static&quot;&gt;
+&lt;div class=&quot;animated  overlay-image&quot;&gt;[img[assets/img/logobutton.png]]&lt;/div&gt;
+&lt;div class=&quot;animated  overlay-image one&quot; &gt;[img[assets/img/undercover.png]]&lt;/div&gt;&lt;div
+        class=&quot;animated  overlay-image two&quot;&gt;[img[assets/img/caretaker.png]]&lt;/div&gt;&lt;div
+        class=&quot;animated  overlay-image three&quot;&gt;[img[assets/img/agency.png]]&lt;/div&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="codewordPart2" tags="nobr" position="850,100" size="100,100">&lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input&quot;&gt;
 &lt;&lt;textbox &quot;$code&quot; &quot;&quot;&gt;&gt;
@@ -241,7 +232,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;if $code isnot &quot;&quot;&gt;&gt; 
   &lt;&lt;if $code is &quot;JAY&quot; or $code is &quot;JAY &quot;&gt;&gt;
     &lt;&lt;audio &quot;correct&quot; play&gt;&gt;
-    &lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;div class=&quot;confirmation&quot; id=&quot;confirmation&quot;&gt;Correct!&lt;/div&gt;&lt;&lt;/replace&gt;&gt;
+    &lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;div class=&quot;confirmation&quot; id=&quot;confirmation&quot;&gt;&lt;span&gt;Correct!&lt;/span&gt;&lt;/div&gt;&lt;&lt;/replace&gt;&gt;
     &lt;&lt;timed 3s&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/timed&gt;&gt;
    
 &lt;&lt;/if&gt;&gt;
@@ -249,7 +240,7 @@ $(document.head).find('#style-ui-bar').remove();
 /% CODEWORD INCORRECT %/
 &lt;&lt;if $code isnot &quot;&quot;&gt;&gt;
   &lt;&lt;if $code isnot &quot;JAY&quot; and $code isnot &quot;JAY &quot;&gt;&gt;
-  &lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;div class=&quot;confirmation&quot; id=&quot;confirmation&quot;&gt;That&#39;s not right...&lt;/div&gt;&lt;&lt;/replace&gt;&gt;
+  &lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;div class=&quot;confirmation&quot; id=&quot;confirmation&quot;&gt;&lt;span&gt;That&#39;s not right...&lt;/span&gt;&lt;/div&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;timed 1.5s&gt;&gt;&lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
   &lt;&lt;/if&gt;&gt;
   &lt;&lt;/if&gt;&gt;
@@ -258,7 +249,13 @@ $(document.head).find('#style-ui-bar').remove();
 
 &lt;/div&gt;
 &lt;br/&gt;
-&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="video9" tags="purple nobr" position="1100,100" size="100,100">&lt;&lt;set $prevpass to &quot;entrance&quot;&gt;&gt;
+&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="portalfooter" tags="nobr" position="975,100" size="100,100">[img[assets/img/back.png][$prevpass]]
+
+   &lt;div class=&quot;uca-logo-text&quot;&gt;
+   &lt;img src=&quot;assets/img/logotitle.png&quot; alt=&quot;logo&quot;/&gt;
+   &lt;/div&gt;
+
+   [img[assets/img/for.png][$prevpass]]</tw-passagedata><tw-passagedata pid="9" name="video9" tags="purple nobr" position="1100,100" size="100,100">&lt;&lt;set $prevpass to &quot;entrance&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video9&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext1&quot;&gt;&gt;
 &lt;main class=&quot;main portal grid-container&quot;&gt;
@@ -292,7 +289,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -307,6 +304,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 &lt;&lt;timed 1s&gt;&gt;
+  &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
   &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
     &lt;div class=&quot;message&quot;&gt;
       &lt;div class=&quot;avatar&quot;&gt;
@@ -320,7 +318,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 2s&gt;&gt;
+&lt;&lt;timed 5s&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
   &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
     &lt;div class=&quot;message&quot;&gt;
       &lt;div class=&quot;avatar&quot;&gt;
@@ -332,12 +331,15 @@ $(document.head).find('#style-ui-bar').remove();
           &lt;&lt;include &quot;ucaroottext1b&quot;&gt;&gt;
             &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
         &lt;&lt;/replace&gt;&gt;
+         &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+        &lt;&lt;/replace&gt;&gt;
         &lt;&lt;/button&gt;&gt;&lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="ucaroottext1b" tags="nobr" position="100,225" size="100,100">&lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -350,7 +352,8 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 3s&gt;&gt;
+&lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -363,7 +366,8 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/append&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 5s&gt;&gt;
+&lt;&lt;timed 7s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -376,7 +380,8 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/append&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 8s&gt;&gt;
+&lt;&lt;timed 11s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -392,7 +397,8 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 
-&lt;&lt;timed 11s&gt;&gt;
+&lt;&lt;timed 13s&gt;&gt;
+    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
 &lt;&lt;button &quot;Next&quot;&gt;&gt;
     &lt;&lt;include &quot;ucaroot3&quot;&gt;&gt;
@@ -401,7 +407,8 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
 &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="ucaroot3" tags="nobr" position="225,225" size="100,100">&lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -415,6 +422,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 3s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -428,6 +436,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 5s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -441,6 +450,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 8s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -468,7 +478,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -481,7 +491,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -495,6 +506,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -520,7 +532,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -533,7 +545,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -547,6 +560,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -566,13 +580,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="ucaroottext4" tags="nobr" position="600,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext3&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="ucaroottext4" tags="purple nobr" position="600,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext3&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext5&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -586,7 +600,8 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;/main&gt;
 
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -600,6 +615,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -619,13 +635,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="ucaroottext5" tags="nobr" position="725,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext4&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="ucaroottext5" tags="purple nobr" position="725,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext4&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext5&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext6&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -638,7 +654,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -652,6 +669,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -665,6 +683,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 7s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -684,13 +703,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="ucaroottext6" tags="nobr" position="850,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext5&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="ucaroottext6" tags="purple nobr" position="850,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext5&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext6&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext7&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -703,7 +722,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -722,13 +742,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="ucaroottext7" tags="nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext6&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="ucaroottext7" tags="purple nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext6&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext7&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext8&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -741,7 +761,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -756,6 +777,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -769,6 +791,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 7s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -782,6 +805,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 10s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -795,6 +819,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 13s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -808,30 +833,25 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 16s&gt;&gt;
-    &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
-        &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;message-container&quot; &gt;
-            &lt;p&gt;Would you eat a plate of worms for £100?&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;&lt;/append&gt;&gt;
+     &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
+      &lt;&lt;include &quot;question1&quot;&gt;&gt;
+      &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="question1" tags="nobr" position="1100,225" size="100,100">&lt;div class=&quot;question-container&quot;&gt;
+  &lt;h3 class=&quot;question&quot;&gt;Would you eat a plate of worms for £100?&lt;/h3&gt;
+ 
+  &lt;br/&gt;
+  &lt;&lt;timed 5s&gt;&gt;
+      &lt;&lt;include &quot;choiceworms&quot;&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
-
-
-&lt;&lt;timed 19s&gt;&gt;
-  &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
-  &lt;&lt;include &quot;choiceworms&quot;&gt;&gt;
-  &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="choiceworms" tags="nobr" position="1100,225" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+ &lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="choiceworms" tags="nobr" position="1225,225" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
 &lt;&lt;button &quot;YES&quot;&gt;&gt;
+
   &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;timed 2s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -851,7 +871,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;timed 2s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -867,13 +888,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="ucaroottext8" tags="nobr" position="1225,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext7&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="ucaroottext8" tags="purple nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext7&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext8&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext9&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -886,7 +907,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -906,13 +928,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="ucaroottext9" tags="nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext8&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="ucaroottext9" tags="purple nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext8&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext9&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext10&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -925,7 +947,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -940,6 +963,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -953,6 +977,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 7s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -966,6 +991,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 10s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -979,6 +1005,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 13s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -991,31 +1018,25 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/append&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 16s&gt;&gt;
-    &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
-        &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;message-container&quot; &gt;
-            &lt;p&gt;Would you rather eat a Weetabix with Fishy Spaghetti or Cold Custard on it?&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;&lt;/append&gt;&gt;
+&lt;&lt;timed 17s&gt;&gt;
+  &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
+     &lt;&lt;include &quot;question2&quot;&gt;&gt;
+     &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="question2" tags="nobr" position="350,350" size="100,100">&lt;div class=&quot;question-container&quot;&gt;
+  &lt;h3 class=&quot;question&quot;&gt;Would you rather eat a Weetabix with Fishy Spaghetti or Cold Custard on it?&lt;/h3&gt;
+ 
+  &lt;br/&gt;
+  &lt;&lt;timed 5s&gt;&gt;
+      &lt;&lt;include &quot;choiceweetabix&quot;&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
-
-
-&lt;&lt;timed 19s&gt;&gt;
-  &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
-  &lt;&lt;include &quot;choiceweetabix&quot;&gt;&gt;
-  &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="choiceweetabix" tags="nobr" position="225,350" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+ &lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="choiceweetabix" tags="nobr" position="475,350" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
 &lt;&lt;button &quot;FISHY SPAGHETTI&quot;&gt;&gt;
-  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+&lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;timed 2s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -1032,10 +1053,12 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;COLD CUSTARD&quot;&gt;&gt;
+
    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;timed 2s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -1051,13 +1074,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="23" name="ucaroottext10" tags="nobr" position="350,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext9&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="25" name="ucaroottext10" tags="purple nobr" position="600,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext9&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext10&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext11&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -1070,7 +1093,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -1090,13 +1114,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="ucaroottext11" tags="nobr" position="475,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext10&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="ucaroottext11" tags="purple nobr" position="725,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext10&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext11&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext12&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -1109,7 +1133,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -1123,6 +1148,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1136,6 +1162,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 7s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1149,6 +1176,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 10s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1162,6 +1190,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 13s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1180,13 +1209,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="ucaroottext12" tags="nobr" position="600,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext11&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="ucaroottext12" tags="purple nobr" position="850,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext11&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext12&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucalogo&quot;&gt;&gt;
 
 &lt;main class=&quot;main portal grid-container&quot;&gt;
 &lt;section class=&quot;hero &quot; id=&quot;hero&quot;&gt;
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;&lt;/div&gt;
@@ -1199,7 +1228,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 &lt;&lt;timed 1s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
             &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
@@ -1213,6 +1243,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 4s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1226,6 +1257,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 7s&gt;&gt;
+   &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1239,6 +1271,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 10s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1252,6 +1285,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 13s&gt;&gt;
+      &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;avatar&quot;&gt;
@@ -1270,7 +1304,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="ucalogo" tags="nobr green" position="725,350" size="100,100">&lt;main class=&quot;logo-alone&quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="ucalogo" tags="nobr green" position="975,350" size="100,100">&lt;main class=&quot;logo-alone&quot;&gt;
   &lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
   &lt;&lt;timed 2s&gt;&gt;
   &lt;&lt;button &quot;Back to Front Door&quot;&gt;&gt;

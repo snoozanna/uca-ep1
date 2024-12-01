@@ -92,7 +92,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 :: StoryInit
-<<cacheaudio "ping1" "../assets/sound/ping1.mp3">>
+<<cacheaudio "ping" "../assets/sound/ping1.mp3">>
 <<cacheaudio "ticker3" "../assets/sound/ticker3.mp3">>
 <<cacheaudio "correct" "../assets/sound/keep2.mp3">>
 <<cacheaudio "uploading" "../assets/sound/uploading.mp3">>
@@ -109,20 +109,11 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "Start">>
 <<set $pass to "Start">>
 <<set $nextpass to "video9">>
-<main>
-<messagebox><div
-      class="animated
-      rotateIn">[img[https://remote.co.com/UCA/assets/img/logobutton.png]]</div></messagebox>
-      <messagebox>
-      <div class="animated
-      fadeInLeftBig">[img[https://remote.co.com/UCA/assets/img/undercover.png]]</div><div
-      class="animated
-      fadeInRightBig">[img[https://remote.co.com/UCA/assets/img/caretaker.png]]</div><div
-      class="animated
-      fadeInLeftBig">[img[https://remote.co.com/UCA/assets/img/agency.png]]</div></messagebox>
-      
-      <<timed 4s>><<include "codewordPart2">> <</timed>>
-
+<main class="logo-alone">
+<div><<include "rotatelogo">></div>
+<div>
+      <<timed 2.5s>><<include "codewordPart2">> <</timed>>
+</div>
 </main>
 
 
@@ -149,14 +140,6 @@ $(document.head).find('#style-ui-bar').remove();
 
 </footer>  
 
-:: portalfooter [nobr]
-  [[Back to the start|Start]]
-<div class="uca-logo">
-   <img src="assets/img/logobutton.png" alt="logo"/>
-   </div>
-   <div class="uca-logo-text">
-   <img src="assets/img/logotitle.png" alt="logo"/>
-   </div>
 
 :: rotatelogo[nobr]
 
@@ -168,8 +151,16 @@ $(document.head).find('#style-ui-bar').remove();
 
 </div>
 
-:: unlocked
-MISSION UNLOCKED LOGO CHANGE
+
+:: staticlogo[nobr]
+
+<div class="rotate-logo-wrapper static">
+<div class="animated  overlay-image">[img[assets/img/logobutton.png]]</div>
+<div class="animated  overlay-image one" >[img[assets/img/undercover.png]]</div><div
+        class="animated  overlay-image two">[img[assets/img/caretaker.png]]</div><div
+        class="animated  overlay-image three">[img[assets/img/agency.png]]</div>
+
+</div>
 
 
 
@@ -189,7 +180,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<if $code isnot "">> 
   <<if $code is "JAY" or $code is "JAY ">>
     <<audio "correct" play>>
-    <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation"><span>Correct!</span></div><</replace>>
     <<timed 3s>><<goto $nextpass>><</timed>>
    
 <</if>>
@@ -197,7 +188,7 @@ MISSION UNLOCKED LOGO CHANGE
 /% CODEWORD INCORRECT %/
 <<if $code isnot "">>
   <<if $code isnot "JAY" and $code isnot "JAY ">>
-  <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation"><span>That's not right...</span></div><</replace>>
   <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
   <</if>>
   <</if>>
@@ -207,6 +198,15 @@ MISSION UNLOCKED LOGO CHANGE
 </div>
 <br/>
 <div id="coderesult"></div>
+
+:: portalfooter [nobr]
+ [img[assets/img/back.png][$prevpass]]
+
+   <div class="uca-logo-text">
+   <img src="assets/img/logotitle.png" alt="logo"/>
+   </div>
+
+   [img[assets/img/for.png][$prevpass]]
 
 
 :: video9 [purple nobr]
@@ -249,7 +249,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -264,6 +264,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 1s>>
+  <<audio "ping" "play">>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -277,7 +278,8 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 2s>>
+<<timed 5s>>
+    <<audio "ping" "play">>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -288,6 +290,8 @@ MISSION UNLOCKED LOGO CHANGE
         <p>When they are ready to plant their UCA Roots click <<button "here">>
           <<include "ucaroottext1b">>
             <<replace "#inputMount">>
+        <</replace>>
+         <<replace "#messagesContainer">>
         <</replace>>
         <</button>></p>
       </div>
@@ -300,7 +304,8 @@ MISSION UNLOCKED LOGO CHANGE
 
 :: ucaroottext1b [ nobr]
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -313,7 +318,8 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <</timed>>
 
-<<timed 3s>>
+<<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -326,7 +332,8 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 7s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -339,7 +346,8 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 11s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -355,7 +363,8 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 
-<<timed 11s>>
+<<timed 13s>>
+    <<replace "#messagesContainer">><</replace>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<include "ucaroot3">>
@@ -367,7 +376,8 @@ MISSION UNLOCKED LOGO CHANGE
 
 :: ucaroot3 [ nobr]
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -381,6 +391,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 3s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -394,6 +405,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 5s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -407,6 +419,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 8s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -439,7 +452,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -452,7 +465,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -466,6 +480,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -496,7 +511,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -509,7 +524,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -523,6 +539,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -544,14 +561,14 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
 <</timed>>
 
-:: ucaroottext4 [ nobr]
+:: ucaroottext4 [purple nobr]
 <<set $prevpass to "ucaroottext3">>
 <<set $pass to "ucaroottext4">>
 <<set $nextpass to "ucaroottext5">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -565,7 +582,8 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -579,6 +597,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -600,14 +619,14 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
 <</timed>>
 
-:: ucaroottext5 [ nobr]
+:: ucaroottext5 [purple nobr]
 <<set $prevpass to "ucaroottext4">>
 <<set $pass to "ucaroottext5">>
 <<set $nextpass to "ucaroottext6">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -620,7 +639,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -634,6 +654,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -647,6 +668,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 7s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -668,14 +690,14 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
 <</timed>>
 
-:: ucaroottext6 [ nobr]
+:: ucaroottext6 [purple nobr]
 <<set $prevpass to "ucaroottext5">>
 <<set $pass to "ucaroottext6">>
 <<set $nextpass to "ucaroottext7">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -688,7 +710,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -709,14 +732,14 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
 <</timed>>
 
-:: ucaroottext7 [ nobr]
+:: ucaroottext7 [purple nobr]
 <<set $prevpass to "ucaroottext6">>
 <<set $pass to "ucaroottext7">>
 <<set $nextpass to "ucaroottext8">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -729,7 +752,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -744,6 +768,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -757,6 +782,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 7s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -770,6 +796,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 10s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -783,6 +810,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 13s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -796,34 +824,35 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 16s>>
-    <<append "#messagesContainer">>
-        <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
-        <div class="message-container" >
-            <p>Would you eat a plate of worms for £100?</p>
-        </div>
-        </div>
-    <</append>>
+     <<replace "#hero">>
+      <<include "question1">>
+      <</replace>>
     <</timed>>
 
 
 
-<<timed 19s>>
-  <<replace "#inputMount">>
-  <<include "choiceworms">>
-  <</replace>>
-<</timed>>
+
+:: question1 [nobr]
+<div class="question-container">
+  <h3 class="question">Would you eat a plate of worms for £100?</h3>
+ 
+  <br/>
+  <<timed 5s>>
+      <<include "choiceworms">>
+    <</timed>>
+
+ </div>
 
 :: choiceworms [nobr]
 
 <div class="choice-container nav-wrapper">
 <<button "YES">>
+
   <<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
   <<timed 2s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -843,7 +872,8 @@ MISSION UNLOCKED LOGO CHANGE
   <<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
   <<timed 2s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -861,14 +891,14 @@ MISSION UNLOCKED LOGO CHANGE
 <</button>>
 </div>
 
-:: ucaroottext8 [ nobr]
+:: ucaroottext8 [purple nobr]
 <<set $prevpass to "ucaroottext7">>
 <<set $pass to "ucaroottext8">>
 <<set $nextpass to "ucaroottext9">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -881,7 +911,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -903,14 +934,14 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
 <</timed>>
 
-:: ucaroottext9 [ nobr]
+:: ucaroottext9 [purple nobr]
 <<set $prevpass to "ucaroottext8">>
 <<set $pass to "ucaroottext9">>
 <<set $nextpass to "ucaroottext10">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -923,7 +954,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -938,6 +970,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -951,6 +984,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 7s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -964,6 +998,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 10s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -977,6 +1012,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 13s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -989,35 +1025,35 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 16s>>
-    <<append "#messagesContainer">>
-        <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
-        <div class="message-container" >
-            <p>Would you rather eat a Weetabix with Fishy Spaghetti or Cold Custard on it?</p>
-        </div>
-        </div>
-    <</append>>
+<<timed 17s>>
+  <<replace "#hero">>
+     <<include "question2">>
+     <</replace>>
     <</timed>>
 
 
 
-<<timed 19s>>
-  <<replace "#inputMount">>
-  <<include "choiceweetabix">>
-  <</replace>>
-<</timed>>
+:: question2 [nobr]
+<div class="question-container">
+  <h3 class="question">Would you rather eat a Weetabix with Fishy Spaghetti or Cold Custard on it?</h3>
+ 
+  <br/>
+  <<timed 5s>>
+      <<include "choiceweetabix">>
+    <</timed>>
+
+ </div>
+
 
 :: choiceweetabix [nobr]
 
 <div class="choice-container nav-wrapper">
 <<button "FISHY SPAGHETTI">>
-  <<replace "#messagesContainer">><</replace>>
+<<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
   <<timed 2s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -1034,10 +1070,12 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 <</button>>
 <<button "COLD CUSTARD">>
+
    <<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
   <<timed 2s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -1055,14 +1093,14 @@ MISSION UNLOCKED LOGO CHANGE
 <</button>>
 </div>
 
-:: ucaroottext10 [ nobr]
+:: ucaroottext10 [purple nobr]
 <<set $prevpass to "ucaroottext9">>
 <<set $pass to "ucaroottext10">>
 <<set $nextpass to "ucaroottext11">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -1075,7 +1113,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -1098,14 +1137,14 @@ MISSION UNLOCKED LOGO CHANGE
 <</timed>>
 
 
-:: ucaroottext11 [ nobr]
+:: ucaroottext11 [purple nobr]
 <<set $prevpass to "ucaroottext10">>
 <<set $pass to "ucaroottext11">>
 <<set $nextpass to "ucaroottext12">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -1118,7 +1157,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -1132,6 +1172,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1145,6 +1186,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 7s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1158,6 +1200,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 10s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1171,6 +1214,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 13s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1191,14 +1235,14 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
 <</timed>>
 
-:: ucaroottext12 [ nobr]
+:: ucaroottext12 [purple nobr]
 <<set $prevpass to "ucaroottext11">>
 <<set $pass to "ucaroottext12">>
 <<set $nextpass to "ucalogo">>
 
 <main class="main portal grid-container">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer"></div>
@@ -1211,7 +1255,8 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 <<timed 1s>>
-    <<replace "#messagesContainer">>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -1225,6 +1270,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 4s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1238,6 +1284,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 7s>>
+   <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1251,6 +1298,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 10s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1264,6 +1312,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 13s>>
+      <<audio "ping" "play">>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">

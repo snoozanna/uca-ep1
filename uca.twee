@@ -105,6 +105,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 :: Start [purple nobr]
+<<set $sound to true>>
 <<audio ":all" stop>>
 <<set $prevpass to "Start">>
 <<set $pass to "Start">>
@@ -112,6 +113,7 @@ $(document.head).find('#style-ui-bar').remove();
 <main><messagebox2>[img[assets/img/intercom2.png][entrance]]</messagebox2>
 
 </main>
+
 
 
 :: footer [nobr]
@@ -137,7 +139,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 </footer>  
 
-:: portalfooter [nobr]
+:: portalfooter2 [nobr]
   [[Back to the start|Start]]
 <div class="uca-logo">
    <img src="assets/img/logobutton.png" alt="logo"/>
@@ -145,6 +147,17 @@ $(document.head).find('#style-ui-bar').remove();
    <div class="uca-logo-text">
    <img src="assets/img/logotitle.png" alt="logo"/>
    </div>
+
+
+:: portalfooter [nobr]
+ [img[assets/img/back.png][$prevpass]]
+
+   <div class="uca-logo-text">
+   <img src="assets/img/logotitle.png" alt="logo"/>
+   </div>
+
+   [img[assets/img/for.png][$prevpass]]
+
 
 :: rotatelogo[nobr]
 
@@ -164,7 +177,13 @@ MISSION UNLOCKED LOGO CHANGE
 :: entrance [nobr purple]
 <<audio ":all" stop>>
 <<set $prevpass to "Start">>
-<<set $pass to "ucalab">>
+<<set $pass to "entrance">>
+<<set $nextpass to "staticbuzz1">>
+<<if $sound is true>>
+  <div id="audio">
+    <audio src="assets/audio/UCA_01_INTRO_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="ucalab">
 
 <div class="uca-logo" >
@@ -195,7 +214,7 @@ MISSION UNLOCKED LOGO CHANGE
   <<if $code is "STATIC" or $code is "STATIC ">>
     <<audio "correct" play>>
     <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
-    <<timed 3s>><<goto "video1">><</timed>>
+    <<timed 3s>><<goto $nextpass>><</timed>>
    
 <</if>>
 <</if>>
@@ -213,11 +232,29 @@ MISSION UNLOCKED LOGO CHANGE
 <br/>
 <div id="coderesult"></div>
 
+:: staticbuzz1 [nobr] {"position":"47.999999999999964,2141.333333333333","size":"100,100"}
+<<set $prevpass to "entrance">>
+<<set $pass to "staticbuzz1">>
+<<set $nextpass to "video1">>
+<div class="buzz1">
+ <img src="https://remote.co.com/UCA/assets/img/static5.gif" class="staticgif center" id="staticgif">
+      </div>
+      <<timed 0.5s>>
+      /* <iframe src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3"  style="display:none" allow="autoplay" ></iframe> */
+      <audio src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
+      <</timed>>
+  <<timed 3.5s>>
+    <<goto $nextpass>>
+    <</timed>>
 
 :: video1 [purple nobr]
 <<set $prevpass to "entrance">>
 <<set $pass to "video1">>
 <<set $nextpass to "video2">>
+<<if $sound is true>>
+  <div id="audio">
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 /* VIDEO 1 */
@@ -237,6 +274,9 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 <<timed 1s>>
+  <<replace "#audio">>
+      <audio src="assets/audio/UCA_01_INTRO_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -285,6 +325,12 @@ MISSION UNLOCKED LOGO CHANGE
         <</replace>>
     <</timed>>
     <<timed 2s>>
+    <<if $sound is true>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_01_INTRO_03_oh_really_.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    </div>
+    <</replace>>
+    <</if>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -310,6 +356,13 @@ MISSION UNLOCKED LOGO CHANGE
             <</replace>>
         <</timed>>
         <<timed 2s>>
+            <<if $sound is true>>
+           <<replace "#audio">>
+          <div id="audio">
+            <audio src="assets/audio/UCA_01_INTRO_03_thank_you_anyway.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+          </div>
+          <</replace>>
+          <</if>>
             <<replace "#messagesContainer">>
                 <div class="message">
                 <div class="avatar">
@@ -336,6 +389,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "video1">>
 <<set $pass to "video2">>
 <<set $nextpass to "ucatok1">>
+
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 /* VIDEO 2: */
@@ -356,6 +410,7 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 <<timed 1s>>
+
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -412,7 +467,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "video2">>
 <<set $pass to "ucatok1">>
 <<set $nextpass to "ucatok2">>
-
+<<if $sound is true>>
+  <div id="audio">
+    <audio src="assets/audio/UCA_02_MOVE_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
 <section class="hero " id="hero">
 <<include "rotatelogo">>
@@ -429,7 +488,7 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 
-<<timed 1s>>
+<<timed 0.5s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -443,7 +502,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 2s>>
+<<timed 1s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -457,7 +516,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 4s>>
+<<timed 6s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -471,7 +530,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 5s>>
+<<timed 9s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -485,7 +544,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 6s>>
+<<timed 12s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -499,7 +558,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 7s>>
+<<timed 14s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -515,7 +574,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 
-<<timed 8s>>
+<<timed 16s>>
   <<replace "#inputMount">>
     <div class="choice-container nav-wrapper">
         <<button "READY">>
@@ -553,7 +612,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "ucatok1">>
 <<set $pass to "ucatok2">>
 <<set $nextpass to "video3">>
-
+<<if $sound is true>>
+  <div id="audio">
+    <audio src="assets/audio/UCA_02_MOVE_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
 <section class="hero " id="hero">
 <<include "rotatelogo">>
@@ -570,7 +633,7 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 
-<<timed 1s>>
+<<timed 0.1s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -598,7 +661,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 5s>>
+<<timed 6s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -612,7 +675,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 7s>>
+<<timed 9s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -626,7 +689,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 9s>>
+<<timed 14s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -640,7 +703,7 @@ MISSION UNLOCKED LOGO CHANGE
   <</append>>
 <</timed>>
 
-<<timed 12s>>
+<<timed 15s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="avatar">
@@ -655,12 +718,15 @@ MISSION UNLOCKED LOGO CHANGE
 <</timed>>
 
 
-<<timed 13s>>
+<<timed 16s>>
     <<replace "#inputMount">>
 <div class="choice-container nav-wrapper">
     <<button "NEXT">>
        <<replace "#inputMount">><</replace>>
         <<timed 0.5s>>
+          <<replace "#audio">>
+      <audio src="assets/audio/UCA_02_MOVE_06_+_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
         <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -680,7 +746,7 @@ MISSION UNLOCKED LOGO CHANGE
          </div>
         </div>
        <</replace>>
-        <<timed 2.5s>>
+        <<timed 4s>>
             <<append "#messagesContainer">>
             <div class="message">
             <div class="avatar">
@@ -688,15 +754,18 @@ MISSION UNLOCKED LOGO CHANGE
             </div>
             <div class="message-container" >
                 <span class="sender">Jay</span>
-            <p>When you have learnt the UCA TOK and are ready to run it with me, click the UCA TOK button <<button "Here">>
-                <<timed 0.5s>>
-                 <<goto $nextpass>>
-                 <</timed>>
-                <</button>>
+            <p>When you have learnt the UCA TOK and are ready to run it with me, click the UCA TOK button below. 
             </p>
             </div>
             </div>
         <</append>>
+        <<replace "#inputMount">>
+          <<button "UCA TOK LEARNT">>
+                <<timed 0.5s>>
+                 <<goto $nextpass>>
+                 <</timed>>
+                <</button>>
+          <</replace>>
         <</timed>>
         <</timed>>
     <</button>>
@@ -793,6 +862,7 @@ MISSION UNLOCKED LOGO CHANGE
     <div class="pager-container">
         <div class="pager retro-box">
         <h2>UCA TELCOM</h2>
+        <div id="audio"></div>
           <div class="screen" id="screen">
         </div>
            <div class="buttons-container">
@@ -854,23 +924,68 @@ MISSION UNLOCKED LOGO CHANGE
     <<removeclass "#anneBtn" "active">>
     <<addclass "#screen" "active">>
     <<replace "#screen">>
-        <<type 60ms>><p>Hello, I don’t recognise this number, are you trying to sell me Bouncy Castle insurance?</p>
+        <<type 60ms>><p>Hello, I don’t recognise this number.
+          Are you trying to sell me Bouncy Castle insurance?</p>
                <</type>>
         <</replace>>
+        <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <</timed>>
  <<timed 10s>>
     <<replace "#options">>
          <div class="options-btn key active pulse" id="yesBtn">
             <<link "Yes">>
                <<replace "#screen">>
-                <<include "callingMal2">>
+                <<include "callingMal2yes">>
                 <</replace>>
                 <</link>>
             </div>
          <div class="options-btn key active pulse"  id="noBtn">
             <<link "No">>
                     <<replace "#screen">>
-                <<include "callingMal2">>
+                <<include "callingMal2no">>
+                <</replace>>
+                <</link>>
+                </div>
+    <</replace>>
+<</timed>>
+
+:: callingMal2yes [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+     <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_02_yes.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
+  <<replace "#screen">>
+        <<type 40ms>><p>Good, I don’t need any more bouncy castle insurance. </p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 4s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>Are you Jay's friends?</p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 6s>>
+       <<replace "#options">>
+         <div class="options-btn key active pulse" id="yesBtn">
+            <<link "Yes">>
+               <<replace "#screen">>
+                <<include "callingMal3">>
+                <</replace>>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "No">>
+                    <<replace "#screen">>
+                <<include "callingMal3">>
                 <</replace>>
                 <</link>>
                 </div>
@@ -879,26 +994,29 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 
-:: callingMal2 [nobr]
+:: callingMal2no [nobr]
 <<removeclass "#yesBtn" "pulse">>
 <<removeclass "#noBtn" "pulse">>
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+     <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_02_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>Good, I don’t need any more bouncy castle insurance. </p>
+        <<type 40ms>><p>I don’t need any more bouncy castle insurance. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 5s>>
+  <<timed 4s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Are you a friend of Jay?</p>
+        <<type 60ms>><p>Are you Jay's friends?</p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 9s>>
+  <<timed 6s>>
        <<replace "#options">>
          <div class="options-btn key active pulse" id="yesBtn">
             <<link "Yes">>
@@ -924,54 +1042,18 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
-  <<replace "#screen">>
-        <<type 60ms>><p>I know she is trying to reach me but I just don’t feel up to it at the moment. </p>
-               <</type>>
-  <</replace>>
-  <</timed>>
-
-  <<timed 7s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>I know she was wanting to help though. Are you trying to help too? </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-  <<timed 12s>>
-       <<replace "#options">>
-         <div class="options-btn key active pulse" id="yesBtn">
-            <<link "Yes">>
-               <<replace "#screen">>
-                <<include "callingMal4">>
-                <</replace>>
-                <</link>>
-            </div>
-         <div class="options-btn key active pulse"  id="noBtn">
-            <<link "No">>
-                    <<replace "#screen">>
-                <<include "callingMal4">>
-                <</replace>>
-                <</link>>
-                </div>
+     <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
-<</timed>>
-
-
-:: callingMal4 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
-  <<timed 0.1s>>
   <<replace "#screen">>
-        <<type 60ms>><p>That’s so kind of you - I don’t even know you</p>
+        <<type 40ms>><p>I know she is trying to reach me but I just don’t feel up to it at the moment. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
   <<timed 6s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Have you got any idea what could help?  </p>
+        <<type 40ms>><p>I know she wants to help though. Are you trying to help too? </p>
                <</type>>
   <</replace>>
     <</timed>>
@@ -979,22 +1061,131 @@ MISSION UNLOCKED LOGO CHANGE
   <<timed 9s>>
        <<replace "#options">>
          <div class="options-btn key active pulse" id="yesBtn">
-            <<link "UCA TOK">>
+            <<link "Yes">>
                <<replace "#screen">>
-                <<include "callingMal5">>
+                <<include "callingMal4a">>
                 <</replace>>
                 <</link>>
             </div>
          <div class="options-btn key active pulse"  id="noBtn">
-            <<link "MOVING">>
+            <<link "No">>
                     <<replace "#screen">>
-                <<include "callingMal5">>
+                <<include "callingMal4b">>
                 <</replace>>
                 <</link>>
                 </div>
     <</replace>>
 <</timed>>
 
+
+:: callingMal4a [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+       <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_04_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Have you got any idea what could help?  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 4s>>
+    <<replace "#screen">>
+  <<include "codewordphone1" >>
+  <</replace>>
+<</timed>>
+
+:: codewordphone1 [nobr]
+
+
+<div class="code-input telecom-code">
+<<textbox "$code" "">>
+</div>
+<<replace "#options">>
+    <div class="options-btn key" id="yesBtn">
+      <<link "...">>
+  <</link>>
+      </div>
+  <div class="options-btn key active pulse"  id="noBtn">
+        <<link "Send">>
+      /% PASSWORD CODE %/
+        <<set $code to $code.toUpperCase().trim()>>
+        /% CODEWORD CORRECT %/
+        <<if $code isnot "">> 
+          <<if $code is "UCA TOK" or $code is "MOVING">>
+    <<audio "correct" play>>
+    <<replace "#screen">>
+      <<include "callingMal5">>
+        <</replace>>
+          
+        <</if>>
+        <</if>>
+        /% CODEWORD INCORRECT %/
+        <<if $code isnot "">>
+           <<if $code isnot "UCA TOK" and $code isnot "MOVING">>
+          <<replace "#screen">>
+    <<include "callingMal4c">>
+      <</replace>>
+          <</if>>
+          <</if>>
+    <</link>>
+    </div>
+ <</replace>>
+
+
+:: callingMal4b [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_04_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>  
+  <<replace "#screen">>
+        <<type 40ms>><p>That’s so kind of you - I don’t even know you</p>
+               <</type>>
+  <</replace>>
+  <</timed>>
+
+  <<timed 5s>>
+      <<replace "#screen">>
+        <<type 40ms>><p>Have you got any idea what could help?  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 4s>>
+    <<replace "#screen">>
+  <<include "codewordphone1" >>
+  <</replace>>
+<</timed>>
+
+:: callingMal4c [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<replace "#screen">>
+        <<timed 0.1s>>
+       <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_05_anything_else.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
+  <<replace "#screen">>
+        <<type 60ms>><p>Ok - anything else?  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+        <</replace>>
+       <<timed 4s>>
+    <<replace "#screen">>
+  <<include "codewordphone1" >>
+  <</replace>>
+<</timed>>
 
 :: callingMal5 [nobr]
 <<removeclass "#yesBtn" "pulse">>
@@ -1002,49 +1193,30 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_05_ucatok.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>The UCA TOK - that was part of our training at UCA - led by our mentor Anne. </p>
+        <<type 40ms>><p>The UCA TOK - that was part of our training at UCA - led by our mentor Anne. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 7s>>
       <<replace "#screen">>
         <<type 60ms>><p>I will give it a try. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-    <<timed 9s>>
+    <<timed 10s>>
       <<replace "#screen">>
         <<type 60ms>><p>Say thanks to Jay for me. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-    <<timed 13s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>I’m just not ready to speak to her. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-      <<timed 16s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>But, tell her not to eat too much rhubarb. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-  <<timed 16s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>In fact, if you message her that word it will probably remind her to not over do it! </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-
-  <<timed 18s>>
+  <<timed 12s>>
        <<replace "#options">>
          <div class="options-btn key" id="yesBtn">
             <<link "...">>
@@ -1052,16 +1224,105 @@ MISSION UNLOCKED LOGO CHANGE
                 <</link>>
             </div>
          <div class="options-btn key active pulse"  id="noBtn">
-            <<link "End call">>
-               <<goto $nextpass>>
+            <<link "Next">>
+               <<include "callingMal6">>
                 <</link>>
                 </div>
     <</replace>>
 <</timed>>
 
-:: button [nobr]
+:: callingMal6 [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<timed 0.1s>>
+      <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
+      <<replace "#screen">>
+        <<type 40ms>><p>I’m just not ready to speak to her. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+      <<timed 4s>>
+      <<replace "#screen">>
+        <<type 60ms>><p>But, tell her not to eat too much rhubarb. </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+  <<timed 8s>>
+      <<replace "#screen">>
+        <<type 40ms>><p>In fact, if you message her that word it will probably remind her to not over do it! </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
+  <<timed 10s>>
+    <<replace "#screen">>
+  <<include "codewordphone1b" >>
+  <</replace>>
+<</timed>>
+
+:: codewordphone1b [nobr]
+<div class="code-input telecom-code">
+<<textbox "$code" "">>
+</div>
+<<replace "#options">>
+    <div class="options-btn key" id="yesBtn">
+      <<link "...">>
+  <</link>>
+      </div>
+  <div class="options-btn key active pulse"  id="noBtn">
+        <<link "Send">>
+      /% PASSWORD CODE %/
+        <<set $code to $code.toUpperCase().trim()>>
+        /% CODEWORD CORRECT %/
+        <<if $code isnot "">> 
+          <<if $code is "RHUBARB">>
+    <<audio "correct" play>>
+    <<goto "button1">>
+          
+        <</if>>
+        <</if>>
+        /% CODEWORD INCORRECT %/
+        <<if $code isnot "">>
+           <<if $code isnot "RHUBARB">>
+          <<replace "#screen">>
+    <<include "callingMal6b">>
+      <</replace>>
+          <</if>>
+          <</if>>
+    <</link>>
+    </div>
+ <</replace>>
+
+:: callingMal6b [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<replace "#screen">>
+        <<timed 0.1s>>
+  
+  <<replace "#screen">>
+        <<type 60ms>><p> Try again.  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+        <</replace>>
+       <<timed 4s>>
+    <<replace "#screen">>
+  <<include "codewordphone1b" >>
+  <</replace>>
+<</timed>>
+
+:: button1 [nobr]
 <<set $prevpass to "ucatelecom">>
-<<set $pass to "button">>
+<<set $pass to "button1">>
 <<set $nextpass to "video4">>
 
 <main>
@@ -1074,12 +1335,16 @@ MISSION UNLOCKED LOGO CHANGE
     
 </main>
 :: video4 [purple nobr]
-<<set $prevpass to "ucatok2">>
+<<set $prevpass to "button1">>
 <<set $pass to "video4">>
 <<set $nextpass to "compartment2">>
+<<if $sound is true>>
+  <div id="audio">
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
-/* VIDEO 3: */
+/* VIDEO 4: */
 <<include "rotatelogo">>
   </section>
   <section class="chat">
@@ -1129,30 +1394,17 @@ MISSION UNLOCKED LOGO CHANGE
             <</replace>>
          <<replace "#inputMount">>
             <</replace>>
-        <<timed 5s>>
-        <<append "#messagesContainer">>
-            <div class="message">
-            <div class="avatar">
-                <img src="assets/img/user.png" alt="avatar"/>
-            </div>
-            <div class="message-container" >
-                <span class="sender">Jay</span>
-                <p> Teacher, can you make sure everyone understands what the static is please? </p>
-            </div>
-            </div>
-        <</append>>
-        <</timed>>
-        <<timed 7s>>
-        <<append "#messagesContainer">>
-           <<button "Everyone understands">>
-            <<timed 0.5s>>
-                 <<goto $nextpass>>
-             <</timed>>
-            <</button>>  
-         <</append>>
-         <</timed>>
     <</timed>>
-   
+    <<timed 12s>>
+         <<replace "#inputMount">>
+            <<button "Next">>
+             <<replace "#inputMount">><</replace>>
+             <<replace "#hero">>
+              <<include "postvideo4">>
+              <</replace>>
+             <</button>>
+            <</replace>>
+      <</timed>>
 <</if>>
 <</if>>
 /% CODEWORD INCORRECT %/
@@ -1167,11 +1419,45 @@ MISSION UNLOCKED LOGO CHANGE
 
 </div>
 
+:: postvideo4 [nobr]
+
+<<timed 0.1s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_03_RHUBARB_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
+   <<append "#messagesContainer">>
+            <div class="message">
+            <div class="avatar">
+                <img src="assets/img/user.png" alt="avatar"/>
+            </div>
+            <div class="message-container" >
+                <span class="sender">Jay</span>
+                <p> Teacher, can you make sure everyone understands what the static is please? </p>
+            </div>
+            </div>
+        <</append>>
+ <</timed>>
+   <<timed 3s>>
+        <<append "#messagesContainer">>
+           <<button "Everyone understands">>
+            <<timed 0.5s>>
+                 <<goto $nextpass>>
+             <</timed>>
+            <</button>>  
+         <</append>>
+<</timed>>
+
+
+
 
 :: compartment2 [purple nobr]
 <<set $prevpass to "video4">>
 <<set $pass to "compartment2">>
 <<set $nextpass to "compartment2b">>
+<<if $sound is true>>
+  <div id="audio">
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 <<include "rotatelogo">>
@@ -1189,6 +1475,9 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
  <<timed 2s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_03_RHUBARB_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1202,7 +1491,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1261,6 +1550,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "compartment2a">>
 <<set $pass to "compartment2b">>
 <<set $nextpass to "">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_03_RHUBARB_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -1292,7 +1586,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 1.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1305,7 +1599,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1331,7 +1625,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 11s>>
+<<timed 9.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1344,7 +1638,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 14s>>
+<<timed 12s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1370,6 +1664,9 @@ MISSION UNLOCKED LOGO CHANGE
 
 :: compartment2c [ nobr]
 <<timed 1s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_03_RHUBARB_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1383,7 +1680,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <</timed>>
 
-<<timed 3s>>
+<<timed 4s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1396,7 +1693,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1421,6 +1718,9 @@ MISSION UNLOCKED LOGO CHANGE
 
 :: compartment2d [ nobr]
 <<timed 1s>>
+  <<replace "#audio">>
+      <audio src="assets/audio/UCA_03_RHUBARB_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1459,6 +1759,11 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: enterclubname [green -t8n-typewriter-4] {"position":"915,397.6666666666668","size":"100,100"}
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_03_RHUBARB_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <<include "typewriter">>
        <beaconicon>[img[assets/img/beacon-2.png]]</beaconicon>
        <messageboxlarge>
@@ -1472,7 +1777,11 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: clubname [green] {"position":"688,2304","size":"100,100"}
-
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_03_RHUBARB_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <audio src="https://remote.co.com/UCA/assets/audio/taperecorder.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
       <messageboxreel>
 
@@ -1514,6 +1823,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "button2">>
 <<set $pass to "postbutton2">>
 <<set $nextpass to "postbutton2b">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_03_RHUBARB_08.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -1545,7 +1859,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1558,7 +1872,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1571,7 +1885,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 9.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1584,8 +1898,8 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 11s>>
-    <<append "#messagesContainer">>
+<<timed 12.5s>>
+    <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -1594,10 +1908,10 @@ MISSION UNLOCKED LOGO CHANGE
             <p>When I lose touch with others, sometimes I lose touch with myself - I can't even remember what my favourite Rhubarb topping was... Mushy Peas? Ice Cream? </p>
         </div>
         </div>
-    <</append>>
+    <</replace>>
     <</timed>>
 
-<<timed 14s>>
+<<timed 23s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1611,7 +1925,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 
-<<timed 16s>>
+<<timed 24s>>
   <<replace "#inputMount">>
   <<include "codewordpostbutton2">>
   <</replace>>
@@ -1654,6 +1968,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "postbutton2">>
 <<set $pass to "postbutton2b">>
 <<set $nextpass to "video5">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_03_RHUBARB_09.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -1671,7 +1990,7 @@ MISSION UNLOCKED LOGO CHANGE
   </section>
 </main>
 
- <<timed 1s>>
+ <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1685,7 +2004,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 0.8s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1698,7 +2017,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 3.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1711,7 +2030,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 7.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1724,7 +2043,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 11s>>
+<<timed 10s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -1739,7 +2058,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 
-<<timed 14s>>
+<<timed 12s>>
   <<replace "#inputMount">>
   <<include "codewordpostbutton2b">>
   <</replace>>
@@ -1812,12 +2131,12 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "video5">>
 <<set $pass to "ucatelecom2">>
 <<set $nextpass to "button3">>
-
 <main>
 <div id="mount"></div>
     <div class="pager-container">
         <div class="pager retro-box">
         <h2>UCA TELCOM</h2>
+         <div id="audio"></div>
           <div class="screen" id="screen">
         </div>
            <div class="buttons-container">
@@ -1855,62 +2174,110 @@ MISSION UNLOCKED LOGO CHANGE
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Mal</span>
-
 <<timed 3s>>
+<<timed 0.1s>>
+  <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<removeclass "#anneBtn" "active">>
     <<addclass "#screen" "active">>
     <<replace "#screen">>
-        <<type 60ms>><p>I thought I told you I don’t want Bouncy Castle insurance...</p>
+        <<type 40ms>><p>I thought I told you I don’t want Bouncy Castle insurance...</p>
                <</type>>
         <</replace>>
     <</timed>>
 
-<<timed 9s>>
+<<timed 5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Oh sorry it’s you again. </p>
+        <<type 40ms>><p>Oh sorry it’s you again. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-<<timed 14s>>
+<<timed 7.5s>>
+      <<append "#screen">>
+        <<type 40ms>><p>Thank you for your help last time. </p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+<<timed 10.5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Thank you for your help last time. </p>
+        <<type 40ms>><p>The UCA TOK did help.</p>
                <</type>>
   <</replace>>
     <</timed>>
 
-<<timed 18s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>The UCA TOK did help.</p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-<<timed 22s>>
-      <<replace "#screen">>
+<<timed 13s>>
+      <<append "#screen">>
         <<type 60ms>><p>What else should I try?</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
- <<timed 28s>>
-    <<replace "#options">>
-         <div class="options-btn key" id="yesBtn">
-            <<link "...">>
-           
-                <</link>>
-            </div>
-         <div class="options-btn key active pulse"  id="noBtn">
-            <<link "UCA BREATH">>
-                    <<replace "#screen">>
-                <<include "2callingMal2">>
-                <</replace>>
-                <</link>>
-                </div>
-    <</replace>>
+ <<timed 17s>>
+     <<replace "#screen">>
+  <<include "codewordphone2" >>
+  <</replace>>
+<</timed>>
 <</timed>>
 
+:: codewordphone2 [nobr]
 
+
+<div class="code-input telecom-code">
+<<textbox "$code" "">>
+</div>
+<<replace "#options">>
+    <div class="options-btn key" id="yesBtn">
+      <<link "...">>
+  <</link>>
+      </div>
+  <div class="options-btn key active pulse"  id="noBtn">
+        <<link "Send">>
+      /% PASSWORD CODE %/
+        <<set $code to $code.toUpperCase().trim()>>
+        /% CODEWORD CORRECT %/
+        <<if $code isnot "">> 
+          <<if $code is "UCA BREATH">>
+    <<audio "correct" play>>
+    <<replace "#screen">>
+      <<include "2callingMal2">>
+        <</replace>>
+          
+        <</if>>
+        <</if>>
+        /% CODEWORD INCORRECT %/
+        <<if $code isnot "">>
+           <<if $code isnot "UCA BREATH">>
+          <<replace "#screen">>
+    <<include "codewordphone2wrong">>
+      <</replace>>
+          <</if>>
+          <</if>>
+    <</link>>
+    </div>
+ <</replace>>
+
+:: codewordphone2wrong [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<replace "#screen">>
+  <<timed 0.1s>>
+  
+  <<replace "#screen">>
+        <<type 60ms>><p> Try again.  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+        <</replace>>
+       <<timed 4s>>
+    <<replace "#screen">>
+  <<include "codewordphone2" >>
+  <</replace>>
+<</timed>>
 
 :: 2callingMal2 [nobr]
 <<removeclass "#yesBtn" "pulse">>
@@ -1918,27 +2285,30 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>Oh - the secret salute - that Anne taught us.  </p>
+        <<type 40ms>><p>Oh - the secret salute - that Anne taught us.  </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 5.5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Ok - but I haven’t done it in a while. </p>
+        <<type 40ms>><p>Ok - but I haven’t done it in a while. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 12s>>
-      <<replace "#screen">>
+  <<timed 9s>>
+      <<append "#screen">>
         <<type 60ms>><p>Can we do it altogether? </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
-  <<timed 17s>>
+  <<timed 10.5s>>
        <<replace "#options">>
          <div class="options-btn key active pulse" id="yesBtn">
             <<link "Yes">>
@@ -1947,8 +2317,8 @@ MISSION UNLOCKED LOGO CHANGE
                 <</replace>>
                 <</link>>
             </div>
-         <div class="options-btn key active pulse"  id="noBtn">
-            <<link "No">>
+         <div class="options-btn key"  id="noBtn">
+            <<link "...">>
                     <<replace "#screen">>
                 <<include "2callingMal3">>
                 <</replace>>
@@ -1963,6 +2333,9 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
         <<type 60ms>><p>Ok - 3 - 2 - 1 </p>
                <</type>>
@@ -1978,67 +2351,66 @@ MISSION UNLOCKED LOGO CHANGE
 
  <</timed>>
 
-  <<timed 20s>>
-     <<replace "#mount">>
-    <</replace>>
- <</timed>>
+  <<timed 41s>>
+         <<replace "#mount">><</replace>>
+      <<replace "#audio">>
+              <audio src="assets/audio/UCA_MAL_CALL2_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+            <</replace>>
+          <<replace "#screen">>
+                <<type 40ms>><p>Thank you for reminding me about the UCA Breath </p>
+                      <</type>>
+          <</replace>>
 
-  <<timed 24s>>
-  <<replace "#screen">>
-        <<type 60ms>><p>Thank you for reminding me about the UCA Breath </p>
-               <</type>>
-  <</replace>>
+          <<timed 3.5s>>
+              <<replace "#screen">>
+                <<type 40ms>><p>Its so important when the world is so loud to keep discovering and taking time to breathe.</p>
+                      <</type>>
+          <</replace>>
+            <</timed>>
+
+          <<timed 9s>>
+              <<replace "#screen">>
+                <<type 40ms>><p>If you are feeling stressed by the static, you can always do the UCA Breath. </p>
+                      <</type>>
+          <</replace>>  
+            <</timed>>
+
+        <<timed 14s>>
+              <<append "#screen">>
+                <<type 60ms>><p>It helps.  </p>
+                      <</type>>
+          <</append>>
+            <</timed>>
+
+
+          <<timed 15s>>
+              <<replace "#options">>
+                <div class="options-btn key " id="yesBtn">
+                    <<link "...">>
+                    
+                        <</link>>
+                    </div>
+                <div class="options-btn key active pulse"  id="noBtn">
+                    <<link "Next">>
+                            <<replace "#screen">>
+                        <<include "2callingMal4">>
+                        <</replace>>
+                        <</link>>
+                        </div>
+            <</replace>>
+        <</timed>>
+
   <</timed>>
-
-  <<timed 30s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>Its so important when the world is so loud to keep discovering and taking time to breathe.</p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-  <<timed 39s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>If you are feeling stressed by the static, you can always do the UCA Breath. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
- <<timed 46s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>It helps.  </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-
-  <<timed 50s>>
-       <<replace "#options">>
-         <div class="options-btn key " id="yesBtn">
-            <<link "...">>
-            
-                <</link>>
-            </div>
-         <div class="options-btn key active pulse"  id="noBtn">
-            <<link "Next">>
-                    <<replace "#screen">>
-                <<include "2callingMal4">>
-                <</replace>>
-                <</link>>
-                </div>
-    <</replace>>
-<</timed>>
-
-
 :: ucabreath [nobr ]
 
 <div class="uca-breath-container">
-    <<type 60ms>><p>Open Hand – focus on your hand</p><</type>>
-    <<type 60ms>><p>Up the mountain Breathe in</p><</type>>
-    <<type 60ms>><p>Down the mountain breathe out through mouth</p><</type>>
+    <<type 60ms>><p>Hold your hand up so it’s in line with your face </p><</type>>
+    <<type 60ms>><p>Focus on your hand</p><</type>>
+    <<type 60ms>><p>Take a finger from your other hand up the mountain - Breathe in</p><</type>>
+    <<type 60ms>><p>Down the mountain breathe out </p><</type>>
     <<type 60ms>><p>Up the mountain breathe in</p><</type>>
     <<type 60ms>><p>Down the waterfall - shhhhhhh</p><</type>>
-    <<type 60ms>><p>Whisper UCA UCA UCA</p><</type>>
+     <<type 60ms>><p>Whisper UCA UCA UCA</p><</type>>
 </div>
 
 
@@ -2048,41 +2420,44 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>I’ve been beginning to recognise that something hasn’t felt right for a while. </p>
+        <<type 40ms>><p>I’ve been beginning to recognise that something hasn’t felt right for a while. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 8s>>
+  <<timed 5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>It started a few months ago, when Jay & I were doing our UCA training. </p>
+        <<type 40ms>><p>It started a few months ago, when Jay & I were doing our UCA training. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 16s>>
+  <<timed 10s>>
       <<replace "#screen">>
-        <<type 60ms>><p>It was only something small at first… a few unhelpful thoughts</p>
+        <<type 40ms>><p>It was only something small at first... a few unhelpful thoughts</p>
                <</type>>
   <</replace>>
     <</timed>>
 
-<<timed 23s>>
+<<timed 16s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Worrying people would laugh at me or I’d say something wrong. </p>
+        <<type 40ms>><p>Worrying people would laugh at me or I’d say something wrong. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-<<timed 30s>>
+<<timed 22s>>
       <<replace "#screen">>
         <<type 60ms>><p>But I didn’t know what to do</p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 35s>>
+  <<timed 24s>>
        <<replace "#options">>
          <div class="options-btn key " id="yesBtn">
             <<link "...">>
@@ -2106,28 +2481,31 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
 
-  <<timed 1s>>
+  <<timed 0.1s>>
+     <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
       <<replace "#screen">>
-        <<type 60ms>><p>Then there was the presentation...</p>
+        <<type 40ms>><p>Then there was the presentation...</p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 7s>>
+  <<timed 3.5s>>
+      <<append "#screen">>
+        <<type 40ms>><p>The one that finishes UCA Training</p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+<<timed 6.5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>The one that finishes UCA Training</p>
+        <<type 40ms>><p>That’s when those thoughts started swirling around </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-<<timed 15s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>That’s when those thoughts started swirling around </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-  <<timed 22s>>
+  <<timed 9s>>
        <<replace "#options">>
          <div class="options-btn key " id="yesBtn">
             <<link "...">>
@@ -2151,28 +2529,31 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+      <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>I started feeling anxious</p>
+        <<type 40ms>><p>I started feeling anxious</p>
                <</type>>
   <</replace>>
   <</timed>>
 
+  <<timed 3s>>
+      <<append "#screen">>
+        <<type 40ms>><p>And uncomfortable in my body. </p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
   <<timed 6s>>
       <<replace "#screen">>
-        <<type 60ms>><p>And uncomfortable in my body. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-  <<timed 13s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>So I left...</p>
+        <<type 40ms>><p>So I left...</p>
                <</type>>
   <</replace>>
     <</timed>>
 
 
-  <<timed 18s>>
+  <<timed 7.5s>>
        <<replace "#options">>
          <div class="options-btn key " id="yesBtn">
             <<link "...">>
@@ -2196,20 +2577,23 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+      <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_08.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>I didn’t want people to see me like this</p>
+        <<type 40ms>><p>I didn’t want people to see me like this</p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 3.5s>>
       <<replace "#screen">>
         <<type 60ms>><p>I didn’t know what was happening</p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 13s>>
+  <<timed 6.5s>>
 
        <<replace "#options">>
          <div class="options-btn key " id="yesBtn">
@@ -2234,66 +2618,45 @@ MISSION UNLOCKED LOGO CHANGE
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL2_09.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>  
   <<replace "#screen">>
-        <<type 60ms>><p>Sorry</p>
+        <<type 40ms>><p>Sorry</p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 1.2s>>
+      <<append "#screen">>
+        <<type 40ms>><p>I should go</p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+  <<timed 3.5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>I should go</p>
+        <<type 40ms>><p>Another call is coming in</p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 11s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>Another call is coming in</p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-  <<timed 13s>>
-
-       <<replace "#options">>
-         <div class="options-btn key " id="yesBtn">
-            <<link "...">>
-            
-                <</link>>
-            </div>
-         <div class="options-btn key active pulse"  id="noBtn">
-            <<link "Next">>
-                    <<replace "#screen">>
-                <<include "2callingMal9">>
-                <</replace>>
-                <</link>>
-                </div>
-    <</replace>>
-<</timed>>
-
-
-:: 2callingMal9 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
-  <<timed 0.1s>>
+ <<timed 6s>>
   <<replace "#screen">>
-        <<type 60ms>><p>Probably that person calling about the bouncy castle! </p>
+        <<type 40ms>><p>Probably that person calling about the bouncy castle! </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 10s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Thank you for helping me explain my feelings. </p>
+        <<type 40ms>><p>Thank you for helping me explain my feelings. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
 
-  <<timed 13s>>
+  <<timed 12s>>
 
        <<replace "#options">>
          <div class="options-btn key " id="yesBtn">
@@ -2331,6 +2694,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "button3">>
 <<set $pass to "postbutton3">>
 <<set $nextpass to "postbutton3b">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -2375,7 +2743,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 4s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2388,7 +2756,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2401,7 +2769,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 11s>>
+<<timed 8s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2414,8 +2782,8 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 14s>>
-    <<append "#messagesContainer">>
+<<timed 11s>>
+    <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
             <img src="assets/img/user.png" alt="avatar"/>
@@ -2424,11 +2792,11 @@ MISSION UNLOCKED LOGO CHANGE
             <p>What’s the name of the compartment we are opening now?</p>
         </div>
         </div>
-    <</append>>
+    <</replace>>
     <</timed>>
 
 
-<<timed 16s>>
+<<timed 13s>>
   <<replace "#inputMount">>
   <<include "codewordpostbutton3">>
   <</replace>>
@@ -2469,7 +2837,12 @@ MISSION UNLOCKED LOGO CHANGE
 :: postbutton3b [purple nobr]
 <<set $prevpass to "postbutton3">>
 <<set $pass to "postbutton3b">>
-<<set $nextpass to "button4">>
+<<set $nextpass to "postbutton3c">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -2495,13 +2868,63 @@ MISSION UNLOCKED LOGO CHANGE
         </div>
         <div class="message-container" >
             <span class="sender">Jay</span>
-            <p>The next compartment seems to be something that would have been reserved for UCA Agents - but seeing as the Beacon has been sent to you then perhaps you have to fill them out? </p>
+            <p>The next compartment seems to be something that would have been reserved for UCA Agents... </p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 6s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>But seeing as the Beacon has been sent to you then perhaps you have to fill them out? </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 10s>>
+  <<replace "#inputMount">>
+  <<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: postbutton3c [purple nobr]
+<<set $prevpass to "postbutton3b">>
+<<set $pass to "postbutton3c">>
+<<set $nextpass to "postbutton3d">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+<<timed 0.1s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2514,7 +2937,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2522,15 +2945,117 @@ MISSION UNLOCKED LOGO CHANGE
         </div>
         <div class="message-container" >
             <p>These cards will need you to use Curiosity. Noticing things about yourself. Being curious.</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 9s>>
+  <<replace "#inputMount">>
+  <<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: postbutton3d [purple nobr]
+<<set $prevpass to "postbutton3c">>
+<<set $pass to "postbutton3d">>
+<<set $nextpass to "postbutton3e">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 0.1s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+  
 <p>I guess if we can reflect on ourselves, we can appreciate what is around us. </p>
-<p>And see the superpowers in ourselves, and in our friends, that we have to spark change in our world. </p>
 
         </div>
         </div>
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+        <p>And see the superpowers in ourselves, and in our friends, that we have to spark change in our world. </p>
+
+
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+<<timed 10s>>
+  <<replace "#inputMount">>
+  <<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: postbutton3e [purple nobr]
+<<set $prevpass to "postbutton3d">>
+<<set $pass to "postbutton3e">>
+<<set $nextpass to "button4">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+
+<<include "rotatelogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+ </div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+<<timed 0.1s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2538,6 +3063,19 @@ MISSION UNLOCKED LOGO CHANGE
         </div>
         <div class="message-container" >
           <p> Teacher, you might want to share some of these superpowers so we know what we have in the room to face the Static. </p>
+
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 6.5s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
 <p>When you have done let me know by clicking below</p>
 
         </div>
@@ -2545,17 +3083,13 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-
-
-<<timed 16s>>
+<<timed 10s>>
   <<replace "#inputMount">>
   <<button "We’ve finished">>
     <<goto $nextpass>>
     <</button>>
   <</replace>>
 <</timed>>
-
-
 :: button4 [nobr]
 <<set $prevpass to "postbutton3b">>
 <<set $pass to "button4">>
@@ -2575,6 +3109,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "button4">>
 <<set $pass to "postbutton4">>
 <<set $nextpass to "mission">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -2606,7 +3145,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 2.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2619,7 +3158,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 10s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2634,7 +3173,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 
-<<timed 8s>>
+<<timed 12s>>
   <<replace "#inputMount">>
   <<include "codewordpostbutton4">>
   <</replace>>
@@ -2687,6 +3226,11 @@ UCA Mission Unlocked
 <<set $prevpass to "ucamissionunlocked">>
 <<set $pass to "postbutton4b">>
 <<set $nextpass to "mission1">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container mission">
   <section class="hero" id="hero">
 
@@ -2731,7 +3275,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 4.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2819,6 +3363,11 @@ UCA Mission Unlocked
 <<set $prevpass to "postbutton4b">>
 <<set $pass to "mission1">>
 <<set $nextpass to "video6">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_08.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -2850,7 +3399,7 @@ UCA Mission Unlocked
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 6.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2863,7 +3412,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 14s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2876,7 +3425,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 12s>>
+<<timed 16s>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -2891,14 +3440,17 @@ UCA Mission Unlocked
 
 
 
-<<timed 14s>>
+<<timed 18s>>
   <<replace "#hero">>
+     <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_04_NOTICE_09.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<include "missionbrief">>
   <</replace>>
 <</timed>>
 
 
-<<timed 16s>>
+<<timed 24s>>
   <<replace "#inputMount">>
   <<button "Mission Understood">>
     <<goto $nextpass>>
@@ -3026,6 +3578,11 @@ UCA Mission Unlocked
 <<set $prevpass to "button5">>
 <<set $pass to "postbutton6">>
 <<set $nextpass to "ucatelecom3">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_04_NOTICE_10.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
@@ -3057,7 +3614,7 @@ UCA Mission Unlocked
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 1.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3070,7 +3627,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3083,7 +3640,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 5.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3096,7 +3653,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 11s>>
+<<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3109,7 +3666,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 14s>>
+<<timed 11s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3123,7 +3680,7 @@ UCA Mission Unlocked
     <</timed>>
 
 
-<<timed 16s>>
+<<timed 13s>>
   <<replace "#inputMount">>
     <<button "next">>
         <<goto $nextpass>>
@@ -3137,12 +3694,13 @@ UCA Mission Unlocked
 <<set $prevpass to "postbutton6">>
 <<set $pass to "ucatelecom3">>
 <<set $nextpass to "video7">>
-
+<<include "3callingMal3">>
 <main>
 <div id="mount"></div>
     <div class="pager-container">
         <div class="pager retro-box">
         <h2>UCA TELCOM</h2>
+        <div id="audio"></div>
           <div class="screen" id="screen">
         </div>
            <div class="buttons-container">
@@ -3183,43 +3741,40 @@ UCA Mission Unlocked
 <span>Mal</span>
 
 <<timed 3s>>
+  <<timed 0.1s>>
+  <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL3_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<removeclass "#anneBtn" "active">>
     <<addclass "#screen" "active">>
     <<replace "#screen">>
-        <<type 60ms>><p>Hello - I’m glad you messaged me. </p>
+        <<type 40ms>><p>Hello - I’m glad you messaged me. </p>
                <</type>>
         <</replace>>
     <</timed>>
 
-<<timed 9s>>
+<<timed 3s>>
+      <<append "#screen">>
+        <<type 40ms>><p>I’m feeling something lifting.  </p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+<<timed 6s>>
       <<replace "#screen">>
-        <<type 60ms>><p>I’m feeling something lifting.  </p>
+        <<type 40ms>><p>Something that I wasn’t sure about. Maybe it’s the static. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-<<timed 14s>>
+<<timed 10s>>
       <<replace "#screen">>
-        <<type 60ms>><p>Something that I wasn’t sure about. </p>
+        <<type 40ms>><p>Maybe what you have recommended is getting rid of it. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-<<timed 18s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>Maybe it’s the static. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-<<timed 22s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>Maybe what you have recommended to me is getting rid of it. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
- <<timed 28s>>
+ <<timed 13s>>
     <<replace "#options">>
          <div class="options-btn key" id="yesBtn">
             <<link "...">>
@@ -3235,7 +3790,7 @@ UCA Mission Unlocked
                 </div>
     <</replace>>
 <</timed>>
-
+<</timed>>
 
 :: 3callingMal2 [nobr]
 <<removeclass "#yesBtn" "pulse">>
@@ -3243,48 +3798,97 @@ UCA Mission Unlocked
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL3_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>The Moving in the UCA TOK </p>
+        <<type 40ms>><p>The Moving in the UCA TOK </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 2s>>
+      <<append "#screen">>
+        <<type 40ms>><p>The Connection we are making</p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+  <<timed 4s>>
+      <<append "#screen">>
+        <<type 40ms>><p>And the Discovery of the UCA Breath.</p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+  <<timed 8s>>
       <<replace "#screen">>
-        <<type 60ms>><p>The Connection we are making</p>
+        <<type 40ms>><p>Is there anything else you have discovered? </p>
                <</type>>
   <</replace>>
     <</timed>>
 
   <<timed 12s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>And the Discovery of the UCA Breath.</p>
+       <<replace "#screen">>
+  <<include "codewordphone2" >>
+  <</replace>>
+<</timed>>
+
+:: codewordphone3 [nobr]
+
+
+<div class="code-input telecom-code">
+<<textbox "$code" "">>
+</div>
+<<replace "#options">>
+    <div class="options-btn key" id="yesBtn">
+      <<link "...">>
+  <</link>>
+      </div>
+  <div class="options-btn key active pulse"  id="noBtn">
+        <<link "Send">>
+      /% PASSWORD CODE %/
+        <<set $code to $code.toUpperCase().trim()>>
+        /% CODEWORD CORRECT %/
+        <<if $code isnot "">> 
+          <<if $code is "NOTICE">>
+    <<audio "correct" play>>
+    <<replace "#screen">>
+      <<include "3callingMal3">>
+        <</replace>>
+          
+        <</if>>
+        <</if>>
+        /% CODEWORD INCORRECT %/
+        <<if $code isnot "">>
+           <<if $code isnot "NOTICE">>
+          <<replace "#screen">>
+    <<include "codewordphone3wrong">>
+      <</replace>>
+          <</if>>
+          <</if>>
+    <</link>>
+    </div>
+ <</replace>>
+
+:: codewordphone3wrong [nobr]
+<<removeclass "#yesBtn" "pulse">>
+<<removeclass "#noBtn" "pulse">>
+<<removeclass "#yesBtn" "active">>
+<<removeclass "#noBtn" "active">>
+  <<replace "#screen">>
+  <<timed 0.1s>>
+  
+  <<replace "#screen">>
+        <<type 60ms>><p> Try again.  </p>
                <</type>>
   <</replace>>
     <</timed>>
-
-  <<timed 15s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>Is there anything else you have discovered? </p>
-               <</type>>
+        <</replace>>
+       <<timed 4s>>
+    <<replace "#screen">>
+  <<include "codewordphone3" >>
   <</replace>>
-    <</timed>>
-
-  <<timed 18s>>
-       <<replace "#options">>
-         <div class="options-btn key active pulse" id="yesBtn">
-            <<link "...">>
-             
-                <</link>>
-            </div>
-         <div class="options-btn key active pulse"  id="noBtn">
-            <<link "Notice">>
-                    <<replace "#screen">>
-                <<include "3callingMal3">>
-                <</replace>>
-                <</link>>
-                </div>
-    <</replace>>
 <</timed>>
 
 
@@ -3294,35 +3898,38 @@ UCA Mission Unlocked
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL3_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>Ah yes - being curious about yourself and what is around you. </p>
+        <<type 40ms>><p>Ah yes - being curious about yourself and what is around you. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 5.5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>When the world is loud, it is sometimes good to come back to being curious about what is around you. To notice.  </p>
+        <<type 40ms>><p>When the world is loud, it is sometimes good to come back to being curious about what is around you. To notice.  </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 12s>>
+  <<timed 13s>>
       <<replace "#screen">>
-        <<type 60ms>><p>I’ve been noticing I’m missing Jay...
+        <<type 40ms>><p>I’ve been noticing I’m missing Jay...
  </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 20s>>
+  <<timed 17s>>
       <<replace "#screen">>
-        <<type 60ms>><p>And wondering whether she will forgive me for running away during our presentation. </p>
+        <<type 40ms>><p>And wondering whether she will forgive me for running away during our presentation. </p>
                <</type>>
   <</replace>>
     <</timed>>
 
-  <<timed 27s>>
+  <<timed 22s>>
       <<replace "#screen">>
         <<type 60ms>><p>Do you think she will? 
  </p>
@@ -3330,7 +3937,7 @@ UCA Mission Unlocked
   <</replace>>
     <</timed>>
 
-  <<timed 31s>>
+  <<timed 25s>>
        <<replace "#options">>
          <div class="options-btn key active pulse" id="yesBtn">
             <<link "Yes">>
@@ -3356,37 +3963,40 @@ UCA Mission Unlocked
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL3_04_yes.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>Oh I hope you are right. </p>
+        <<type 40ms>><p>Oh I hope you are right. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
+  <<timed 2s>>
+      <<append "#screen">>
+        <<type 40ms>><p>	I want to be friends with her </p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+
+  <<timed 4.5s>>
+      <<replace "#screen">>
+        <<type 30ms>><p>I want to jump on my bouncy castle with my friend!  </p>
+               <</type>>
+  <</replace>>
+    <</timed>>
+
+
   <<timed 6s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>	I want to be friends with her </p>
+      <<append "#screen">>
+        <<type 40ms>><p>I’m going to try. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 
-  <<timed 13s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>I want to jump on my bouncy castle with my friend!  </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-
-  <<timed 20s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>I’m going to try. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-
-  <<timed 26s>>
+  <<timed 9s>>
 
        <<replace "#options">>
          <div class="options-btn key " id="yesBtn">
@@ -3411,37 +4021,40 @@ UCA Mission Unlocked
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+  <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL3_04_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>I hope that isn’t the case</p>
+        <<type 40ms>><p>I hope that isn’t the case</p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
+  <<timed 2s>>
+      <<append "#screen">>
+        <<type 40ms>><p>	I want to be friends with her </p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
+
+  <<timed 5s>>
       <<replace "#screen">>
-        <<type 60ms>><p>	I want to be friends with her </p>
+        <<type 30ms>><p>I want to jump on my bouncy castle with my friend!  </p>
                <</type>>
   <</replace>>
     <</timed>>
 
 
-  <<timed 13s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>I want to jump on my bouncy castle with my friend!  </p>
+  <<timed 8s>>
+      <<append "#screen">>
+        <<type 40ms>><p>I’m going to try. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 
-  <<timed 20s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>I’m going to try. </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
-
-  <<timed 26s>>
+  <<timed 10s>>
 
        <<replace "#options">>
          <div class="options-btn key " id="yesBtn">
@@ -3499,7 +4112,7 @@ UCA Mission Unlocked
 
 :: missionplanner1 [nobr]
 <<set $prevpass to "postbutton4b">>
-<<set $pass to "mission1">>
+<<set $pass to "missionplanner1">>
 <<set $nextpass to "video6">>
 <main class="mission-planner letter">
 <<include "missionplanner">>
@@ -3563,8 +4176,9 @@ UCA Mission Unlocked
      <<include "stampcomplete">>
          <<else>>
         <<include "stamp">>    
-          <</if>>
-      <<if previous() is "delivery3">>
+     <</if>>
+    
+       <<if $delivery is true and $planning is true and $making is true and $pass is "missionplanner1">>
         <<timed 4s>>
         <<goto "missioncompletetext">>
         <</timed>>
@@ -3585,6 +4199,11 @@ UCA Mission Unlocked
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missionplanner-planning">>
 <<set $nextpass to "missionplanner1">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_05_PLANNING_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 <div id="responses">PLANNING</div>
@@ -3616,7 +4235,7 @@ UCA Mission Unlocked
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3629,7 +4248,7 @@ UCA Mission Unlocked
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3643,7 +4262,7 @@ UCA Mission Unlocked
     <</timed>>
 
 
-<<timed 8s>>
+<<timed 9s>>
   <<replace "#inputMount">>
     <<button "Next">>
          <<replace "#messagesContainer">>
@@ -3700,6 +4319,9 @@ UCA Mission Unlocked
 
 :: planning1 [nobr]
 <<timed 0.5s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_05_PLANNING_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3771,6 +4393,9 @@ UCA Mission Unlocked
 
 :: planning2 [nobr]
 <<timed 0.5s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_05_PLANNING_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3828,6 +4453,9 @@ UCA Mission Unlocked
 
 :: planning3 [nobr]
 <<timed 0.5s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_05_PLANNING_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3884,6 +4512,9 @@ UCA Mission Unlocked
 
 :: planning4 [nobr]
 <<timed 0.5s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_05_PLANNING_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3940,6 +4571,9 @@ UCA Mission Unlocked
 
 :: planning5 [nobr]
 <<timed 0.5s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_05_PLANNING_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -3964,7 +4598,11 @@ UCA Mission Unlocked
 
 
 :: sending [nobr green]
-
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_05_PLANNING_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <audio src="https://remote.co.com/UCA/assets/audio/taperecorder.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
       <messageboxreel>
 
@@ -3987,6 +4625,11 @@ UCA Mission Unlocked
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missionplanner-making">>
 <<set $nextpass to "missionplanner1">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_06_MAKING.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 MAKING
@@ -4004,7 +4647,7 @@ MAKING
   </section>
 </main>
 
- <<timed 0.5s>>
+ <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4018,7 +4661,7 @@ MAKING
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 2.5s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4031,7 +4674,7 @@ MAKING
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4044,7 +4687,7 @@ MAKING
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 9s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4058,7 +4701,7 @@ MAKING
     <</timed>>
 
 
-<<timed 10s>>
+<<timed 11s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4100,6 +4743,11 @@ MAKING
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missionplanner-deliver">>
 <<set $nextpass to "missionplanner1">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_07_DELIVERY_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 DELIVERY
@@ -4117,7 +4765,7 @@ DELIVERY
   </section>
 </main>
 
- <<timed 0.5s>>
+ <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4144,7 +4792,7 @@ DELIVERY
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 4s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4157,7 +4805,7 @@ DELIVERY
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4171,7 +4819,7 @@ DELIVERY
     <</timed>>
 
 
-<<timed 10s>>
+<<timed 8s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4184,7 +4832,7 @@ DELIVERY
     <</append>>
     <</timed>>
 
-<<timed 13s>>
+<<timed 12s>>
   <<replace "#inputMount">>
     <<button "Next">>
       <<replace "#inputMount">><</replace>>
@@ -4198,7 +4846,10 @@ DELIVERY
 <</timed>>
 
 :: delivery2 [ nobr]
-<<timed 1s>>
+<<timed 0.1s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_07_DELIVERY_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4225,7 +4876,7 @@ DELIVERY
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 12s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4238,7 +4889,7 @@ DELIVERY
     <</append>>
     <</timed>>
 
-<<timed 8s>>
+<<timed 14s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<include "delivery3">>
@@ -4250,6 +4901,9 @@ DELIVERY
 
 :: delivery3 [ nobr]
 <<timed 1s>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_JAY_07_DELIVERY_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4309,6 +4963,11 @@ DELIVERY
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missioncompletetext">>
 <<set $nextpass to "button6">>
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/UCA_JAY_08_MISSION_COMPLETE.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 <<include "missionplanner">>
@@ -4326,7 +4985,7 @@ DELIVERY
   </section>
 </main>
 
- <<timed 0.5s>>
+ <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4340,7 +4999,7 @@ DELIVERY
     <</replace>>
     <</timed>>
 
-<<timed 2s>>
+<<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4353,7 +5012,7 @@ DELIVERY
     <</append>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4367,7 +5026,7 @@ DELIVERY
     <</timed>>
 
 
-<<timed 8s>>
+<<timed 12s>>
     <<append "#messagesContainer">>
         <div class="message">
         <div class="avatar">
@@ -4382,7 +5041,7 @@ DELIVERY
 
 
 
-<<timed 10s>>
+<<timed 15s>>
   <<replace "#inputMount">>
     <<button "Next">>
      
@@ -4485,3 +5144,67 @@ DELIVERY
     <</button >>
     <</timed>>
 </main>
+
+
+
+
+
+:: staticbuzz2 {"position":"53.33333333333334,2262.9999999999995","size":"100,100"}
+<static>
+ <img src="https://remote.co.com/UCA/assets/img/static5.gif" class="staticgif ctrright " id="staticgif">
+      </static>
+      <<timed 0.5s>>
+      /* <iframe src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3"  style="display:none" allow="autoplay" ></iframe> */
+      <audio src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
+      <</timed>>
+
+
+:: staticbuzz3 {"position":"51.333333333333286,2378","size":"100,100"}
+<static>
+ <img src="https://remote.co.com/UCA/assets/img/static5.gif" class="staticgif left " id="staticgif">
+      </static>
+      <<timed 0.5s>>
+      /* <iframe src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3"  style="display:none" allow="autoplay" ></iframe> */
+      <audio src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
+      <</timed>>
+
+
+:: staticbuzz4 {"position":"54,2488","size":"100,100"}
+<static>
+ <img src="https://remote.co.com/UCA/assets/img/static5.gif" class="staticgif leftbig " id="staticgif">
+      </static>
+      <<timed 0.5s>>
+      /* <iframe src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3"  style="display:none" allow="autoplay" ></iframe> */
+      <audio src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
+      <</timed>>
+
+
+:: staticbuzz5 {"position":"51.33333333333331,2611.3333333333335","size":"100,100"}
+/<<timed 0.5s>>
+/* <iframe src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" style="display:none" allow="autoplay" ></iframe> */
+<audio src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
+<</timed>>
+<static>
+      <<timed 0.5s>> <img src="https://remote.co.com/UCA/assets/img/static5.gif" class="staticgif right growRightBig animated"><</timed>>
+      <<timed
+      7s>><<goto"missionplanning">><</timed>>
+      </static>
+
+:: prestatic [static] {"position":"56.66666666666663,2758.6666666666665","size":"100,100"}
+/* <iframe src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" allow="autoplay"  style="display:none"></iframe> */
+<audio src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
+      <staticbox>[img[https://remote.co.com/UCA/assets/img/squarestatic.gif]]</staticbox>
+      <<include "password8">>
+
+
+:: static [static] {"position":"56.66666666666663,2758.6666666666665","size":"100,100"}
+/* <iframe src="https://remote.co.com/UCA/assets/audio/calm-crispy.mp3" allow="autoplay"  style="display:none"></iframe> */
+      <audio src="https://remote.co.com/UCA/assets/audio/calm-crispy.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
+      <staticbox>[img[https://remote.co.com/UCA/assets/img/squarestatic.gif]]</staticbox>
+      <<timed 4s>><staticbox><div class="animated
+      fadeIn">[img[https://remote.co.com/UCA/assets/img/pattern.gif]]</div></staticbox><</timed>>
+      <<timed 9s>><staticboxcolour><div class="animated
+      fadeIn">[img[https://remote.co.com/UCA/assets/img/colours.gif]]</div></staticboxcolour><</timed>>
+      <<timed 25s>><<goto "video8">><</timed>>
+
+
