@@ -218,7 +218,7 @@ $(document.head).find('#style-ui-bar').remove();
    &lt;img src=&quot;assets/img/logotitle.png&quot; alt=&quot;logo&quot;/&gt;
    &lt;/div&gt;
 
-   [img[assets/img/for.png][$prevpass]]</tw-passagedata><tw-passagedata pid="7" name="rotatelogo" tags="nobr" position="850,100" size="100,100">&lt;div class=&quot;rotate-logo-wrapper&quot;&gt;
+   [img[assets/img/for.png][$nextpass]]</tw-passagedata><tw-passagedata pid="7" name="rotatelogo" tags="nobr" position="850,100" size="100,100">&lt;div class=&quot;rotate-logo-wrapper&quot;&gt;
 &lt;div class=&quot;animated rotateInDownLeft overlay-image&quot;&gt;[img[assets/img/logobutton.png]]&lt;/div&gt;
 &lt;div class=&quot;animated fadeInLeftBig overlay-image one&quot; &gt;[img[assets/img/undercover.png]]&lt;/div&gt;&lt;div
         class=&quot;animated fadeInRightBig overlay-image two&quot;&gt;[img[assets/img/caretaker.png]]&lt;/div&gt;&lt;div
@@ -3831,78 +3831,82 @@ UCA Mission Unlocked
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="missionplanner1" tags="nobr" position="600,1225" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4b&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="missionplanner1" tags="purple nobr" position="600,1225" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4b&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video6&quot;&gt;&gt;
 &lt;main class=&quot;mission-planner letter&quot;&gt;
 &lt;&lt;include &quot;missionplanner&quot;&gt;&gt;
   &lt;/main&gt;</tw-passagedata><tw-passagedata pid="96" name="missionplanner" tags="nobr" position="725,1225" size="100,100">&lt;div class=&quot;clipboard &quot;&gt;
- &lt;div class=&quot;clip-container &quot;&gt; &lt;img src=&quot;assets/img/clip.png&quot; alt=&quot;clip&quot;/&gt;&lt;/div&gt;
-  &lt;div class=&quot;mission-brief letterpaper&quot;&gt;
- &lt;div class=&quot;mission-brief-section&quot;&gt;
+ /* &lt;div class=&quot;clip-container &quot;&gt; &lt;img src=&quot;assets/img/clip.png&quot; alt=&quot;clip&quot;/&gt;&lt;/div&gt; */
+  &lt;div class=&quot;mission-brief letterpaper planner&quot;&gt;
+ &lt;div class=&quot;mission-brief-section planner&quot;&gt;
     &lt;h2&gt;Mission Planner&lt;/h2&gt;
       &lt;ul&gt;
         &lt;li class=&quot;mission-item&quot;&gt;
-            &lt;span&gt;Planning&lt;/span&gt;
+            &lt;span class=&quot;title&quot;&gt;1. Planning&lt;/span&gt;
             &lt;&lt;if $planning is false&gt;&gt;
-              &lt;span&gt;To do&lt;/span&gt;
-              &lt;&lt;button &quot;Go&quot;&gt;&gt;
+               &lt;&lt;button &quot;To do&quot;&gt;&gt;
                 &lt;&lt;goto &quot;missionplanner-planning&quot;&gt;&gt;
                 &lt;&lt;/button&gt;&gt;
               &lt;&lt;/if&gt;&gt;
             &lt;&lt;if $planning is true&gt;&gt;
-              &lt;span&gt;Complete&lt;/span&gt;
+   
+              &lt;div class=&quot;complete-img-container&quot;&gt;&lt;img src=&quot;assets/img/done.png&quot; src=&quot;complete&quot;/&gt;&lt;/div&gt;
               &lt;&lt;/if&gt;&gt;
            &lt;/li&gt;
          &lt;li class=&quot;mission-item&quot;&gt;
-            &lt;span&gt;Making&lt;/span&gt;
+            &lt;span class=&quot;title&quot;&gt;2. Making&lt;/span&gt;
             &lt;&lt;if $making is false&gt;&gt;
-              &lt;span&gt;To do&lt;/span&gt;
-                &lt;&lt;button &quot;Go&quot;&gt;&gt;
+               &lt;&lt;button &quot;To do&quot;&gt;&gt;
                 &lt;&lt;goto &quot;missionplanner-making&quot;&gt;&gt;
                 &lt;&lt;/button&gt;&gt;
               &lt;&lt;/if&gt;&gt;
             &lt;&lt;if $making is true&gt;&gt;
-              &lt;span&gt;Complete&lt;/span&gt;
+               &lt;div class=&quot;complete-img-container&quot;&gt;&lt;img src=&quot;assets/img/done.png&quot; src=&quot;complete&quot;/&gt;&lt;/div&gt;
               &lt;&lt;/if&gt;&gt;
            &lt;/li&gt;
 
          &lt;li class=&quot;mission-item&quot;&gt;
-            &lt;span&gt;Delivery&lt;/span&gt;
+            &lt;span class=&quot;title&quot;&gt;3. Delivery&lt;/span&gt;
             &lt;&lt;if $delivery is false&gt;&gt;
-              &lt;span&gt;To do&lt;/span&gt;
-                &lt;&lt;button &quot;Go&quot;&gt;&gt;
+                &lt;&lt;button &quot;To do&quot;&gt;&gt;
                 &lt;&lt;goto &quot;missionplanner-delivery&quot;&gt;&gt;
                 &lt;&lt;/button&gt;&gt;
               &lt;&lt;/if&gt;&gt;
             &lt;&lt;if $delivery is true&gt;&gt;
-              &lt;span&gt;Complete&lt;/span&gt;
+                 &lt;div class=&quot;complete-img-container&quot;&gt;&lt;img src=&quot;assets/img/done.png&quot; src=&quot;complete&quot;/&gt;&lt;/div&gt;
               &lt;&lt;/if&gt;&gt;
            &lt;/li&gt;
     
       &lt;/ul&gt;
     
     &lt;/div&gt;
-     &lt;div class=&quot;mission-brief-section&quot;&gt;
-     /* &lt;h2&gt;YOUR MISSION &lt;/h2&gt;
-     &lt;span&gt; should you choose to accept it&lt;/span&gt; */
-    &lt;&lt;if $delivery is true and $planning is true and $making is true&gt;&gt;
-     &lt;&lt;include &quot;stampcomplete&quot;&gt;&gt;
-         &lt;&lt;else&gt;&gt;
-        &lt;&lt;include &quot;stamp&quot;&gt;&gt;    
-     &lt;&lt;/if&gt;&gt;
+     &lt;div class=&quot;mission-brief-section planner stamp&quot;&gt;
+     &lt;div class=&quot;clubname&quot;&gt;
+    &lt;h2&gt; Name: $clubname&lt;/h2&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;stamp-container&quot;&gt;
+      
+            &lt;&lt;include &quot;stamp&quot;&gt;&gt;    
+        &lt;&lt;if $delivery is true and $planning is true and $making is true&gt;&gt;
+          &lt;&lt;include &quot;stampcomplete&quot;&gt;&gt;
+          &lt;&lt;/if&gt;&gt;
     
-       &lt;&lt;if $delivery is true and $planning is true and $making is true and $pass is &quot;missionplanner1&quot;&gt;&gt;
-        &lt;&lt;timed 4s&gt;&gt;
-        &lt;&lt;goto &quot;missioncompletetext&quot;&gt;&gt;
-        &lt;&lt;/timed&gt;&gt;
-      &lt;&lt;/if&gt;&gt;
+          &lt;&lt;if $delivery is true and $planning is true and $making is true and $pass is &quot;missionplanner1&quot;&gt;&gt;
+            &lt;&lt;timed 4s&gt;&gt;
+            &lt;&lt;goto &quot;missioncompletetext&quot;&gt;&gt;
+            &lt;&lt;/timed&gt;&gt;
+          &lt;&lt;/if&gt;&gt; 
+      &lt;/div&gt;
      &lt;/div&gt;
  &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="97" name="stamp" tags="nobr" position="850,1225" size="100,100">&lt;div class=&quot;uca-stamp&quot; id=&quot;stamp&quot;&gt;
+&lt;/div&gt;
+
+/* Grey to start  */
+/* Colour when complete  */</tw-passagedata><tw-passagedata pid="97" name="stamp" tags="nobr" position="850,1225" size="100,100">&lt;div class=&quot;uca-stamp&quot; id=&quot;stamp&quot;&gt;
   &lt;img src=&quot;assets/img/UCA-stamp.png&quot; alt=&quot;UCA stamp&quot;/&gt;
-   &lt;/div&gt;</tw-passagedata><tw-passagedata pid="98" name="stampcomplete" tags="nobr" position="975,1225" size="100,100">&lt;div class=&quot;uca-stamp&quot; id=&quot;stamp&quot;&gt;
-  &lt;img src=&quot;assets/img/UCA-complete.png&quot; alt=&quot;mission complete UCA stamp&quot;/&gt;
+   &lt;/div&gt;</tw-passagedata><tw-passagedata pid="98" name="stampcomplete" tags="nobr" position="975,1225" size="100,100">&lt;div class=&quot;mission-complete&quot; &gt;
+  &lt;img src=&quot;assets/img/mission-complete-text.png&quot; alt=&quot;mission complete UCA stamp&quot;/&gt;
    &lt;/div&gt;</tw-passagedata><tw-passagedata pid="99" name="missionplanner-planning" tags="nobr" position="1100,1225" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missionplanner-planning&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;missionplanner1&quot;&gt;&gt;
@@ -4601,7 +4605,7 @@ DELIVERY
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="116" name="missioncompletetext" tags="nobr" position="725,1475" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="116" name="missioncompletetext" tags="nobr purple" position="725,1475" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missioncompletetext&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;button6&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;

@@ -116,6 +116,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 
+
 :: footer [nobr]
 <footer>
    [[Back to the start|Start]]
@@ -156,7 +157,7 @@ $(document.head).find('#style-ui-bar').remove();
    <img src="assets/img/logotitle.png" alt="logo"/>
    </div>
 
-   [img[assets/img/for.png][$prevpass]]
+   [img[assets/img/for.png][$nextpass]]
 
 
 :: rotatelogo[nobr]
@@ -4110,7 +4111,7 @@ UCA Mission Unlocked
 <</timed>>
 
 
-:: missionplanner1 [nobr]
+:: missionplanner1 [purple nobr]
 <<set $prevpass to "postbutton4b">>
 <<set $pass to "missionplanner1">>
 <<set $nextpass to "video6">>
@@ -4123,77 +4124,81 @@ UCA Mission Unlocked
 :: missionplanner [nobr]
 
 <div class="clipboard ">
- <div class="clip-container "> <img src="assets/img/clip.png" alt="clip"/></div>
-  <div class="mission-brief letterpaper">
- <div class="mission-brief-section">
+ /* <div class="clip-container "> <img src="assets/img/clip.png" alt="clip"/></div> */
+  <div class="mission-brief letterpaper planner">
+ <div class="mission-brief-section planner">
     <h2>Mission Planner</h2>
       <ul>
         <li class="mission-item">
-            <span>Planning</span>
+            <span class="title">1. Planning</span>
             <<if $planning is false>>
-              <span>To do</span>
-              <<button "Go">>
+               <<button "To do">>
                 <<goto "missionplanner-planning">>
                 <</button>>
               <</if>>
             <<if $planning is true>>
-              <span>Complete</span>
+   
+              <div class="complete-img-container"><img src="assets/img/done.png" src="complete"/></div>
               <</if>>
            </li>
          <li class="mission-item">
-            <span>Making</span>
+            <span class="title">2. Making</span>
             <<if $making is false>>
-              <span>To do</span>
-                <<button "Go">>
+               <<button "To do">>
                 <<goto "missionplanner-making">>
                 <</button>>
               <</if>>
             <<if $making is true>>
-              <span>Complete</span>
+               <div class="complete-img-container"><img src="assets/img/done.png" src="complete"/></div>
               <</if>>
            </li>
 
          <li class="mission-item">
-            <span>Delivery</span>
+            <span class="title">3. Delivery</span>
             <<if $delivery is false>>
-              <span>To do</span>
-                <<button "Go">>
+                <<button "To do">>
                 <<goto "missionplanner-delivery">>
                 <</button>>
               <</if>>
             <<if $delivery is true>>
-              <span>Complete</span>
+                 <div class="complete-img-container"><img src="assets/img/done.png" src="complete"/></div>
               <</if>>
            </li>
     
       </ul>
     
     </div>
-     <div class="mission-brief-section">
-     /* <h2>YOUR MISSION </h2>
-     <span> should you choose to accept it</span> */
-    <<if $delivery is true and $planning is true and $making is true>>
-     <<include "stampcomplete">>
-         <<else>>
-        <<include "stamp">>    
-     <</if>>
+     <div class="mission-brief-section planner stamp">
+     <div class="clubname">
+    <h2> Name: $clubname</h2>
+     </div>
+     <div class="stamp-container">
+      
+            <<include "stamp">>    
+        <<if $delivery is true and $planning is true and $making is true>>
+          <<include "stampcomplete">>
+          <</if>>
     
-       <<if $delivery is true and $planning is true and $making is true and $pass is "missionplanner1">>
-        <<timed 4s>>
-        <<goto "missioncompletetext">>
-        <</timed>>
-      <</if>>
+          <<if $delivery is true and $planning is true and $making is true and $pass is "missionplanner1">>
+            <<timed 4s>>
+            <<goto "missioncompletetext">>
+            <</timed>>
+          <</if>> 
+      </div>
      </div>
  </div>
 </div>
+
+/* Grey to start  */
+/* Colour when complete  */
 
 :: stamp [nobr]
 <div class="uca-stamp" id="stamp">
   <img src="assets/img/UCA-stamp.png" alt="UCA stamp"/>
    </div>
 :: stampcomplete [nobr]
- <div class="uca-stamp" id="stamp">
-  <img src="assets/img/UCA-complete.png" alt="mission complete UCA stamp"/>
+ <div class="mission-complete" >
+  <img src="assets/img/mission-complete-text.png" alt="mission complete UCA stamp"/>
    </div>
 :: missionplanner-planning [nobr]
 <<set $prevpass to "missionplanner1">>
@@ -4959,7 +4964,7 @@ DELIVERY
 </div>
 
 
-:: missioncompletetext [nobr]
+:: missioncompletetext [nobr purple]
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missioncompletetext">>
 <<set $nextpass to "button6">>
