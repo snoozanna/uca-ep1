@@ -1341,9 +1341,9 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 <<timed 3s>>
-  <<replace "#img">>
+  <<append "#img">>
       <img src="assets/img/beacon-1.png" alt="beacon with one button" class="fadeIn"/>
-    <</replace>>
+    <</append>>
 
   <</timed>>
 
@@ -1835,7 +1835,9 @@ MISSION UNLOCKED LOGO CHANGE
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
- <img src="assets/img/beacon-1.png" alt="beacon with one button" class=""/>
+ <img src="assets/img/beacon-empty.png" alt="beacon" class="outline"/>
+     <img src="assets/img/button-1.png" alt="first button" class="one"/>
+
   </div>
 </div>
 <div id="btnMount"></div>
@@ -1844,9 +1846,9 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 <<timed 3s>>
-  <<replace "#img">>
-      <img src="assets/img/beacon-2.png" alt="beacon with two buttons" class="fadeIn"/>
-    <</replace>>
+  <<append "#img">>
+    <img src="assets/img/button-2.png" alt="first button" class="fadeInQuick"/>
+    <</append>>
 
   <</timed>>
 
@@ -2724,7 +2726,9 @@ MISSION UNLOCKED LOGO CHANGE
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
-  <img src="assets/img/beacon-2.png" alt="beacon with two buttons" class=""/>
+ <img src="assets/img/beacon-empty.png" alt="beacon" class="outline"/>
+  <img src="assets/img/button-1.png" alt="first button" class="first"/>
+  <img src="assets/img/button-2.png" alt="second button" class="second"/>
   </div>
 </div>
 <div id="btnMount"></div>
@@ -2733,9 +2737,9 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 <<timed 3s>>
-  <<replace "#img">>
-      <img src="assets/img/beacon-3.png" alt="beacon with three buttons" class="fadeIn"/>
-    <</replace>>
+  <<append "#img">>
+      <img src="assets/img/button-3.png" alt="third button" class="fadeInQuick"/>
+    <</append>>
 
   <</timed>>
 
@@ -2746,7 +2750,6 @@ MISSION UNLOCKED LOGO CHANGE
         <</button>>
     <</replace>>
   <</timed>>
-
 
 :: postbutton3 [purple nobr]
 <<set $prevpass to "button3">>
@@ -3152,13 +3155,15 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "postbutton3b">>
 <<set $pass to "button4">>
 <<set $nextpass to "ucamissionunlocked">>
-
 <main class="beacon">
 <div class="instruction"><h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
-   <img src="assets/img/beacon-3.png" alt="beacon with three buttons" class=""/>
+ <img src="assets/img/beacon-empty.png" alt="beacon" class="outline"/>
+  <img src="assets/img/button-1.png" alt="first button" class="first"/>
+  <img src="assets/img/button-2.png" alt="second button" class="second"/>
+  <img src="assets/img/button-3.png" alt="third button" class="third"/>
   </div>
 </div>
 <div id="btnMount"></div>
@@ -3167,9 +3172,9 @@ MISSION UNLOCKED LOGO CHANGE
 </main>
 
 <<timed 3s>>
-  <<replace "#img">>
-      <img src="assets/img/beacon-4.png" alt="beacon with four buttons" class="fadeIn"/>
-    <</replace>>
+  <<append "#img">>
+      <img src="assets/img/button-4.png" alt="fourth buttons" class="fadeInQuick"/>
+    <</append>>
 
   <</timed>>
 
@@ -3646,7 +3651,11 @@ UCA Mission Unlocked
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
-      <img src="assets/img/beacon-4.png" alt="beacon with four buttons" class=""/>
+ <img src="assets/img/beacon-empty.png" alt="beacon" class="outline"/>
+  <img src="assets/img/button-1.png" alt="first button" class="first"/>
+  <img src="assets/img/button-2.png" alt="second button" class="second"/>
+  <img src="assets/img/button-3.png" alt="third button" class="third"/>
+      <img src="assets/img/button-4.png" alt="fourth buttons" class="fourth"/>
   </div>
 </div>
 <div id="btnMount"></div>
@@ -3655,9 +3664,9 @@ UCA Mission Unlocked
 </main>
 
 <<timed 3s>>
-  <<replace "#img">>
-      <img src="assets/img/beacon-5.png" alt="beacon with five buttons" class="fadeIn"/>
-    <</replace>>
+  <<append "#img">>
+      <img src="assets/img/button-5.png" alt="fifth buttons" class="fadeInQuick"/>
+    <</append>>
 
   <</timed>>
 
@@ -5156,13 +5165,17 @@ DELIVERY
 <<set $pass to "missioncompletetext">>
 <<set $nextpass to "video8">>
 
-
 <main class="beacon">
 <div class="instruction"><h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
-        <img src="assets/img/beacon-5.png" alt="beacon with five buttons" class=""/>
+ <img src="assets/img/beacon-empty.png" alt="beacon" class="outline"/>
+  <img src="assets/img/button-1.png" alt="first button" class="first"/>
+  <img src="assets/img/button-2.png" alt="second button" class="second"/>
+  <img src="assets/img/button-3.png" alt="third button" class="third"/>
+      <img src="assets/img/button-4.png" alt="fourth buttons" class="fourth"/>
+        <img src="assets/img/button-5.png" alt="fifth buttons" class="fifth"/>
   </div>
 </div>
 <div id="btnMount"></div>
@@ -5171,9 +5184,9 @@ DELIVERY
 </main>
 
 <<timed 3s>>
-  <<replace "#img">>
-      <img src="assets/img/beacon-6.png" alt="beacon with six buttons" class="fadeIn"/>
-    <</replace>>
+  <<append "#img">>
+      <img src="assets/img/button-6.png" alt="sixth buttons" class="fadeInQuick"/>
+    <</append>>
 
   <</timed>>
 
@@ -5184,6 +5197,7 @@ DELIVERY
         <</button>>
     <</replace>>
   <</timed>>
+
 
 :: codewordBeacon[nobr]
 <div id="coderesult"></div>

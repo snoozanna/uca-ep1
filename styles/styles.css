@@ -1543,3 +1543,27 @@ main.beacon > #btnMount{
   right: 5%;
   bottom: 5%;
 }
+
+.beacon-img-container {
+  position: relative;
+  width: 50vw;
+  height: 50vw;
+}
+
+.beacon-img-container > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure all images resize consistently */
+  height: 100%;
+  object-fit: contain; /* Adjusts content to maintain aspect ratio */
+}
+
+.outline {
+  z-index: 10;
+}
+
+.button {
+  z-index: 20;
+}
+

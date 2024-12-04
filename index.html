@@ -1290,9 +1290,9 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;/main&gt;
 
 &lt;&lt;timed 3s&gt;&gt;
-  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
+  &lt;&lt;append &quot;#img&quot;&gt;&gt;
       &lt;img src=&quot;assets/img/beacon-1.png&quot; alt=&quot;beacon with one button&quot; class=&quot;fadeIn&quot;/&gt;
-    &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/append&gt;&gt;
 
   &lt;&lt;/timed&gt;&gt;
 
@@ -1730,7 +1730,9 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;div class=&quot;beacon-container&quot;&gt;
 
   &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
- &lt;img src=&quot;assets/img/beacon-1.png&quot; alt=&quot;beacon with one button&quot; class=&quot;&quot;/&gt;
+ &lt;img src=&quot;assets/img/beacon-empty.png&quot; alt=&quot;beacon&quot; class=&quot;outline&quot;/&gt;
+     &lt;img src=&quot;assets/img/button-1.png&quot; alt=&quot;first button&quot; class=&quot;one&quot;/&gt;
+
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
@@ -1739,9 +1741,9 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;/main&gt;
 
 &lt;&lt;timed 3s&gt;&gt;
-  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
-      &lt;img src=&quot;assets/img/beacon-2.png&quot; alt=&quot;beacon with two buttons&quot; class=&quot;fadeIn&quot;/&gt;
-    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;append &quot;#img&quot;&gt;&gt;
+    &lt;img src=&quot;assets/img/button-2.png&quot; alt=&quot;first button&quot; class=&quot;fadeInQuick&quot;/&gt;
+    &lt;&lt;/append&gt;&gt;
 
   &lt;&lt;/timed&gt;&gt;
 
@@ -2552,7 +2554,9 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;div class=&quot;beacon-container&quot;&gt;
 
   &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
-  &lt;img src=&quot;assets/img/beacon-2.png&quot; alt=&quot;beacon with two buttons&quot; class=&quot;&quot;/&gt;
+ &lt;img src=&quot;assets/img/beacon-empty.png&quot; alt=&quot;beacon&quot; class=&quot;outline&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-1.png&quot; alt=&quot;first button&quot; class=&quot;first&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-2.png&quot; alt=&quot;second button&quot; class=&quot;second&quot;/&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
@@ -2561,9 +2565,9 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;/main&gt;
 
 &lt;&lt;timed 3s&gt;&gt;
-  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
-      &lt;img src=&quot;assets/img/beacon-3.png&quot; alt=&quot;beacon with three buttons&quot; class=&quot;fadeIn&quot;/&gt;
-    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;append &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/button-3.png&quot; alt=&quot;third button&quot; class=&quot;fadeInQuick&quot;/&gt;
+    &lt;&lt;/append&gt;&gt;
 
   &lt;&lt;/timed&gt;&gt;
 
@@ -2956,13 +2960,15 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="button4" tags="nobr" position="475,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3b&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;button4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucamissionunlocked&quot;&gt;&gt;
-
 &lt;main class=&quot;beacon&quot;&gt;
 &lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
 &lt;div class=&quot;beacon-container&quot;&gt;
 
   &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
-   &lt;img src=&quot;assets/img/beacon-3.png&quot; alt=&quot;beacon with three buttons&quot; class=&quot;&quot;/&gt;
+ &lt;img src=&quot;assets/img/beacon-empty.png&quot; alt=&quot;beacon&quot; class=&quot;outline&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-1.png&quot; alt=&quot;first button&quot; class=&quot;first&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-2.png&quot; alt=&quot;second button&quot; class=&quot;second&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-3.png&quot; alt=&quot;third button&quot; class=&quot;third&quot;/&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
@@ -2971,9 +2977,9 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;/main&gt;
 
 &lt;&lt;timed 3s&gt;&gt;
-  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
-      &lt;img src=&quot;assets/img/beacon-4.png&quot; alt=&quot;beacon with four buttons&quot; class=&quot;fadeIn&quot;/&gt;
-    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;append &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/button-4.png&quot; alt=&quot;fourth buttons&quot; class=&quot;fadeInQuick&quot;/&gt;
+    &lt;&lt;/append&gt;&gt;
 
   &lt;&lt;/timed&gt;&gt;
 
@@ -3408,7 +3414,11 @@ UCA Mission Unlocked
 &lt;div class=&quot;beacon-container&quot;&gt;
 
   &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
-      &lt;img src=&quot;assets/img/beacon-4.png&quot; alt=&quot;beacon with four buttons&quot; class=&quot;&quot;/&gt;
+ &lt;img src=&quot;assets/img/beacon-empty.png&quot; alt=&quot;beacon&quot; class=&quot;outline&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-1.png&quot; alt=&quot;first button&quot; class=&quot;first&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-2.png&quot; alt=&quot;second button&quot; class=&quot;second&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-3.png&quot; alt=&quot;third button&quot; class=&quot;third&quot;/&gt;
+      &lt;img src=&quot;assets/img/button-4.png&quot; alt=&quot;fourth buttons&quot; class=&quot;fourth&quot;/&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
@@ -3417,9 +3427,9 @@ UCA Mission Unlocked
 &lt;/main&gt;
 
 &lt;&lt;timed 3s&gt;&gt;
-  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
-      &lt;img src=&quot;assets/img/beacon-5.png&quot; alt=&quot;beacon with five buttons&quot; class=&quot;fadeIn&quot;/&gt;
-    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;append &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/button-5.png&quot; alt=&quot;fifth buttons&quot; class=&quot;fadeInQuick&quot;/&gt;
+    &lt;&lt;/append&gt;&gt;
 
   &lt;&lt;/timed&gt;&gt;
 
@@ -4792,13 +4802,17 @@ DELIVERY
 &lt;&lt;set $pass to &quot;missioncompletetext&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video8&quot;&gt;&gt;
 
-
 &lt;main class=&quot;beacon&quot;&gt;
 &lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
 &lt;div class=&quot;beacon-container&quot;&gt;
 
   &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
-        &lt;img src=&quot;assets/img/beacon-5.png&quot; alt=&quot;beacon with five buttons&quot; class=&quot;&quot;/&gt;
+ &lt;img src=&quot;assets/img/beacon-empty.png&quot; alt=&quot;beacon&quot; class=&quot;outline&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-1.png&quot; alt=&quot;first button&quot; class=&quot;first&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-2.png&quot; alt=&quot;second button&quot; class=&quot;second&quot;/&gt;
+  &lt;img src=&quot;assets/img/button-3.png&quot; alt=&quot;third button&quot; class=&quot;third&quot;/&gt;
+      &lt;img src=&quot;assets/img/button-4.png&quot; alt=&quot;fourth buttons&quot; class=&quot;fourth&quot;/&gt;
+        &lt;img src=&quot;assets/img/button-5.png&quot; alt=&quot;fifth buttons&quot; class=&quot;fifth&quot;/&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
@@ -4807,9 +4821,9 @@ DELIVERY
 &lt;/main&gt;
 
 &lt;&lt;timed 3s&gt;&gt;
-  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
-      &lt;img src=&quot;assets/img/beacon-6.png&quot; alt=&quot;beacon with six buttons&quot; class=&quot;fadeIn&quot;/&gt;
-    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;append &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/button-6.png&quot; alt=&quot;sixth buttons&quot; class=&quot;fadeInQuick&quot;/&gt;
+    &lt;&lt;/append&gt;&gt;
 
   &lt;&lt;/timed&gt;&gt;
 
