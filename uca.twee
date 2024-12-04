@@ -117,6 +117,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 
+
 :: footer [nobr]
 <footer>
    [[Back to the start|Start]]
@@ -1326,15 +1327,33 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $pass to "button1">>
 <<set $nextpass to "video4">>
 
-<main>
-<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
-<p>1/6</p>
-<br/>
-    <<button "next">>
-        <<goto $nextpass>>
-        <</button>>
+<main class="beacon">
+<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="beacon-container">
+
+  <div class="beacon-img-container" id="img">
+  <img src="assets/img/beacon-empty.png" alt="beacon is empty"/>
+  </div>
+</div>
+<div id="btnMount"></div>
+
     
 </main>
+
+<<timed 3s>>
+  <<replace "#img">>
+      <img src="assets/img/beacon-1.png" alt="beacon with one button" class="fadeIn"/>
+    <</replace>>
+
+  <</timed>>
+
+<<timed 6s>>
+  <<replace "#btnMount">>
+       <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+  <</timed>>
 :: video4 [purple nobr]
 <<set $prevpass to "button1">>
 <<set $pass to "video4">>
@@ -1550,7 +1569,7 @@ MISSION UNLOCKED LOGO CHANGE
 :: compartment2b [purple nobr]
 <<set $prevpass to "compartment2a">>
 <<set $pass to "compartment2b">>
-<<set $nextpass to "">>
+<<set $nextpass to "enterclubname">>
 <<if $sound is true>>
   <div id="audio">
    <audio src="assets/audio/UCA_03_RHUBARB_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
@@ -1811,14 +1830,33 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $pass to "button2">>
 <<set $nextpass to "postbutton2">>
 
-<main>
-<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
-<p>2/6</p>
-    <<button "next">>
-        <<goto $nextpass>>
-        <</button>>
+<main class="beacon">
+<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="beacon-container">
+
+  <div class="beacon-img-container" id="img">
+ <img src="assets/img/beacon-1.png" alt="beacon with one button" class=""/>
+  </div>
+</div>
+<div id="btnMount"></div>
+
     
 </main>
+
+<<timed 3s>>
+  <<replace "#img">>
+      <img src="assets/img/beacon-2.png" alt="beacon with two buttons" class="fadeIn"/>
+    <</replace>>
+
+  <</timed>>
+
+<<timed 6s>>
+  <<replace "#btnMount">>
+       <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+  <</timed>>
 
 :: postbutton2 [purple nobr]
 <<set $prevpass to "button2">>
@@ -2681,14 +2719,33 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $pass to "button3">>
 <<set $nextpass to "postbutton3">>
 
-<main>
-<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
-<p>3/6</p>
-    <<button "next">>
-        <<goto $nextpass>>
-        <</button>>
+<main class="beacon">
+<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="beacon-container">
+
+  <div class="beacon-img-container" id="img">
+  <img src="assets/img/beacon-2.png" alt="beacon with two buttons" class=""/>
+  </div>
+</div>
+<div id="btnMount"></div>
+
     
 </main>
+
+<<timed 3s>>
+  <<replace "#img">>
+      <img src="assets/img/beacon-3.png" alt="beacon with three buttons" class="fadeIn"/>
+    <</replace>>
+
+  <</timed>>
+
+<<timed 6s>>
+  <<replace "#btnMount">>
+       <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+  <</timed>>
 
 
 :: postbutton3 [purple nobr]
@@ -3096,14 +3153,33 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $pass to "button4">>
 <<set $nextpass to "ucamissionunlocked">>
 
-<main>
-<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
-<p>4/6</p>
-    <<button "next">>
-        <<goto $nextpass>>
-        <</button>>
+<main class="beacon">
+<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="beacon-container">
+
+  <div class="beacon-img-container" id="img">
+   <img src="assets/img/beacon-3.png" alt="beacon with three buttons" class=""/>
+  </div>
+</div>
+<div id="btnMount"></div>
+
     
 </main>
+
+<<timed 3s>>
+  <<replace "#img">>
+      <img src="assets/img/beacon-4.png" alt="beacon with four buttons" class="fadeIn"/>
+    <</replace>>
+
+  <</timed>>
+
+<<timed 6s>>
+  <<replace "#btnMount">>
+       <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+  <</timed>>
 
 
 :: postbutton4 [purple nobr]
@@ -3565,15 +3641,33 @@ UCA Mission Unlocked
 <<set $pass to "button5">>
 <<set $nextpass to "postbutton6">>
 
-<main>
-<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
-<p>5/6</p>
-    <<button "next">>
-        <<goto $nextpass>>
-        <</button>>
+<main class="beacon">
+<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="beacon-container">
+
+  <div class="beacon-img-container" id="img">
+      <img src="assets/img/beacon-4.png" alt="beacon with four buttons" class=""/>
+  </div>
+</div>
+<div id="btnMount"></div>
+
     
 </main>
 
+<<timed 3s>>
+  <<replace "#img">>
+      <img src="assets/img/beacon-5.png" alt="beacon with five buttons" class="fadeIn"/>
+    <</replace>>
+
+  <</timed>>
+
+<<timed 6s>>
+  <<replace "#btnMount">>
+       <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+  <</timed>>
 
 :: postbutton6 [purple nobr]
 <<set $prevpass to "button5">>
@@ -5062,13 +5156,34 @@ DELIVERY
 <<set $pass to "missioncompletetext">>
 <<set $nextpass to "video8">>
 
-<main>
-<p>PLACE YOUR BUTTON ON THE BEACON NOW</p>
-<p>6/6</p>
-    <<include "codewordBeacon">>
+
+<main class="beacon">
+<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="beacon-container">
+
+  <div class="beacon-img-container" id="img">
+        <img src="assets/img/beacon-5.png" alt="beacon with five buttons" class=""/>
+  </div>
+</div>
+<div id="btnMount"></div>
+
     
 </main>
 
+<<timed 3s>>
+  <<replace "#img">>
+      <img src="assets/img/beacon-6.png" alt="beacon with six buttons" class="fadeIn"/>
+    <</replace>>
+
+  <</timed>>
+
+<<timed 6s>>
+  <<replace "#btnMount">>
+       <<button "next">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+  <</timed>>
 
 :: codewordBeacon[nobr]
 <div id="coderesult"></div>

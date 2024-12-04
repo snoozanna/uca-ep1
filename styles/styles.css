@@ -1525,3 +1525,21 @@ main.logo-alone > div{
     max-width: 60%;
 }
 
+
+/* BEACON  */
+main.beacon{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height:100vh
+}
+
+main.beacon > .instruction{
+  max-width: 40%;
+}
+
+main.beacon > #btnMount{
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}

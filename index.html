@@ -1276,15 +1276,33 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;set $pass to &quot;button1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video4&quot;&gt;&gt;
 
-&lt;main&gt;
-&lt;p&gt;PLACE YOUR BUTTON ON THE BEACON NOW&lt;/p&gt;
-&lt;p&gt;1/6&lt;/p&gt;
-&lt;br/&gt;
-    &lt;&lt;button &quot;next&quot;&gt;&gt;
+&lt;main class=&quot;beacon&quot;&gt;
+&lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;beacon-container&quot;&gt;
+
+  &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
+  &lt;img src=&quot;assets/img/beacon-empty.png&quot; alt=&quot;beacon is empty&quot;/&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
+
+    
+&lt;/main&gt;
+
+&lt;&lt;timed 3s&gt;&gt;
+  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/beacon-1.png&quot; alt=&quot;beacon with one button&quot; class=&quot;fadeIn&quot;/&gt;
+    &lt;&lt;/replace&gt;&gt;
+
+  &lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;timed 6s&gt;&gt;
+  &lt;&lt;replace &quot;#btnMount&quot;&gt;&gt;
+       &lt;&lt;button &quot;next&quot;&gt;&gt;
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
-    
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="36" name="video4" tags="purple nobr" position="725,475" size="100,100">&lt;&lt;set $prevpass to &quot;button1&quot;&gt;&gt;
+    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="video4" tags="purple nobr" position="725,475" size="100,100">&lt;&lt;set $prevpass to &quot;button1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;compartment2&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -1471,7 +1489,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="compartment2b" tags="purple nobr" position="225,600" size="100,100">&lt;&lt;set $prevpass to &quot;compartment2a&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;compartment2b&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;&quot;&gt;&gt;
+&lt;&lt;set $nextpass to &quot;enterclubname&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
   &lt;div id=&quot;audio&quot;&gt;
    &lt;audio src=&quot;assets/audio/UCA_03_RHUBARB_03.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
@@ -1707,14 +1725,33 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;set $pass to &quot;button2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton2&quot;&gt;&gt;
 
-&lt;main&gt;
-&lt;p&gt;PLACE YOUR BUTTON ON THE BEACON NOW&lt;/p&gt;
-&lt;p&gt;2/6&lt;/p&gt;
-    &lt;&lt;button &quot;next&quot;&gt;&gt;
+&lt;main class=&quot;beacon&quot;&gt;
+&lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;beacon-container&quot;&gt;
+
+  &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
+ &lt;img src=&quot;assets/img/beacon-1.png&quot; alt=&quot;beacon with one button&quot; class=&quot;&quot;/&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
+
+    
+&lt;/main&gt;
+
+&lt;&lt;timed 3s&gt;&gt;
+  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/beacon-2.png&quot; alt=&quot;beacon with two buttons&quot; class=&quot;fadeIn&quot;/&gt;
+    &lt;&lt;/replace&gt;&gt;
+
+  &lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;timed 6s&gt;&gt;
+  &lt;&lt;replace &quot;#btnMount&quot;&gt;&gt;
+       &lt;&lt;button &quot;next&quot;&gt;&gt;
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
-    
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="50" name="postbutton2" tags="purple nobr" position="1225,600" size="100,100">&lt;&lt;set $prevpass to &quot;button2&quot;&gt;&gt;
+    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="postbutton2" tags="purple nobr" position="1225,600" size="100,100">&lt;&lt;set $prevpass to &quot;button2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton2b&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -2510,14 +2547,33 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;set $pass to &quot;button3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton3&quot;&gt;&gt;
 
-&lt;main&gt;
-&lt;p&gt;PLACE YOUR BUTTON ON THE BEACON NOW&lt;/p&gt;
-&lt;p&gt;3/6&lt;/p&gt;
-    &lt;&lt;button &quot;next&quot;&gt;&gt;
+&lt;main class=&quot;beacon&quot;&gt;
+&lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;beacon-container&quot;&gt;
+
+  &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
+  &lt;img src=&quot;assets/img/beacon-2.png&quot; alt=&quot;beacon with two buttons&quot; class=&quot;&quot;/&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
+
+    
+&lt;/main&gt;
+
+&lt;&lt;timed 3s&gt;&gt;
+  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/beacon-3.png&quot; alt=&quot;beacon with three buttons&quot; class=&quot;fadeIn&quot;/&gt;
+    &lt;&lt;/replace&gt;&gt;
+
+  &lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;timed 6s&gt;&gt;
+  &lt;&lt;replace &quot;#btnMount&quot;&gt;&gt;
+       &lt;&lt;button &quot;next&quot;&gt;&gt;
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
-    
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="68" name="postbutton3" tags="purple nobr" position="975,850" size="100,100">&lt;&lt;set $prevpass to &quot;button3&quot;&gt;&gt;
+    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="postbutton3" tags="purple nobr" position="975,850" size="100,100">&lt;&lt;set $prevpass to &quot;button3&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton3b&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -2901,14 +2957,33 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;set $pass to &quot;button4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucamissionunlocked&quot;&gt;&gt;
 
-&lt;main&gt;
-&lt;p&gt;PLACE YOUR BUTTON ON THE BEACON NOW&lt;/p&gt;
-&lt;p&gt;4/6&lt;/p&gt;
-    &lt;&lt;button &quot;next&quot;&gt;&gt;
+&lt;main class=&quot;beacon&quot;&gt;
+&lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;beacon-container&quot;&gt;
+
+  &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
+   &lt;img src=&quot;assets/img/beacon-3.png&quot; alt=&quot;beacon with three buttons&quot; class=&quot;&quot;/&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
+
+    
+&lt;/main&gt;
+
+&lt;&lt;timed 3s&gt;&gt;
+  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/beacon-4.png&quot; alt=&quot;beacon with four buttons&quot; class=&quot;fadeIn&quot;/&gt;
+    &lt;&lt;/replace&gt;&gt;
+
+  &lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;timed 6s&gt;&gt;
+  &lt;&lt;replace &quot;#btnMount&quot;&gt;&gt;
+       &lt;&lt;button &quot;next&quot;&gt;&gt;
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
-    
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="75" name="postbutton4" tags="purple nobr" position="600,975" size="100,100">&lt;&lt;set $prevpass to &quot;button4&quot;&gt;&gt;
+    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="postbutton4" tags="purple nobr" position="600,975" size="100,100">&lt;&lt;set $prevpass to &quot;button4&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;mission&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -3328,14 +3403,33 @@ UCA Mission Unlocked
 &lt;&lt;set $pass to &quot;button5&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton6&quot;&gt;&gt;
 
-&lt;main&gt;
-&lt;p&gt;PLACE YOUR BUTTON ON THE BEACON NOW&lt;/p&gt;
-&lt;p&gt;5/6&lt;/p&gt;
-    &lt;&lt;button &quot;next&quot;&gt;&gt;
+&lt;main class=&quot;beacon&quot;&gt;
+&lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;beacon-container&quot;&gt;
+
+  &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
+      &lt;img src=&quot;assets/img/beacon-4.png&quot; alt=&quot;beacon with four buttons&quot; class=&quot;&quot;/&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
+
+    
+&lt;/main&gt;
+
+&lt;&lt;timed 3s&gt;&gt;
+  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/beacon-5.png&quot; alt=&quot;beacon with five buttons&quot; class=&quot;fadeIn&quot;/&gt;
+    &lt;&lt;/replace&gt;&gt;
+
+  &lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;timed 6s&gt;&gt;
+  &lt;&lt;replace &quot;#btnMount&quot;&gt;&gt;
+       &lt;&lt;button &quot;next&quot;&gt;&gt;
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
-    
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="85" name="postbutton6" tags="purple nobr" position="600,1100" size="100,100">&lt;&lt;set $prevpass to &quot;button5&quot;&gt;&gt;
+    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="postbutton6" tags="purple nobr" position="600,1100" size="100,100">&lt;&lt;set $prevpass to &quot;button5&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton6&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucatelecom3&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -4698,12 +4792,34 @@ DELIVERY
 &lt;&lt;set $pass to &quot;missioncompletetext&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video8&quot;&gt;&gt;
 
-&lt;main&gt;
-&lt;p&gt;PLACE YOUR BUTTON ON THE BEACON NOW&lt;/p&gt;
-&lt;p&gt;6/6&lt;/p&gt;
-    &lt;&lt;include &quot;codewordBeacon&quot;&gt;&gt;
+
+&lt;main class=&quot;beacon&quot;&gt;
+&lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;beacon-container&quot;&gt;
+
+  &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
+        &lt;img src=&quot;assets/img/beacon-5.png&quot; alt=&quot;beacon with five buttons&quot; class=&quot;&quot;/&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
+
     
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="118" name="codewordBeacon" tags="nobr" position="975,1475" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;/main&gt;
+
+&lt;&lt;timed 3s&gt;&gt;
+  &lt;&lt;replace &quot;#img&quot;&gt;&gt;
+      &lt;img src=&quot;assets/img/beacon-6.png&quot; alt=&quot;beacon with six buttons&quot; class=&quot;fadeIn&quot;/&gt;
+    &lt;&lt;/replace&gt;&gt;
+
+  &lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;timed 6s&gt;&gt;
+  &lt;&lt;replace &quot;#btnMount&quot;&gt;&gt;
+       &lt;&lt;button &quot;next&quot;&gt;&gt;
+        &lt;&lt;goto $nextpass&gt;&gt;
+        &lt;&lt;/button&gt;&gt;
+    &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="codewordBeacon" tags="nobr" position="975,1475" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
