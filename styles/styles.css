@@ -1561,8 +1561,8 @@ main.beacon > #btnMount{
 
 .beacon-img-container {
   position: relative;
-  width: 50vw;
-  height: 50vw;
+  width: 45vw;
+  height: 45vw;
 }
 
 .beacon-img-container > img {
