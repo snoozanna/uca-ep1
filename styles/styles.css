@@ -953,6 +953,19 @@ main.ucalab > .ucalab-wrapper > h3 {
   animation-timing-function: ease-in;
 }
 
+.fadeInQuick {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeInQuick {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @-webkit-keyframes fadeInOut {
   0%,
   100% {
@@ -1531,11 +1544,13 @@ main.beacon{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height:100vh
+  height:100vh;
+  background-color: var(--purple)
 }
 
 main.beacon > .instruction{
   max-width: 40%;
+  text-align: center;
 }
 
 main.beacon > #btnMount{

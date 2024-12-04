@@ -2722,7 +2722,11 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $nextpass to "postbutton3">>
 
 <main class="beacon">
-<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="instruction">
+   <div class="uca-logo-text">
+     <img src="assets/img/logotitle.png" alt="logo"/>
+  </div>
+<h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
