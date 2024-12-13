@@ -1122,16 +1122,40 @@ main.ucalab > .ucalab-wrapper > h3 {
 
 /* PAGER  */
 
+main.telecom{
+  height:100vh;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem
+}
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem
+}
+
 .pager-container{
   width: 100%;
+
   display: flex;
   justify-content: center;
 }
 
 .pager{
+  background-image: url("../assets/img/29.png");
   background-color: gray;
-
-  width: 300px;
+  width: 60%;
   border-radius: 30px;
   box-shadow: 
     -5px -5px 10px #555 inset,
@@ -1139,29 +1163,30 @@ main.ucalab > .ucalab-wrapper > h3 {
   border: 2px solid #000;
   position: relative;
   padding: 2rem;
+  background-size: cover;
 }
 
 .pager > h2{
   text-align: center;
   margin-block-end: 0;
+  font-size: 3.5rem;
 }
 
 
 .screen {
-  height: 200px;
+  min-height: 40vh;
   background: linear-gradient(to bottom, #666, #222);
   border-radius: 5px;
-  box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.2),
-              inset 2px 2px 6px rgba(0, 0, 0, 0.6);
-
+  box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.2), inset 2px 2px 6px rgba(0, 0, 0, 0.6);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 2rem;
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+  padding: 4rem;
   font-family: monospace;
+  padding-top: 4rem;
 }
 
 .screen:after {
@@ -1177,17 +1202,29 @@ main.ucalab > .ucalab-wrapper > h3 {
   z-index:-999;
 }
 
+.screen.center{
+  justify-content:center;
+  align-items: center;
+  padding-top:1rem;
+  gap:1rem
+}
 .screen > img{
-  max-width: 30%;
+  max-width: 20%;
   filter: grayscale(1);
 }
 
 .screen.active{
-  background: linear-gradient(to bottom, #7fb2d9, #545997);
+  background: linear-gradient(to bottom, #479ad9, #363a6b);
 }
 
+
+
 .screen > div > p {
-  margin-bottom: 0;
+  margin-bottom: 0.7rem;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Share Tech Mono", monospace;
+
 }
 
 
@@ -1231,9 +1268,15 @@ main.ucalab > .ucalab-wrapper > h3 {
   transform: rotate(-4deg);
 }
 
-.speed-dial-btn-container, .options-btn-container{
+.speed-dial-btn-container{
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap:2rem;
+}
+
+.options-btn-container{
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   padding: 1rem;
@@ -1241,10 +1284,31 @@ main.ucalab > .ucalab-wrapper > h3 {
   text-align: center;
 }
 
-.speed-dial-btn, .options-btn{
-  padding: 0.5rem;
+.options-btn-container.img-detail{
+  justify-content: start
+}
+
+
+.options-btn-container.img-detail > div > img{
+max-width: 30px;
+transform: rotate(90deg);
+}
+
+.options-btn{
+  padding: 1.5rem;
   border-radius: 1rem;
-  width: 100%;
+  text-transform: uppercase;
+  font-family: "Contrail One", cursive;
+  font-weight: 900;
+  line-height: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+}
+
+.speed-dial-btn{
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+
 
 }
 
@@ -1272,13 +1336,12 @@ main.ucalab > .ucalab-wrapper > h3 {
               2px 2px 8px rgba(0, 0, 0, 0.5);
   text-align: center;
   color: white;
-  font-size: 14px;
+
   font-weight: bold;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Courier New', Courier, monospace;
   font-weight: 900;
   line-height: 1.8rem;
 }
@@ -1295,7 +1358,7 @@ main.ucalab > .ucalab-wrapper > h3 {
 }
 
 .key.active{
-  background: linear-gradient(135deg, hotpink, #cc86dc);
+  background: linear-gradient(135deg, #94df7e, #afd2a5);
 }
 
 .key.active >a{
@@ -1314,8 +1377,9 @@ margin-inline-end: 2rem;
 min-width: inherit;
 }
 
-.telecom-code > input:focus{
-  background-color: rgb(203, 198, 198);
+.telecom-code > input:focus, 
+.telecom-code > input:hover{
+  background-color: rgb(203, 198, 198) !important
 }
 
 /* UCA BREATH  */
@@ -1550,10 +1614,11 @@ main.beacon{
 
 main.beacon > .instruction{
   max-width: 40%;
-  text-align: center;
+  text-align: left;
 }
 
-main.beacon > #btnMount{
+main.beacon > #btnMount, 
+main.ucalab > #btnMount{
   position: absolute;
   right: 5%;
   bottom: 5%;

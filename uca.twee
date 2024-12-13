@@ -22,6 +22,7 @@ UCA Episode 2
 @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Young+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech+Mono&family=Sora:wght@100..800&family=Titan+One&display=swap');
 @import url("styles/generics.css");
 @import url("styles/styles.css");
 
@@ -171,6 +172,14 @@ $(document.head).find('#style-ui-bar').remove();
 
 </div>
 
+:: staticlogo[nobr]
+
+<div class="rotate-logo-wrapper static">
+<div class="animated  overlay-image">[img[assets/img/logobutton.png]]</div>
+<div class="animated  overlay-image one" >[img[assets/img/undercover.png]]</div><div
+        class="animated  overlay-image two">[img[assets/img/caretaker.png]]</div><div
+        class="animated  overlay-image three">[img[assets/img/agency.png]]</div>
+
 :: unlocked
 MISSION UNLOCKED LOGO CHANGE
 
@@ -198,6 +207,18 @@ MISSION UNLOCKED LOGO CHANGE
   
   <<include "codeword1">>
 </div>
+<div id="btnMount">
+<<button "Contents">>
+  <<goto "contents">>
+  <</button>></div>
+</main>
+
+
+:: contents [nobr purple]
+<main class="ucalab">
+
+<h2>Contents</h2>
+
 </main>
 
 
@@ -210,19 +231,25 @@ MISSION UNLOCKED LOGO CHANGE
 <<button "Enter">>
 </div>
  /% PASSWORD CODE %/
-<<set $code to $code.toUpperCase()>>
+<<set $code to $code.toUpperCase().trim()>>
 /% CODEWORD CORRECT %/
 <<if $code isnot "">> 
-  <<if $code is "STATIC" or $code is "STATIC ">>
+  <<if $code is "STATIC">>
     <<audio "correct" play>>
     <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
-    <<timed 3s>><<goto $nextpass>><</timed>>
+    <<timed 3s>><<goto "staticbuzz1">><</timed>>
+
+   <<elseif $code is "JAY">>
+    <<audio "correct" play>>
+    <<replace "#coderesult">><div class="confirmation" id="confirmation"><span>Correct!</span></div><</replace>>
+    <<timed 3s>><<goto "video9">><</timed>>
+  
    
 <</if>>
 <</if>>
 /% CODEWORD INCORRECT %/
 <<if $code isnot "">>
-  <<if $code isnot "STATIC" and $code isnot "STATIC ">>
+  <<if $code isnot "STATIC" and $code isnot "JAY">>
   <<replace "#coderesult">><div class="confirmation" id="confirmation">That's not right...</div><</replace>>
   <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
   <</if>>
@@ -859,36 +886,48 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "video3">>
 <<set $pass to "ucatelecom">>
 <<set $nextpass to "button">>
-
-<main>
+<<timed 0.1s>>
+  <<addclass "#screen" "center">>
+<</timed>>
+<main class="telecom">
     <div class="pager-container">
         <div class="pager retro-box">
         <h2>UCA TELCOM</h2>
         <div id="audio"></div>
           <div class="screen" id="screen">
+           <div class="speed-dial-btn-container">
+            <div class="speed-dial"><span>Speed Dial</span> </div>
+               <div class="flex-col">
+                  <div class="speed-dial-btn key active pulse" id="anneBtn">
+                  <<link "Anne">>
+                      <<replace "#screen">>
+                          <<include "callingAnne">>
+                          <</replace>>
+                  <</link>>
+                      </div>
+                  
+                    <div class="speed-dial-btn key  active pulse" id="malBtn">
+                    <<link "Mal">>
+                       <<replace "#screen">>
+                          <<include "callingMal">>
+                          <</replace>>
+                    <</link>></div>
+               </div>
+               </div>
         </div>
            <div class="buttons-container">
             <div class="options-btn-container" id="options">
-                <div class="options-btn key"><span>Yes</span></div>
-                  <div class="options-btn key"><span>No</span></div>
+                <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
              </div>
-    <<include "phonekeyboard">>
-            <div class="speed-dial-btn-container">
-                <div class="speed-dial-btn key active pulse" id="anneBtn">
-                <<link "Anne">>
-                    <<replace "#screen">>
-                        <<include "callingAnne">>
-                        <</replace>>
-                <</link>>
-                    </div>
-                 <div class="speed-dial"><span>Speed Dial</span> </div>
-                  <div class="speed-dial-btn key  active pulse" id="malBtn">
-                  <<link "Mal">>
-                     <<replace "#screen">>
-                        <<include "callingMal">>
-                        <</replace>>
-                  <</link>></div>
-             </div>
+    /* <<include "phonekeyboard">> */
+           /* <div class="options-btn-container img-detail" id="options">
+                <div class="img-detail-container">
+                  <img src="assets/img/pager-detail.png"/>
+                   <img src="assets/img/pager-detail.png"/>
+                    <img src="assets/img/pager-detail.png"/>
+                </div>
+             </div> */
            </div>
         </div>
     </div>
@@ -900,33 +939,55 @@ MISSION UNLOCKED LOGO CHANGE
 :: callingAnne [nobr]
 <<removeclass "#anneBtn" "pulse">>
 <<removeclass "#anneBtn" "active">>
+<<addclass "#screen" "center">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Anne</span>
 
-<<timed 3s>>
+<<timed 4s>>
     <<replace "#screen">>
         <span>No answer.</span>
         <</replace>>
     <</timed>>
 
-<<timed 5s>>
+<<timed 7s>>
+
     <<replace "#screen">>
+        <div class="speed-dial-btn-container">
+            <div class="speed-dial"><span>Speed Dial</span> </div>
+             <div class="flex-col">
+                <div class="speed-dial-btn key active pulse" id="anneBtn">
+                <<link "Anne">>
+                    <<replace "#screen">>
+                        <<include "callingAnne">>
+                        <</replace>>
+                <</link>>
+                    </div>
+                
+                  <div class="speed-dial-btn key  active pulse" id="malBtn">
+                  <<link "Mal">>
+                     <<replace "#screen">>
+                        <<include "callingMal">>
+                        <</replace>>
+                  <</link>></div>
+                  </div>
+             </div>
         <</replace>>
     <</timed>>
 
 :: callingMal [nobr]
-<<removeclass "#malBtn" "pulse">>
-<<removeclass "#anneBtn" "pulse">>
+
+<<addclass "#screen" "center">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Mal</span>
 
 <<timed 3s>>
+    <<removeclass "#screen" "center">>
     <<removeclass "#anneBtn" "active">>
     <<addclass "#screen" "active">>
     <<replace "#screen">>
-        <<type 60ms>><p>Hello, I don’t recognise this number.
+        <<type 60ms>><p>Hello, I don’t recognise this number.<br/>
           Are you trying to sell me Bouncy Castle insurance?</p>
                <</type>>
         <</replace>>
@@ -954,25 +1015,25 @@ MISSION UNLOCKED LOGO CHANGE
 <</timed>>
 
 :: callingMal2yes [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
      <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_02_yes.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
   <<replace "#screen">>
-        <<type 40ms>><p>Good, I don’t need any more bouncy castle insurance. </p>
+        <<type 40ms>><p>I don’t need any more bouncy castle insurance. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
   <<timed 4s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 60ms>><p>Are you Jay's friends?</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 6s>>
@@ -997,25 +1058,26 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: callingMal2no [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
+    <</replace>>
      <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_02_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
   <<replace "#screen">>
-        <<type 40ms>><p>I don’t need any more bouncy castle insurance. </p>
+        <<type 40ms>><p>Good, I don’t need any more bouncy castle insurance. </p>
                <</type>>
   <</replace>>
   <</timed>>
 
   <<timed 4s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 60ms>><p>Are you Jay's friends?</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 6s>>
@@ -1039,11 +1101,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: callingMal3 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
+    <</replace>>
      <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -1053,11 +1116,11 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
   <</timed>>
 
-  <<timed 6s>>
-      <<replace "#screen">>
-        <<type 40ms>><p>I know she wants to help though. Are you trying to help too? </p>
+  <<timed 5.5s>>
+      <<append "#screen">>
+        <<type 40ms>><p>I know she wants to help though<br/> Are you trying to help too? </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 9s>>
@@ -1081,24 +1144,25 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: callingMal4a [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
+    <</replace>>
        <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_04_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p>Have you got any idea what could help?  </p>
+        <<type 60ms>><p>Have you got any ideas what could help?  </p>
                <</type>>
   <</replace>>
     <</timed>>
 
   <<timed 4s>>
-    <<replace "#screen">>
+     <<prepend "#options">>
   <<include "codewordphone1" >>
-  <</replace>>
+  <</prepend>>
 <</timed>>
 
 :: codewordphone1 [nobr]
@@ -1108,10 +1172,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<textbox "$code" "">>
 </div>
 <<replace "#options">>
-    <div class="options-btn key" id="yesBtn">
-      <<link "...">>
-  <</link>>
-      </div>
+ 
   <div class="options-btn key active pulse"  id="noBtn">
         <<link "Send">>
       /% PASSWORD CODE %/
@@ -1140,40 +1201,35 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: callingMal4b [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_04_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>  
   <<replace "#screen">>
-        <<type 40ms>><p>That’s so kind of you - I don’t even know you</p>
+            <<type 40ms>><p>Have you got any ideas what could help?  </p>
                <</type>>
   <</replace>>
   <</timed>>
 
-  <<timed 5s>>
-      <<replace "#screen">>
-        <<type 40ms>><p>Have you got any idea what could help?  </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-
   <<timed 4s>>
-    <<replace "#screen">>
+   <<prepend "#options">>
   <<include "codewordphone1" >>
-  <</replace>>
+  <</prepend>>
 <</timed>>
 
 :: callingMal4c [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<replace "#screen">>
         <<timed 0.1s>>
+           <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
+    <</replace>>
        <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_05_anything_else.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -1184,38 +1240,46 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
         <</replace>>
        <<timed 4s>>
-    <<replace "#screen">>
+    <<prepend "#options">>
   <<include "codewordphone1" >>
-  <</replace>>
+  <</prepend>>
 <</timed>>
 
 :: callingMal5 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+      <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_05_ucatok.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
   <<replace "#screen">>
-        <<type 40ms>><p>The UCA TOK - that was part of our training at UCA - led by our mentor Anne. </p>
+        <<type 40ms>><p>The UCA TOK - that was part of our training at UCA </p>
                <</type>>
   <</replace>>
   <</timed>>
 
+    <<timed 4s>>
+      <<append "#screen">>
+        <<type 60ms>><p> Led by our mentor Anne. </p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
   <<timed 7s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 60ms>><p>I will give it a try. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
     <<timed 10s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 60ms>><p>Say thanks to Jay for me. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 12s>>
@@ -1234,11 +1298,12 @@ MISSION UNLOCKED LOGO CHANGE
 <</timed>>
 
 :: callingMal6 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+    <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+      <div class="options-btn key"><span>...</span></div>
+    <</replace>>
       <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL1_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -1248,25 +1313,25 @@ MISSION UNLOCKED LOGO CHANGE
   <</replace>>
     <</timed>>
 
-      <<timed 4s>>
-      <<replace "#screen">>
-        <<type 60ms>><p>But, tell her not to eat too much rhubarb. </p>
+      <<timed 3s>>
+      <<append "#screen">>
+        <<type 40ms>><p>But, tell her not to eat too much rhubarb. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
-  <<timed 8s>>
-      <<replace "#screen">>
+  <<timed 6s>>
+      <<append "#screen">>
         <<type 40ms>><p>In fact, if you message her that word it will probably remind her to not over do it! </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 
   <<timed 10s>>
-    <<replace "#screen">>
+  <<prepend "#options">>
   <<include "codewordphone1b" >>
-  <</replace>>
+  <</prepend>>
 <</timed>>
 
 :: codewordphone1b [nobr]
@@ -1274,10 +1339,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<textbox "$code" "">>
 </div>
 <<replace "#options">>
-    <div class="options-btn key" id="yesBtn">
-      <<link "...">>
-  <</link>>
-      </div>
+  
   <div class="options-btn key active pulse"  id="noBtn">
         <<link "Send">>
       /% PASSWORD CODE %/
@@ -1303,10 +1365,8 @@ MISSION UNLOCKED LOGO CHANGE
  <</replace>>
 
 :: callingMal6b [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
+
   <<replace "#screen">>
         <<timed 0.1s>>
   
@@ -1317,9 +1377,9 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
         <</replace>>
        <<timed 4s>>
-    <<replace "#screen">>
+     <<prepend "#options">>
   <<include "codewordphone1b" >>
-  <</replace>>
+  <</prepend>>
 <</timed>>
 
 :: button1 [nobr]
@@ -1328,7 +1388,10 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $nextpass to "video4">>
 
 <main class="beacon">
-<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="instruction">
+<div class="uca-logo-text">
+     <img src="assets/img/logotitle.png" alt="logo"/></div>
+     <h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
@@ -1342,7 +1405,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 <<timed 3s>>
   <<append "#img">>
-      <img src="assets/img/beacon-1.png" alt="beacon with one button" class="fadeIn"/>
+      <img src="assets/img/button-1.png" alt="first button" class="fadeInQuick"/>
     <</append>>
 
   <</timed>>
@@ -1354,6 +1417,8 @@ MISSION UNLOCKED LOGO CHANGE
         <</button>>
     <</replace>>
   <</timed>>
+
+
 :: video4 [purple nobr]
 <<set $prevpass to "button1">>
 <<set $pass to "video4">>
@@ -1785,9 +1850,9 @@ MISSION UNLOCKED LOGO CHANGE
   </div>
 <</if>>
 <<include "typewriter">>
-       <beaconicon>[img[assets/img/beacon-2.png]]</beaconicon>
+       <beaconicon></beaconicon>
        <messageboxlarge>
-      Enter our Secret Club Name here
+      Enter your Secret Club Name here
 
       <<textbox "$clubname" "">>
 
@@ -1796,7 +1861,7 @@ MISSION UNLOCKED LOGO CHANGE
       </messageboxlarge>
 
 
-:: clubname [green] {"position":"688,2304","size":"100,100"}
+:: clubname [green nobr] {"position":"688,2304","size":"100,100"}
 <<if $sound is true>>
   <div id="audio">
    <audio src="assets/audio/UCA_03_RHUBARB_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
@@ -1805,15 +1870,14 @@ MISSION UNLOCKED LOGO CHANGE
 <audio src="https://remote.co.com/UCA/assets/audio/taperecorder.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
       <messageboxreel>
 
-      <<timed 11s>><div class="animated fadeInDownBig">
+      <<timed 9s>><div class="animated fadeInDownBig">
       <name><b>WELCOME $clubname</b></name>
       <button>[[Next|button2]]</button></div><</timed>></messageboxreel>
       <<include "reeltoreel">>
       <messagescreen><span id="message">Thank you</span>
       <<timed 2s>><<replace "#message">>Sending Secret Club Name<</replace>>\
-      <<next 2s>><<replace "#message">>Uploading<</replace>>\
+      <<next 2s>><<replace "#message">>Sending<</replace>>\
       <<next 2s>><<replace "#message">>Sending to UCA HQ<</replace>>\
-      <<next 2s>><<replace "#message">>Receiving<</replace>>\
       <<next 2s>><<replace "#message">>Sending Complete<</replace>>\
       <</timed>></messagescreen>
 
@@ -1831,7 +1895,10 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $nextpass to "postbutton2">>
 
 <main class="beacon">
-<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="instruction">
+<div class="uca-logo-text">
+     <img src="assets/img/logotitle.png" alt="logo"/></div>
+     <h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
@@ -1847,7 +1914,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 <<timed 3s>>
   <<append "#img">>
-    <img src="assets/img/button-2.png" alt="first button" class="fadeInQuick"/>
+    <img src="assets/img/button-2.png" alt="second button" class="fadeInQuick"/>
     <</append>>
 
   <</timed>>
@@ -2172,29 +2239,27 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $prevpass to "video5">>
 <<set $pass to "ucatelecom2">>
 <<set $nextpass to "button3">>
-<main>
+<<timed 0.1s>>
+  <<addclass "#screen" "center">>
+<</timed>>
+<main class="telecom">
 <div id="mount"></div>
     <div class="pager-container">
         <div class="pager retro-box">
         <h2>UCA TELCOM</h2>
          <div id="audio"></div>
           <div class="screen" id="screen">
-        </div>
-           <div class="buttons-container">
-            <div class="options-btn-container" id="options">
-                <div class="options-btn key"><span>Yes</span></div>
-                  <div class="options-btn key"><span>No</span></div>
-             </div>
-    <<include "phonekeyboard">>
             <div class="speed-dial-btn-container">
+                   <div class="speed-dial"><span>Speed Dial</span> </div>
+               <div class="flex-col">
                 <div class="speed-dial-btn key active pulse" id="anneBtn">
                 <<link "Anne">>
                     <<replace "#screen">>
-                        <<include "callingAnne">>
+                        <<include "callingAnne2">>
                         <</replace>>
                 <</link>>
                     </div>
-                 <div class="speed-dial"><span>Speed Dial</span> </div>
+          
                   <div class="speed-dial-btn key  active pulse" id="malBtn">
                   <<link "Mal">>
                      <<replace "#screen">>
@@ -2202,21 +2267,72 @@ MISSION UNLOCKED LOGO CHANGE
                         <</replace>>
                   <</link>></div>
              </div>
+             </div>
+        </div>
+           <div class="buttons-container">
+            <div class="options-btn-container" id="options">
+                <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
+             </div>
+    /* <<include "phonekeyboard">> */
+          
            </div>
         </div>
     </div>
 </main>
 <<include "footernext">>
 
+:: callingAnne2 [nobr]
+
+<<addclass "#screen" "center">>
+<span>Calling...</span>
+<img src="assets/img/call.png" alt="calling icon"/>
+<span>Anne</span>
+
+<<timed 4s>>
+    <<replace "#screen">>
+        <span>No answer.</span>
+        <</replace>>
+    <</timed>>
+
+<<timed 7s>>
+
+    <<replace "#screen">>
+       <div class="speed-dial-btn-container">
+                   <div class="speed-dial"><span>Speed Dial</span> </div>
+               <div class="flex-col">
+                <div class="speed-dial-btn key active pulse" id="anneBtn">
+                <<link "Anne">>
+                    <<replace "#screen">>
+                        <<include "callingAnne2">>
+                        <</replace>>
+                <</link>>
+                    </div>
+          
+                  <div class="speed-dial-btn key  active pulse" id="malBtn">
+                  <<link "Mal">>
+                     <<replace "#screen">>
+                        <<include "2callingMal">>
+                        <</replace>>
+                  <</link>></div>
+             </div>
+             </div>
+        <</replace>>
+    <</timed>>
 
 :: 2callingMal [nobr]
-<<removeclass "#malBtn" "pulse">>
-<<removeclass "#anneBtn" "pulse">>
+
+<<addclass "#screen" "center">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Mal</span>
 <<timed 3s>>
 <<timed 0.1s>>
+   <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
+    <<removeclass "#screen" "center">>
   <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -2229,10 +2345,10 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>Oh sorry it’s you again. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 <<timed 7.5s>>
@@ -2243,10 +2359,10 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 10.5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>The UCA TOK did help.</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 <<timed 13s>>
@@ -2257,9 +2373,9 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
  <<timed 17s>>
-     <<replace "#screen">>
+     <<prepend "#options">>
   <<include "codewordphone2" >>
-  <</replace>>
+  <</prepend>>
 <</timed>>
 <</timed>>
 
@@ -2270,10 +2386,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<textbox "$code" "">>
 </div>
 <<replace "#options">>
-    <div class="options-btn key" id="yesBtn">
-      <<link "...">>
-  <</link>>
-      </div>
+   
   <div class="options-btn key active pulse"  id="noBtn">
         <<link "Send">>
       /% PASSWORD CODE %/
@@ -2301,13 +2414,13 @@ MISSION UNLOCKED LOGO CHANGE
  <</replace>>
 
 :: codewordphone2wrong [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<replace "#screen">>
   <<timed 0.1s>>
-  
+   <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
   <<replace "#screen">>
         <<type 60ms>><p> Try again.  </p>
                <</type>>
@@ -2315,17 +2428,18 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
         <</replace>>
        <<timed 4s>>
-    <<replace "#screen">>
+    <<prepend "#options">>
   <<include "codewordphone2" >>
-  <</replace>>
+  <</prepend>>
 <</timed>>
 
 :: 2callingMal2 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -2336,10 +2450,10 @@ MISSION UNLOCKED LOGO CHANGE
   <</timed>>
 
   <<timed 5.5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>Ok - but I haven’t done it in a while. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 9s>>
@@ -2369,11 +2483,12 @@ MISSION UNLOCKED LOGO CHANGE
 <</timed>>
 
 :: 2callingMal3 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
    <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -2403,17 +2518,17 @@ MISSION UNLOCKED LOGO CHANGE
           <</replace>>
 
           <<timed 3.5s>>
-              <<replace "#screen">>
+              <<append "#screen">>
                 <<type 40ms>><p>Its so important when the world is so loud to keep discovering and taking time to breathe.</p>
                       <</type>>
-          <</replace>>
+          <</append>>
             <</timed>>
 
           <<timed 9s>>
-              <<replace "#screen">>
+              <<append "#screen">>
                 <<type 40ms>><p>If you are feeling stressed by the static, you can always do the UCA Breath. </p>
                       <</type>>
-          <</replace>>  
+          <</append>>  
             <</timed>>
 
         <<timed 14s>>
@@ -2456,11 +2571,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: 2callingMal4 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -2471,31 +2587,31 @@ MISSION UNLOCKED LOGO CHANGE
   <</timed>>
 
   <<timed 5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>It started a few months ago, when Jay & I were doing our UCA training. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 10s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>It was only something small at first... a few unhelpful thoughts</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 <<timed 16s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>Worrying people would laugh at me or I’d say something wrong. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 <<timed 22s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 60ms>><p>But I didn’t know what to do</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 24s>>
@@ -2517,12 +2633,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: 2callingMal5 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
 
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
      <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -2540,10 +2656,10 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 6.5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>That’s when those thoughts started swirling around </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 9s>>
@@ -2565,11 +2681,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: 2callingMal6 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
       <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -2587,10 +2704,10 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
   <<timed 6s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>So I left...</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 
@@ -2613,11 +2730,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: 2callingMal7 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
       <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_08.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -2628,10 +2746,10 @@ MISSION UNLOCKED LOGO CHANGE
   <</timed>>
 
   <<timed 3.5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 60ms>><p>I didn’t know what was happening</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 6.5s>>
@@ -2654,11 +2772,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: 2callingMal8 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+     <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL2_09.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>  
@@ -2676,24 +2795,24 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
   <<timed 3.5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>Another call is coming in</p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
  <<timed 6s>>
-  <<replace "#screen">>
+  <<append "#screen">>
         <<type 40ms>><p>Probably that person calling about the bouncy castle! </p>
                <</type>>
-  <</replace>>
+  <</append>>
   <</timed>>
 
   <<timed 10s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>Thank you for helping me explain my feelings. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 
@@ -3802,30 +3921,76 @@ UCA Mission Unlocked
 <<set $prevpass to "postbutton6">>
 <<set $pass to "ucatelecom3">>
 <<set $nextpass to "video7">>
-<<include "3callingMal3">>
-<main>
+<<timed 0.1s>>
+  <<addclass "#screen" "center">>
+<</timed>>
+<main class="telecom">
 <div id="mount"></div>
     <div class="pager-container">
         <div class="pager retro-box">
         <h2>UCA TELCOM</h2>
         <div id="audio"></div>
           <div class="screen" id="screen">
-        </div>
-           <div class="buttons-container">
-            <div class="options-btn-container" id="options">
-                <div class="options-btn key"><span>Yes</span></div>
-                  <div class="options-btn key"><span>No</span></div>
-             </div>
-    <<include "phonekeyboard">>
-            <div class="speed-dial-btn-container">
+          <div class="speed-dial-btn-container">
+              <div class="speed-dial"><span>Speed Dial</span> </div>
+               <div class="flex-col">
                 <div class="speed-dial-btn key active pulse" id="anneBtn">
                 <<link "Anne">>
                     <<replace "#screen">>
-                        <<include "callingAnne">>
+                        <<include "callingAnne3">>
                         <</replace>>
                 <</link>>
                     </div>
-                 <div class="speed-dial"><span>Speed Dial</span> </div>
+                  <div class="speed-dial-btn key  active pulse" id="malBtn">
+                  <<link "Mal">>
+                     <<replace "#screen">>
+                        <<include "3callingMal">>
+                        <</replace>>
+                  <</link>></div>
+                  </div>
+             </div>
+        </div>
+           <div class="buttons-container">
+            <div class="options-btn-container" id="options">
+                <div class="options-btn key"><span>...</span></div>
+                  <div class="options-btn key"><span>...</span></div>
+             </div>
+    /* <<include "phonekeyboard">> */
+            
+           </div>
+        </div>
+    </div>
+</main>
+
+
+
+:: callingAnne3 [nobr]
+<<removeclass "#anneBtn" "pulse">>
+<<removeclass "#anneBtn" "active">>
+<<addclass "#screen" "center">>
+<span>Calling...</span>
+<img src="assets/img/call.png" alt="calling icon"/>
+<span>Anne</span>
+
+<<timed 4s>>
+    <<replace "#screen">>
+        <span>No answer.</span>
+        <</replace>>
+    <</timed>>
+
+<<timed 7s>>
+  /* <<removeclass "#screen" "center">> */
+    <<replace "#screen">>
+       <div class="flex-col">
+         <div class="speed-dial-btn-container">
+              <div class="speed-dial"><span>Speed Dial</span> </div>
+                <div class="speed-dial-btn key active pulse" id="anneBtn">
+                <<link "Anne">>
+                    <<replace "#screen">>
+                        <<include "callingAnne3">>
+                        <</replace>>
+                <</link>>
+                    </div>
                   <div class="speed-dial-btn key  active pulse" id="malBtn">
                   <<link "Mal">>
                      <<replace "#screen">>
@@ -3833,23 +3998,25 @@ UCA Mission Unlocked
                         <</replace>>
                   <</link>></div>
              </div>
-           </div>
-        </div>
-    </div>
-</main>
-<<include "footernext">>
-
-
-
+            </div>
+        <</replace>>
+    <</timed>>
 :: 3callingMal [nobr]
 <<removeclass "#malBtn" "pulse">>
 <<removeclass "#anneBtn" "pulse">>
+<<addclass "#screen" "center">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Mal</span>
 
+<<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
 <<timed 3s>>
+
   <<timed 0.1s>>
+      <<removeclass "#screen" "center">>
   <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL3_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -3869,17 +4036,17 @@ UCA Mission Unlocked
     <</timed>>
 
 <<timed 6s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>Something that I wasn’t sure about. Maybe it’s the static. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
-<<timed 10s>>
-      <<replace "#screen">>
+<<timed 9s>>
+      <<append "#screen">>
         <<type 40ms>><p>Maybe what you have recommended is getting rid of it. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
  <<timed 13s>>
@@ -3906,6 +4073,10 @@ UCA Mission Unlocked
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL3_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -3929,18 +4100,24 @@ UCA Mission Unlocked
   <</append>>
     <</timed>>
 
-  <<timed 8s>>
-      <<replace "#screen">>
+  <<timed 7s>>
+      <<append "#screen">>
         <<type 40ms>><p>Is there anything else you have discovered? </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
+  /* <<timed 12s>>
+       <<append "#screen">>
+  <<include "codewordphone3" >>
+  <</append>>
+<</timed>> */
   <<timed 12s>>
-       <<replace "#screen">>
-  <<include "codewordphone2" >>
-  <</replace>>
+  <<prepend "#options">>
+   <<include "codewordphone3">>
+  <</prepend>>
 <</timed>>
+
 
 :: codewordphone3 [nobr]
 
@@ -3949,10 +4126,7 @@ UCA Mission Unlocked
 <<textbox "$code" "">>
 </div>
 <<replace "#options">>
-    <div class="options-btn key" id="yesBtn">
-      <<link "...">>
-  <</link>>
-      </div>
+   
   <div class="options-btn key active pulse"  id="noBtn">
         <<link "Send">>
       /% PASSWORD CODE %/
@@ -3986,7 +4160,10 @@ UCA Mission Unlocked
 <<removeclass "#noBtn" "active">>
   <<replace "#screen">>
   <<timed 0.1s>>
-  
+  <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
   <<replace "#screen">>
         <<type 60ms>><p> Try again.  </p>
                <</type>>
@@ -3994,18 +4171,19 @@ UCA Mission Unlocked
     <</timed>>
         <</replace>>
        <<timed 4s>>
-    <<replace "#screen">>
+    <<append "#screen">>
   <<include "codewordphone3" >>
-  <</replace>>
+  <</append>>
 <</timed>>
 
 
 :: 3callingMal3 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
+    <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL3_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -4016,33 +4194,33 @@ UCA Mission Unlocked
   <</timed>>
 
   <<timed 5.5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>When the world is loud, it is sometimes good to come back to being curious about what is around you. To notice.  </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 13s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>I’ve been noticing I’m missing Jay...
  </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 17s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 40ms>><p>And wondering whether she will forgive me for running away during our presentation. </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 22s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 60ms>><p>Do you think she will? 
  </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
   <<timed 25s>>
@@ -4071,6 +4249,10 @@ UCA Mission Unlocked
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
     <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL3_04_yes.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -4080,7 +4262,7 @@ UCA Mission Unlocked
   <</replace>>
   <</timed>>
 
-  <<timed 2s>>
+  <<timed 1.8s>>
       <<append "#screen">>
         <<type 40ms>><p>	I want to be friends with her </p>
                <</type>>
@@ -4088,15 +4270,15 @@ UCA Mission Unlocked
     <</timed>>
 
 
-  <<timed 4.5s>>
-      <<replace "#screen">>
+  <<timed 4s>>
+      <<append "#screen">>
         <<type 30ms>><p>I want to jump on my bouncy castle with my friend!  </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 
-  <<timed 6s>>
+  <<timed 5.5s>>
       <<append "#screen">>
         <<type 40ms>><p>I’m going to try. </p>
                <</type>>
@@ -4115,7 +4297,7 @@ UCA Mission Unlocked
          <div class="options-btn key active pulse"  id="noBtn">
             <<link "End Call">>
                     <<replace "#screen">>
-               <<goto "button3">>
+               <<goto $nextpass>>
                 <</replace>>
                 <</link>>
                 </div>
@@ -4129,6 +4311,10 @@ UCA Mission Unlocked
 <<removeclass "#yesBtn" "active">>
 <<removeclass "#noBtn" "active">>
   <<timed 0.1s>>
+    <<replace "#options">>
+     <div class="options-btn key"><span>...</span></div>
+    <div class="options-btn key"><span>...</span></div>
+    <</replace>>
   <<replace "#audio">>
       <audio src="assets/audio/UCA_MAL_CALL3_04_no.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
     <</replace>>
@@ -4147,10 +4333,10 @@ UCA Mission Unlocked
 
 
   <<timed 5s>>
-      <<replace "#screen">>
+      <<append "#screen">>
         <<type 30ms>><p>I want to jump on my bouncy castle with my friend!  </p>
                <</type>>
-  <</replace>>
+  <</append>>
     <</timed>>
 
 
@@ -5170,7 +5356,7 @@ DELIVERY
 <<set $nextpass to "video8">>
 
 <main class="beacon">
-<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="instruction" id="instruction"><h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
@@ -5195,13 +5381,16 @@ DELIVERY
   <</timed>>
 
 <<timed 6s>>
-  <<replace "#btnMount">>
-       <<button "next">>
-        <<goto $nextpass>>
-        <</button>>
-    <</replace>>
+  <<append "#instruction">>
+    <h2>Now enter the codeword: </h2>
+    <</append>>
   <</timed>>
 
+<<timed 7s>>
+  <<append "#instruction">>
+      <<include "codewordBeacon">>
+    <</append>>
+  <</timed>>
 
 :: codewordBeacon[nobr]
 <div id="coderesult"></div>
@@ -5344,5 +5533,1190 @@ DELIVERY
       <<timed 9s>><staticboxcolour><div class="animated
       fadeIn">[img[https://remote.co.com/UCA/assets/img/colours.gif]]</div></staticboxcolour><</timed>>
       <<timed 25s>><<goto "video8">><</timed>>
+
+
+
+
+:: video9 [purple nobr]
+<<set $prevpass to "entrance">>
+<<set $pass to "video9">>
+<<set $nextpass to "ucaroottext1">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO 9 */
+
+     <<include "staticlogo">>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"> Video 9</div>
+  <div class="chat-input" id="inputMount">
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+
+
+<<timed 1s>>
+  <<audio "ping" "play">>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Anne</span>
+        <p>Hello Anne here. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 5s>>
+    <<audio "ping" "play">>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Anne</span>
+        <p>You are ready to become UCA Agents. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 8s>>
+    <<audio "ping" "play">>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Anne</span>
+        <p>I’ll lead you through the UCA Rooting. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 10s>>
+
+   <<replace "#hero">>
+     <iframe width='800px' height='450px' allow=autoplay
+      src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
+      <</replace>>
+   
+<</timed>>
+
+
+
+
+<<timed 20s>>
+    <<replace "#messagesContainer">><</replace>>
+  <<replace "#inputMount">>
+  <<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroottext1 [purple nobr]
+<<set $prevpass to "video9">>
+<<set $pass to "ucaroottext1">>
+<<set $nextpass to "ucaroottext2">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+
+<<timed 1s>>
+  <<audio "ping" "play">>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>Teacher, please hold onto the UCA Roots for the time being and hand out a piece of paper to everyone in the class. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+<<timed 5s>>
+    <<audio "ping" "play">>
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="avatar">
+        <img src="assets/img/user.png" alt="avatar"/>
+      </div>
+      <div class="message-container" >
+        <span class="sender">Jay</span>
+        <p>When they are ready to plant their UCA Roots click <<button "here">>
+          <<include "ucaroottext1b">>
+            <<replace "#inputMount">>
+        <</replace>>
+         <<replace "#messagesContainer">>
+        <</replace>>
+        <</button>></p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
+
+
+
+
+:: ucaroottext1b [ nobr]
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>The UCA Root is like a bookmark</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>A bookmark to a time gone by</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 7s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>To a time, you were happy. Super happy. In fact, the happiest you can remember.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 11s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It’s important for an Agent to remember these moments.   </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+
+<<timed 13s>>
+    <<replace "#messagesContainer">><</replace>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<include "ucaroot3">>
+      <<replace "#inputMount">>
+        <</replace>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroot3 [ nobr]
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>On your piece of paper</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 3s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>You’ll have around 5 minutes to draw an image of that memory – with a pencil</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 5s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>An image of a happy memory for you  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 8s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Teacher, click Next when you are ready to move on. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+
+
+<<timed 11s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+
+:: ucaroottext2 [purple nobr]
+<<set $prevpass to "ucaroottext1">>
+<<set $pass to "ucaroottext2">>
+<<set $nextpass to "ucaroottext4">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now I’m going to give you time to colour it in with colouring pencils</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Teacher, click Next when you are ready to move on.</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 6s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+
+:: ucaroottext3 [purple nobr]
+<<set $prevpass to "ucaroottext2">>
+<<set $pass to "ucaroottext3">>
+<<set $nextpass to "ucaroottext4">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now I’m going to give you time to make it even more colourful – with pens – even if it makes it super colourful!</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Teacher, click Next when you are ready to move on.</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 6s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroottext4 [purple nobr]
+<<set $prevpass to "ucaroottext3">>
+<<set $pass to "ucaroottext4">>
+<<set $nextpass to "ucaroottext5">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now I’m going to give you time to make it even more colourful – with pens – even if it makes it super colourful! </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Teacher, click Next when you are ready to move on</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 6s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroottext5 [purple nobr]
+<<set $prevpass to "ucaroottext4">>
+<<set $pass to "ucaroottext5">>
+<<set $nextpass to "ucaroottext6">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now we connect our Root and our Memory. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Teacher, please hand out the Agent Cards to the UCA Agents</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 7s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>When all the agents have their cards click Next  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+
+<<timed 9s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroottext6 [purple nobr]
+<<set $prevpass to "ucaroottext5">>
+<<set $pass to "ucaroottext6">>
+<<set $nextpass to "ucaroottext7">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>I want you to hold your button in your hand and whisper UCA UCA UCA - squeeze it in your hand – think about that memory you have just drawn. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 9s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroottext7 [purple nobr]
+<<set $prevpass to "ucaroottext6">>
+<<set $pass to "ucaroottext7">>
+<<set $nextpass to "ucaroottext8">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now we test if the planting has worked? </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I’m going to ask you a question</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 7s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It may be a strange question</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 10s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>A question that makes you forget your memory. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 13s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It’s a very important question</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 16s>>
+     <<replace "#hero">>
+      <<include "question1">>
+      <</replace>>
+    <</timed>>
+
+
+
+
+:: question1 [nobr]
+<div class="question-container">
+  <h3 class="question">Would you eat a plate of worms for £100?</h3>
+ 
+  <br/>
+  <<timed 5s>>
+      <<include "choiceworms">>
+    <</timed>>
+
+ </div>
+
+:: choiceworms [nobr]
+
+<div class="choice-container nav-wrapper">
+<<button "YES">>
+
+  <<replace "#messagesContainer">><</replace>>
+    <<replace "#inputMount">><</replace>>
+  <<timed 2s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Ewwwww ok!</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+    <<timed 5s>>
+    <<goto $nextpass>>
+    <</timed>>
+<</button>>
+<<button "NO">>
+  <<replace "#messagesContainer">><</replace>>
+    <<replace "#inputMount">><</replace>>
+  <<timed 2s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Phew!</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+    <<timed 5s>>
+    <<goto $nextpass>>
+    <</timed>>
+<</button>>
+</div>
+
+:: ucaroottext8 [purple nobr]
+<<set $prevpass to "ucaroottext7">>
+<<set $pass to "ucaroottext8">>
+<<set $nextpass to "ucaroottext9">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now, I want you to hold your button in your hand again, whisper UCA UCA UCA, squeeze it in your hand and think about that memory you have just drawn. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 6s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroottext9 [purple nobr]
+<<set $prevpass to "ucaroottext8">>
+<<set $pass to "ucaroottext9">>
+<<set $nextpass to "ucaroottext10">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now another test...</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>I’m going to ask you another question</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 7s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It may be a strange question</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 10s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>A question that makes you forget your memory. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 13s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>It’s a very important question</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 17s>>
+  <<replace "#hero">>
+     <<include "question2">>
+     <</replace>>
+    <</timed>>
+
+
+
+:: question2 [nobr]
+<div class="question-container">
+  <h3 class="question">Would you rather eat a Weetabix with Fishy Spaghetti or Cold Custard on it?</h3>
+ 
+  <br/>
+  <<timed 5s>>
+      <<include "choiceweetabix">>
+    <</timed>>
+
+ </div>
+
+
+:: choiceweetabix [nobr]
+
+<div class="choice-container nav-wrapper">
+<<button "FISHY SPAGHETTI">>
+<<replace "#messagesContainer">><</replace>>
+    <<replace "#inputMount">><</replace>>
+  <<timed 2s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Sounds yummy!</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+    <<timed 5s>>
+    <<goto $nextpass>>
+    <</timed>>
+<</button>>
+<<button "COLD CUSTARD">>
+
+   <<replace "#messagesContainer">><</replace>>
+    <<replace "#inputMount">><</replace>>
+  <<timed 2s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Sounds yummy!</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+    <<timed 5s>>
+    <<goto $nextpass>>
+    <</timed>>
+<</button>>
+</div>
+
+:: ucaroottext10 [purple nobr]
+<<set $prevpass to "ucaroottext9">>
+<<set $pass to "ucaroottext10">>
+<<set $nextpass to "ucaroottext11">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Now, last time, I want you to hold your button in your hand again, whisper UCA UCA UCA, squeeze it in your hand and think about that memory you have just drawn.</p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+
+<<timed 6s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+
+:: ucaroottext11 [purple nobr]
+<<set $prevpass to "ucaroottext10">>
+<<set $pass to "ucaroottext11">>
+<<set $nextpass to "ucaroottext12">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>Your UCA Root is planted. </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Whenever you want to go back to that memory</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 7s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Whenever you need to root yourself </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 10s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>And remind yourself that you are a UCA Agent</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 13s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Just squeeze your UCA Root. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
+:: ucaroottext12 [purple nobr]
+<<set $prevpass to "ucaroottext11">>
+<<set $pass to "ucaroottext12">>
+<<set $nextpass to "ucalogo">>
+
+<main class="main portal grid-container">
+<section class="hero " id="hero">
+<<include "staticlogo">>
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer"></div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+<<timed 1s>>
+    <<audio "ping" "play">>
+  <<replace "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <span class="sender">Jay</span>
+            <p>This UCA Root is for you, always.  </p>
+        </div>
+        </div>
+    <</replace>>
+    <</timed>>
+
+<<timed 4s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>You are now UCA Agents. </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 7s>>
+   <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>Welcome.  </p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 10s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>We may be in touch in the future</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 13s>>
+      <<audio "ping" "play">>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="avatar">
+            <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+        <div class="message-container" >
+            <p>For now, continue to care for each other, and our planet!</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+
+<<timed 16s>>
+  <<replace "#inputMount">>
+<<button "Next">>
+    <<goto $nextpass>>
+    <</button>>
+  <</replace>>
+<</timed>>
+
 
 
