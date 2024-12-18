@@ -372,6 +372,63 @@ section.chat > .chat-input > #coderesult,
   width: 100%;
   height: 100%;
 }
+ 
+/* PORTAL NO VID  */
+main.portal.grid-container.novid{
+  grid-template-areas:
+        "chat video"
+        "footer footer";
+ grid-template-columns: 2fr 2fr;
+}
+
+
+
+
+main.portal.grid-container.novid > section.chat > .chat-header{
+  display: flex;
+  gap: 3rem;
+  background: var(--browny);
+  padding: 2rem;
+  margin: -2rem;
+  color: white;
+  margin-block-end: 2rem;
+}
+
+main.portal.grid-container.novid > section.chat > .chat-header > .chat-header-user-info{
+  display: flex;
+  /* flex-direction: column; */
+  gap:3rem;
+  align-items: center;
+}
+
+span.online-dot {
+  color:var(--greencorrect);
+  margin-inline-end: 1rem;
+  }
+
+  main.portal.grid-container.novid > section.chat > .chat-header > .chat-header-user-info > span.sender{
+ font-family: var(--font-decorative-headings);
+ font-size: 2.7rem;
+}
+
+main.portal.grid-container.novid > section.chat > .chat-header > .avatar {
+  max-width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+main.portal.grid-container.novid > .hero > .choice-container > button, 
+main.portal.grid-container.novid > .hero > .choice-container > p > button{
+  font-size: 3rem;
+}
+
+main.portal.grid-container.novid > .hero > .choice-container > p{
+  font-family: var(--font-decorative-headings);
+  font-size: 2.7rem;
+  text-align: center;
+  color:white;
+}
 
 /* CHAT  */
 
@@ -414,6 +471,9 @@ section.chat > .messages-container > .message > .message-container > .sender {
 section.chat > .messages-container > .message > .message-container > p {
   margin-block-end: 0;
 }
+
+
+
 
 /* PORTAL FOOTER  */
 section.portal-footer {

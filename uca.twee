@@ -189,7 +189,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<audio ":all" stop>>
 <<set $prevpass to "Start">>
 <<set $pass to "entrance">>
-<<set $nextpass to "staticbuzz1">>
+<<set $nextpass to "video1">>
 <<if $sound is true>>
   <div id="audio">
     <audio src="assets/audio/UCA_01_INTRO_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
@@ -491,21 +491,31 @@ MISSION UNLOCKED LOGO CHANGE
 
 </div>
 
-
+:: jaychatheader [nobr]
+  <div class="chat-header">
+    <div class="avatar">
+          <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+      <div class="chat-header-user-info">
+        <span class="sender">Jay</span>
+         <div class="online-wrapper"><span class="online-dot">●</span><span>Online</span></div>
+      </div>
+  </div>
 :: ucatok1 [purple nobr]
 <<set $prevpass to "video2">>
 <<set $pass to "ucatok1">>
-<<set $nextpass to "ucatok2">>
+<<set $nextpass to "ucatok1vid">>
 <<if $sound is true>>
   <div id="audio">
     <audio src="assets/audio/UCA_02_MOVE_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -520,11 +530,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 0.5s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>Move?</p>
       </div>
     </div>
@@ -534,11 +540,9 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 1s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
+  
       <div class="message-container" >
-        <span class="sender">Jay</span>
+
         <p>It seems we need to Move by doing something called the UCA TOK. </p>
       </div>
     </div>
@@ -548,11 +552,9 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 6s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
+  
       <div class="message-container" >
-        <span class="sender">Jay</span>
+
         <p>Oh yes - we did this in our training.</p>
       </div>
     </div>
@@ -562,11 +564,9 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 9s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
+  
       <div class="message-container" >
-        <span class="sender">Jay</span>
+
         <p>Wait, there’s a video file here to share. </p>
       </div>
     </div>
@@ -576,11 +576,9 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 12s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
+  
       <div class="message-container" >
-        <span class="sender">Jay</span>
+
         <p>I can load it up for you.</p>
       </div>
     </div>
@@ -590,11 +588,9 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 14s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
+  
       <div class="message-container" >
-        <span class="sender">Jay</span>
+
         <p>You might want to stand up behind your chairs. </p>
       </div>
     </div>
@@ -604,26 +600,11 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 16s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
     <div class="choice-container nav-wrapper">
         <<button "READY">>
             <<timed 0.5s>>
-                <<replace "#messagesContainer">>
-                    <</replace>>
-                 <<replace "#inputMount">>
-                    <</replace>>
-                <<replace "#hero">>
-                    <<include "videoucatok">>
-                <</replace>>
-             <</timed>>
-
-               <<timed 5s>>
-                 <<replace "#inputMount">>
-                    <<button "NEXT">>
-                        <<goto $nextpass>>
-                        <</button>>
-                    <</replace>>
-               
+                <<goto $nextpass>>
              <</timed>>
         <</button>>
     </div>
@@ -637,6 +618,37 @@ MISSION UNLOCKED LOGO CHANGE
       src='https://player.vimeo.com/video/531954959?h=40746c6772&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
 
 
+:: ucatok1vid [purple nobr]
+<<set $prevpass to "ucatok1">>
+<<set $pass to "ucatok1vid">>
+<<set $nextpass to "ucatok2">>
+<main class="main portal grid-container">
+  <section class="hero" id="hero">
+/* VIDEO UCA  TOK: */
+<<include "videoucatok">>
+
+  </section>
+  <section class="chat">
+  <div class="messages-container" id="messagesContainer">
+  UCA TOK VID</div>
+  <div class="chat-input" id="inputMount">
+
+  </div>
+  </section>
+  <section class="portal-footer video">
+    <<include "portalfooter">>
+  </section>
+</main>
+
+<<timed 5s>>
+  <<replace "#inputMount">>
+        <<button "NEXT">>
+        <<goto $nextpass>>
+        <</button>>
+    <</replace>>
+<</timed>>
+
+
 :: ucatok2 [purple nobr]
 <<set $prevpass to "ucatok1">>
 <<set $pass to "ucatok2">>
@@ -646,11 +658,12 @@ MISSION UNLOCKED LOGO CHANGE
     <audio src="assets/audio/UCA_02_MOVE_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -665,11 +678,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 0.1s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>Wow - that was Anne - she is our UCA Mentor. </p>
       </div>
     </div>
@@ -679,11 +688,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 3s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>She was running our training to become UCA Agents.  </p>
       </div>
     </div>
@@ -693,11 +698,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 6s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>It seems we need to learn the UCA TOK altogether. </p>
       </div>
     </div>
@@ -707,11 +708,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 9s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>Inside compartment 1 is the instructions and also…</p>
       </div>
     </div>
@@ -721,11 +718,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 14s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>A button! </p>
       </div>
     </div>
@@ -735,11 +728,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 15s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>Yes, our first one. Hold onto that.  </p>
       </div>
     </div>
@@ -748,58 +737,39 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 16s>>
-    <<replace "#inputMount">>
-<div class="choice-container nav-wrapper">
-    <<button "NEXT">>
-       <<replace "#inputMount">><</replace>>
-        <<timed 0.5s>>
-          <<replace "#audio">>
-      <audio src="assets/audio/UCA_02_MOVE_06_+_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
-    <</replace>>
-        <<replace "#messagesContainer">>
-        <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
-        <div class="message-container" >
-            <span class="sender">Jay</span>
-            <p> Want to rewatch Anne do the UCA TOK? Click <<button "Here">>
+    <<replace "#hero">>
+     <div class="choice-container nav-wrapper">
+            <p> Want to rewatch Anne do the UCA TOK? <br/>
+            Click 
+            <<button "Here">>
             <<timed 0.5s>>
-                <<replace "#inputMount">><</replace>>
-                    <<replace "#hero">>
-                    <<include "videoucatok">>
-                <</replace>>
+              <<goto "ucatok1vid">>
              <</timed>>
             <</button>>  
             </p>
          </div>
-        </div>
        <</replace>>
         <<timed 4s>>
-            <<append "#messagesContainer">>
-            <div class="message">
-            <div class="avatar">
-                <img src="assets/img/user.png" alt="avatar"/>
-            </div>
-            <div class="message-container" >
-                <span class="sender">Jay</span>
-            <p>When you have learnt the UCA TOK and are ready to run it with me, click the UCA TOK button below. 
-            </p>
-            </div>
-            </div>
-        <</append>>
-        <<replace "#inputMount">>
-          <<button "UCA TOK LEARNT">>
-                <<timed 0.5s>>
-                 <<goto $nextpass>>
-                 <</timed>>
-                <</button>>
-          <</replace>>
+            <<replace "#messagesContainer">>
+              <div class="message">
+    
+              <div class="message-container" >
+      
+              <p>When you have learnt the UCA TOK and are ready to run it with me, click the button below. 
+              </p>
+              </div>
+              </div>
+            <</replace>>
+             <<append "#messagesContainer">>
+                <<button "UCA TOK LEARNT">>
+                 <<timed 0.5s>>
+                   <<goto $nextpass>>
+                  <</timed>>
+                   <</button>>
+           <</append>>
         <</timed>>
-        <</timed>>
-    <</button>>
- <</replace>>
 <</timed>>
+
 
 
 
@@ -2280,7 +2250,7 @@ MISSION UNLOCKED LOGO CHANGE
         </div>
     </div>
 </main>
-<<include "footernext">>
+/* <<include "footernext">> */
 
 :: callingAnne2 [nobr]
 
