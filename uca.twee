@@ -237,7 +237,7 @@ MISSION UNLOCKED LOGO CHANGE
   <<if $code is "STATIC">>
     <<audio "correct" play>>
     <<replace "#coderesult">><div class="confirmation" id="confirmation">Correct!</div><</replace>>
-    <<timed 3s>><<goto "staticbuzz1">><</timed>>
+    <<timed 3s>><<goto "video1">><</timed>>
 
    <<elseif $code is "JAY">>
     <<audio "correct" play>>
@@ -855,7 +855,7 @@ MISSION UNLOCKED LOGO CHANGE
 :: ucatelecom [nobr]
 <<set $prevpass to "video3">>
 <<set $pass to "ucatelecom">>
-<<set $nextpass to "button">>
+<<set $nextpass to "button1">>
 <<timed 0.1s>>
   <<addclass "#screen" "center">>
 <</timed>>
@@ -1515,10 +1515,11 @@ MISSION UNLOCKED LOGO CHANGE
 <</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
   <div class="messages-container" id="messagesContainer">
+  
  </div>
   <div class="chat-input" id="inputMount">
 
@@ -1602,7 +1603,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: compartment2b [purple nobr]
-<<set $prevpass to "compartment2a">>
+<<set $prevpass to "compartment2">>
 <<set $pass to "compartment2b">>
 <<set $nextpass to "enterclubname">>
 <<if $sound is true>>
@@ -1610,12 +1611,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_03_RHUBARB_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -1630,11 +1632,8 @@ MISSION UNLOCKED LOGO CHANGE
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
+
             <p>Connect.  </p>
         </div>
         </div>
@@ -1644,9 +1643,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 1.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>We can do that. </p>
         </div>
@@ -1657,9 +1653,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Well, You know me. I’m Jay, I love Rhubarb. Let’s get to know you. </p>
         </div>
@@ -1670,9 +1663,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 8s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>There’s a game to play. </p>
         </div>
@@ -1683,9 +1673,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 9.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>A game we played at UCA Training actually.  </p>
         </div>
@@ -1696,9 +1683,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 12s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>It’s called Secret Club.  </p>
         </div>
@@ -1708,12 +1692,14 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 16s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
+     <div class="choice-container nav-wrapper">
 <<button "Next">>
+  <<replace "#messagesContainer">><</replace>>
+    <<replace "#hero">><</replace>>
     <<include "compartment2c">>
-      <<replace "#inputMount">>
-        <</replace>>
     <</button>>
+    </div>
   <</replace>>
 <</timed>>
 
@@ -1724,11 +1710,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>You’ll have to find something you all have in common. </p>
         </div>
         </div>
@@ -1738,9 +1720,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 4s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Maybe you all like Rhubarb like me. </p>
         </div>
@@ -1751,9 +1730,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Wishful thinking! </p>
         </div>
@@ -1762,12 +1738,14 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 8s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
+ <div class="choice-container nav-wrapper">
 <<button "Next">>
+    <<replace "#messagesContainer">><</replace>>
+      <<replace "#hero">><</replace>>
     <<include "compartment2d">>
-      <<replace "#inputMount">>
-        <</replace>>
     <</button>>
+    </div>
   <</replace>>
 <</timed>>
 
@@ -1778,11 +1756,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>You can open Compartment 2 now. </p>
         </div>
         </div>
@@ -1792,9 +1766,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>The instructions for Secret Club are in there - and yes - a second button! </p>
         </div>
@@ -1804,11 +1775,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 5s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
+ <div class="choice-container nav-wrapper">
 <<button "Next">>
     <<goto "enterclubname">>
-
     <</button>>
+    </div>
   <</replace>>
 <</timed>>
 
@@ -1906,12 +1878,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_03_RHUBARB_08.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -1926,11 +1899,7 @@ MISSION UNLOCKED LOGO CHANGE
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>I understand now - that game is about connections.  </p>
         </div>
         </div>
@@ -1940,9 +1909,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Having friends and family is key to countering the Static.  </p>
         </div>
@@ -1953,9 +1919,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>That’s why I miss Mal so much. </p>
         </div>
@@ -1966,9 +1929,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 9.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>The static can make you feel very lonely. </p>
         </div>
@@ -1979,9 +1939,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 12.5s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>When I lose touch with others, sometimes I lose touch with myself - I can't even remember what my favourite Rhubarb topping was... Mushy Peas? Ice Cream? </p>
         </div>
@@ -1992,9 +1949,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 23s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Can you remember? </p>
         </div>
@@ -2004,7 +1958,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 24s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
   <<include "codewordpostbutton2">>
   <</replace>>
 <</timed>>
@@ -2012,6 +1966,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 :: codewordpostbutton2 [nobr]
 <div id="coderesult"></div>
+<br/>
  <div id="resultbutton">
 /% CODEWORD INPUT %/
 <div class="code-input chat-code">
@@ -2051,12 +2006,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_03_RHUBARB_09.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -2071,11 +2027,7 @@ MISSION UNLOCKED LOGO CHANGE
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Yes </p>
         </div>
         </div>
@@ -2085,9 +2037,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 0.8s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Of course it was - Custard. </p>
         </div>
@@ -2098,9 +2047,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 3.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Thank you - you see The Static can pop up in all of us. </p>
         </div>
@@ -2111,9 +2057,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 7.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>But I’m determined to help Mal. </p>
         </div>
@@ -2124,9 +2067,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 10s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Send me the name on the next compartment. </p>
         </div>
@@ -2137,13 +2077,14 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 12s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
   <<include "codewordpostbutton2b">>
   <</replace>>
 <</timed>>
 
 :: codewordpostbutton2b [nobr]
 <div id="coderesult"></div>
+<br/>
  <div id="resultbutton">
 /% CODEWORD INPUT %/
 <div class="code-input chat-code">
@@ -2250,7 +2191,7 @@ MISSION UNLOCKED LOGO CHANGE
         </div>
     </div>
 </main>
-/* <<include "footernext">> */
+<<include "footernext">>
 
 :: callingAnne2 [nobr]
 
@@ -2853,12 +2794,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_JAY_04_NOTICE_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+   <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -2873,11 +2815,7 @@ MISSION UNLOCKED LOGO CHANGE
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>I hope what we are doing is helping Mal. </p>
         </div>
         </div>
@@ -2887,9 +2825,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 2s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>We need to keep going.  </p>
         </div>
@@ -2900,9 +2835,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 4s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>The Static needs to be beaten.  </p>
         </div>
@@ -2913,9 +2845,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>And the Beacon holds the key to doing that. </p>
         </div>
@@ -2926,9 +2855,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 8s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>We’ve got 3 buttons now - 3 to go!  </p>
         </div>
@@ -2939,9 +2865,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 11s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>What’s the name of the compartment we are opening now?</p>
         </div>
@@ -2951,7 +2874,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 13s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
   <<include "codewordpostbutton3">>
   <</replace>>
 <</timed>>
@@ -2997,12 +2920,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_JAY_04_NOTICE_02.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3017,11 +2941,7 @@ MISSION UNLOCKED LOGO CHANGE
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>The next compartment seems to be something that would have been reserved for UCA Agents... </p>
         </div>
         </div>
@@ -3031,11 +2951,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>But seeing as the Beacon has been sent to you then perhaps you have to fill them out? </p>
         </div>
         </div>
@@ -3044,10 +2960,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 10s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
+  <div class="choice-container nav-wrapper">
   <<button "Next">>
     <<goto $nextpass>>
     <</button>>
+    </div>
   <</replace>>
 <</timed>>
 
@@ -3060,12 +2978,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_JAY_04_NOTICE_03.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3081,9 +3000,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 0.1s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>UCA Agent Cards.  </p>
         </div>
@@ -3094,9 +3010,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>These cards will need you to use Curiosity. Noticing things about yourself. Being curious.</p>
         </div>
@@ -3107,10 +3020,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 9s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
+   <div class="choice-container nav-wrapper">
   <<button "Next">>
     <<goto $nextpass>>
     <</button>>
+  </div>
   <</replace>>
 <</timed>>
 
@@ -3124,12 +3039,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_JAY_04_NOTICE_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3144,13 +3060,8 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 0.1s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-  
 <p>I guess if we can reflect on ourselves, we can appreciate what is around us. </p>
-
         </div>
         </div>
     <</append>>
@@ -3159,9 +3070,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
         <p>And see the superpowers in ourselves, and in our friends, that we have to spark change in our world. </p>
 
@@ -3174,10 +3082,12 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 10s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
+ <div class="choice-container nav-wrapper">
   <<button "Next">>
     <<goto $nextpass>>
     <</button>>
+  </div>
   <</replace>>
 <</timed>>
 
@@ -3191,12 +3101,13 @@ MISSION UNLOCKED LOGO CHANGE
    <audio src="assets/audio/UCA_JAY_04_NOTICE_05.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3212,9 +3123,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 0.1s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
           <p> Teacher, you might want to share some of these superpowers so we know what we have in the room to face the Static. </p>
 
@@ -3226,9 +3134,6 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 6.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
 <p>When you have done let me know by clicking below</p>
 
@@ -3238,10 +3143,12 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 10s>>
-  <<replace "#inputMount">>
+  <<replace "#hero">>
+  <div class="choice-container nav-wrapper">
   <<button "We’ve finished">>
     <<goto $nextpass>>
     <</button>>
+    </div>
   <</replace>>
 <</timed>>
 :: button4 [nobr]
@@ -3249,7 +3156,10 @@ MISSION UNLOCKED LOGO CHANGE
 <<set $pass to "button4">>
 <<set $nextpass to "ucamissionunlocked">>
 <main class="beacon">
-<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="instruction">
+<div class="uca-logo-text">
+     <img src="assets/img/logotitle.png" alt="logo"/></div>
+     <h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
