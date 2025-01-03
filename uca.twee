@@ -520,6 +520,18 @@ $(document.head).find('#style-ui-bar').remove();
          <div class="online-wrapper"><span class="online-dot">●</span><span>Online</span></div>
       </div>
   </div>
+
+
+:: annechatheader [nobr]
+  <div class="chat-header">
+    <div class="avatar">
+          <img src="assets/img/user.png" alt="avatar"/>
+        </div>
+      <div class="chat-header-user-info">
+        <span class="sender">Anne</span>
+         <div class="online-wrapper"><span class="online-dot">●</span><span>Online</span></div>
+      </div>
+  </div>
 :: ucatok1 [purple nobr]
 <<set $prevpass to "video2">>
 <<set $pass to "ucatok1">>
@@ -3147,7 +3159,7 @@ $(document.head).find('#style-ui-bar').remove();
 :: button4 [nobr]
 <<set $prevpass to "postbutton3b">>
 <<set $pass to "button4">>
-<<set $nextpass to "ucamissionunlocked">>
+<<set $nextpass to "postbutton4">>
 <main class="beacon">
 <div class="instruction">
 <div class="uca-logo-text">
@@ -3186,7 +3198,7 @@ $(document.head).find('#style-ui-bar').remove();
 :: postbutton4 [purple nobr]
 <<set $prevpass to "button4">>
 <<set $pass to "postbutton4">>
-<<set $nextpass to "mission">>
+<<set $nextpass to "ucamissionunlocked">>
 <<if $sound is true>>
   <div id="audio">
    <audio src="assets/audio/UCA_JAY_04_NOTICE_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
@@ -3198,6 +3210,7 @@ $(document.head).find('#style-ui-bar').remove();
 <<include "rotatelogo">>
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3212,11 +3225,8 @@ $(document.head).find('#style-ui-bar').remove();
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
+    
             <p>The last compartment. </p>
         </div>
         </div>
@@ -3226,9 +3236,6 @@ $(document.head).find('#style-ui-bar').remove();
 <<timed 2.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>But still two buttons to uncover - If we complete this maybe we’ll find out where that last button is.  </p>
         </div>
@@ -3239,9 +3246,6 @@ $(document.head).find('#style-ui-bar').remove();
 <<timed 10s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>What is the last compartment called? </p>
         </div>
@@ -5308,6 +5312,7 @@ $(document.head).find('#style-ui-bar').remove();
 
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"> Video 9</div>
   <div class="chat-input" id="inputMount">
   </div>
@@ -5324,11 +5329,7 @@ $(document.head).find('#style-ui-bar').remove();
   <<audio "ping" "play">>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Anne</span>
         <p>Hello Anne here. </p>
       </div>
     </div>
@@ -5339,11 +5340,7 @@ $(document.head).find('#style-ui-bar').remove();
     <<audio "ping" "play">>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Anne</span>
         <p>You are ready to become UCA Agents. </p>
       </div>
     </div>
@@ -5354,11 +5351,7 @@ $(document.head).find('#style-ui-bar').remove();
     <<audio "ping" "play">>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Anne</span>
         <p>I’ll lead you through the UCA Rooting. </p>
       </div>
     </div>
@@ -5390,12 +5383,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "video9">>
 <<set $pass to "ucaroottext1">>
 <<set $nextpass to "ucaroottext2">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+    <audio src="assets/audio/teacher-please-hold-onto-the-UCA-Roots.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -5407,30 +5405,21 @@ $(document.head).find('#style-ui-bar').remove();
 </main>
 
 
-<<timed 1s>>
-  <<audio "ping" "play">>
+<<timed 0.2s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>Teacher, please hold onto the UCA Roots for the time being and hand out a piece of paper to everyone in the class. </p>
       </div>
     </div>
   <</append>>
 <</timed>>
 
-<<timed 5s>>
-    <<audio "ping" "play">>
+<<timed 9s>>
+
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
         <p>When they are ready to plant their UCA Roots click <<button "here">>
           <<include "ucaroottext1b">>
             <<replace "#inputMount">>
@@ -5447,28 +5436,26 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 :: ucaroottext1b [ nobr]
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.1s>>
+  <<replace "#audio">>
+  <div id="audio">
+    <audio src="assets/audio/the-UCA-Root-is-like-a-bookmark.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+    <</replace>>
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>The UCA Root is like a bookmark</p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 4s>>
-      <<audio "ping" "play">>
+<<timed 3s>>
+
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>A bookmark to a time gone by</p>
         </div>
@@ -5477,12 +5464,9 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 7s>>
-      <<audio "ping" "play">>
+
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>To a time, you were happy. Super happy. In fact, the happiest you can remember.  </p>
         </div>
@@ -5490,13 +5474,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 11s>>
-      <<audio "ping" "play">>
+<<timed 15s>>
+
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>It’s important for an Agent to remember these moments.   </p>
         </div>
@@ -5507,8 +5488,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 
-<<timed 13s>>
-    <<replace "#messagesContainer">><</replace>>
+<<timed 19s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<include "ucaroot3">>
@@ -5519,28 +5499,27 @@ $(document.head).find('#style-ui-bar').remove();
 <</timed>>
 
 :: ucaroot3 [ nobr]
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+  <<replace "#audio">>
+  <div id="audio">
+    <audio src="assets/audio/on-your-piece-of-paper.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+    <</replace>>
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+      
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>On your piece of paper</p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 3s>>
-      <<audio "ping" "play">>
+<<timed 2s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+      
         <div class="message-container" >
             <p>You’ll have around 5 minutes to draw an image of that memory – with a pencil</p>
         </div>
@@ -5548,13 +5527,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 5s>>
-      <<audio "ping" "play">>
+<<timed 8s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+      
         <div class="message-container" >
             <p>An image of a happy memory for you  </p>
         </div>
@@ -5562,13 +5538,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 8s>>
-      <<audio "ping" "play">>
+<<timed 12s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+      
         <div class="message-container" >
             <p>Teacher, click Next when you are ready to move on. </p>
         </div>
@@ -5579,7 +5552,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 
-<<timed 11s>>
+<<timed 18s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -5593,12 +5566,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext1">>
 <<set $pass to "ucaroottext2">>
 <<set $nextpass to "ucaroottext4">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/now-im-going-to-give-you-time-to-colour.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -5608,28 +5586,24 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Now I’m going to give you time to colour it in with colouring pencils</p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 4s>>
-      <<audio "ping" "play">>
+<<timed 6s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+
         <div class="message-container" >
             <p>Teacher, click Next when you are ready to move on.</p>
         </div>
@@ -5638,7 +5612,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 
-<<timed 6s>>
+<<timed 12s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -5647,74 +5621,22 @@ $(document.head).find('#style-ui-bar').remove();
 <</timed>>
 
 
-
-:: ucaroottext3 [purple nobr]
-<<set $prevpass to "ucaroottext2">>
-<<set $pass to "ucaroottext3">>
-<<set $nextpass to "ucaroottext4">>
-
-<main class="main portal grid-container">
-<section class="hero " id="hero">
-<<include "staticlogo">>
-  </section>
-  <section class="chat">
-  <div class="messages-container" id="messagesContainer"></div>
-  <div class="chat-input" id="inputMount">
-
-  </div>
-  </section>
-  <section class="portal-footer video">
-    <<include "portalfooter">>
-  </section>
-</main>
-<<timed 1s>>
-    <<audio "ping" "play">>
-  <<replace "#messagesContainer">>
-        <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
-        <div class="message-container" >
-            <span class="sender">Jay</span>
-            <p>Now I’m going to give you time to make it even more colourful – with pens – even if it makes it super colourful!</p>
-        </div>
-        </div>
-    <</replace>>
-    <</timed>>
-
-<<timed 4s>>
-      <<audio "ping" "play">>
-    <<append "#messagesContainer">>
-        <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
-        <div class="message-container" >
-            <p>Teacher, click Next when you are ready to move on.</p>
-        </div>
-        </div>
-    <</append>>
-    <</timed>>
-
-
-<<timed 6s>>
-  <<replace "#inputMount">>
-<<button "Next">>
-    <<goto $nextpass>>
-    <</button>>
-  <</replace>>
-<</timed>>
 
 :: ucaroottext4 [purple nobr]
-<<set $prevpass to "ucaroottext3">>
+<<set $prevpass to "ucaroottext2">>
 <<set $pass to "ucaroottext4">>
 <<set $nextpass to "ucaroottext5">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/now-im-going-to-give-you-time-make-it-even-more-colourful.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -5725,28 +5647,22 @@ $(document.head).find('#style-ui-bar').remove();
   </section>
 </main>
 
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.1s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Now I’m going to give you time to make it even more colourful – with pens – even if it makes it super colourful! </p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 4s>>
-      <<audio "ping" "play">>
+<<timed 11s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Teacher, click Next when you are ready to move on</p>
         </div>
@@ -5755,7 +5671,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 
-<<timed 6s>>
+<<timed 15s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -5767,12 +5683,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext4">>
 <<set $pass to "ucaroottext5">>
 <<set $nextpass to "ucaroottext6">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/now-we-connect-our-root-and-our-memory.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -5782,28 +5703,24 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Now we connect our Root and our Memory. </p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 4s>>
-      <<audio "ping" "play">>
+<<timed 4.5s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>Teacher, please hand out the Agent Cards to the UCA Agents</p>
         </div>
@@ -5811,13 +5728,11 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 7s>>
-      <<audio "ping" "play">>
+<<timed 10s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>When all the agents have their cards click Next  </p>
         </div>
@@ -5826,7 +5741,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 
-<<timed 9s>>
+<<timed 15s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -5838,12 +5753,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext5">>
 <<set $pass to "ucaroottext6">>
 <<set $nextpass to "ucaroottext7">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/i-want-you-to-hold-your-button.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -5853,22 +5773,20 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.1s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>I want you to hold your button in your hand and whisper UCA UCA UCA - squeeze it in your hand – think about that memory you have just drawn. </p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 9s>>
+<<timed 15s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -5880,12 +5798,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext6">>
 <<set $pass to "ucaroottext7">>
 <<set $nextpass to "ucaroottext8">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/now-we-test-if-the-planting-has-worked.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -5895,15 +5818,13 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Now we test if the planting has worked? </p>
         </div>
         </div>
@@ -5912,12 +5833,10 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 <<timed 4s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>I’m going to ask you a question</p>
         </div>
@@ -5926,12 +5845,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 7s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>It may be a strange question</p>
         </div>
@@ -5940,12 +5857,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 10s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>A question that makes you forget your memory. </p>
         </div>
@@ -5954,12 +5869,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 13s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>It’s a very important question</p>
         </div>
@@ -5967,7 +5880,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 16s>>
+<<timed 17s>>
      <<replace "#hero">>
       <<include "question1">>
       <</replace>>
@@ -5989,20 +5902,20 @@ $(document.head).find('#style-ui-bar').remove();
 
 :: choiceworms [nobr]
 
-<div class="choice-container nav-wrapper">
+<div class="choice-container nav-wrapper initial">
 <<button "YES">>
-
+  <<replace "#hero">><<include "staticlogo">><</replace>>
   <<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
-  <<timed 2s>>
-    <<audio "ping" "play">>
+  <<timed 0.5s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/yes-ewwwww-ok.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Ewwwww ok!</p>
         </div>
         </div>
@@ -6013,18 +5926,19 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 <</button>>
 <<button "NO">>
+   <<replace "#hero">><<include "staticlogo">><</replace>>
   <<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
-  <<timed 2s>>
-    <<audio "ping" "play">>
+  <<timed 0.5s>>
+<<replace "#audio">>
+      <audio src="assets/audio/no-phew.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
-            <p>Phew!</p>
+  
+            <p>No! Phew!</p>
         </div>
         </div>
     <</replace>>
@@ -6039,12 +5953,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext7">>
 <<set $pass to "ucaroottext8">>
 <<set $nextpass to "ucaroottext9">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/now-i-want-you-to-hold-your-button-in-your-hand-again.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -6054,15 +5973,13 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Now, I want you to hold your button in your hand again, whisper UCA UCA UCA, squeeze it in your hand and think about that memory you have just drawn. </p>
         </div>
         </div>
@@ -6070,7 +5987,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 
-<<timed 6s>>
+<<timed 14s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -6082,12 +5999,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext8">>
 <<set $pass to "ucaroottext9">>
 <<set $nextpass to "ucaroottext10">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/now-another-test.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -6097,15 +6019,13 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Now another test...</p>
         </div>
         </div>
@@ -6114,12 +6034,10 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 <<timed 4s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>I’m going to ask you another question</p>
         </div>
@@ -6128,12 +6046,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 7s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>It may be a strange question</p>
         </div>
@@ -6142,12 +6058,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 10s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>A question that makes you forget your memory. </p>
         </div>
@@ -6156,12 +6070,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 13s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>It’s a very important question</p>
         </div>
@@ -6182,7 +6094,7 @@ $(document.head).find('#style-ui-bar').remove();
   <h3 class="question">Would you rather eat a Weetabix with Fishy Spaghetti or Cold Custard on it?</h3>
  
   <br/>
-  <<timed 5s>>
+  <<timed 8s>>
       <<include "choiceweetabix">>
     <</timed>>
 
@@ -6191,47 +6103,62 @@ $(document.head).find('#style-ui-bar').remove();
 
 :: choiceweetabix [nobr]
 
-<div class="choice-container nav-wrapper">
+<div class="choice-container nav-wrapper initial">
 <<button "FISHY SPAGHETTI">>
+    <<replace "#hero">><<include "staticlogo">><</replace>>
 <<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
-  <<timed 2s>>
-    <<audio "ping" "play">>
+  <<timed 0.5s>>
+<<replace "#audio">>
+      <audio src="assets/audio/fishy-spaghetti-sounds-yummy.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
-            <p>Sounds yummy!</p>
+            <p>Fishy Spaghetti?</p>
         </div>
         </div>
     <</replace>>
     <</timed>>
-    <<timed 5s>>
+    <<timed 3s>>
+  <<append "#messagesContainer">>
+        <div class="message">
+        <div class="message-container" >
+            <p>Sounds yummy!</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+    <<timed 7s>>
     <<goto $nextpass>>
     <</timed>>
 <</button>>
 <<button "COLD CUSTARD">>
-
+    <<replace "#hero">><<include "staticlogo">><</replace>>
    <<replace "#messagesContainer">><</replace>>
     <<replace "#inputMount">><</replace>>
-  <<timed 2s>>
-    <<audio "ping" "play">>
+  <<timed 0.5s>>
+  <<replace "#audio">>
+      <audio src="assets/audio/cold-custard-sounds-yummy.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
-            <p>Sounds yummy!</p>
+            <p>Cold Custard?</p>
         </div>
         </div>
     <</replace>>
     <</timed>>
-    <<timed 5s>>
+      <<timed 3s>>
+  <<append "#messagesContainer">>
+        <div class="message">
+        <div class="message-container" >
+            <p>Sounds yummy!</p>
+        </div>
+        </div>
+    <</append>>
+    <</timed>>
+    <<timed 7s>>
     <<goto $nextpass>>
     <</timed>>
 <</button>>
@@ -6241,12 +6168,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext9">>
 <<set $pass to "ucaroottext10">>
 <<set $nextpass to "ucaroottext11">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/now-last-time-i-want-you-to-hold.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -6256,15 +6188,13 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
-            <span class="sender">Jay</span>
+  
             <p>Now, last time, I want you to hold your button in your hand again, whisper UCA UCA UCA, squeeze it in your hand and think about that memory you have just drawn.</p>
         </div>
         </div>
@@ -6272,7 +6202,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 
-<<timed 6s>>
+<<timed 18s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -6285,12 +6215,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext10">>
 <<set $pass to "ucaroottext11">>
 <<set $nextpass to "ucaroottext12">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/your-UCA-Root-is-planted.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -6300,15 +6235,11 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Your UCA Root is planted. </p>
         </div>
         </div>
@@ -6316,12 +6247,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 4s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>Whenever you want to go back to that memory</p>
         </div>
@@ -6330,12 +6259,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 7s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>Whenever you need to root yourself </p>
         </div>
@@ -6344,12 +6271,10 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 <<timed 10s>>
-      <<audio "ping" "play">>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>And remind yourself that you are a UCA Agent</p>
         </div>
@@ -6357,13 +6282,11 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 13s>>
-      <<audio "ping" "play">>
+<<timed 14.5s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>Just squeeze your UCA Root. </p>
         </div>
@@ -6371,7 +6294,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 16s>>
+<<timed 17s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
@@ -6383,12 +6306,17 @@ $(document.head).find('#style-ui-bar').remove();
 <<set $prevpass to "ucaroottext11">>
 <<set $pass to "ucaroottext12">>
 <<set $nextpass to "ucalogo">>
-
-<main class="main portal grid-container">
+<<if $sound is true>>
+  <div id="audio">
+   <audio src="assets/audio/this-UCA-Root-is-for-you-always.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div>
+<</if>>
+<main class="main portal grid-container novid">
 <section class="hero " id="hero">
 <<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "annechatheader">>
   <div class="messages-container" id="messagesContainer"></div>
   <div class="chat-input" id="inputMount">
 
@@ -6398,28 +6326,22 @@ $(document.head).find('#style-ui-bar').remove();
     <<include "portalfooter">>
   </section>
 </main>
-<<timed 1s>>
-    <<audio "ping" "play">>
+<<timed 0.2s>>
+
   <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>This UCA Root is for you, always.  </p>
         </div>
         </div>
     <</replace>>
     <</timed>>
 
-<<timed 4s>>
-      <<audio "ping" "play">>
+<<timed 5s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>You are now UCA Agents. </p>
         </div>
@@ -6427,13 +6349,11 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 7s>>
-   <<audio "ping" "play">>
+<<timed 10s>>
+
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>Welcome.  </p>
         </div>
@@ -6441,13 +6361,11 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 10s>>
-      <<audio "ping" "play">>
+<<timed 12s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>We may be in touch in the future</p>
         </div>
@@ -6455,13 +6373,11 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 13s>>
-      <<audio "ping" "play">>
+<<timed 16s>>
+  
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
+       
         <div class="message-container" >
             <p>For now, continue to care for each other, and our planet!</p>
         </div>
@@ -6469,7 +6385,7 @@ $(document.head).find('#style-ui-bar').remove();
     <</append>>
     <</timed>>
 
-<<timed 16s>>
+<<timed 23s>>
   <<replace "#inputMount">>
 <<button "Next">>
     <<goto $nextpass>>
