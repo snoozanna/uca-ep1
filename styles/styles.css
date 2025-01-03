@@ -114,13 +114,26 @@ p {
   font-family: "Didact Gothic", sans-serif;
 }
 
+.missionunlocked {
+  color: black;
+  background-image: linear-gradient(to bottom, rgba(18,42, 66, .85), rgb(144 159 173 / 85%)), url(../assets/img/purplebackground.jpg);
+       -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  font-family: "Didact Gothic", sans-serif;
+}
+
 .green {
   color: black;
   background-image: url("../assets/img/greenbackground.jpg");
   text-align: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  position: inherit;
   font-family: "Didact Gothic", sans-serif;
 }
 
@@ -313,6 +326,12 @@ section.hero {
 }
 
 /* entrance  */
+body.brown{
+  background-color: var(--pink);
+  background-image: url("../assets/img/paperbackground.jpg");
+
+}
+
 #resultbutton > .code-input.entrance > input {
   max-width: 5rem;
   min-width: inherit;
@@ -384,7 +403,7 @@ main.portal.grid-container.novid{
 
 
 
-main.portal.grid-container.novid > section.chat > .chat-header{
+section.chat > .chat-header{
   display: flex;
   gap: 3rem;
   background: var(--browny);
@@ -394,7 +413,7 @@ main.portal.grid-container.novid > section.chat > .chat-header{
   margin-block-end: 2rem;
 }
 
-main.portal.grid-container.novid > section.chat > .chat-header > .chat-header-user-info{
+ section.chat > .chat-header > .chat-header-user-info{
   display: flex;
   /* flex-direction: column; */
   gap:3rem;
@@ -406,17 +425,30 @@ span.online-dot {
   margin-inline-end: 1rem;
   }
 
-  main.portal.grid-container.novid > section.chat > .chat-header > .chat-header-user-info > span.sender{
+section.chat > .chat-header > .chat-header-user-info > span.sender{
  font-family: var(--font-decorative-headings);
  font-size: 2.7rem;
 }
 
-main.portal.grid-container.novid > section.chat > .chat-header > .avatar {
-  max-width: 60px;
+ section.chat > .chat-header > .avatar {
+  max-width: 45px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
+
+main.portal.grid-container.novid >  section.chat > .chat-header > .avatar{
+  max-width: 60px;
+}
+
+main.portal.grid-container.novid > section.hero{
+  flex-direction: column;
+}
+
+main.portal.grid-container.novid > section.hero > #coderesult{
+color:white
+}
+
 
 main.portal.grid-container.novid > .hero > .choice-container > button, 
 main.portal.grid-container.novid > .hero > .choice-container > p > button{
@@ -470,6 +502,14 @@ section.chat > .messages-container > .message > .message-container > .sender {
 
 section.chat > .messages-container > .message > .message-container > p {
   margin-block-end: 0;
+}
+
+.choice-container.nav-wrapper.initial{
+  font-size: 4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:3rem
 }
 
 
@@ -736,7 +776,7 @@ main.ucalab > .ucalab-wrapper > h3 {
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
-    filter: hue-rotate(360deg);
+    /* filter: hue-rotate(90deg); */
   }
 }
 
@@ -766,10 +806,14 @@ main.ucalab > .ucalab-wrapper > h3 {
 }
 
 .animaterotate {
+  -webkit-animation-name: rotate;
+  animation-name: rotate;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  animation-iteration-count: infinite;
+
 }
 
 @-webkit-keyframes rotateIn {
@@ -1117,69 +1161,6 @@ main.ucalab > .ucalab-wrapper > h3 {
   }
 }
 
-/* second attempt at static  */
-/* Version 1: Subtle Buzz */
-@keyframes staticBuzz1 {
-  0%, 100% { transform: translate(0, 0) rotate(0); }
-  10%, 30%, 50%, 70%, 90% { 
-    transform: translate(calc(-1px + 2px * random()), calc(-1px + 2px * random())) rotate(0.5deg); 
-  }
-}
-
-/* Version 2: Slightly More Intense Buzz */
-@keyframes staticBuzz2 {
-  0%, 100% { transform: translate(0, 0) rotate(0); }
-  10%, 30%, 50%, 70%, 90% { 
-    transform: translate(calc(-2px + 4px * random()), calc(-2px + 4px * random())) rotate(1deg); 
-  }
-}
-
-/* Version 3: Moderate Buzz */
-@keyframes staticBuzz3 {
-  0%, 100% { transform: translate(0, 0) rotate(0); }
-  10%, 30%, 50%, 70%, 90% { 
-    transform: translate(calc(-4px + 8px * random()), calc(-4px + 8px * random())) rotate(1.5deg); 
-  }
-}
-
-/* Version 4: Strong Buzz */
-@keyframes staticBuzz4 {
-  0%, 100% { transform: translate(0, 0) rotate(0); }
-  10%, 30%, 50%, 70%, 90% { 
-    transform: translate(calc(-6px + 12px * random()), calc(-6px + 12px * random())) rotate(2deg); 
-  }
-}
-
-/* Version 5: Extreme Buzz */
-@keyframes staticBuzz5 {
-  0%, 100% { transform: translate(0, 0) rotate(0); }
-  10%, 30%, 50%, 70%, 90% { 
-    transform: translate(calc(-8px + 16px * random()), calc(-8px + 16px * random())) rotate(3deg); 
-  }
-}
-
-/* Apply animation */
-.buzz1 {
-  animation: staticBuzz1 5s infinite;
-}
-
-.buzz2 {
-  animation: staticBuzz2 5s infinite;
-}
-
-.buzz3 {
-  animation: staticBuzz3 5s infinite;
-}
-
-.buzz4 {
-  animation: staticBuzz4 5s infinite;
-}
-
-.buzz5 {
-  animation: staticBuzz5 5s infinite;
-}
-
-
 /* PAGER  */
 
 main.telecom{
@@ -1269,7 +1250,7 @@ main.telecom{
   gap:1rem
 }
 .screen > img{
-  max-width: 20%;
+  max-width: 15%;
   filter: grayscale(1);
 }
 
@@ -1366,14 +1347,14 @@ transform: rotate(90deg);
 }
 
 .speed-dial-btn{
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 1rem;
 
 
 }
 
 .speed-dial-btn.key > a, .options-btn.key > a {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-top: 0;
 }
 
@@ -1455,7 +1436,7 @@ min-width: inherit;
   align-items: center;
   background: aqua;
   z-index: 99999;
-  background: linear-gradient(to bottom, #7fb2d9, #545997);
+  background: linear-gradient(to bottom, #545997, #7fb2d9);
   background-size: 100% 200%; /* Double height for smooth vertical movement */
   animation: moveGradient 20s ease-in-out infinite;
 }
@@ -1463,7 +1444,9 @@ min-width: inherit;
 .uca-breath-container > .macro-type  > p{
   font-size: 3rem;
   font-weight: bold;
+  font-family: var(--font-decorative-headings);
 }
+
 
 @keyframes moveGradient {
   0% {
@@ -1498,7 +1481,7 @@ min-width: inherit;
   box-shadow: 0px 2px 38px rgb(0 0 0 / 93%);
   transform: rotate(-4deg);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 2rem;
   justify-content: center;
@@ -1540,6 +1523,9 @@ max-width: 100%;
 
 
 /* MISSION PLANNER */
+.mission-brief.planner.letterpaper{
+flex-direction: column;
+}
 
 .mission-brief-section.stamp{
   width: 100%;
@@ -1594,6 +1580,10 @@ justify-content: space-between;
 
 }
 
+#responses{
+transform: rotate(-3deg);
+}
+
 .responses.letterpaper{
   background: var(--pink);
   width: 60%;
@@ -1625,6 +1615,18 @@ ul > li.mission-item{
     margin: auto;
 }
 
+.code-input.chat-code.flex-col{
+  gap:0.3rem;
+}
+.code-input.chat-code.flex-col > p{
+margin-block-end: 0;
+}
+
+.code-input.chat-code.flex-col > input{
+  margin-inline-end: 0;
+  margin-block-end: 0.3rem;
+}
+
 
 /* LOGO ALONE */
 
@@ -1640,10 +1642,15 @@ main.logo-alone{
 
 
 main.logo-alone > div{
-  width: 49%;
+
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+main.logo-alone  > button {
+  z-index: 99999;
+  font-size: x-large;
 }
 
 
@@ -1678,16 +1685,32 @@ main.beacon > .instruction{
 }
 
 main.beacon > #btnMount, 
-main.ucalab > #btnMount{
+main.ucalab > #btnMount, #btnAlone{
   position: absolute;
   right: 5%;
   bottom: 5%;
+}
+
+main.beacon > #btnMount.left, 
+main.ucalab > #btnMount.left{
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  width: fit-content
+}
+
+main.beacon > .beacon-container{
+  position: relative;
 }
 
 .beacon-img-container {
   position: relative;
   width: 45vw;
   height: 45vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .beacon-img-container > img {
@@ -1695,7 +1718,7 @@ main.ucalab > #btnMount{
   top: 0;
   left: 0;
   width: 100%; /* Ensure all images resize consistently */
-  height: 100%;
+  /* height: 100%; */
   object-fit: contain; /* Adjusts content to maintain aspect ratio */
 }
 
@@ -1707,3 +1730,101 @@ main.ucalab > #btnMount{
   z-index: 20;
 }
 
+.beacon-codeword-container{
+  position: absolute;
+  top: 50%;
+  left: 28%;
+  z-index: 9999;
+}
+/* CONTENTS */
+main.contents{
+  /* height:70vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: var(--offwhite);
+  font-size: x-large;
+}
+
+/* CLUBNAME  */
+name{
+  font-size: xxx-large;
+}
+
+/* UNLOCKED */
+main.unlocked{
+  height:100vh;
+}
+.unlocked{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.unlocked > span {
+font-size: xxx-large;
+color:var(--offwhite);
+
+}
+
+span.fancy {
+  transform: rotate(-4deg);
+  font-family: var(--font-decorative-headings);
+  font-size: 10rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ad992b, #ffecb3, #b8860b, #cbb42f);
+  background-size: 200% auto;
+  background-clip: text;
+  color: transparent;
+  animation: goldShimmer 2s linear forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+span.fancy.static::before{
+  animation:none;
+  position: initial;
+  top: initial;
+  left: initial;
+  width: initial;
+  height: initial;
+  background: initial;
+  
+}
+
+span.fancy.static{
+  animation:none;
+  transform: rotate(-4deg);
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+span.fancy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30px;
+  width: 150%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+  animation: goldSparkle 3s forwards;
+}
+
+@keyframes goldSparkle {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}

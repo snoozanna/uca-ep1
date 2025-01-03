@@ -105,13 +105,14 @@ $(document.head).find('#style-ui-bar').remove();
 <<waitforaudio>>
 
 
-:: Start [purple nobr]
+:: Start [ nobr]
 <<set $sound to true>>
 <<audio ":all" stop>>
 <<set $prevpass to "Start">>
 <<set $pass to "Start">>
 <<set $nextpass to "ucalab">>
-<main><messagebox2>[img[assets/img/intercom2.png][entrance]]</messagebox2>
+<<addclass "body" "brown">>
+<main class="start"><messagebox2>[img[assets/img/intercom2.png][entrance]]</messagebox2>
 
 </main>
 
@@ -181,7 +182,9 @@ $(document.head).find('#style-ui-bar').remove();
         class="animated  overlay-image three">[img[assets/img/agency.png]]</div>
 
 :: unlocked
-MISSION UNLOCKED LOGO CHANGE
+<div class="unlocked">
+       <span class="fancy">MISSION UNLOCKED</span>
+</div>
 
 
 
@@ -215,10 +218,47 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: contents [nobr purple]
-<main class="ucalab">
+<main class="contents beacon">
 
 <h2>Contents</h2>
+<<link "Entrance">>
+  <<goto "Start">>
+  <</link>>
 
+<<link "Start">>
+  <<goto "video1">>
+  <</link>>
+
+<<link "Section 2">>
+  <<goto "video4">>
+  <</link>>
+
+<<link "Section 3">>
+  <<goto "postbutton2">>
+  <</link>>
+
+<<link "Section 4">>
+  <<goto "postbutton3">>
+  <</link>>
+
+<<link "Section 5">>
+  <<goto "ucamissionunlocked">>
+  <</link>>
+
+<<link "Section 6">>
+  <<goto "postbutton6">>
+  <</link>>
+
+<<link "Final Section">>
+  <<goto "video8">>
+  <</link>>
+
+<div id="btnMount" class="left">
+  <<button "Back">>
+    <<goto "entrance">>
+    <</button>>
+  
+</div>
 </main>
 
 
@@ -261,20 +301,7 @@ MISSION UNLOCKED LOGO CHANGE
 <br/>
 <div id="coderesult"></div>
 
-:: staticbuzz1 [nobr] {"position":"47.999999999999964,2141.333333333333","size":"100,100"}
-<<set $prevpass to "entrance">>
-<<set $pass to "staticbuzz1">>
-<<set $nextpass to "video1">>
-<div class="buzz1">
- <img src="https://remote.co.com/UCA/assets/img/static5.gif" class="staticgif center" id="staticgif">
-      </div>
-      <<timed 0.5s>>
-      /* <iframe src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3"  style="display:none" allow="autoplay" ></iframe> */
-      <audio src="https://remote.co.com/UCA/assets/audio/crispy-static.mp3" autoplay style="display:none">Audio is not supported on your device</audio> 
-      <</timed>>
-  <<timed 3.5s>>
-    <<goto $nextpass>>
-    <</timed>>
+
 
 :: video1 [purple nobr]
 <<set $prevpass to "entrance">>
@@ -293,6 +320,7 @@ MISSION UNLOCKED LOGO CHANGE
 
   </section>
   <section class="chat">
+   <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"> Video 1</div>
   <div class="chat-input" id="inputMount">
   </div>
@@ -308,11 +336,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">User</span>
         <p> Your choice is needed.</p>
       </div>
     </div>
@@ -323,11 +347,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 3s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">User</span>
         <p> If you want to help, click WE ARE IN or CLOSE to go back to schoolwork?  </p>
       </div>
     </div>
@@ -342,7 +362,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 :: choice1 [nobr]
 
-<div class="choice-container nav-wrapper">
+<div class="choice-container nav-wrapper initial">
 <<button "WE ARE IN">>
     <<goto $nextpass>>
 <</button>>
@@ -357,7 +377,7 @@ MISSION UNLOCKED LOGO CHANGE
     <<if $sound is true>>
    <<replace "#audio">>
       <audio src="assets/audio/UCA_01_INTRO_03_oh_really_.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
-    </div>
+
     <</replace>>
     <</if>>
     <<replace "#messagesContainer">>
@@ -375,7 +395,7 @@ MISSION UNLOCKED LOGO CHANGE
 
     <<timed 3s>>
     <<replace "#inputMount">>
-<div class="choice-container nav-wrapper">
+<div class="choice-container nav-wrapper initial">
     <<button "JOKING, WE ARE IN">>  <<goto $nextpass>><</button>>
     <<button "NOT TODAY">>
         <<timed 0.5s>>
@@ -428,6 +448,7 @@ MISSION UNLOCKED LOGO CHANGE
 
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"> Video 2</div>
   <div class="chat-input" id="inputMount">
 
@@ -442,11 +463,9 @@ MISSION UNLOCKED LOGO CHANGE
 
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
+     
       <div class="message-container" >
-        <span class="sender">User</span>
+
         <p> Enter compartment 1’s codeword. </p>
       </div>
     </div>
@@ -600,6 +619,13 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 <<timed 16s>>
+    <<append "#messagesContainer">>
+        <div class="message">
+        <div class="message-container" >
+            <p>When ready click below.</p>
+        </div>
+        </div>
+    <</append>>
   <<replace "#hero">>
     <div class="choice-container nav-wrapper">
         <<button "READY">>
@@ -629,6 +655,7 @@ MISSION UNLOCKED LOGO CHANGE
 
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
   UCA TOK VID</div>
   <div class="chat-input" id="inputMount">
@@ -736,30 +763,35 @@ MISSION UNLOCKED LOGO CHANGE
 <</timed>>
 
 
-<<timed 16s>>
-    <<replace "#hero">>
-     <div class="choice-container nav-wrapper">
-            <p> Want to rewatch Anne do the UCA TOK? <br/>
-            Click 
+<<timed 20s>>
+   <<replace "#audio">>
+      <audio src="assets/audio/UCA_02_MOVE_06.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
+    <<append "#messagesContainer">>
+     <div class="message">
+              <div class="message-container" >
+            <p> Want to rewatch Anne do the UCA TOK? Click 
             <<button "Here">>
             <<timed 0.5s>>
               <<goto "ucatok1vid">>
              <</timed>>
             <</button>>  
             </p>
-         </div>
-       <</replace>>
-        <<timed 4s>>
-            <<replace "#messagesContainer">>
+             </div>
+              </div>
+       <</append>>
+        <<timed 5s>>
+             <<replace "#audio">>
+      <audio src="assets/audio/UCA_02_MOVE_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
+            <<append "#messagesContainer">>
               <div class="message">
-    
               <div class="message-container" >
-      
               <p>When you have learnt the UCA TOK and are ready to run it with me, click the button below. 
               </p>
               </div>
               </div>
-            <</replace>>
+            <</append>>
              <<append "#messagesContainer">>
                 <<button "UCA TOK LEARNT">>
                  <<timed 0.5s>>
@@ -783,12 +815,11 @@ MISSION UNLOCKED LOGO CHANGE
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 /* VIDEO 3: */
-
       <iframe width='800px' height='450px' allow=autoplay
       src='https://player.vimeo.com/video/938104164?h=b445a542ff&amp;badge=0&amp;autoplay=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479'></iframe>
-
   </section>
   <section class="chat">
+      <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
   Video 3</div>
   <div class="chat-input" id="inputMount">
@@ -1150,7 +1181,7 @@ MISSION UNLOCKED LOGO CHANGE
         /% CODEWORD CORRECT %/
         <<if $code isnot "">> 
           <<if $code is "UCA TOK" or $code is "MOVING">>
-    <<audio "correct" play>>
+
     <<replace "#screen">>
       <<include "callingMal5">>
         <</replace>>
@@ -1299,58 +1330,20 @@ MISSION UNLOCKED LOGO CHANGE
 
 
   <<timed 10s>>
-  <<prepend "#options">>
-  <<include "codewordphone1b" >>
-  <</prepend>>
+ <<replace "#options">>
+         <div class="options-btn key" id="yesBtn">
+            <<link "...">>
+                <</link>>
+            </div>
+         <div class="options-btn key active pulse"  id="noBtn">
+            <<link "Okay">>
+               <<goto "button1">>
+                <</link>>
+                </div>
+    <</replace>>
 <</timed>>
 
-:: codewordphone1b [nobr]
-<div class="code-input telecom-code">
-<<textbox "$code" "">>
-</div>
-<<replace "#options">>
-  
-  <div class="options-btn key active pulse"  id="noBtn">
-        <<link "Send">>
-      /% PASSWORD CODE %/
-        <<set $code to $code.toUpperCase().trim()>>
-        /% CODEWORD CORRECT %/
-        <<if $code isnot "">> 
-          <<if $code is "RHUBARB">>
-    <<audio "correct" play>>
-    <<goto "button1">>
-          
-        <</if>>
-        <</if>>
-        /% CODEWORD INCORRECT %/
-        <<if $code isnot "">>
-           <<if $code isnot "RHUBARB">>
-          <<replace "#screen">>
-    <<include "callingMal6b">>
-      <</replace>>
-          <</if>>
-          <</if>>
-    <</link>>
-    </div>
- <</replace>>
 
-:: callingMal6b [nobr]
-
-
-  <<replace "#screen">>
-        <<timed 0.1s>>
-  
-  <<replace "#screen">>
-        <<type 60ms>><p> Try again.  </p>
-               <</type>>
-  <</replace>>
-    <</timed>>
-        <</replace>>
-       <<timed 4s>>
-     <<prepend "#options">>
-  <<include "codewordphone1b" >>
-  <</prepend>>
-<</timed>>
 
 :: button1 [nobr]
 <<set $prevpass to "ucatelecom">>
@@ -1403,6 +1396,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<include "rotatelogo">>
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
   Video 4
  </div>
@@ -1482,11 +1476,9 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
    <<append "#messagesContainer">>
             <div class="message">
-            <div class="avatar">
-                <img src="assets/img/user.png" alt="avatar"/>
-            </div>
+        
             <div class="message-container" >
-                <span class="sender">Jay</span>
+    
                 <p> Teacher, can you make sure everyone understands what the static is please? </p>
             </div>
             </div>
@@ -1518,6 +1510,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<include "staticlogo">>
   </section>
   <section class="chat">
+      <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
   
  </div>
@@ -1536,11 +1529,7 @@ MISSION UNLOCKED LOGO CHANGE
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Ok - so compartment 2 - what is it called? </p>
         </div>
         </div>
@@ -1550,11 +1539,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Type it below and I’ll load up what we need to know. 
 </p>
         </div>
@@ -1794,7 +1779,7 @@ MISSION UNLOCKED LOGO CHANGE
 <<include "typewriter">>
        <beaconicon></beaconicon>
        <messageboxlarge>
-      Enter your Secret Club Name here
+      Enter our Secret Club Name here
 
       <<textbox "$clubname" "">>
 
@@ -1806,15 +1791,15 @@ MISSION UNLOCKED LOGO CHANGE
 :: clubname [green nobr] {"position":"688,2304","size":"100,100"}
 <<if $sound is true>>
   <div id="audio">
-   <audio src="assets/audio/UCA_03_RHUBARB_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
-  </div>
+   /* <audio src="assets/audio/UCA_03_RHUBARB_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+  </div> */
 <</if>>
 <audio src="https://remote.co.com/UCA/assets/audio/taperecorder.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
       <messageboxreel>
 
       <<timed 9s>><div class="animated fadeInDownBig">
-      <name><b>WELCOME $clubname</b></name>
-      <button>[[Next|button2]]</button></div><</timed>></messageboxreel>
+      <name><b>Welcome $clubname</b></name>
+      </div><</timed>></messageboxreel>
       <<include "reeltoreel">>
       <messagescreen><span id="message">Thank you</span>
       <<timed 2s>><<replace "#message">>Sending Secret Club Name<</replace>>\
@@ -1823,7 +1808,12 @@ MISSION UNLOCKED LOGO CHANGE
       <<next 2s>><<replace "#message">>Sending Complete<</replace>>\
       <</timed>></messagescreen>
 
-
+<div id="btnAlone"></div>
+<<timed 12s>>
+  <<replace "#btnAlone">>
+    <button>[[Next|button2]]</button>
+<</replace>>
+<</timed>>
 :: typewriter {"position":"160,34.33333333333333","size":"100,100"}
 <typewriter>[img[https://remote.co.com/UCA/assets/img/typewriter1.png]]</typewriter>
 
@@ -1937,13 +1927,13 @@ MISSION UNLOCKED LOGO CHANGE
     <</timed>>
 
 <<timed 12.5s>>
-    <<replace "#messagesContainer">>
+    <<append "#messagesContainer">>
         <div class="message">
         <div class="message-container" >
             <p>When I lose touch with others, sometimes I lose touch with myself - I can't even remember what my favourite Rhubarb topping was... Mushy Peas? Ice Cream? </p>
         </div>
         </div>
-    <</replace>>
+    <</append>>
     <</timed>>
 
 <<timed 23s>>
@@ -2128,6 +2118,7 @@ MISSION UNLOCKED LOGO CHANGE
 
   </section>
   <section class="chat">
+      <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"> Video 5</div>
   <div class="chat-input" id="inputMount">
   </div>
@@ -2147,6 +2138,7 @@ MISSION UNLOCKED LOGO CHANGE
 
 
 :: ucatelecom2 [nobr]
+
 <<set $prevpass to "video5">>
 <<set $pass to "ucatelecom2">>
 <<set $nextpass to "button3">>
@@ -2305,7 +2297,7 @@ MISSION UNLOCKED LOGO CHANGE
         /% CODEWORD CORRECT %/
         <<if $code isnot "">> 
           <<if $code is "UCA BREATH">>
-    <<audio "correct" play>>
+
     <<replace "#screen">>
       <<include "2callingMal2">>
         <</replace>>
@@ -3151,6 +3143,7 @@ MISSION UNLOCKED LOGO CHANGE
     </div>
   <</replace>>
 <</timed>>
+
 :: button4 [nobr]
 <<set $prevpass to "postbutton3b">>
 <<set $pass to "button4">>
@@ -3297,17 +3290,18 @@ MISSION UNLOCKED LOGO CHANGE
 </div>
 
 
-:: ucamissionunlocked
+:: ucamissionunlocked [missionunlocked nobr]
 <<set $prevpass to "postbutton4">>
 <<set $pass to "ucamissionunlocked">>
 <<set $nextpass to "postbutton4b">>
-UCA Mission Unlocked
+<<audio "uploading" "play">>
+<main class="unlocked"><<include "unlocked">></main>
 <<timed 4s>>
   <<goto $nextpass>>
   <</timed>>
 
 
-:: postbutton4b [purple nobr]
+:: postbutton4b [missionunlocked nobr]
 <<set $prevpass to "ucamissionunlocked">>
 <<set $pass to "postbutton4b">>
 <<set $nextpass to "mission1">>
@@ -3322,6 +3316,7 @@ UCA Mission Unlocked
 <<include "unlocked">>
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3336,11 +3331,7 @@ UCA Mission Unlocked
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>UCA Mission. </p>
         </div>
         </div>
@@ -3350,9 +3341,6 @@ UCA Mission Unlocked
 <<timed 2s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>I wasn’t expecting this.  </p>
         </div>
@@ -3363,9 +3351,6 @@ UCA Mission Unlocked
 <<timed 4.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>But you aren’t full agents. Do you think you have what it takes to complete this mission?</p>
         </div>
@@ -3384,7 +3369,7 @@ UCA Mission Unlocked
 
 :: choicemission [nobr]
 
-<div class="choice-container nav-wrapper">
+<div class="choice-container nav-wrapper initial">
 <<button "YES">>
     <<goto $nextpass>>
 <</button>>
@@ -3411,7 +3396,7 @@ UCA Mission Unlocked
 
     <<timed 3s>>
     <<replace "#inputMount">>
-<div class="choice-container nav-wrapper">
+<div class="choice-container nav-wrapper initial">
     <<button "JOKING, YES">>  <<goto $nextpass>><</button>>
     <<button "NO">>
         <<timed 0.5s>>
@@ -3444,11 +3429,13 @@ UCA Mission Unlocked
 </div>
 
 
-:: mission1 [purple nobr]
+:: mission1 [missionunlocked nobr]
 <<set $prevpass to "postbutton4b">>
 <<set $pass to "mission1">>
 <<set $nextpass to "video6">>
 <<if $sound is true>>
+  <<audio ":all" "stop">>
+  <<audio "correct" "play">>
   <div id="audio">
    <audio src="assets/audio/UCA_JAY_04_NOTICE_08.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
@@ -3456,9 +3443,10 @@ UCA Mission Unlocked
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 
-/* <<include "unlocked">> */
+<<include "staticlogo">>
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3473,11 +3461,7 @@ UCA Mission Unlocked
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>I know you aren’t officially agents but I’m going to need you to pretend to be to complete this mission. </p>
         </div>
         </div>
@@ -3487,9 +3471,6 @@ UCA Mission Unlocked
 <<timed 6.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>I guess you have got Agent Cards, know the UCA Breath, have a secret club name and are experts at the UCA TOK...</p>
         </div>
@@ -3500,9 +3481,6 @@ UCA Mission Unlocked
 <<timed 14s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>So maybe you are Agent already?!</p>
         </div>
@@ -3511,16 +3489,13 @@ UCA Mission Unlocked
     <</timed>>
 
 <<timed 16s>>
-    <<replace "#messagesContainer">>
+    <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>I’ll load up the Mission Brief. </p>
         </div>
         </div>
-    <</replace>>
+    <</append>>
     <</timed>>
 
 
@@ -3561,14 +3536,14 @@ UCA Mission Unlocked
      <div class="mission-brief-section">
      /* <h2>YOUR MISSION </h2>
      <span> should you choose to accept it</span> */
-       <div class="uca-stamp"><img src="assets/img/UCA-stamp-text.png" alt="UCA stamp"/></div>
+       <div class="uca-stamp"><img src="assets/img/UCA-stamp.png" alt="UCA stamp"/></div>
      </div>
  </div>
 </div>
 
 
 
-:: video6 [purple nobr]
+:: video6 [missionunlocked nobr]
 <<set $prevpass to "mission1">>
 <<set $pass to "video6">>
 <<set $nextpass to "button5">>
@@ -3581,6 +3556,7 @@ UCA Mission Unlocked
 
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"> Video 6</div>
   <div class="chat-input" id="inputMount">
 
@@ -3594,12 +3570,8 @@ UCA Mission Unlocked
 <<timed 1s>>
   <<append "#messagesContainer">>
     <div class="message">
-      <div class="avatar">
-        <img src="assets/img/user.png" alt="avatar"/>
-      </div>
       <div class="message-container" >
-        <span class="sender">Jay</span>
-        <p> Enter compartment codeword. </p>
+        <p> Enter codeword. </p>
       </div>
     </div>
   <</append>>
@@ -3650,7 +3622,10 @@ UCA Mission Unlocked
 <<set $nextpass to "postbutton6">>
 
 <main class="beacon">
-<div class="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="instruction">
+<div class="uca-logo-text">
+     <img src="assets/img/logotitle.png" alt="logo"/></div>
+     <h2> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
   <div class="beacon-img-container" id="img">
@@ -3681,7 +3656,7 @@ UCA Mission Unlocked
     <</replace>>
   <</timed>>
 
-:: postbutton6 [purple nobr]
+:: postbutton6 [missionunlocked nobr]
 <<set $prevpass to "button5">>
 <<set $pass to "postbutton6">>
 <<set $nextpass to "ucatelecom3">>
@@ -3690,12 +3665,13 @@ UCA Mission Unlocked
    <audio src="assets/audio/UCA_JAY_04_NOTICE_10.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
 
-<<include "rotatelogo">>
+<<include "staticlogo">>
   </section>
-  <section class="chat">
+  <section class="chat">  
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -3710,11 +3686,7 @@ UCA Mission Unlocked
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>We are nearly there now. </p>
         </div>
         </div>
@@ -3724,9 +3696,6 @@ UCA Mission Unlocked
 <<timed 1.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>This is the last push.  </p>
         </div>
@@ -3737,9 +3706,6 @@ UCA Mission Unlocked
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>You are so close to lighting the beacon.  </p>
         </div>
@@ -3750,9 +3716,6 @@ UCA Mission Unlocked
 <<timed 5.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>One more button </p>
         </div>
@@ -3763,9 +3726,6 @@ UCA Mission Unlocked
 <<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>And maybe if we complete the Gifting Mission we will find out where it is. </p>
         </div>
@@ -3776,9 +3736,6 @@ UCA Mission Unlocked
 <<timed 11s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Let’s let Mal know. </p>
         </div>
@@ -3835,13 +3792,13 @@ UCA Mission Unlocked
                 <div class="options-btn key"><span>...</span></div>
                   <div class="options-btn key"><span>...</span></div>
              </div>
-    /* <<include "phonekeyboard">> */
+
             
            </div>
         </div>
     </div>
 </main>
-
+<<include "footernext">>
 
 
 :: callingAnne3 [nobr]
@@ -3948,10 +3905,7 @@ UCA Mission Unlocked
 <</timed>>
 
 :: 3callingMal2 [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
     <<replace "#options">>
      <div class="options-btn key"><span>...</span></div>
@@ -4013,7 +3967,7 @@ UCA Mission Unlocked
         <<set $code to $code.toUpperCase().trim()>>
         /% CODEWORD CORRECT %/
         <<if $code isnot "">> 
-          <<if $code is "NOTICE">>
+          <<if $code is "NOTICE" or $code is "NOTICING">>
     <<audio "correct" play>>
     <<replace "#screen">>
       <<include "3callingMal3">>
@@ -4023,7 +3977,7 @@ UCA Mission Unlocked
         <</if>>
         /% CODEWORD INCORRECT %/
         <<if $code isnot "">>
-           <<if $code isnot "NOTICE">>
+           <<if $code isnot "NOTICE" and $code isnot "NOTICING">>
           <<replace "#screen">>
     <<include "codewordphone3wrong">>
       <</replace>>
@@ -4034,10 +3988,7 @@ UCA Mission Unlocked
  <</replace>>
 
 :: codewordphone3wrong [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<replace "#screen">>
   <<timed 0.1s>>
   <<replace "#options">>
@@ -4051,9 +4002,9 @@ UCA Mission Unlocked
     <</timed>>
         <</replace>>
        <<timed 4s>>
-    <<append "#screen">>
-  <<include "codewordphone3" >>
-  <</append>>
+    <<prepend "#options">>
+   <<include "codewordphone3">>
+  <</prepend>>
 <</timed>>
 
 
@@ -4124,10 +4075,7 @@ UCA Mission Unlocked
 
 
 :: 3callingMal4yes [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
     <<replace "#options">>
      <div class="options-btn key"><span>...</span></div>
@@ -4186,10 +4134,7 @@ UCA Mission Unlocked
 
 
 :: 3callingMal4no [nobr]
-<<removeclass "#yesBtn" "pulse">>
-<<removeclass "#noBtn" "pulse">>
-<<removeclass "#yesBtn" "active">>
-<<removeclass "#noBtn" "active">>
+
   <<timed 0.1s>>
     <<replace "#options">>
      <div class="options-btn key"><span>...</span></div>
@@ -4246,7 +4191,7 @@ UCA Mission Unlocked
     <</replace>>
 <</timed>>
 
-:: video7 [purple nobr]
+:: video7 [missionunlocked nobr]
 <<set $prevpass to "ucatelecom3">>
 <<set $pass to "video7">>
 <<set $nextpass to "missionplanner1">>
@@ -4262,6 +4207,7 @@ UCA Mission Unlocked
 
   </section>
   <section class="chat">
+    <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"> Video 7</div>
   <div class="chat-input" id="inputMount">
 
@@ -4284,7 +4230,7 @@ UCA Mission Unlocked
 <</timed>>
 
 
-:: missionplanner1 [purple nobr]
+:: missionplanner1 [missionunlocked nobr]
 <<set $prevpass to "postbutton4b">>
 <<set $pass to "missionplanner1">>
 <<set $nextpass to "video6">>
@@ -4373,7 +4319,7 @@ UCA Mission Unlocked
  <div class="mission-complete" >
   <img src="assets/img/mission-complete-text.png" alt="mission complete UCA stamp"/>
    </div>
-:: missionplanner-planning [nobr]
+:: missionplanner-planning [missionunlocked nobr]
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missionplanner-planning">>
 <<set $nextpass to "missionplanner1">>
@@ -4384,10 +4330,11 @@ UCA Mission Unlocked
 <</if>>
 <main class="main portal grid-container">
   <section class="hero" id="hero">
-<div id="responses">PLANNING</div>
+<div id="responses"><span class="fancy static">PLANNING</span></div>
 
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -4402,11 +4349,8 @@ UCA Mission Unlocked
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
+
             <p>Welcome to the Planning Stage of the Mission. </p>
         </div>
         </div>
@@ -4416,9 +4360,6 @@ UCA Mission Unlocked
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>You will need to decide what you are making before you can move on.  </p>
         </div>
@@ -4429,9 +4370,6 @@ UCA Mission Unlocked
 <<timed 7s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>You may want to write these on your board before confirming below.  </p>
         </div>
@@ -4458,7 +4396,7 @@ UCA Mission Unlocked
   <<append "#responses">>
     <h2>Planning</h2>
     <div class="response-item">
-       <h3>Recepient</h3>
+       <h3>Recipient</h3>
       <span>$p1text</span>
     </div>
     <</append>>
@@ -4468,7 +4406,7 @@ UCA Mission Unlocked
   <<append "#responses">>
   <div class="response-item">
    <h3> What do you think they like?</h3>
-    <span>$p2text</span>
+   <span>$p2list</span>
   </div>
     <</append>>
 <</if>>
@@ -4502,11 +4440,7 @@ UCA Mission Unlocked
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>From your mapping you will have chosen a few options for who is right to receive the Gift.  </p>
         </div>
         </div>
@@ -4516,11 +4450,7 @@ UCA Mission Unlocked
 <<timed 5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Who have you decided to share it with? </p>
         </div>
         </div>
@@ -4547,7 +4477,7 @@ UCA Mission Unlocked
 <<if $p1text isnot "">> 
 
 
-    <<timed 2s>>
+    <<timed 1s>>
       <<set $p1 to true>>
       <<addclass "#responses" "letterpaper">>
       <<addclass "#responses" "responses">>
@@ -4576,11 +4506,7 @@ UCA Mission Unlocked
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Using all of your expert knowledge, what do you think they like? 
  </p>
         </div>
@@ -4600,16 +4526,22 @@ UCA Mission Unlocked
 <div id="coderesult"></div>
  <div id="resultbutton">
 /% INPUT %/
-<div class="code-input chat-code">
-<<textbox "$p2text" "Your answer">>
-<<button "Send">>
+<div class="code-input chat-code flex-col">
+  <p>Item 1:</p>
+  <<textbox "$item1" "Your first answer">>
+  <p>Item 2:</p>
+  <<textbox "$item2" "Your second answer">>
+  <p>Item 3:</p>
+  <<textbox "$item3" "Your third answer">>
+  <<button "Send">>
 </div>
-<<set $p2text to $p2text.toUpperCase().trim()>>
+<<set $item1 to $item1.toUpperCase().trim()>>
+<<set $item2 to $item2.toUpperCase().trim()>>
+<<set $item3 to $item3.toUpperCase().trim()>>
+<<set $p2list to [ $item1, $item2, $item3 ].filter(item => item !== "").join(", ")>>
 /% INPUT ENTERED %/
-<<if $p2text isnot "">> 
-
-
-    <<timed 2s>>
+<<if $p2list isnot "">> 
+    <<timed 1s>>
       <<set $p2 to true>>
       <<include "checkresponses">>
         <<replace "#inputMount">><</replace>>
@@ -4619,8 +4551,8 @@ UCA Mission Unlocked
     <</timed>>
 <</if>>
 /% INPUT NOT ENTERED %/
-<<if $p2text is "">>
-  <<replace "#coderesult">><div class="confirmation" id="confirmation">Please enter your answer.</div><</replace>>
+<<if $p2list is "">>
+  <<replace "#coderesult">><div class="confirmation" id="confirmation">Please enter at least one answer.</div><</replace>>
   <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
   <</if>>
 <</button>>
@@ -4636,11 +4568,7 @@ UCA Mission Unlocked
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>You have lots of skills and superpowers in the room - what do you think your class could make? </p>
         </div>
         </div>
@@ -4668,7 +4596,7 @@ UCA Mission Unlocked
 <<if $p3text isnot "">> 
 
 
-    <<timed 2s>>
+    <<timed 1s>>
       <<set $p3 to true>>
       <<include "checkresponses">>
         <<replace "#inputMount">><</replace>>
@@ -4695,11 +4623,7 @@ UCA Mission Unlocked
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Where in the school is a good place for your mission to take place or for the gift to be delivered? </p>
         </div>
         </div>
@@ -4727,7 +4651,7 @@ UCA Mission Unlocked
 <<if $p4text isnot "">> 
 
 
-    <<timed 2s>>
+    <<timed 1s>>
       <<set $p4 to true>>
       <<include "checkresponses">>
         <<replace "#inputMount">><</replace>>
@@ -4754,11 +4678,7 @@ UCA Mission Unlocked
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>This looks like a good plan – are you ready to send it off to UCA HQ for sign off? </p>
         </div>
         </div>
@@ -4778,7 +4698,7 @@ UCA Mission Unlocked
 :: sending [nobr green]
 <<if $sound is true>>
   <div id="audio">
-   <audio src="assets/audio/UCA_JAY_05_PLANNING_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+   /* <audio src="assets/audio/UCA_JAY_05_PLANNING_07.mp3" autoplay style="display:none">Audio is not supported on your device</audio> */
   </div>
 <</if>>
 <audio src="https://remote.co.com/UCA/assets/audio/taperecorder.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
@@ -4786,7 +4706,7 @@ UCA Mission Unlocked
 
       <<timed 13s>><div class="animated fadeInDownBig">
       <name><b>UCA Mission Plan Agreed</b></name>
-      <button>[[Next|missionplanner1]]</button></div><</timed>></messageboxreel>
+     </div><</timed>></messageboxreel>
       <<include "reeltoreel">>
       <messagescreen><span id="message">Sending</span>
       <<timed 2s>><<replace "#message">>Mission Plan Received<</replace>>
@@ -4798,8 +4718,14 @@ UCA Mission Unlocked
          <<next 2s>><<replace "#message">>Check Complete<</replace>>
       <</timed>></messagescreen>
 
+<div id="btnAlone"></div>
+<<timed 12s>>
+  <<replace "#btnAlone">>
+   <button>[[Next|missionplanner1]]</button>
+<</replace>>
+<</timed>>
 
-:: missionplanner-making [nobr]
+:: missionplanner-making [missionunlocked nobr]
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missionplanner-making">>
 <<set $nextpass to "missionplanner1">>
@@ -4808,12 +4734,15 @@ UCA Mission Unlocked
    <audio src="assets/audio/UCA_JAY_06_MAKING.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
-MAKING
+<span class="fancy static">MAKING</span>
+
+
 
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -4828,11 +4757,7 @@ MAKING
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>It is now time for you to make your gift</p>
         </div>
         </div>
@@ -4842,9 +4767,6 @@ MAKING
 <<timed 2.5s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Gather your tools, use your superpowers and get making.  </p>
         </div>
@@ -4855,9 +4777,6 @@ MAKING
 <<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Remember you are making something for other people  </p>
         </div>
@@ -4868,9 +4787,6 @@ MAKING
 <<timed 9s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Hold onto your plan </p>
         </div>
@@ -4882,9 +4798,6 @@ MAKING
 <<timed 11s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>And make something that they will like.  </p>
         </div>
@@ -4896,9 +4809,6 @@ MAKING
 <<timed 13s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>When ready click below.</p>
         </div>
@@ -4917,7 +4827,7 @@ MAKING
   <</replace>>
 <</timed>>
 
-:: missionplanner-delivery [nobr]
+:: missionplanner-delivery [missionunlocked nobr]
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missionplanner-deliver">>
 <<set $nextpass to "missionplanner1">>
@@ -4926,12 +4836,14 @@ MAKING
    <audio src="assets/audio/UCA_JAY_07_DELIVERY_01.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
   </div>
 <</if>>
-<main class="main portal grid-container">
+<main class="main portal grid-container novid">
   <section class="hero" id="hero">
-DELIVERY
+
+<span class="fancy static">DELIVERY</span>
 
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -4946,11 +4858,7 @@ DELIVERY
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Great work. </p>
         </div>
         </div>
@@ -4960,9 +4868,6 @@ DELIVERY
 <<timed 2s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>It is nearly time.</p>
         </div>
@@ -4973,9 +4878,6 @@ DELIVERY
 <<timed 4s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Time to deliver your gift.</p>
         </div>
@@ -4986,9 +4888,6 @@ DELIVERY
 <<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>I hope you are excited. </p>
         </div>
@@ -5000,9 +4899,6 @@ DELIVERY
 <<timed 8s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>I am - this is the last part before we find that final button and light the beacon!</p>
         </div>
@@ -5030,11 +4926,7 @@ DELIVERY
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>Before you head out - I need to remind you of something</p>
         </div>
         </div>
@@ -5044,9 +4936,6 @@ DELIVERY
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Remember we are an Undercover Agency – so work out how you might deliver your gift secretly if you can. </p>
         </div>
@@ -5057,9 +4946,6 @@ DELIVERY
 <<timed 12s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Good luck. </p>
         </div>
@@ -5084,11 +4970,7 @@ DELIVERY
     <</replace>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>When you have delivered - or have everything ready for a future delivery - enter the word MAL below. </p>
         </div>
         </div>
@@ -5137,7 +5019,7 @@ DELIVERY
 </div>
 
 
-:: missioncompletetext [nobr purple]
+:: missioncompletetext [nobr missionunlocked]
 <<set $prevpass to "missionplanner1">>
 <<set $pass to "missioncompletetext">>
 <<set $nextpass to "button6">>
@@ -5152,6 +5034,7 @@ DELIVERY
 
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer">
  </div>
   <div class="chat-input" id="inputMount">
@@ -5166,11 +5049,7 @@ DELIVERY
  <<timed 0.1s>>
     <<replace "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
-            <span class="sender">Jay</span>
             <p>It’s time to shine a light on the truth</p>
         </div>
         </div>
@@ -5180,9 +5059,6 @@ DELIVERY
 <<timed 3s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>It’s time to light the Beacon.  </p>
         </div>
@@ -5193,9 +5069,6 @@ DELIVERY
 <<timed 6s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>The final button is hiding in plain sight – under the Beacon. </p>
         </div>
@@ -5207,9 +5080,6 @@ DELIVERY
 <<timed 12s>>
     <<append "#messagesContainer">>
         <div class="message">
-        <div class="avatar">
-            <img src="assets/img/user.png" alt="avatar"/>
-        </div>
         <div class="message-container" >
             <p>Light the beacon and enter the word.</p>
         </div>
@@ -5236,17 +5106,22 @@ DELIVERY
 <<set $nextpass to "video8">>
 
 <main class="beacon">
-<div class="instruction" id="instruction"><h2> Place your button on the beacon now </h2></div>
+<div class="instruction" id="instruction">
+<div class="uca-logo-text">
+     <img src="assets/img/logotitle.png" alt="logo"/></div>
+     <h2 id="text"> Place your button on the beacon now </h2></div>
 <div class="beacon-container">
 
-  <div class="beacon-img-container" id="img">
+  <div class="beacon-img-container " id="img">
  <img src="assets/img/beacon-empty.png" alt="beacon" class="outline"/>
   <img src="assets/img/button-1.png" alt="first button" class="first"/>
   <img src="assets/img/button-2.png" alt="second button" class="second"/>
   <img src="assets/img/button-3.png" alt="third button" class="third"/>
       <img src="assets/img/button-4.png" alt="fourth buttons" class="fourth"/>
         <img src="assets/img/button-5.png" alt="fifth buttons" class="fifth"/>
+  
   </div>
+   <div class="beacon-codeword-container" id="codeword"></div>
 </div>
 <div id="btnMount"></div>
 
@@ -5257,19 +5132,20 @@ DELIVERY
   <<append "#img">>
       <img src="assets/img/button-6.png" alt="sixth buttons" class="fadeInQuick"/>
     <</append>>
-
   <</timed>>
 
-<<timed 6s>>
-  <<append "#instruction">>
-    <h2>Now enter the codeword: </h2>
-    <</append>>
+<<timed 5s>>
+  <<addclass "#img" "animaterotate">>
+  <<replace "#text">>
+     <h2 id="text"> Enter the codeword:</h2>
+    <</replace>>
   <</timed>>
+
 
 <<timed 7s>>
-  <<append "#instruction">>
-      <<include "codewordBeacon">>
-    <</append>>
+<<replace "#codeword">>
+   <<include "codewordBeacon">>
+  <</replace>>
   <</timed>>
 
 :: codewordBeacon[nobr]
@@ -5320,6 +5196,7 @@ DELIVERY
 
   </section>
   <section class="chat">
+  <<include "jaychatheader">>
   <div class="messages-container" id="messagesContainer"> Video 8</div>
   <div class="chat-input" id="inputMount">
 
@@ -5342,15 +5219,17 @@ DELIVERY
 <</timed>>
 
 
-:: ucalogo [nobr green]
+:: ucalogo [nobr purple]
 <main class="logo-alone">
-  <<include "rotatelogo">>
-  <<timed 2s>>
+
+  <<include "staticlogo">>
+
   <<button "Back to Front Door">>
     <<goto "Start">>
     <</button >>
-    <</timed>>
+
 </main>
+
 
 
 

@@ -183,12 +183,13 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;cacheaudio &quot;signal&quot; &quot;../assets/sound/signal.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;newsignal&quot; &quot;../assets/sound/signalprocess3.mp3&quot;&gt;&gt;
 
-&lt;&lt;waitforaudio&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Start" tags="purple nobr" position="225,100" size="100,100">&lt;&lt;set $sound to true&gt;&gt;
+&lt;&lt;waitforaudio&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Start" tags="nobr" position="225,100" size="100,100">&lt;&lt;set $sound to true&gt;&gt;
 &lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;set $prevpass to &quot;Start&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;Start&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucalab&quot;&gt;&gt;
-&lt;main&gt;&lt;messagebox2&gt;[img[assets/img/intercom2.png][entrance]]&lt;/messagebox2&gt;
+&lt;&lt;addclass &quot;body&quot; &quot;brown&quot;&gt;&gt;
+&lt;main class=&quot;start&quot;&gt;&lt;messagebox2&gt;[img[assets/img/intercom2.png][entrance]]&lt;/messagebox2&gt;
 
 &lt;/main&gt;</tw-passagedata><tw-passagedata pid="3" name="footer" tags="nobr" position="350,100" size="100,100">&lt;footer&gt;
    [[Back to the start|Start]]
@@ -229,7 +230,9 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;div class=&quot;animated  overlay-image&quot;&gt;[img[assets/img/logobutton.png]]&lt;/div&gt;
 &lt;div class=&quot;animated  overlay-image one&quot; &gt;[img[assets/img/undercover.png]]&lt;/div&gt;&lt;div
         class=&quot;animated  overlay-image two&quot;&gt;[img[assets/img/caretaker.png]]&lt;/div&gt;&lt;div
-        class=&quot;animated  overlay-image three&quot;&gt;[img[assets/img/agency.png]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="unlocked" tags="" position="1100,100" size="100,100">MISSION UNLOCKED LOGO CHANGE</tw-passagedata><tw-passagedata pid="10" name="entrance" tags="nobr purple" position="1225,100" size="100,100">&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
+        class=&quot;animated  overlay-image three&quot;&gt;[img[assets/img/agency.png]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="unlocked" tags="" position="1100,100" size="100,100">&lt;div class=&quot;unlocked&quot;&gt;
+       &lt;span class=&quot;fancy&quot;&gt;MISSION UNLOCKED&lt;/span&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="entrance" tags="nobr purple" position="1225,100" size="100,100">&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;set $prevpass to &quot;Start&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;entrance&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video1&quot;&gt;&gt;
@@ -254,10 +257,47 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;button &quot;Contents&quot;&gt;&gt;
   &lt;&lt;goto &quot;contents&quot;&gt;&gt;
   &lt;&lt;/button&gt;&gt;&lt;/div&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="11" name="contents" tags="nobr purple" position="100,225" size="100,100">&lt;main class=&quot;ucalab&quot;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="11" name="contents" tags="nobr purple" position="100,225" size="100,100">&lt;main class=&quot;contents beacon&quot;&gt;
 
 &lt;h2&gt;Contents&lt;/h2&gt;
+&lt;&lt;link &quot;Entrance&quot;&gt;&gt;
+  &lt;&lt;goto &quot;Start&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
 
+&lt;&lt;link &quot;Start&quot;&gt;&gt;
+  &lt;&lt;goto &quot;video1&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link &quot;Section 2&quot;&gt;&gt;
+  &lt;&lt;goto &quot;video4&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link &quot;Section 3&quot;&gt;&gt;
+  &lt;&lt;goto &quot;postbutton2&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link &quot;Section 4&quot;&gt;&gt;
+  &lt;&lt;goto &quot;postbutton3&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link &quot;Section 5&quot;&gt;&gt;
+  &lt;&lt;goto &quot;ucamissionunlocked&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link &quot;Section 6&quot;&gt;&gt;
+  &lt;&lt;goto &quot;postbutton6&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link &quot;Final Section&quot;&gt;&gt;
+  &lt;&lt;goto &quot;video8&quot;&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;div id=&quot;btnMount&quot; class=&quot;left&quot;&gt;
+  &lt;&lt;button &quot;Back&quot;&gt;&gt;
+    &lt;&lt;goto &quot;entrance&quot;&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  
+&lt;/div&gt;
 &lt;/main&gt;</tw-passagedata><tw-passagedata pid="12" name="codeword1" tags="nobr" position="225,225" size="100,100">&lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input&quot;&gt;
@@ -293,19 +333,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 &lt;/div&gt;
 &lt;br/&gt;
-&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="staticbuzz1" tags="nobr" position="47.999999999999964,2141.333333333333" size="100,100">&lt;&lt;set $prevpass to &quot;entrance&quot;&gt;&gt;
-&lt;&lt;set $pass to &quot;staticbuzz1&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;video1&quot;&gt;&gt;
-&lt;div class=&quot;buzz1&quot;&gt;
- &lt;img src=&quot;https://remote.co.com/UCA/assets/img/static5.gif&quot; class=&quot;staticgif center&quot; id=&quot;staticgif&quot;&gt;
-      &lt;/div&gt;
-      &lt;&lt;timed 0.5s&gt;&gt;
-      /* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot;  style=&quot;display:none&quot; allow=&quot;autoplay&quot; &gt;&lt;/iframe&gt; */
-      &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; 
-      &lt;&lt;/timed&gt;&gt;
-  &lt;&lt;timed 3.5s&gt;&gt;
-    &lt;&lt;goto $nextpass&gt;&gt;
-    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="video1" tags="purple nobr" position="475,225" size="100,100">&lt;&lt;set $prevpass to &quot;entrance&quot;&gt;&gt;
+&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="video1" tags="purple nobr" position="350,225" size="100,100">&lt;&lt;set $prevpass to &quot;entrance&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video2&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -321,6 +349,7 @@ $(document.head).find('#style-ui-bar').remove();
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+   &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt; Video 1&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
   &lt;/div&gt;
@@ -336,11 +365,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/replace&gt;&gt;
   &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
     &lt;div class=&quot;message&quot;&gt;
-      &lt;div class=&quot;avatar&quot;&gt;
-        &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-      &lt;/div&gt;
       &lt;div class=&quot;message-container&quot; &gt;
-        &lt;span class=&quot;sender&quot;&gt;User&lt;/span&gt;
         &lt;p&gt; Your choice is needed.&lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -351,11 +376,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;timed 3s&gt;&gt;
   &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
     &lt;div class=&quot;message&quot;&gt;
-      &lt;div class=&quot;avatar&quot;&gt;
-        &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-      &lt;/div&gt;
       &lt;div class=&quot;message-container&quot; &gt;
-        &lt;span class=&quot;sender&quot;&gt;User&lt;/span&gt;
         &lt;p&gt; If you want to help, click WE ARE IN or CLOSE to go back to schoolwork?  &lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -366,7 +387,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
   &lt;&lt;include &quot;choice1&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="choice1" tags="nobr" position="600,225" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="choice1" tags="nobr" position="475,225" size="100,100">&lt;div class=&quot;choice-container nav-wrapper initial&quot;&gt;
 &lt;&lt;button &quot;WE ARE IN&quot;&gt;&gt;
     &lt;&lt;goto $nextpass&gt;&gt;
 &lt;&lt;/button&gt;&gt;
@@ -381,7 +402,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;if $sound is true&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_01_INTRO_03_oh_really_.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
-    &lt;/div&gt;
+
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
@@ -399,7 +420,7 @@ $(document.head).find('#style-ui-bar').remove();
 
     &lt;&lt;timed 3s&gt;&gt;
     &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
-&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+&lt;div class=&quot;choice-container nav-wrapper initial&quot;&gt;
     &lt;&lt;button &quot;JOKING, WE ARE IN&quot;&gt;&gt;  &lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;&lt;button &quot;NOT TODAY&quot;&gt;&gt;
         &lt;&lt;timed 0.5s&gt;&gt;
@@ -436,7 +457,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="video2" tags="purple nobr" position="725,225" size="100,100">&lt;&lt;set $prevpass to &quot;video1&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="video2" tags="purple nobr" position="600,225" size="100,100">&lt;&lt;set $prevpass to &quot;video1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucatok1&quot;&gt;&gt;
 
@@ -449,6 +470,7 @@ $(document.head).find('#style-ui-bar').remove();
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+    &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt; Video 2&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
 
@@ -463,11 +485,9 @@ $(document.head).find('#style-ui-bar').remove();
 
   &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
     &lt;div class=&quot;message&quot;&gt;
-      &lt;div class=&quot;avatar&quot;&gt;
-        &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-      &lt;/div&gt;
+     
       &lt;div class=&quot;message-container&quot; &gt;
-        &lt;span class=&quot;sender&quot;&gt;User&lt;/span&gt;
+
         &lt;p&gt; Enter compartment 1’s codeword. &lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -479,7 +499,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordvideo2&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="codewordvideo2" tags="nobr" position="850,225" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="codewordvideo2" tags="nobr" position="725,225" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -507,7 +527,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="jaychatheader" tags="nobr" position="975,225" size="100,100">&lt;div class=&quot;chat-header&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="jaychatheader" tags="nobr" position="850,225" size="100,100">&lt;div class=&quot;chat-header&quot;&gt;
     &lt;div class=&quot;avatar&quot;&gt;
           &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
         &lt;/div&gt;
@@ -515,7 +535,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
          &lt;div class=&quot;online-wrapper&quot;&gt;&lt;span class=&quot;online-dot&quot;&gt;●&lt;/span&gt;&lt;span&gt;Online&lt;/span&gt;&lt;/div&gt;
       &lt;/div&gt;
-  &lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="ucatok1" tags="purple nobr" position="1100,225" size="100,100">&lt;&lt;set $prevpass to &quot;video2&quot;&gt;&gt;
+  &lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="ucatok1" tags="purple nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;video2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucatok1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucatok1vid&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -613,6 +633,13 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 &lt;&lt;timed 16s&gt;&gt;
+    &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
+        &lt;div class=&quot;message&quot;&gt;
+        &lt;div class=&quot;message-container&quot; &gt;
+            &lt;p&gt;When ready click below.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;&lt;/append&gt;&gt;
   &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
     &lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
         &lt;&lt;button &quot;READY&quot;&gt;&gt;
@@ -622,8 +649,8 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="videoucatok" tags="" position="1225,225" size="100,100">&lt;iframe width=&#39;800px&#39; height=&#39;450px&#39; allow=autoplay
-      src=&#39;https://player.vimeo.com/video/531954959?h=40746c6772&amp;amp;badge=0&amp;amp;autoplay=1&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&#39;&gt;&lt;/iframe&gt;</tw-passagedata><tw-passagedata pid="21" name="ucatok1vid" tags="purple nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucatok1&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="videoucatok" tags="" position="1100,225" size="100,100">&lt;iframe width=&#39;800px&#39; height=&#39;450px&#39; allow=autoplay
+      src=&#39;https://player.vimeo.com/video/531954959?h=40746c6772&amp;amp;badge=0&amp;amp;autoplay=1&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&#39;&gt;&lt;/iframe&gt;</tw-passagedata><tw-passagedata pid="20" name="ucatok1vid" tags="purple nobr" position="1225,225" size="100,100">&lt;&lt;set $prevpass to &quot;ucatok1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucatok1vid&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucatok2&quot;&gt;&gt;
 &lt;main class=&quot;main portal grid-container&quot;&gt;
@@ -633,6 +660,7 @@ $(document.head).find('#style-ui-bar').remove();
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
   UCA TOK VID&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -650,7 +678,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="ucatok2" tags="purple nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucatok1&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="ucatok2" tags="purple nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucatok1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucatok2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video3&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -736,30 +764,35 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/timed&gt;&gt;
 
 
-&lt;&lt;timed 16s&gt;&gt;
-    &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
-     &lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
-            &lt;p&gt; Want to rewatch Anne do the UCA TOK? &lt;br/&gt;
-            Click 
+&lt;&lt;timed 20s&gt;&gt;
+   &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
+      &lt;audio src=&quot;assets/audio/UCA_02_MOVE_06.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
+    &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
+     &lt;div class=&quot;message&quot;&gt;
+              &lt;div class=&quot;message-container&quot; &gt;
+            &lt;p&gt; Want to rewatch Anne do the UCA TOK? Click 
             &lt;&lt;button &quot;Here&quot;&gt;&gt;
             &lt;&lt;timed 0.5s&gt;&gt;
               &lt;&lt;goto &quot;ucatok1vid&quot;&gt;&gt;
              &lt;&lt;/timed&gt;&gt;
             &lt;&lt;/button&gt;&gt;  
             &lt;/p&gt;
-         &lt;/div&gt;
-       &lt;&lt;/replace&gt;&gt;
-        &lt;&lt;timed 4s&gt;&gt;
-            &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+             &lt;/div&gt;
+              &lt;/div&gt;
+       &lt;&lt;/append&gt;&gt;
+        &lt;&lt;timed 5s&gt;&gt;
+             &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
+      &lt;audio src=&quot;assets/audio/UCA_02_MOVE_07.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
+    &lt;&lt;/replace&gt;&gt;
+            &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
               &lt;div class=&quot;message&quot;&gt;
-    
               &lt;div class=&quot;message-container&quot; &gt;
-      
               &lt;p&gt;When you have learnt the UCA TOK and are ready to run it with me, click the button below. 
               &lt;/p&gt;
               &lt;/div&gt;
               &lt;/div&gt;
-            &lt;&lt;/replace&gt;&gt;
+            &lt;&lt;/append&gt;&gt;
              &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
                 &lt;&lt;button &quot;UCA TOK LEARNT&quot;&gt;&gt;
                  &lt;&lt;timed 0.5s&gt;&gt;
@@ -768,18 +801,17 @@ $(document.head).find('#style-ui-bar').remove();
                    &lt;&lt;/button&gt;&gt;
            &lt;&lt;/append&gt;&gt;
         &lt;&lt;/timed&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="video3" tags="purple nobr" position="350,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucatok2&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="video3" tags="purple nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;ucatok2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucatelecom&quot;&gt;&gt;
 &lt;main class=&quot;main portal grid-container&quot;&gt;
   &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
 /* VIDEO 3: */
-
       &lt;iframe width=&#39;800px&#39; height=&#39;450px&#39; allow=autoplay
       src=&#39;https://player.vimeo.com/video/938104164?h=b445a542ff&amp;amp;badge=0&amp;amp;autoplay=1&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&#39;&gt;&lt;/iframe&gt;
-
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+      &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
   Video 3&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -797,7 +829,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="phonekeyboard" tags="nobr" position="475,350" size="100,100">&lt;div class=&quot;phone-keyboard&quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="phonekeyboard" tags="nobr" position="350,350" size="100,100">&lt;div class=&quot;phone-keyboard&quot;&gt;
                 &lt;div class=&quot;key&quot;&gt;
                 1
                 &lt;span&gt;&amp;nbsp;&lt;/span&gt;
@@ -838,7 +870,7 @@ $(document.head).find('#style-ui-bar').remove();
                 0
                 &lt;span&gt;+&lt;/span&gt;
             &lt;/div&gt;
-           &lt;/div&gt;</tw-passagedata><tw-passagedata pid="25" name="ucatelecom" tags="nobr" position="600,350" size="100,100">&lt;&lt;set $prevpass to &quot;video3&quot;&gt;&gt;
+           &lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="ucatelecom" tags="nobr" position="475,350" size="100,100">&lt;&lt;set $prevpass to &quot;video3&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucatelecom&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;button1&quot;&gt;&gt;
 &lt;&lt;timed 0.1s&gt;&gt;
@@ -888,7 +920,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;/div&gt;
 &lt;/main&gt;
 
-&lt;&lt;include &quot;footernext&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="callingAnne" tags="nobr" position="725,350" size="100,100">&lt;&lt;removeclass &quot;#anneBtn&quot; &quot;pulse&quot;&gt;&gt;
+&lt;&lt;include &quot;footernext&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="callingAnne" tags="nobr" position="600,350" size="100,100">&lt;&lt;removeclass &quot;#anneBtn&quot; &quot;pulse&quot;&gt;&gt;
 &lt;&lt;removeclass &quot;#anneBtn&quot; &quot;active&quot;&gt;&gt;
 &lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
 &lt;span&gt;Calling...&lt;/span&gt;
@@ -924,7 +956,7 @@ $(document.head).find('#style-ui-bar').remove();
                   &lt;/div&gt;
              &lt;/div&gt;
         &lt;&lt;/replace&gt;&gt;
-    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="callingMal" tags="nobr" position="850,350" size="100,100">&lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
+    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="callingMal" tags="nobr" position="725,350" size="100,100">&lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
 &lt;span&gt;Calling...&lt;/span&gt;
 &lt;img src=&quot;assets/img/call.png&quot; alt=&quot;calling icon&quot;/&gt;
 &lt;span&gt;Mal&lt;/span&gt;
@@ -959,7 +991,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="callingMal2yes" tags="nobr" position="975,350" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="callingMal2yes" tags="nobr" position="850,350" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -997,7 +1029,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="callingMal2no" tags="nobr" position="1100,350" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="callingMal2no" tags="nobr" position="975,350" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
                   &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -1035,7 +1067,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="callingMal3" tags="nobr" position="1225,350" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="callingMal3" tags="nobr" position="1100,350" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
                   &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -1073,7 +1105,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="callingMal4a" tags="nobr" position="100,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="callingMal4a" tags="nobr" position="1225,350" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
                   &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -1091,7 +1123,7 @@ $(document.head).find('#style-ui-bar').remove();
      &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordphone1&quot; &gt;&gt;
   &lt;&lt;/prepend&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="codewordphone1" tags="nobr" position="225,475" size="100,100">&lt;div class=&quot;code-input telecom-code&quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="codewordphone1" tags="nobr" position="100,475" size="100,100">&lt;div class=&quot;code-input telecom-code&quot;&gt;
 &lt;&lt;textbox &quot;$code&quot; &quot;&quot;&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;replace &quot;#options&quot;&gt;&gt;
@@ -1103,7 +1135,7 @@ $(document.head).find('#style-ui-bar').remove();
         /% CODEWORD CORRECT %/
         &lt;&lt;if $code isnot &quot;&quot;&gt;&gt; 
           &lt;&lt;if $code is &quot;UCA TOK&quot; or $code is &quot;MOVING&quot;&gt;&gt;
-    &lt;&lt;audio &quot;correct&quot; play&gt;&gt;
+
     &lt;&lt;replace &quot;#screen&quot;&gt;&gt;
       &lt;&lt;include &quot;callingMal5&quot;&gt;&gt;
         &lt;&lt;/replace&gt;&gt;
@@ -1120,7 +1152,7 @@ $(document.head).find('#style-ui-bar').remove();
           &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
     &lt;/div&gt;
- &lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="callingMal4b" tags="nobr" position="350,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+ &lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="callingMal4b" tags="nobr" position="225,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
                   &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -1138,7 +1170,7 @@ $(document.head).find('#style-ui-bar').remove();
    &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordphone1&quot; &gt;&gt;
   &lt;&lt;/prepend&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="callingMal4c" tags="nobr" position="475,475" size="100,100">&lt;&lt;replace &quot;#screen&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="callingMal4c" tags="nobr" position="350,475" size="100,100">&lt;&lt;replace &quot;#screen&quot;&gt;&gt;
         &lt;&lt;timed 0.1s&gt;&gt;
            &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -1157,7 +1189,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordphone1&quot; &gt;&gt;
   &lt;&lt;/prepend&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="callingMal5" tags="nobr" position="600,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="callingMal5" tags="nobr" position="475,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -1205,7 +1237,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="callingMal6" tags="nobr" position="725,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="callingMal6" tags="nobr" position="600,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -1235,50 +1267,18 @@ $(document.head).find('#style-ui-bar').remove();
 
 
   &lt;&lt;timed 10s&gt;&gt;
-  &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
-  &lt;&lt;include &quot;codewordphone1b&quot; &gt;&gt;
-  &lt;&lt;/prepend&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="codewordphone1b" tags="nobr" position="850,475" size="100,100">&lt;div class=&quot;code-input telecom-code&quot;&gt;
-&lt;&lt;textbox &quot;$code&quot; &quot;&quot;&gt;&gt;
-&lt;/div&gt;
-&lt;&lt;replace &quot;#options&quot;&gt;&gt;
-  
-  &lt;div class=&quot;options-btn key active pulse&quot;  id=&quot;noBtn&quot;&gt;
-        &lt;&lt;link &quot;Send&quot;&gt;&gt;
-      /% PASSWORD CODE %/
-        &lt;&lt;set $code to $code.toUpperCase().trim()&gt;&gt;
-        /% CODEWORD CORRECT %/
-        &lt;&lt;if $code isnot &quot;&quot;&gt;&gt; 
-          &lt;&lt;if $code is &quot;RHUBARB&quot;&gt;&gt;
-    &lt;&lt;audio &quot;correct&quot; play&gt;&gt;
-    &lt;&lt;goto &quot;button1&quot;&gt;&gt;
-          
-        &lt;&lt;/if&gt;&gt;
-        &lt;&lt;/if&gt;&gt;
-        /% CODEWORD INCORRECT %/
-        &lt;&lt;if $code isnot &quot;&quot;&gt;&gt;
-           &lt;&lt;if $code isnot &quot;RHUBARB&quot;&gt;&gt;
-          &lt;&lt;replace &quot;#screen&quot;&gt;&gt;
-    &lt;&lt;include &quot;callingMal6b&quot;&gt;&gt;
-      &lt;&lt;/replace&gt;&gt;
-          &lt;&lt;/if&gt;&gt;
-          &lt;&lt;/if&gt;&gt;
-    &lt;&lt;/link&gt;&gt;
-    &lt;/div&gt;
- &lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="callingMal6b" tags="nobr" position="975,475" size="100,100">&lt;&lt;replace &quot;#screen&quot;&gt;&gt;
-        &lt;&lt;timed 0.1s&gt;&gt;
-  
-  &lt;&lt;replace &quot;#screen&quot;&gt;&gt;
-        &lt;&lt;type 60ms&gt;&gt;&lt;p&gt; Try again.  &lt;/p&gt;
-               &lt;&lt;/type&gt;&gt;
-  &lt;&lt;/replace&gt;&gt;
-    &lt;&lt;/timed&gt;&gt;
-        &lt;&lt;/replace&gt;&gt;
-       &lt;&lt;timed 4s&gt;&gt;
-     &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
-  &lt;&lt;include &quot;codewordphone1b&quot; &gt;&gt;
-  &lt;&lt;/prepend&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="button1" tags="nobr" position="1100,475" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom&quot;&gt;&gt;
+ &lt;&lt;replace &quot;#options&quot;&gt;&gt;
+         &lt;div class=&quot;options-btn key&quot; id=&quot;yesBtn&quot;&gt;
+            &lt;&lt;link &quot;...&quot;&gt;&gt;
+                &lt;&lt;/link&gt;&gt;
+            &lt;/div&gt;
+         &lt;div class=&quot;options-btn key active pulse&quot;  id=&quot;noBtn&quot;&gt;
+            &lt;&lt;link &quot;Okay&quot;&gt;&gt;
+               &lt;&lt;goto &quot;button1&quot;&gt;&gt;
+                &lt;&lt;/link&gt;&gt;
+                &lt;/div&gt;
+    &lt;&lt;/replace&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="button1" tags="nobr" position="725,475" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;button1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video4&quot;&gt;&gt;
 
@@ -1311,7 +1311,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="video4" tags="purple nobr" position="1225,475" size="100,100">&lt;&lt;set $prevpass to &quot;button1&quot;&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="video4" tags="purple nobr" position="850,475" size="100,100">&lt;&lt;set $prevpass to &quot;button1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;compartment2&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -1324,6 +1324,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+    &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
   Video 4
  &lt;/div&gt;
@@ -1340,8 +1341,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
       &lt;&lt;include &quot;codewordvideo4&quot;&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="video4vid" tags="" position="100,600" size="100,100">&lt;iframe width=&#39;800px&#39; height=&#39;450px&#39; allow=autoplay
-      src=&#39;https://player.vimeo.com/video/938104164?h=b445a542ff&amp;amp;badge=0&amp;amp;autoplay=1&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&#39;&gt;&lt;/iframe&gt;</tw-passagedata><tw-passagedata pid="42" name="codewordvideo4" tags="nobr" position="225,600" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;Enter codeword:&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="video4vid" tags="" position="975,475" size="100,100">&lt;iframe width=&#39;800px&#39; height=&#39;450px&#39; allow=autoplay
+      src=&#39;https://player.vimeo.com/video/938104164?h=b445a542ff&amp;amp;badge=0&amp;amp;autoplay=1&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&#39;&gt;&lt;/iframe&gt;</tw-passagedata><tw-passagedata pid="39" name="codewordvideo4" tags="nobr" position="1100,475" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;Enter codeword:&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 
@@ -1385,17 +1386,15 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="postvideo4" tags="nobr" position="350,600" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="postvideo4" tags="nobr" position="1225,475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_03_RHUBARB_01.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
    &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
             &lt;div class=&quot;message&quot;&gt;
-            &lt;div class=&quot;avatar&quot;&gt;
-                &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-            &lt;/div&gt;
+        
             &lt;div class=&quot;message-container&quot; &gt;
-                &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
+    
                 &lt;p&gt; Teacher, can you make sure everyone understands what the static is please? &lt;/p&gt;
             &lt;/div&gt;
             &lt;/div&gt;
@@ -1409,7 +1408,7 @@ $(document.head).find('#style-ui-bar').remove();
              &lt;&lt;/timed&gt;&gt;
             &lt;&lt;/button&gt;&gt;  
          &lt;&lt;/append&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="compartment2" tags="purple nobr" position="475,600" size="100,100">&lt;&lt;set $prevpass to &quot;video4&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="compartment2" tags="purple nobr" position="100,600" size="100,100">&lt;&lt;set $prevpass to &quot;video4&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;compartment2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;compartment2b&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -1421,6 +1420,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+      &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
   
  &lt;/div&gt;
@@ -1439,11 +1439,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;Ok - so compartment 2 - what is it called? &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -1453,11 +1449,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;timed 7s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;Type it below and I’ll load up what we need to know. 
 &lt;/p&gt;
         &lt;/div&gt;
@@ -1469,7 +1461,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordcomp2&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="codewordcomp2" tags="nobr" position="600,600" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="codewordcomp2" tags="nobr" position="225,600" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -1497,7 +1489,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="compartment2b" tags="purple nobr" position="725,600" size="100,100">&lt;&lt;set $prevpass to &quot;compartment2&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="compartment2b" tags="purple nobr" position="350,600" size="100,100">&lt;&lt;set $prevpass to &quot;compartment2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;compartment2b&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;enterclubname&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -1595,7 +1587,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="compartment2c" tags="nobr" position="850,600" size="100,100">&lt;&lt;timed 1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="compartment2c" tags="nobr" position="475,600" size="100,100">&lt;&lt;timed 1s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_03_RHUBARB_04.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
@@ -1638,7 +1630,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="compartment2d" tags="nobr" position="975,600" size="100,100">&lt;&lt;timed 1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="compartment2d" tags="nobr" position="600,600" size="100,100">&lt;&lt;timed 1s&gt;&gt;
   &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_03_RHUBARB_05.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
@@ -1670,7 +1662,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="enterclubname" tags="green -t8n-typewriter-4" position="915,397.6666666666668" size="100,100">&lt;&lt;if $sound is true&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="enterclubname" tags="green -t8n-typewriter-4" position="915,397.6666666666668" size="100,100">&lt;&lt;if $sound is true&gt;&gt;
   &lt;div id=&quot;audio&quot;&gt;
    &lt;audio src=&quot;assets/audio/UCA_03_RHUBARB_06.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
   &lt;/div&gt;
@@ -1678,30 +1670,37 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;include &quot;typewriter&quot;&gt;&gt;
        &lt;beaconicon&gt;&lt;/beaconicon&gt;
        &lt;messageboxlarge&gt;
-      Enter your Secret Club Name here
+      Enter our Secret Club Name here
 
       &lt;&lt;textbox &quot;$clubname&quot; &quot;&quot;&gt;&gt;
 
       &lt;&lt;button [[Enter|clubname]]&gt;&gt;&lt;&lt;/button&gt;&gt;
        
-      &lt;/messageboxlarge&gt;</tw-passagedata><tw-passagedata pid="50" name="clubname" tags="green nobr" position="688,2304" size="100,100">&lt;&lt;if $sound is true&gt;&gt;
+      &lt;/messageboxlarge&gt;</tw-passagedata><tw-passagedata pid="47" name="clubname" tags="green nobr" position="688,2304" size="100,100">&lt;&lt;if $sound is true&gt;&gt;
   &lt;div id=&quot;audio&quot;&gt;
-   &lt;audio src=&quot;assets/audio/UCA_03_RHUBARB_07.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
-  &lt;/div&gt;
+   /* &lt;audio src=&quot;assets/audio/UCA_03_RHUBARB_07.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
+  &lt;/div&gt; */
 &lt;&lt;/if&gt;&gt;
 &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/taperecorder.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
       &lt;messageboxreel&gt;
 
       &lt;&lt;timed 9s&gt;&gt;&lt;div class=&quot;animated fadeInDownBig&quot;&gt;
-      &lt;name&gt;&lt;b&gt;WELCOME $clubname&lt;/b&gt;&lt;/name&gt;
-      &lt;button&gt;[[Next|button2]]&lt;/button&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;&lt;/messageboxreel&gt;
+      &lt;name&gt;&lt;b&gt;Welcome $clubname&lt;/b&gt;&lt;/name&gt;
+      &lt;/div&gt;&lt;&lt;/timed&gt;&gt;&lt;/messageboxreel&gt;
       &lt;&lt;include &quot;reeltoreel&quot;&gt;&gt;
       &lt;messagescreen&gt;&lt;span id=&quot;message&quot;&gt;Thank you&lt;/span&gt;
       &lt;&lt;timed 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Sending Secret Club Name&lt;&lt;/replace&gt;&gt;\
       &lt;&lt;next 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Sending&lt;&lt;/replace&gt;&gt;\
       &lt;&lt;next 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Sending to UCA HQ&lt;&lt;/replace&gt;&gt;\
       &lt;&lt;next 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Sending Complete&lt;&lt;/replace&gt;&gt;\
-      &lt;&lt;/timed&gt;&gt;&lt;/messagescreen&gt;</tw-passagedata><tw-passagedata pid="51" name="typewriter" tags="" position="160,34.33333333333333" size="100,100">&lt;typewriter&gt;[img[https://remote.co.com/UCA/assets/img/typewriter1.png]]&lt;/typewriter&gt;</tw-passagedata><tw-passagedata pid="52" name="reeltoreel" tags="" position="385,35" size="100,100">&lt;reeltoreel&gt;[img[https://remote.co.com/UCA/assets/img/reeltoreel2.gif]]&lt;/reeltoreel&gt;</tw-passagedata><tw-passagedata pid="53" name="button2" tags="nobr" position="350,725" size="100,100">&lt;&lt;set $prevpass to &quot;clubname&quot;&gt;&gt;
+      &lt;&lt;/timed&gt;&gt;&lt;/messagescreen&gt;
+
+&lt;div id=&quot;btnAlone&quot;&gt;&lt;/div&gt;
+&lt;&lt;timed 12s&gt;&gt;
+  &lt;&lt;replace &quot;#btnAlone&quot;&gt;&gt;
+    &lt;button&gt;[[Next|button2]]&lt;/button&gt;
+&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="typewriter" tags="" position="160,34.33333333333333" size="100,100">&lt;typewriter&gt;[img[https://remote.co.com/UCA/assets/img/typewriter1.png]]&lt;/typewriter&gt;</tw-passagedata><tw-passagedata pid="49" name="reeltoreel" tags="" position="385,35" size="100,100">&lt;reeltoreel&gt;[img[https://remote.co.com/UCA/assets/img/reeltoreel2.gif]]&lt;/reeltoreel&gt;</tw-passagedata><tw-passagedata pid="50" name="button2" tags="nobr" position="1225,600" size="100,100">&lt;&lt;set $prevpass to &quot;clubname&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;button2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton2&quot;&gt;&gt;
 
@@ -1736,7 +1735,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="postbutton2" tags="purple nobr" position="475,725" size="100,100">&lt;&lt;set $prevpass to &quot;button2&quot;&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="postbutton2" tags="purple nobr" position="100,725" size="100,100">&lt;&lt;set $prevpass to &quot;button2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton2b&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -1803,13 +1802,13 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 12.5s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;When I lose touch with others, sometimes I lose touch with myself - I can&#39;t even remember what my favourite Rhubarb topping was... Mushy Peas? Ice Cream? &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
-    &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/append&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 23s&gt;&gt;
@@ -1827,7 +1826,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordpostbutton2&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="codewordpostbutton2" tags="nobr" position="600,725" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="codewordpostbutton2" tags="nobr" position="225,725" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
 &lt;br/&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
@@ -1856,7 +1855,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="56" name="postbutton2b" tags="purple nobr" position="725,725" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton2&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="postbutton2b" tags="purple nobr" position="350,725" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton2b&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video5&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -1938,7 +1937,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordpostbutton2b&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="codewordpostbutton2b" tags="nobr" position="850,725" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="codewordpostbutton2b" tags="nobr" position="475,725" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
 &lt;br/&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
@@ -1967,7 +1966,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="58" name="video5" tags="purple nobr" position="975,725" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton2b&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="55" name="video5" tags="purple nobr" position="600,725" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton2b&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video5&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucatelecom2&quot;&gt;&gt;
 &lt;main class=&quot;main portal grid-container&quot;&gt;
@@ -1979,6 +1978,7 @@ $(document.head).find('#style-ui-bar').remove();
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+      &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt; Video 5&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
   &lt;/div&gt;
@@ -1994,7 +1994,7 @@ $(document.head).find('#style-ui-bar').remove();
           &lt;&lt;goto $nextpass&gt;&gt;
           &lt;&lt;/button&gt;&gt;
       &lt;&lt;/replace&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="ucatelecom2" tags="nobr" position="1100,725" size="100,100">&lt;&lt;set $prevpass to &quot;video5&quot;&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="ucatelecom2" tags="nobr" position="725,725" size="100,100">&lt;&lt;set $prevpass to &quot;video5&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucatelecom2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;button3&quot;&gt;&gt;
 &lt;&lt;timed 0.1s&gt;&gt;
@@ -2038,7 +2038,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footernext&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="callingAnne2" tags="nobr" position="1225,725" size="100,100">&lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
+&lt;&lt;include &quot;footernext&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="callingAnne2" tags="nobr" position="850,725" size="100,100">&lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
 &lt;span&gt;Calling...&lt;/span&gt;
 &lt;img src=&quot;assets/img/call.png&quot; alt=&quot;calling icon&quot;/&gt;
 &lt;span&gt;Anne&lt;/span&gt;
@@ -2072,7 +2072,7 @@ $(document.head).find('#style-ui-bar').remove();
              &lt;/div&gt;
              &lt;/div&gt;
         &lt;&lt;/replace&gt;&gt;
-    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="2callingMal" tags="nobr" position="100,850" size="100,100">&lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
+    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="2callingMal" tags="nobr" position="975,725" size="100,100">&lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
 &lt;span&gt;Calling...&lt;/span&gt;
 &lt;img src=&quot;assets/img/call.png&quot; alt=&quot;calling icon&quot;/&gt;
 &lt;span&gt;Mal&lt;/span&gt;
@@ -2127,7 +2127,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;include &quot;codewordphone2&quot; &gt;&gt;
   &lt;&lt;/prepend&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="codewordphone2" tags="nobr" position="225,850" size="100,100">&lt;div class=&quot;code-input telecom-code&quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="codewordphone2" tags="nobr" position="1100,725" size="100,100">&lt;div class=&quot;code-input telecom-code&quot;&gt;
 &lt;&lt;textbox &quot;$code&quot; &quot;&quot;&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;replace &quot;#options&quot;&gt;&gt;
@@ -2139,7 +2139,7 @@ $(document.head).find('#style-ui-bar').remove();
         /% CODEWORD CORRECT %/
         &lt;&lt;if $code isnot &quot;&quot;&gt;&gt; 
           &lt;&lt;if $code is &quot;UCA BREATH&quot;&gt;&gt;
-    &lt;&lt;audio &quot;correct&quot; play&gt;&gt;
+
     &lt;&lt;replace &quot;#screen&quot;&gt;&gt;
       &lt;&lt;include &quot;2callingMal2&quot;&gt;&gt;
         &lt;&lt;/replace&gt;&gt;
@@ -2156,7 +2156,7 @@ $(document.head).find('#style-ui-bar').remove();
           &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
     &lt;/div&gt;
- &lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="codewordphone2wrong" tags="nobr" position="350,850" size="100,100">&lt;&lt;replace &quot;#screen&quot;&gt;&gt;
+ &lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="codewordphone2wrong" tags="nobr" position="1225,725" size="100,100">&lt;&lt;replace &quot;#screen&quot;&gt;&gt;
   &lt;&lt;timed 0.1s&gt;&gt;
    &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2172,7 +2172,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordphone2&quot; &gt;&gt;
   &lt;&lt;/prepend&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="2callingMal2" tags="nobr" position="475,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="2callingMal2" tags="nobr" position="100,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2217,7 +2217,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="2callingMal3" tags="nobr" position="600,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="2callingMal3" tags="nobr" position="225,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2289,7 +2289,7 @@ $(document.head).find('#style-ui-bar').remove();
             &lt;&lt;/replace&gt;&gt;
         &lt;&lt;/timed&gt;&gt;
 
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="ucabreath" tags="nobr" position="725,850" size="100,100">&lt;div class=&quot;uca-breath-container&quot;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="ucabreath" tags="nobr" position="350,850" size="100,100">&lt;div class=&quot;uca-breath-container&quot;&gt;
     &lt;&lt;type 60ms&gt;&gt;&lt;p&gt;Hold your hand up so it’s in line with your face &lt;/p&gt;&lt;&lt;/type&gt;&gt;
     &lt;&lt;type 60ms&gt;&gt;&lt;p&gt;Focus on your hand&lt;/p&gt;&lt;&lt;/type&gt;&gt;
     &lt;&lt;type 60ms&gt;&gt;&lt;p&gt;Take a finger from your other hand up the mountain - Breathe in&lt;/p&gt;&lt;&lt;/type&gt;&gt;
@@ -2297,7 +2297,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;type 60ms&gt;&gt;&lt;p&gt;Up the mountain breathe in&lt;/p&gt;&lt;&lt;/type&gt;&gt;
     &lt;&lt;type 60ms&gt;&gt;&lt;p&gt;Down the waterfall - shhhhhhh&lt;/p&gt;&lt;&lt;/type&gt;&gt;
      &lt;&lt;type 60ms&gt;&gt;&lt;p&gt;Whisper UCA UCA UCA&lt;/p&gt;&lt;&lt;/type&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="67" name="2callingMal4" tags="nobr" position="850,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="64" name="2callingMal4" tags="nobr" position="475,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2354,7 +2354,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="2callingMal5" tags="nobr" position="975,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="2callingMal5" tags="nobr" position="600,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2397,7 +2397,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="2callingMal6" tags="nobr" position="1100,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="2callingMal6" tags="nobr" position="725,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2441,7 +2441,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="2callingMal7" tags="nobr" position="1225,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="2callingMal7" tags="nobr" position="850,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2478,7 +2478,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="2callingMal8" tags="nobr" position="100,975" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="2callingMal8" tags="nobr" position="975,850" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
      &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -2537,7 +2537,7 @@ $(document.head).find('#style-ui-bar').remove();
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="button3" tags="nobr" position="225,975" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom2&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="button3" tags="nobr" position="1100,850" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;button3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton3&quot;&gt;&gt;
 
@@ -2573,7 +2573,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="postbutton3" tags="purple nobr" position="350,975" size="100,100">&lt;&lt;set $prevpass to &quot;button3&quot;&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="postbutton3" tags="purple nobr" position="1225,850" size="100,100">&lt;&lt;set $prevpass to &quot;button3&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton3b&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -2664,7 +2664,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordpostbutton3&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="codewordpostbutton3" tags="nobr" position="475,975" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="codewordpostbutton3" tags="nobr" position="100,975" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -2692,7 +2692,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="postbutton3b" tags="purple nobr" position="600,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="72" name="postbutton3b" tags="purple nobr" position="225,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton3b&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton3c&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -2747,7 +2747,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="postbutton3c" tags="purple nobr" position="725,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3b&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="postbutton3c" tags="purple nobr" position="350,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3b&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton3c&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton3d&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -2804,7 +2804,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="postbutton3d" tags="purple nobr" position="850,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3c&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="postbutton3d" tags="purple nobr" position="475,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3c&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton3d&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton3e&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -2862,7 +2862,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="postbutton3e" tags="purple nobr" position="975,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3d&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="postbutton3e" tags="purple nobr" position="600,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3d&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton3e&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;button4&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -2919,7 +2919,7 @@ $(document.head).find('#style-ui-bar').remove();
     &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="button4" tags="nobr" position="1100,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3b&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="button4" tags="nobr" position="725,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton3b&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;button4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucamissionunlocked&quot;&gt;&gt;
 &lt;main class=&quot;beacon&quot;&gt;
@@ -2954,7 +2954,7 @@ $(document.head).find('#style-ui-bar').remove();
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="postbutton4" tags="purple nobr" position="1225,975" size="100,100">&lt;&lt;set $prevpass to &quot;button4&quot;&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="postbutton4" tags="purple nobr" position="850,975" size="100,100">&lt;&lt;set $prevpass to &quot;button4&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;mission&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -3025,7 +3025,7 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordpostbutton4&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="codewordpostbutton4" tags="nobr" position="100,1100" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="codewordpostbutton4" tags="nobr" position="975,975" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -3053,13 +3053,14 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="82" name="ucamissionunlocked" tags="" position="225,1100" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="79" name="ucamissionunlocked" tags="missionunlocked nobr" position="1100,975" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucamissionunlocked&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton4b&quot;&gt;&gt;
-UCA Mission Unlocked
+&lt;&lt;audio &quot;uploading&quot; &quot;play&quot;&gt;&gt;
+&lt;main class=&quot;unlocked&quot;&gt;&lt;&lt;include &quot;unlocked&quot;&gt;&gt;&lt;/main&gt;
 &lt;&lt;timed 4s&gt;&gt;
   &lt;&lt;goto $nextpass&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="postbutton4b" tags="purple nobr" position="350,1100" size="100,100">&lt;&lt;set $prevpass to &quot;ucamissionunlocked&quot;&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="postbutton4b" tags="missionunlocked nobr" position="1225,975" size="100,100">&lt;&lt;set $prevpass to &quot;ucamissionunlocked&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton4b&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;mission1&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -3073,6 +3074,7 @@ UCA Mission Unlocked
 &lt;&lt;include &quot;unlocked&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
  &lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -3087,11 +3089,7 @@ UCA Mission Unlocked
  &lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;UCA Mission. &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -3101,9 +3099,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 2s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;I wasn’t expecting this.  &lt;/p&gt;
         &lt;/div&gt;
@@ -3114,9 +3109,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 4.5s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;But you aren’t full agents. Do you think you have what it takes to complete this mission?&lt;/p&gt;
         &lt;/div&gt;
@@ -3130,7 +3122,7 @@ UCA Mission Unlocked
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
   &lt;&lt;include &quot;choicemission&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="choicemission" tags="nobr" position="475,1100" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="choicemission" tags="nobr" position="100,1100" size="100,100">&lt;div class=&quot;choice-container nav-wrapper initial&quot;&gt;
 &lt;&lt;button &quot;YES&quot;&gt;&gt;
     &lt;&lt;goto $nextpass&gt;&gt;
 &lt;&lt;/button&gt;&gt;
@@ -3157,7 +3149,7 @@ UCA Mission Unlocked
 
     &lt;&lt;timed 3s&gt;&gt;
     &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
-&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+&lt;div class=&quot;choice-container nav-wrapper initial&quot;&gt;
     &lt;&lt;button &quot;JOKING, YES&quot;&gt;&gt;  &lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;&lt;button &quot;NO&quot;&gt;&gt;
         &lt;&lt;timed 0.5s&gt;&gt;
@@ -3187,10 +3179,12 @@ UCA Mission Unlocked
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="85" name="mission1" tags="purple nobr" position="600,1100" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4b&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="82" name="mission1" tags="missionunlocked nobr" position="225,1100" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4b&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;mission1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video6&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
+  &lt;&lt;audio &quot;:all&quot; &quot;stop&quot;&gt;&gt;
+  &lt;&lt;audio &quot;correct&quot; &quot;play&quot;&gt;&gt;
   &lt;div id=&quot;audio&quot;&gt;
    &lt;audio src=&quot;assets/audio/UCA_JAY_04_NOTICE_08.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
   &lt;/div&gt;
@@ -3198,9 +3192,10 @@ UCA Mission Unlocked
 &lt;main class=&quot;main portal grid-container&quot;&gt;
   &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
 
-/* &lt;&lt;include &quot;unlocked&quot;&gt;&gt; */
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
  &lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -3215,11 +3210,7 @@ UCA Mission Unlocked
  &lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;I know you aren’t officially agents but I’m going to need you to pretend to be to complete this mission. &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -3229,9 +3220,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 6.5s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;I guess you have got Agent Cards, know the UCA Breath, have a secret club name and are experts at the UCA TOK...&lt;/p&gt;
         &lt;/div&gt;
@@ -3242,9 +3230,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 14s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;So maybe you are Agent already?!&lt;/p&gt;
         &lt;/div&gt;
@@ -3253,16 +3238,13 @@ UCA Mission Unlocked
     &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 16s&gt;&gt;
-    &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
+    &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;I’ll load up the Mission Brief. &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
-    &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/append&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
 
@@ -3283,7 +3265,7 @@ UCA Mission Unlocked
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="missionbrief" tags="nobr" position="725,1100" size="100,100">&lt;div class=&quot;clipboard &quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="missionbrief" tags="nobr" position="350,1100" size="100,100">&lt;div class=&quot;clipboard &quot;&gt;
  &lt;div class=&quot;clip-container &quot;&gt; &lt;img src=&quot;assets/img/clip.png&quot; alt=&quot;clip&quot;/&gt;&lt;/div&gt;
   &lt;div class=&quot;mission-brief letterpaper&quot;&gt;
  &lt;div class=&quot;mission-brief-section&quot;&gt;
@@ -3298,10 +3280,10 @@ UCA Mission Unlocked
      &lt;div class=&quot;mission-brief-section&quot;&gt;
      /* &lt;h2&gt;YOUR MISSION &lt;/h2&gt;
      &lt;span&gt; should you choose to accept it&lt;/span&gt; */
-       &lt;div class=&quot;uca-stamp&quot;&gt;&lt;img src=&quot;assets/img/UCA-stamp-text.png&quot; alt=&quot;UCA stamp&quot;/&gt;&lt;/div&gt;
+       &lt;div class=&quot;uca-stamp&quot;&gt;&lt;img src=&quot;assets/img/UCA-stamp.png&quot; alt=&quot;UCA stamp&quot;/&gt;&lt;/div&gt;
      &lt;/div&gt;
  &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="87" name="video6" tags="purple nobr" position="850,1100" size="100,100">&lt;&lt;set $prevpass to &quot;mission1&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="84" name="video6" tags="missionunlocked nobr" position="475,1100" size="100,100">&lt;&lt;set $prevpass to &quot;mission1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video6&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;button5&quot;&gt;&gt;
 &lt;main class=&quot;main portal grid-container&quot;&gt;
@@ -3313,6 +3295,7 @@ UCA Mission Unlocked
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt; Video 6&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
 
@@ -3326,12 +3309,8 @@ UCA Mission Unlocked
 &lt;&lt;timed 1s&gt;&gt;
   &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
     &lt;div class=&quot;message&quot;&gt;
-      &lt;div class=&quot;avatar&quot;&gt;
-        &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-      &lt;/div&gt;
       &lt;div class=&quot;message-container&quot; &gt;
-        &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
-        &lt;p&gt; Enter compartment codeword. &lt;/p&gt;
+        &lt;p&gt; Enter codeword. &lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;&lt;/append&gt;&gt;
@@ -3342,7 +3321,7 @@ UCA Mission Unlocked
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
   &lt;&lt;include &quot;codewordvideo6&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="codewordvideo6" tags="nobr" position="975,1100" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="codewordvideo6" tags="nobr" position="600,1100" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -3370,12 +3349,15 @@ UCA Mission Unlocked
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="89" name="button5" tags="nobr" position="1100,1100" size="100,100">&lt;&lt;set $prevpass to &quot;video6&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="86" name="button5" tags="nobr" position="725,1100" size="100,100">&lt;&lt;set $prevpass to &quot;video6&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;button5&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;postbutton6&quot;&gt;&gt;
 
 &lt;main class=&quot;beacon&quot;&gt;
-&lt;div class=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;instruction&quot;&gt;
+&lt;div class=&quot;uca-logo-text&quot;&gt;
+     &lt;img src=&quot;assets/img/logotitle.png&quot; alt=&quot;logo&quot;/&gt;&lt;/div&gt;
+     &lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
 &lt;div class=&quot;beacon-container&quot;&gt;
 
   &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
@@ -3404,7 +3386,7 @@ UCA Mission Unlocked
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="postbutton6" tags="purple nobr" position="1225,1100" size="100,100">&lt;&lt;set $prevpass to &quot;button5&quot;&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="postbutton6" tags="missionunlocked nobr" position="850,1100" size="100,100">&lt;&lt;set $prevpass to &quot;button5&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;postbutton6&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucatelecom3&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -3412,12 +3394,13 @@ UCA Mission Unlocked
    &lt;audio src=&quot;assets/audio/UCA_JAY_04_NOTICE_10.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
   &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;main class=&quot;main portal grid-container&quot;&gt;
+&lt;main class=&quot;main portal grid-container novid&quot;&gt;
   &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
 
-&lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
-  &lt;section class=&quot;chat&quot;&gt;
+  &lt;section class=&quot;chat&quot;&gt;  
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
  &lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -3432,11 +3415,7 @@ UCA Mission Unlocked
  &lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;We are nearly there now. &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -3446,9 +3425,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 1.5s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;This is the last push.  &lt;/p&gt;
         &lt;/div&gt;
@@ -3459,9 +3435,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 3s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;You are so close to lighting the beacon.  &lt;/p&gt;
         &lt;/div&gt;
@@ -3472,9 +3445,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 5.5s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;One more button &lt;/p&gt;
         &lt;/div&gt;
@@ -3485,9 +3455,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 7s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;And maybe if we complete the Gifting Mission we will find out where it is. &lt;/p&gt;
         &lt;/div&gt;
@@ -3498,9 +3465,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 11s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Let’s let Mal know. &lt;/p&gt;
         &lt;/div&gt;
@@ -3515,7 +3479,7 @@ UCA Mission Unlocked
         &lt;&lt;goto $nextpass&gt;&gt;
         &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="ucatelecom3" tags="nobr" position="100,1225" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton6&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="ucatelecom3" tags="nobr" position="975,1100" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton6&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucatelecom3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video7&quot;&gt;&gt;
 &lt;&lt;timed 0.1s&gt;&gt;
@@ -3552,12 +3516,13 @@ UCA Mission Unlocked
                 &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
                   &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
              &lt;/div&gt;
-    /* &lt;&lt;include &quot;phonekeyboard&quot;&gt;&gt; */
+
             
            &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="92" name="callingAnne3" tags="nobr" position="225,1225" size="100,100">&lt;&lt;removeclass &quot;#anneBtn&quot; &quot;pulse&quot;&gt;&gt;
+&lt;/main&gt;
+&lt;&lt;include &quot;footernext&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="callingAnne3" tags="nobr" position="1100,1100" size="100,100">&lt;&lt;removeclass &quot;#anneBtn&quot; &quot;pulse&quot;&gt;&gt;
 &lt;&lt;removeclass &quot;#anneBtn&quot; &quot;active&quot;&gt;&gt;
 &lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
 &lt;span&gt;Calling...&lt;/span&gt;
@@ -3592,7 +3557,7 @@ UCA Mission Unlocked
              &lt;/div&gt;
             &lt;/div&gt;
         &lt;&lt;/replace&gt;&gt;
-    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="3callingMal" tags="nobr" position="350,1225" size="100,100">&lt;&lt;removeclass &quot;#malBtn&quot; &quot;pulse&quot;&gt;&gt;
+    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="3callingMal" tags="nobr" position="1225,1100" size="100,100">&lt;&lt;removeclass &quot;#malBtn&quot; &quot;pulse&quot;&gt;&gt;
 &lt;&lt;removeclass &quot;#anneBtn&quot; &quot;pulse&quot;&gt;&gt;
 &lt;&lt;addclass &quot;#screen&quot; &quot;center&quot;&gt;&gt;
 &lt;span&gt;Calling...&lt;/span&gt;
@@ -3655,11 +3620,7 @@ UCA Mission Unlocked
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="3callingMal2" tags="nobr" position="475,1225" size="100,100">&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;active&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;active&quot;&gt;&gt;
-  &lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="3callingMal2" tags="nobr" position="100,1225" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -3703,7 +3664,7 @@ UCA Mission Unlocked
   &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
    &lt;&lt;include &quot;codewordphone3&quot;&gt;&gt;
   &lt;&lt;/prepend&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="codewordphone3" tags="nobr" position="600,1225" size="100,100">&lt;div class=&quot;code-input telecom-code&quot;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="codewordphone3" tags="nobr" position="225,1225" size="100,100">&lt;div class=&quot;code-input telecom-code&quot;&gt;
 &lt;&lt;textbox &quot;$code&quot; &quot;&quot;&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;replace &quot;#options&quot;&gt;&gt;
@@ -3714,7 +3675,7 @@ UCA Mission Unlocked
         &lt;&lt;set $code to $code.toUpperCase().trim()&gt;&gt;
         /% CODEWORD CORRECT %/
         &lt;&lt;if $code isnot &quot;&quot;&gt;&gt; 
-          &lt;&lt;if $code is &quot;NOTICE&quot;&gt;&gt;
+          &lt;&lt;if $code is &quot;NOTICE&quot; or $code is &quot;NOTICING&quot;&gt;&gt;
     &lt;&lt;audio &quot;correct&quot; play&gt;&gt;
     &lt;&lt;replace &quot;#screen&quot;&gt;&gt;
       &lt;&lt;include &quot;3callingMal3&quot;&gt;&gt;
@@ -3724,7 +3685,7 @@ UCA Mission Unlocked
         &lt;&lt;/if&gt;&gt;
         /% CODEWORD INCORRECT %/
         &lt;&lt;if $code isnot &quot;&quot;&gt;&gt;
-           &lt;&lt;if $code isnot &quot;NOTICE&quot;&gt;&gt;
+           &lt;&lt;if $code isnot &quot;NOTICE&quot; and $code isnot &quot;NOTICING&quot;&gt;&gt;
           &lt;&lt;replace &quot;#screen&quot;&gt;&gt;
     &lt;&lt;include &quot;codewordphone3wrong&quot;&gt;&gt;
       &lt;&lt;/replace&gt;&gt;
@@ -3732,11 +3693,7 @@ UCA Mission Unlocked
           &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
     &lt;/div&gt;
- &lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="codewordphone3wrong" tags="nobr" position="725,1225" size="100,100">&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;active&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;active&quot;&gt;&gt;
-  &lt;&lt;replace &quot;#screen&quot;&gt;&gt;
+ &lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="codewordphone3wrong" tags="nobr" position="350,1225" size="100,100">&lt;&lt;replace &quot;#screen&quot;&gt;&gt;
   &lt;&lt;timed 0.1s&gt;&gt;
   &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -3749,10 +3706,10 @@ UCA Mission Unlocked
     &lt;&lt;/timed&gt;&gt;
         &lt;&lt;/replace&gt;&gt;
        &lt;&lt;timed 4s&gt;&gt;
-    &lt;&lt;append &quot;#screen&quot;&gt;&gt;
-  &lt;&lt;include &quot;codewordphone3&quot; &gt;&gt;
-  &lt;&lt;/append&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="3callingMal3" tags="nobr" position="850,1225" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+    &lt;&lt;prepend &quot;#options&quot;&gt;&gt;
+   &lt;&lt;include &quot;codewordphone3&quot;&gt;&gt;
+  &lt;&lt;/prepend&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="3callingMal3" tags="nobr" position="475,1225" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -3813,11 +3770,7 @@ UCA Mission Unlocked
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="3callingMal4yes" tags="nobr" position="975,1225" size="100,100">&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;active&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;active&quot;&gt;&gt;
-  &lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="3callingMal4yes" tags="nobr" position="600,1225" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -3871,11 +3824,7 @@ UCA Mission Unlocked
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="3callingMal4no" tags="nobr" position="1100,1225" size="100,100">&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;pulse&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#yesBtn&quot; &quot;active&quot;&gt;&gt;
-&lt;&lt;removeclass &quot;#noBtn&quot; &quot;active&quot;&gt;&gt;
-  &lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="3callingMal4no" tags="nobr" position="725,1225" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#options&quot;&gt;&gt;
      &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;options-btn key&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/div&gt;
@@ -3929,7 +3878,7 @@ UCA Mission Unlocked
                 &lt;&lt;/link&gt;&gt;
                 &lt;/div&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="video7" tags="purple nobr" position="1225,1225" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom3&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="video7" tags="missionunlocked nobr" position="850,1225" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom3&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video7&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $planning to false&gt;&gt;
@@ -3944,6 +3893,7 @@ UCA Mission Unlocked
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+    &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt; Video 7&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
 
@@ -3963,12 +3913,12 @@ UCA Mission Unlocked
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="missionplanner1" tags="purple nobr" position="100,1350" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4b&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="missionplanner1" tags="missionunlocked nobr" position="975,1225" size="100,100">&lt;&lt;set $prevpass to &quot;postbutton4b&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video6&quot;&gt;&gt;
 &lt;main class=&quot;mission-planner letter&quot;&gt;
 &lt;&lt;include &quot;missionplanner&quot;&gt;&gt;
-  &lt;/main&gt;</tw-passagedata><tw-passagedata pid="102" name="missionplanner" tags="nobr" position="225,1350" size="100,100">&lt;div class=&quot;clipboard &quot;&gt;
+  &lt;/main&gt;</tw-passagedata><tw-passagedata pid="99" name="missionplanner" tags="nobr" position="1100,1225" size="100,100">&lt;div class=&quot;clipboard &quot;&gt;
  /* &lt;div class=&quot;clip-container &quot;&gt; &lt;img src=&quot;assets/img/clip.png&quot; alt=&quot;clip&quot;/&gt;&lt;/div&gt; */
   &lt;div class=&quot;mission-brief letterpaper planner&quot;&gt;
  &lt;div class=&quot;mission-brief-section planner&quot;&gt;
@@ -4035,11 +3985,11 @@ UCA Mission Unlocked
 &lt;/div&gt;
 
 /* Grey to start  */
-/* Colour when complete  */</tw-passagedata><tw-passagedata pid="103" name="stamp" tags="nobr" position="350,1350" size="100,100">&lt;div class=&quot;uca-stamp&quot; id=&quot;stamp&quot;&gt;
+/* Colour when complete  */</tw-passagedata><tw-passagedata pid="100" name="stamp" tags="nobr" position="1225,1225" size="100,100">&lt;div class=&quot;uca-stamp&quot; id=&quot;stamp&quot;&gt;
   &lt;img src=&quot;assets/img/UCA-stamp.png&quot; alt=&quot;UCA stamp&quot;/&gt;
-   &lt;/div&gt;</tw-passagedata><tw-passagedata pid="104" name="stampcomplete" tags="nobr" position="475,1350" size="100,100">&lt;div class=&quot;mission-complete&quot; &gt;
+   &lt;/div&gt;</tw-passagedata><tw-passagedata pid="101" name="stampcomplete" tags="nobr" position="100,1350" size="100,100">&lt;div class=&quot;mission-complete&quot; &gt;
   &lt;img src=&quot;assets/img/mission-complete-text.png&quot; alt=&quot;mission complete UCA stamp&quot;/&gt;
-   &lt;/div&gt;</tw-passagedata><tw-passagedata pid="105" name="missionplanner-planning" tags="nobr" position="600,1350" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
+   &lt;/div&gt;</tw-passagedata><tw-passagedata pid="102" name="missionplanner-planning" tags="missionunlocked nobr" position="225,1350" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missionplanner-planning&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -4049,10 +3999,11 @@ UCA Mission Unlocked
 &lt;&lt;/if&gt;&gt;
 &lt;main class=&quot;main portal grid-container&quot;&gt;
   &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
-&lt;div id=&quot;responses&quot;&gt;PLANNING&lt;/div&gt;
+&lt;div id=&quot;responses&quot;&gt;&lt;span class=&quot;fancy static&quot;&gt;PLANNING&lt;/span&gt;&lt;/div&gt;
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
  &lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -4067,11 +4018,8 @@ UCA Mission Unlocked
  &lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
+
             &lt;p&gt;Welcome to the Planning Stage of the Mission. &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4081,9 +4029,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 3s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;You will need to decide what you are making before you can move on.  &lt;/p&gt;
         &lt;/div&gt;
@@ -4094,9 +4039,6 @@ UCA Mission Unlocked
 &lt;&lt;timed 7s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;You may want to write these on your board before confirming below.  &lt;/p&gt;
         &lt;/div&gt;
@@ -4115,12 +4057,12 @@ UCA Mission Unlocked
           &lt;&lt;/replace&gt;&gt;
         &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="checkresponses" tags="nobr" position="725,1350" size="100,100">&lt;&lt;replace &quot;#responses&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="checkresponses" tags="nobr" position="350,1350" size="100,100">&lt;&lt;replace &quot;#responses&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;if $p1 is true&gt;&gt;
   &lt;&lt;append &quot;#responses&quot;&gt;&gt;
     &lt;h2&gt;Planning&lt;/h2&gt;
     &lt;div class=&quot;response-item&quot;&gt;
-       &lt;h3&gt;Recepient&lt;/h3&gt;
+       &lt;h3&gt;Recipient&lt;/h3&gt;
       &lt;span&gt;$p1text&lt;/span&gt;
     &lt;/div&gt;
     &lt;&lt;/append&gt;&gt;
@@ -4130,7 +4072,7 @@ UCA Mission Unlocked
   &lt;&lt;append &quot;#responses&quot;&gt;&gt;
   &lt;div class=&quot;response-item&quot;&gt;
    &lt;h3&gt; What do you think they like?&lt;/h3&gt;
-    &lt;span&gt;$p2text&lt;/span&gt;
+   &lt;span&gt;$p2list&lt;/span&gt;
   &lt;/div&gt;
     &lt;&lt;/append&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -4152,17 +4094,13 @@ UCA Mission Unlocked
   &lt;/div&gt;
     &lt;&lt;/append&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="planning1" tags="nobr" position="850,1350" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="planning1" tags="nobr" position="475,1350" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_JAY_05_PLANNING_02.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;From your mapping you will have chosen a few options for who is right to receive the Gift.  &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4172,11 +4110,7 @@ UCA Mission Unlocked
 &lt;&lt;timed 5s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;Who have you decided to share it with? &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4187,7 +4121,7 @@ UCA Mission Unlocked
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
       &lt;&lt;include &quot;inputplanning1&quot;&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="inputplanning1" tags="nobr" position="975,1350" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="inputplanning1" tags="nobr" position="600,1350" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -4199,7 +4133,7 @@ UCA Mission Unlocked
 &lt;&lt;if $p1text isnot &quot;&quot;&gt;&gt; 
 
 
-    &lt;&lt;timed 2s&gt;&gt;
+    &lt;&lt;timed 1s&gt;&gt;
       &lt;&lt;set $p1 to true&gt;&gt;
       &lt;&lt;addclass &quot;#responses&quot; &quot;letterpaper&quot;&gt;&gt;
       &lt;&lt;addclass &quot;#responses&quot; &quot;responses&quot;&gt;&gt;
@@ -4218,17 +4152,13 @@ UCA Mission Unlocked
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="109" name="planning2" tags="nobr" position="1100,1350" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="106" name="planning2" tags="nobr" position="725,1350" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_JAY_05_PLANNING_03.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;Using all of your expert knowledge, what do you think they like? 
  &lt;/p&gt;
         &lt;/div&gt;
@@ -4241,19 +4171,25 @@ UCA Mission Unlocked
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
       &lt;&lt;include &quot;inputplanning2&quot;&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="inputplanning2" tags="nobr" position="1225,1350" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="inputplanning2" tags="nobr" position="850,1350" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% INPUT %/
-&lt;div class=&quot;code-input chat-code&quot;&gt;
-&lt;&lt;textbox &quot;$p2text&quot; &quot;Your answer&quot;&gt;&gt;
-&lt;&lt;button &quot;Send&quot;&gt;&gt;
+&lt;div class=&quot;code-input chat-code flex-col&quot;&gt;
+  &lt;p&gt;Item 1:&lt;/p&gt;
+  &lt;&lt;textbox &quot;$item1&quot; &quot;Your first answer&quot;&gt;&gt;
+  &lt;p&gt;Item 2:&lt;/p&gt;
+  &lt;&lt;textbox &quot;$item2&quot; &quot;Your second answer&quot;&gt;&gt;
+  &lt;p&gt;Item 3:&lt;/p&gt;
+  &lt;&lt;textbox &quot;$item3&quot; &quot;Your third answer&quot;&gt;&gt;
+  &lt;&lt;button &quot;Send&quot;&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;set $p2text to $p2text.toUpperCase().trim()&gt;&gt;
+&lt;&lt;set $item1 to $item1.toUpperCase().trim()&gt;&gt;
+&lt;&lt;set $item2 to $item2.toUpperCase().trim()&gt;&gt;
+&lt;&lt;set $item3 to $item3.toUpperCase().trim()&gt;&gt;
+&lt;&lt;set $p2list to [ $item1, $item2, $item3 ].filter(item =&gt; item !== &quot;&quot;).join(&quot;, &quot;)&gt;&gt;
 /% INPUT ENTERED %/
-&lt;&lt;if $p2text isnot &quot;&quot;&gt;&gt; 
-
-
-    &lt;&lt;timed 2s&gt;&gt;
+&lt;&lt;if $p2list isnot &quot;&quot;&gt;&gt; 
+    &lt;&lt;timed 1s&gt;&gt;
       &lt;&lt;set $p2 to true&gt;&gt;
       &lt;&lt;include &quot;checkresponses&quot;&gt;&gt;
         &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -4263,24 +4199,20 @@ UCA Mission Unlocked
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 /% INPUT NOT ENTERED %/
-&lt;&lt;if $p2text is &quot;&quot;&gt;&gt;
-  &lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;div class=&quot;confirmation&quot; id=&quot;confirmation&quot;&gt;Please enter your answer.&lt;/div&gt;&lt;&lt;/replace&gt;&gt;
+&lt;&lt;if $p2list is &quot;&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;div class=&quot;confirmation&quot; id=&quot;confirmation&quot;&gt;Please enter at least one answer.&lt;/div&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;timed 1.5s&gt;&gt;&lt;&lt;replace &quot;#coderesult&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="111" name="planning3" tags="nobr" position="100,1475" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="108" name="planning3" tags="nobr" position="975,1350" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_JAY_05_PLANNING_04.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;You have lots of skills and superpowers in the room - what do you think your class could make? &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4292,7 +4224,7 @@ UCA Mission Unlocked
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
       &lt;&lt;include &quot;inputplanning3&quot;&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="inputplanning3" tags="nobr" position="225,1475" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="inputplanning3" tags="nobr" position="1100,1350" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -4304,7 +4236,7 @@ UCA Mission Unlocked
 &lt;&lt;if $p3text isnot &quot;&quot;&gt;&gt; 
 
 
-    &lt;&lt;timed 2s&gt;&gt;
+    &lt;&lt;timed 1s&gt;&gt;
       &lt;&lt;set $p3 to true&gt;&gt;
       &lt;&lt;include &quot;checkresponses&quot;&gt;&gt;
         &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -4321,17 +4253,13 @@ UCA Mission Unlocked
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="113" name="planning4" tags="nobr" position="350,1475" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="110" name="planning4" tags="nobr" position="1225,1350" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_JAY_05_PLANNING_05.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;Where in the school is a good place for your mission to take place or for the gift to be delivered? &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4343,7 +4271,7 @@ UCA Mission Unlocked
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
       &lt;&lt;include &quot;inputplanning4&quot;&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="inputplanning4" tags="nobr" position="475,1475" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="inputplanning4" tags="nobr" position="100,1475" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -4355,7 +4283,7 @@ UCA Mission Unlocked
 &lt;&lt;if $p4text isnot &quot;&quot;&gt;&gt; 
 
 
-    &lt;&lt;timed 2s&gt;&gt;
+    &lt;&lt;timed 1s&gt;&gt;
       &lt;&lt;set $p4 to true&gt;&gt;
       &lt;&lt;include &quot;checkresponses&quot;&gt;&gt;
         &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -4372,17 +4300,13 @@ UCA Mission Unlocked
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="115" name="planning5" tags="nobr" position="600,1475" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="112" name="planning5" tags="nobr" position="225,1475" size="100,100">&lt;&lt;timed 0.5s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_JAY_05_PLANNING_06.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;This looks like a good plan – are you ready to send it off to UCA HQ for sign off? &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4396,9 +4320,9 @@ UCA Mission Unlocked
         &lt;&lt;goto &quot;sending&quot;&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="sending" tags="nobr green" position="725,1475" size="100,100">&lt;&lt;if $sound is true&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="sending" tags="nobr green" position="350,1475" size="100,100">&lt;&lt;if $sound is true&gt;&gt;
   &lt;div id=&quot;audio&quot;&gt;
-   &lt;audio src=&quot;assets/audio/UCA_JAY_05_PLANNING_07.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
+   /* &lt;audio src=&quot;assets/audio/UCA_JAY_05_PLANNING_07.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; */
   &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/taperecorder.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
@@ -4406,7 +4330,7 @@ UCA Mission Unlocked
 
       &lt;&lt;timed 13s&gt;&gt;&lt;div class=&quot;animated fadeInDownBig&quot;&gt;
       &lt;name&gt;&lt;b&gt;UCA Mission Plan Agreed&lt;/b&gt;&lt;/name&gt;
-      &lt;button&gt;[[Next|missionplanner1]]&lt;/button&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;&lt;/messageboxreel&gt;
+     &lt;/div&gt;&lt;&lt;/timed&gt;&gt;&lt;/messageboxreel&gt;
       &lt;&lt;include &quot;reeltoreel&quot;&gt;&gt;
       &lt;messagescreen&gt;&lt;span id=&quot;message&quot;&gt;Sending&lt;/span&gt;
       &lt;&lt;timed 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Mission Plan Received&lt;&lt;/replace&gt;&gt;
@@ -4416,7 +4340,14 @@ UCA Mission Unlocked
       &lt;&lt;next 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Having a cup of tea. &lt;&lt;/replace&gt;&gt;
       &lt;&lt;next 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Checking Mission&lt;&lt;/replace&gt;&gt;
          &lt;&lt;next 2s&gt;&gt;&lt;&lt;replace &quot;#message&quot;&gt;&gt;Check Complete&lt;&lt;/replace&gt;&gt;
-      &lt;&lt;/timed&gt;&gt;&lt;/messagescreen&gt;</tw-passagedata><tw-passagedata pid="117" name="missionplanner-making" tags="nobr" position="850,1475" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
+      &lt;&lt;/timed&gt;&gt;&lt;/messagescreen&gt;
+
+&lt;div id=&quot;btnAlone&quot;&gt;&lt;/div&gt;
+&lt;&lt;timed 12s&gt;&gt;
+  &lt;&lt;replace &quot;#btnAlone&quot;&gt;&gt;
+   &lt;button&gt;[[Next|missionplanner1]]&lt;/button&gt;
+&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="missionplanner-making" tags="missionunlocked nobr" position="475,1475" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missionplanner-making&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -4424,12 +4355,15 @@ UCA Mission Unlocked
    &lt;audio src=&quot;assets/audio/UCA_JAY_06_MAKING.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
   &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;main class=&quot;main portal grid-container&quot;&gt;
+&lt;main class=&quot;main portal grid-container novid&quot;&gt;
   &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
-MAKING
+&lt;span class=&quot;fancy static&quot;&gt;MAKING&lt;/span&gt;
+
+
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
  &lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -4444,11 +4378,7 @@ MAKING
  &lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;It is now time for you to make your gift&lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4458,9 +4388,6 @@ MAKING
 &lt;&lt;timed 2.5s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Gather your tools, use your superpowers and get making.  &lt;/p&gt;
         &lt;/div&gt;
@@ -4471,9 +4398,6 @@ MAKING
 &lt;&lt;timed 6s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Remember you are making something for other people  &lt;/p&gt;
         &lt;/div&gt;
@@ -4484,9 +4408,6 @@ MAKING
 &lt;&lt;timed 9s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Hold onto your plan &lt;/p&gt;
         &lt;/div&gt;
@@ -4498,9 +4419,6 @@ MAKING
 &lt;&lt;timed 11s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;And make something that they will like.  &lt;/p&gt;
         &lt;/div&gt;
@@ -4512,9 +4430,6 @@ MAKING
 &lt;&lt;timed 13s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;When ready click below.&lt;/p&gt;
         &lt;/div&gt;
@@ -4531,7 +4446,7 @@ MAKING
        &lt;&lt;goto &quot;missionplanner1&quot;&gt;&gt;
         &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="missionplanner-delivery" tags="nobr" position="975,1475" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="missionplanner-delivery" tags="missionunlocked nobr" position="600,1475" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missionplanner-deliver&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -4539,12 +4454,14 @@ MAKING
    &lt;audio src=&quot;assets/audio/UCA_JAY_07_DELIVERY_01.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
   &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;main class=&quot;main portal grid-container&quot;&gt;
+&lt;main class=&quot;main portal grid-container novid&quot;&gt;
   &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
-DELIVERY
+
+&lt;span class=&quot;fancy static&quot;&gt;DELIVERY&lt;/span&gt;
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
  &lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -4559,11 +4476,7 @@ DELIVERY
  &lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;Great work. &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4573,9 +4486,6 @@ DELIVERY
 &lt;&lt;timed 2s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;It is nearly time.&lt;/p&gt;
         &lt;/div&gt;
@@ -4586,9 +4496,6 @@ DELIVERY
 &lt;&lt;timed 4s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Time to deliver your gift.&lt;/p&gt;
         &lt;/div&gt;
@@ -4599,9 +4506,6 @@ DELIVERY
 &lt;&lt;timed 6s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;I hope you are excited. &lt;/p&gt;
         &lt;/div&gt;
@@ -4613,9 +4517,6 @@ DELIVERY
 &lt;&lt;timed 8s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;I am - this is the last part before we find that final button and light the beacon!&lt;/p&gt;
         &lt;/div&gt;
@@ -4634,17 +4535,13 @@ DELIVERY
         &lt;&lt;/timed&gt;&gt;
         &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="delivery2" tags="nobr" position="1100,1475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="delivery2" tags="nobr" position="725,1475" size="100,100">&lt;&lt;timed 0.1s&gt;&gt;
    &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_JAY_07_DELIVERY_02.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;Before you head out - I need to remind you of something&lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4654,9 +4551,6 @@ DELIVERY
 &lt;&lt;timed 3s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Remember we are an Undercover Agency – so work out how you might deliver your gift secretly if you can. &lt;/p&gt;
         &lt;/div&gt;
@@ -4667,9 +4561,6 @@ DELIVERY
 &lt;&lt;timed 12s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Good luck. &lt;/p&gt;
         &lt;/div&gt;
@@ -4685,17 +4576,13 @@ DELIVERY
         &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="delivery3" tags="nobr" position="1225,1475" size="100,100">&lt;&lt;timed 1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="delivery3" tags="nobr" position="850,1475" size="100,100">&lt;&lt;timed 1s&gt;&gt;
     &lt;&lt;replace &quot;#audio&quot;&gt;&gt;
       &lt;audio src=&quot;assets/audio/UCA_JAY_07_DELIVERY_03.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;When you have delivered - or have everything ready for a future delivery - enter the word MAL below. &lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4708,7 +4595,7 @@ DELIVERY
     &lt;&lt;include &quot;codewordDelivery&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
 
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="codewordDelivery" tags="nobr" position="100,1600" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="codewordDelivery" tags="nobr" position="975,1475" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -4737,7 +4624,7 @@ DELIVERY
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="122" name="missioncompletetext" tags="nobr purple" position="225,1600" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="119" name="missioncompletetext" tags="nobr missionunlocked" position="1100,1475" size="100,100">&lt;&lt;set $prevpass to &quot;missionplanner1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missioncompletetext&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;button6&quot;&gt;&gt;
 &lt;&lt;if $sound is true&gt;&gt;
@@ -4751,6 +4638,7 @@ DELIVERY
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt;
  &lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
@@ -4765,11 +4653,7 @@ DELIVERY
  &lt;&lt;timed 0.1s&gt;&gt;
     &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
-            &lt;span class=&quot;sender&quot;&gt;Jay&lt;/span&gt;
             &lt;p&gt;It’s time to shine a light on the truth&lt;/p&gt;
         &lt;/div&gt;
         &lt;/div&gt;
@@ -4779,9 +4663,6 @@ DELIVERY
 &lt;&lt;timed 3s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;It’s time to light the Beacon.  &lt;/p&gt;
         &lt;/div&gt;
@@ -4792,9 +4673,6 @@ DELIVERY
 &lt;&lt;timed 6s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;The final button is hiding in plain sight – under the Beacon. &lt;/p&gt;
         &lt;/div&gt;
@@ -4806,9 +4684,6 @@ DELIVERY
 &lt;&lt;timed 12s&gt;&gt;
     &lt;&lt;append &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
-        &lt;div class=&quot;avatar&quot;&gt;
-            &lt;img src=&quot;assets/img/user.png&quot; alt=&quot;avatar&quot;/&gt;
-        &lt;/div&gt;
         &lt;div class=&quot;message-container&quot; &gt;
             &lt;p&gt;Light the beacon and enter the word.&lt;/p&gt;
         &lt;/div&gt;
@@ -4826,22 +4701,27 @@ DELIVERY
        
         &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="button6" tags="nobr" position="350,1600" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom2&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="button6" tags="nobr" position="1225,1475" size="100,100">&lt;&lt;set $prevpass to &quot;ucatelecom2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;missioncompletetext&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;video8&quot;&gt;&gt;
 
 &lt;main class=&quot;beacon&quot;&gt;
-&lt;div class=&quot;instruction&quot; id=&quot;instruction&quot;&gt;&lt;h2&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
+&lt;div class=&quot;instruction&quot; id=&quot;instruction&quot;&gt;
+&lt;div class=&quot;uca-logo-text&quot;&gt;
+     &lt;img src=&quot;assets/img/logotitle.png&quot; alt=&quot;logo&quot;/&gt;&lt;/div&gt;
+     &lt;h2 id=&quot;text&quot;&gt; Place your button on the beacon now &lt;/h2&gt;&lt;/div&gt;
 &lt;div class=&quot;beacon-container&quot;&gt;
 
-  &lt;div class=&quot;beacon-img-container&quot; id=&quot;img&quot;&gt;
+  &lt;div class=&quot;beacon-img-container &quot; id=&quot;img&quot;&gt;
  &lt;img src=&quot;assets/img/beacon-empty.png&quot; alt=&quot;beacon&quot; class=&quot;outline&quot;/&gt;
   &lt;img src=&quot;assets/img/button-1.png&quot; alt=&quot;first button&quot; class=&quot;first&quot;/&gt;
   &lt;img src=&quot;assets/img/button-2.png&quot; alt=&quot;second button&quot; class=&quot;second&quot;/&gt;
   &lt;img src=&quot;assets/img/button-3.png&quot; alt=&quot;third button&quot; class=&quot;third&quot;/&gt;
       &lt;img src=&quot;assets/img/button-4.png&quot; alt=&quot;fourth buttons&quot; class=&quot;fourth&quot;/&gt;
         &lt;img src=&quot;assets/img/button-5.png&quot; alt=&quot;fifth buttons&quot; class=&quot;fifth&quot;/&gt;
+  
   &lt;/div&gt;
+   &lt;div class=&quot;beacon-codeword-container&quot; id=&quot;codeword&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&quot;btnMount&quot;&gt;&lt;/div&gt;
 
@@ -4852,20 +4732,21 @@ DELIVERY
   &lt;&lt;append &quot;#img&quot;&gt;&gt;
       &lt;img src=&quot;assets/img/button-6.png&quot; alt=&quot;sixth buttons&quot; class=&quot;fadeInQuick&quot;/&gt;
     &lt;&lt;/append&gt;&gt;
-
   &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 6s&gt;&gt;
-  &lt;&lt;append &quot;#instruction&quot;&gt;&gt;
-    &lt;h2&gt;Now enter the codeword: &lt;/h2&gt;
-    &lt;&lt;/append&gt;&gt;
+&lt;&lt;timed 5s&gt;&gt;
+  &lt;&lt;addclass &quot;#img&quot; &quot;animaterotate&quot;&gt;&gt;
+  &lt;&lt;replace &quot;#text&quot;&gt;&gt;
+     &lt;h2 id=&quot;text&quot;&gt; Enter the codeword:&lt;/h2&gt;
+    &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/timed&gt;&gt;
+
 
 &lt;&lt;timed 7s&gt;&gt;
-  &lt;&lt;append &quot;#instruction&quot;&gt;&gt;
-      &lt;&lt;include &quot;codewordBeacon&quot;&gt;&gt;
-    &lt;&lt;/append&gt;&gt;
-  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="codewordBeacon" tags="nobr" position="475,1600" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
+&lt;&lt;replace &quot;#codeword&quot;&gt;&gt;
+   &lt;&lt;include &quot;codewordBeacon&quot;&gt;&gt;
+  &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="codewordBeacon" tags="nobr" position="100,1600" size="100,100">&lt;div id=&quot;coderesult&quot;&gt;&lt;/div&gt;
  &lt;div id=&quot;resultbutton&quot;&gt;
 /% CODEWORD INPUT %/
 &lt;div class=&quot;code-input chat-code&quot;&gt;
@@ -4893,7 +4774,7 @@ DELIVERY
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="125" name="video8" tags="purple nobr" position="600,1600" size="100,100">&lt;&lt;set $prevpass to &quot;missioncompletetext&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="122" name="video8" tags="purple nobr" position="225,1600" size="100,100">&lt;&lt;set $prevpass to &quot;missioncompletetext&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video8&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucalogo&quot;&gt;&gt;
 &lt;&lt;set $planning to false&gt;&gt;
@@ -4908,6 +4789,7 @@ DELIVERY
 
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
+  &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
   &lt;div class=&quot;messages-container&quot; id=&quot;messagesContainer&quot;&gt; Video 8&lt;/div&gt;
   &lt;div class=&quot;chat-input&quot; id=&quot;inputMount&quot;&gt;
 
@@ -4927,32 +4809,33 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="ucalogo" tags="nobr green" position="725,1600" size="100,100">&lt;main class=&quot;logo-alone&quot;&gt;
-  &lt;&lt;include &quot;rotatelogo&quot;&gt;&gt;
-  &lt;&lt;timed 2s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="ucalogo" tags="nobr purple" position="350,1600" size="100,100">&lt;main class=&quot;logo-alone&quot;&gt;
+
+  &lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
+
   &lt;&lt;button &quot;Back to Front Door&quot;&gt;&gt;
     &lt;&lt;goto &quot;Start&quot;&gt;&gt;
     &lt;&lt;/button &gt;&gt;
-    &lt;&lt;/timed&gt;&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="127" name="staticbuzz2" tags="" position="53.33333333333334,2262.9999999999995" size="100,100">&lt;static&gt;
+
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="124" name="staticbuzz2" tags="" position="53.33333333333334,2262.9999999999995" size="100,100">&lt;static&gt;
  &lt;img src=&quot;https://remote.co.com/UCA/assets/img/static5.gif&quot; class=&quot;staticgif ctrright &quot; id=&quot;staticgif&quot;&gt;
       &lt;/static&gt;
       &lt;&lt;timed 0.5s&gt;&gt;
       /* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot;  style=&quot;display:none&quot; allow=&quot;autoplay&quot; &gt;&lt;/iframe&gt; */
       &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; 
-      &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="staticbuzz3" tags="" position="51.333333333333286,2378" size="100,100">&lt;static&gt;
+      &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="staticbuzz3" tags="" position="51.333333333333286,2378" size="100,100">&lt;static&gt;
  &lt;img src=&quot;https://remote.co.com/UCA/assets/img/static5.gif&quot; class=&quot;staticgif left &quot; id=&quot;staticgif&quot;&gt;
       &lt;/static&gt;
       &lt;&lt;timed 0.5s&gt;&gt;
       /* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot;  style=&quot;display:none&quot; allow=&quot;autoplay&quot; &gt;&lt;/iframe&gt; */
       &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; 
-      &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="staticbuzz4" tags="" position="54,2488" size="100,100">&lt;static&gt;
+      &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="staticbuzz4" tags="" position="54,2488" size="100,100">&lt;static&gt;
  &lt;img src=&quot;https://remote.co.com/UCA/assets/img/static5.gif&quot; class=&quot;staticgif leftbig &quot; id=&quot;staticgif&quot;&gt;
       &lt;/static&gt;
       &lt;&lt;timed 0.5s&gt;&gt;
       /* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot;  style=&quot;display:none&quot; allow=&quot;autoplay&quot; &gt;&lt;/iframe&gt; */
       &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; 
-      &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="staticbuzz5" tags="" position="51.33333333333331,2611.3333333333335" size="100,100">/&lt;&lt;timed 0.5s&gt;&gt;
+      &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="staticbuzz5" tags="" position="51.33333333333331,2611.3333333333335" size="100,100">/&lt;&lt;timed 0.5s&gt;&gt;
 /* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; style=&quot;display:none&quot; allow=&quot;autoplay&quot; &gt;&lt;/iframe&gt; */
 &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; 
 &lt;&lt;/timed&gt;&gt;
@@ -4960,17 +4843,17 @@ DELIVERY
       &lt;&lt;timed 0.5s&gt;&gt; &lt;img src=&quot;https://remote.co.com/UCA/assets/img/static5.gif&quot; class=&quot;staticgif right growRightBig animated&quot;&gt;&lt;&lt;/timed&gt;&gt;
       &lt;&lt;timed
       7s&gt;&gt;&lt;&lt;goto&quot;missionplanning&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
-      &lt;/static&gt;</tw-passagedata><tw-passagedata pid="131" name="prestatic" tags="static" position="56.66666666666663,2758.6666666666665" size="100,100">/* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; allow=&quot;autoplay&quot;  style=&quot;display:none&quot;&gt;&lt;/iframe&gt; */
+      &lt;/static&gt;</tw-passagedata><tw-passagedata pid="128" name="prestatic" tags="static" position="56.66666666666663,2758.6666666666665" size="100,100">/* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; allow=&quot;autoplay&quot;  style=&quot;display:none&quot;&gt;&lt;/iframe&gt; */
 &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/crispy-static.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; 
       &lt;staticbox&gt;[img[https://remote.co.com/UCA/assets/img/squarestatic.gif]]&lt;/staticbox&gt;
-      &lt;&lt;include &quot;password8&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="static" tags="static" position="56.66666666666663,2758.6666666666665" size="100,100">/* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/calm-crispy.mp3&quot; allow=&quot;autoplay&quot;  style=&quot;display:none&quot;&gt;&lt;/iframe&gt; */
+      &lt;&lt;include &quot;password8&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="static" tags="static" position="56.66666666666663,2758.6666666666665" size="100,100">/* &lt;iframe src=&quot;https://remote.co.com/UCA/assets/audio/calm-crispy.mp3&quot; allow=&quot;autoplay&quot;  style=&quot;display:none&quot;&gt;&lt;/iframe&gt; */
       &lt;audio src=&quot;https://remote.co.com/UCA/assets/audio/calm-crispy.mp3&quot; autoplay style=&quot;display:none&quot;&gt;Audio is not supported on your device&lt;/audio&gt; 
       &lt;staticbox&gt;[img[https://remote.co.com/UCA/assets/img/squarestatic.gif]]&lt;/staticbox&gt;
       &lt;&lt;timed 4s&gt;&gt;&lt;staticbox&gt;&lt;div class=&quot;animated
       fadeIn&quot;&gt;[img[https://remote.co.com/UCA/assets/img/pattern.gif]]&lt;/div&gt;&lt;/staticbox&gt;&lt;&lt;/timed&gt;&gt;
       &lt;&lt;timed 9s&gt;&gt;&lt;staticboxcolour&gt;&lt;div class=&quot;animated
       fadeIn&quot;&gt;[img[https://remote.co.com/UCA/assets/img/colours.gif]]&lt;/div&gt;&lt;/staticboxcolour&gt;&lt;&lt;/timed&gt;&gt;
-      &lt;&lt;timed 25s&gt;&gt;&lt;&lt;goto &quot;video8&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="video9" tags="purple nobr" position="350,1725" size="100,100">&lt;&lt;set $prevpass to &quot;entrance&quot;&gt;&gt;
+      &lt;&lt;timed 25s&gt;&gt;&lt;&lt;goto &quot;video8&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="video9" tags="purple nobr" position="1225,1600" size="100,100">&lt;&lt;set $prevpass to &quot;entrance&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;video9&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext1&quot;&gt;&gt;
 &lt;main class=&quot;main portal grid-container&quot;&gt;
@@ -5057,7 +4940,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="ucaroottext1" tags="purple nobr" position="475,1725" size="100,100">&lt;&lt;set $prevpass to &quot;video9&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="ucaroottext1" tags="purple nobr" position="100,1725" size="100,100">&lt;&lt;set $prevpass to &quot;video9&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext2&quot;&gt;&gt;
 
@@ -5111,7 +4994,7 @@ DELIVERY
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;&lt;/append&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="ucaroottext1b" tags="nobr" position="600,1725" size="100,100">&lt;&lt;timed 1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="ucaroottext1b" tags="nobr" position="225,1725" size="100,100">&lt;&lt;timed 1s&gt;&gt;
     &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
   &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
@@ -5180,7 +5063,7 @@ DELIVERY
         &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="ucaroot3" tags="nobr" position="725,1725" size="100,100">&lt;&lt;timed 1s&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="ucaroot3" tags="nobr" position="350,1725" size="100,100">&lt;&lt;timed 1s&gt;&gt;
     &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
   &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;
         &lt;div class=&quot;message&quot;&gt;
@@ -5246,7 +5129,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="ucaroottext2" tags="purple nobr" position="850,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext1&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="ucaroottext2" tags="purple nobr" position="475,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext1&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext4&quot;&gt;&gt;
 
@@ -5300,7 +5183,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="ucaroottext3" tags="purple nobr" position="975,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext2&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="ucaroottext3" tags="purple nobr" position="600,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext2&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext4&quot;&gt;&gt;
 
@@ -5354,7 +5237,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="ucaroottext4" tags="purple nobr" position="1100,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext3&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="ucaroottext4" tags="purple nobr" position="725,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext3&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext5&quot;&gt;&gt;
 
@@ -5409,7 +5292,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="ucaroottext5" tags="purple nobr" position="1225,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext4&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="ucaroottext5" tags="purple nobr" position="850,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext4&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext5&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext6&quot;&gt;&gt;
 
@@ -5477,7 +5360,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="ucaroottext6" tags="purple nobr" position="100,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext5&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="ucaroottext6" tags="purple nobr" position="975,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext5&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext6&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext7&quot;&gt;&gt;
 
@@ -5516,7 +5399,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="ucaroottext7" tags="purple nobr" position="225,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext6&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="ucaroottext7" tags="purple nobr" position="1100,1725" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext6&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext7&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext8&quot;&gt;&gt;
 
@@ -5610,7 +5493,7 @@ DELIVERY
      &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
       &lt;&lt;include &quot;question1&quot;&gt;&gt;
       &lt;&lt;/replace&gt;&gt;
-    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="question1" tags="nobr" position="350,1850" size="100,100">&lt;div class=&quot;question-container&quot;&gt;
+    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="question1" tags="nobr" position="1225,1725" size="100,100">&lt;div class=&quot;question-container&quot;&gt;
   &lt;h3 class=&quot;question&quot;&gt;Would you eat a plate of worms for £100?&lt;/h3&gt;
  
   &lt;br/&gt;
@@ -5618,7 +5501,7 @@ DELIVERY
       &lt;&lt;include &quot;choiceworms&quot;&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
- &lt;/div&gt;</tw-passagedata><tw-passagedata pid="144" name="choiceworms" tags="nobr" position="475,1850" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+ &lt;/div&gt;</tw-passagedata><tw-passagedata pid="141" name="choiceworms" tags="nobr" position="100,1850" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
 &lt;&lt;button &quot;YES&quot;&gt;&gt;
 
   &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -5662,7 +5545,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="145" name="ucaroottext8" tags="purple nobr" position="600,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext7&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="142" name="ucaroottext8" tags="purple nobr" position="225,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext7&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext8&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext9&quot;&gt;&gt;
 
@@ -5702,7 +5585,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="ucaroottext9" tags="purple nobr" position="725,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext8&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="ucaroottext9" tags="purple nobr" position="350,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext8&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext9&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext10&quot;&gt;&gt;
 
@@ -5796,7 +5679,7 @@ DELIVERY
   &lt;&lt;replace &quot;#hero&quot;&gt;&gt;
      &lt;&lt;include &quot;question2&quot;&gt;&gt;
      &lt;&lt;/replace&gt;&gt;
-    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="question2" tags="nobr" position="850,1850" size="100,100">&lt;div class=&quot;question-container&quot;&gt;
+    &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="question2" tags="nobr" position="475,1850" size="100,100">&lt;div class=&quot;question-container&quot;&gt;
   &lt;h3 class=&quot;question&quot;&gt;Would you rather eat a Weetabix with Fishy Spaghetti or Cold Custard on it?&lt;/h3&gt;
  
   &lt;br/&gt;
@@ -5804,7 +5687,7 @@ DELIVERY
       &lt;&lt;include &quot;choiceweetabix&quot;&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 
- &lt;/div&gt;</tw-passagedata><tw-passagedata pid="148" name="choiceweetabix" tags="nobr" position="975,1850" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
+ &lt;/div&gt;</tw-passagedata><tw-passagedata pid="145" name="choiceweetabix" tags="nobr" position="600,1850" size="100,100">&lt;div class=&quot;choice-container nav-wrapper&quot;&gt;
 &lt;&lt;button &quot;FISHY SPAGHETTI&quot;&gt;&gt;
 &lt;&lt;replace &quot;#messagesContainer&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
     &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -5848,7 +5731,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="149" name="ucaroottext10" tags="purple nobr" position="1100,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext9&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="146" name="ucaroottext10" tags="purple nobr" position="725,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext9&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext10&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext11&quot;&gt;&gt;
 
@@ -5888,7 +5771,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="ucaroottext11" tags="purple nobr" position="1225,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext10&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="ucaroottext11" tags="purple nobr" position="850,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext10&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext11&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucaroottext12&quot;&gt;&gt;
 
@@ -5983,7 +5866,7 @@ DELIVERY
     &lt;&lt;goto $nextpass&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="ucaroottext12" tags="purple nobr" position="100,1975" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext11&quot;&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="ucaroottext12" tags="purple nobr" position="975,1850" size="100,100">&lt;&lt;set $prevpass to &quot;ucaroottext11&quot;&gt;&gt;
 &lt;&lt;set $pass to &quot;ucaroottext12&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;ucalogo&quot;&gt;&gt;
 
