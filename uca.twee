@@ -101,6 +101,9 @@ $(document.head).find('#style-ui-bar').remove();
 <<cacheaudio "game" "../assets/sound/Game.mp3">>
 <<cacheaudio "signal" "../assets/sound/signal.mp3">>
 <<cacheaudio "newsignal" "../assets/sound/signalprocess3.mp3">>
+<<cacheaudio "button" "../assets/sound/UCA_SFX_button_1.mp3">>
+<<cacheaudio "dialing" "../assets/sound/UCA_SFX_dialing_long.mp3">>
+<<cacheaudio "disconnect" "../assets/sound/UCA_SFX_disconnected_1.mp3">>
 
 <<waitforaudio>>
 
@@ -463,10 +466,19 @@ $(document.head).find('#style-ui-bar').remove();
 
   <<append "#messagesContainer">>
     <div class="message">
-     
       <div class="message-container" >
+       <p>Take off the lid and place the UCA beacon on top of it. </p>
+      </div>
+    </div>
+  <</append>>
+<</timed>>
 
-        <p> Enter compartment 1’s codeword. </p>
+<<timed 3s>>
+
+  <<append "#messagesContainer">>
+    <div class="message">
+      <div class="message-container" >
+<p>Compartment 1’s codeword should now be visible. </p>
       </div>
     </div>
   <</append>>
@@ -953,11 +965,15 @@ $(document.head).find('#style-ui-bar').remove();
 <<removeclass "#anneBtn" "pulse">>
 <<removeclass "#anneBtn" "active">>
 <<addclass "#screen" "center">>
+<<audio ":all" "stop">>
+<<audio "dialing" "play">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Anne</span>
 
 <<timed 4s>>
+  <<audio ":all" "stop">>
+  <<audio "disconnect" "play">>
     <<replace "#screen">>
         <span>No answer.</span>
         <</replace>>
@@ -989,13 +1005,15 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 :: callingMal [nobr]
-
+<<audio ":all" "stop">>
+<<audio "dialing" "play">>
 <<addclass "#screen" "center">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Mal</span>
 
 <<timed 3s>>
+    <<audio ":all" "stop">>
     <<removeclass "#screen" "center">>
     <<removeclass "#anneBtn" "active">>
     <<addclass "#screen" "active">>
@@ -1340,6 +1358,13 @@ $(document.head).find('#style-ui-bar').remove();
   <</append>>
     <</timed>>
 
+   <<timed 10s>>
+      <<append "#screen">>
+        <<type 40ms>><p>Rhubarb.</p>
+               <</type>>
+  <</append>>
+    <</timed>>
+
 
   <<timed 10s>>
  <<replace "#options">>
@@ -1379,6 +1404,8 @@ $(document.head).find('#style-ui-bar').remove();
 </main>
 
 <<timed 3s>>
+   <<audio ":all" "stop">>
+   <<audio "button" "play">>
   <<append "#img">>
       <img src="assets/img/button-1.png" alt="first button" class="fadeInQuick"/>
     <</append>>
@@ -1791,7 +1818,7 @@ $(document.head).find('#style-ui-bar').remove();
 <<include "typewriter">>
        <beaconicon></beaconicon>
        <messageboxlarge>
-      Enter our Secret Club Name here
+      Enter your Secret Club Name here
 
       <<textbox "$clubname" "">>
 
@@ -1857,6 +1884,8 @@ $(document.head).find('#style-ui-bar').remove();
 </main>
 
 <<timed 3s>>
+   <<audio ":all" "stop">>
+   <<audio "button" "play">>
   <<append "#img">>
     <img src="assets/img/button-2.png" alt="second button" class="fadeInQuick"/>
     <</append>>
@@ -2198,13 +2227,16 @@ $(document.head).find('#style-ui-bar').remove();
 <<include "footernext">>
 
 :: callingAnne2 [nobr]
-
+<<audio ":all" "stop">>
+<<audio "dialing" "play">>
 <<addclass "#screen" "center">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Anne</span>
 
 <<timed 4s>>
+    <<audio ":all" "stop">>
+    <<audio "disconnect" "play">>
     <<replace "#screen">>
         <span>No answer.</span>
         <</replace>>
@@ -2236,12 +2268,14 @@ $(document.head).find('#style-ui-bar').remove();
     <</timed>>
 
 :: 2callingMal [nobr]
-
+<<audio ":all" "stop">>
+<<audio "dialing" "play">>
 <<addclass "#screen" "center">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Mal</span>
 <<timed 3s>>
+        <<audio ":all" "stop">>
 <<timed 0.1s>>
    <<replace "#options">>
      <div class="options-btn key"><span>...</span></div>
@@ -2336,8 +2370,11 @@ $(document.head).find('#style-ui-bar').remove();
      <div class="options-btn key"><span>...</span></div>
     <div class="options-btn key"><span>...</span></div>
     <</replace>>
+    <<replace "#audio">>
+      <audio src="assets/audio/UCA_MAL_CALL1_05_anything_else.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
+    <</replace>>
   <<replace "#screen">>
-        <<type 60ms>><p> Try again.  </p>
+        <<type 60ms>><p>Ok - anything else?  </p>
                <</type>>
   <</replace>>
     <</timed>>
@@ -2422,13 +2459,13 @@ $(document.head).find('#style-ui-bar').remove();
 
  <</timed>>
 
-  <<timed 41s>>
+  <<timed 43s>>
          <<replace "#mount">><</replace>>
       <<replace "#audio">>
               <audio src="assets/audio/UCA_MAL_CALL2_04.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
             <</replace>>
           <<replace "#screen">>
-                <<type 40ms>><p>Thank you for reminding me about the UCA Breath </p>
+                <<type 40ms>><p>Thank you for reminding me about the UCA breath </p>
                       <</type>>
           <</replace>>
 
@@ -2441,7 +2478,7 @@ $(document.head).find('#style-ui-bar').remove();
 
           <<timed 9s>>
               <<append "#screen">>
-                <<type 40ms>><p>If you are feeling stressed by the static, you can always do the UCA Breath. </p>
+                <<type 40ms>><p>If you are feeling stressed by the static, you can always do the UCA breath. </p>
                       <</type>>
           <</append>>  
             <</timed>>
@@ -2775,6 +2812,8 @@ $(document.head).find('#style-ui-bar').remove();
 </main>
 
 <<timed 3s>>
+   <<audio ":all" "stop">>
+   <<audio "button" "play">>
   <<append "#img">>
       <img src="assets/img/button-3.png" alt="third button" class="fadeInQuick"/>
     <</append>>
@@ -3015,7 +3054,7 @@ $(document.head).find('#style-ui-bar').remove();
     <<append "#messagesContainer">>
         <div class="message">
         <div class="message-container" >
-            <p>These cards will need you to use Curiosity. Noticing things about yourself. Being curious.</p>
+            <p>These cards will need you to use curiosity. Noticing things about yourself. Being curious.</p>
         </div>
         </div>
     <</append>>
@@ -3148,7 +3187,10 @@ $(document.head).find('#style-ui-bar').remove();
 
 <<timed 10s>>
   <<replace "#hero">>
+      <h2 style="color:white">Fill in your Agent Cards</h2>
+      <br/>
   <div class="choice-container nav-wrapper">
+
   <<button "We’ve finished">>
     <<goto $nextpass>>
     <</button>>
@@ -3180,6 +3222,8 @@ $(document.head).find('#style-ui-bar').remove();
 </main>
 
 <<timed 3s>>
+   <<audio ":all" "stop">>
+   <<audio "button" "play">>
   <<append "#img">>
       <img src="assets/img/button-4.png" alt="fourth buttons" class="fadeInQuick"/>
     <</append>>
@@ -3306,7 +3350,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 :: postbutton4b [missionunlocked nobr]
-<<set $prevpass to "ucamissionunlocked">>
+<<set $prevpass to "postbutton4">>
 <<set $pass to "postbutton4b">>
 <<set $nextpass to "mission1">>
 <<if $sound is true>>
@@ -3476,7 +3520,7 @@ $(document.head).find('#style-ui-bar').remove();
     <<append "#messagesContainer">>
         <div class="message">
         <div class="message-container" >
-            <p>I guess you have got Agent Cards, know the UCA Breath, have a secret club name and are experts at the UCA TOK...</p>
+            <p>I guess you have got Agent Cards, know the UCA breath, have a secret club name and are experts at the UCA TOK...</p>
         </div>
         </div>
     <</append>>
@@ -3504,11 +3548,11 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 
-<<timed 18s>>
+<<timed 19s>>
   <<replace "#hero">>
-     <<replace "#audio">>
+     /* <<replace "#audio">>
       <audio src="assets/audio/UCA_JAY_04_NOTICE_09.mp3" autoplay style="display:none">Audio is not supported on your device</audio>
-    <</replace>>
+    <</replace>> */
   <<include "missionbrief">>
   <</replace>>
 <</timed>>
@@ -3571,7 +3615,7 @@ $(document.head).find('#style-ui-bar').remove();
   </section>
 </main>
 
-<<timed 1s>>
+<<timed 9s>>
   <<append "#messagesContainer">>
     <div class="message">
       <div class="message-container" >
@@ -3582,11 +3626,37 @@ $(document.head).find('#style-ui-bar').remove();
 <</timed>>
 
 
-<<timed 3s>>
+<<timed 10s>>
+  <<replace "#hero">>
+    <<include "missionmapping">>
+    <</replace>>
   <<replace "#inputMount">>
   <<include "codewordvideo6">>
   <</replace>>
 <</timed>>
+
+:: missionmapping [nobr]
+<div class="clipboard ">
+ <div class="clip-container "> <img src="assets/img/clip.png" alt="clip"/></div>
+  <div class="mission-brief letterpaper">
+ <div class="mission-brief-section">
+    <h2>Mission Brief</h2>
+<p> Open the compartment to get your mapping cards. </p>
+
+<p>Use these cards to notice what is happening in your school. </p>
+
+<p>You might want to discuss in small groups and then put your information together into one map as a class. </p>
+
+<p>When finished, enter the word MAPPED to continue. </p>
+    
+    </div>
+     <div class="mission-brief-section">
+     /* <h2>YOUR MISSION </h2>
+     <span> should you choose to accept it</span> */
+       <div class="uca-stamp"><img src="assets/img/UCA-stamp.png" alt="UCA stamp"/></div>
+     </div>
+ </div>
+</div>
 
 
 :: codewordvideo6 [nobr]
@@ -3646,6 +3716,8 @@ $(document.head).find('#style-ui-bar').remove();
 </main>
 
 <<timed 3s>>
+   <<audio ":all" "stop">>
+   <<audio "button" "play">>
   <<append "#img">>
       <img src="assets/img/button-5.png" alt="fifth buttons" class="fadeInQuick"/>
     <</append>>
@@ -3809,11 +3881,15 @@ $(document.head).find('#style-ui-bar').remove();
 <<removeclass "#anneBtn" "pulse">>
 <<removeclass "#anneBtn" "active">>
 <<addclass "#screen" "center">>
+<<audio ":all" "stop">>
+<<audio "dialing" "play">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Anne</span>
 
 <<timed 4s>>
+     <<audio ":all" "stop">>
+    <<audio "disconnect" "play">>
     <<replace "#screen">>
         <span>No answer.</span>
         <</replace>>
@@ -3846,6 +3922,8 @@ $(document.head).find('#style-ui-bar').remove();
 <<removeclass "#malBtn" "pulse">>
 <<removeclass "#anneBtn" "pulse">>
 <<addclass "#screen" "center">>
+<<audio ":all" "stop">>
+<<audio "dialing" "play">>
 <span>Calling...</span>
 <img src="assets/img/call.png" alt="calling icon"/>
 <span>Mal</span>
@@ -3855,7 +3933,7 @@ $(document.head).find('#style-ui-bar').remove();
     <div class="options-btn key"><span>...</span></div>
     <</replace>>
 <<timed 3s>>
-
+   <<audio ":all" "stop">>
   <<timed 0.1s>>
       <<removeclass "#screen" "center">>
   <<replace "#audio">>
@@ -3933,7 +4011,7 @@ $(document.head).find('#style-ui-bar').remove();
 
   <<timed 4s>>
       <<append "#screen">>
-        <<type 40ms>><p>And the Discovery of the UCA Breath.</p>
+        <<type 40ms>><p>And the Discovery of the UCA breath.</p>
                <</type>>
   <</append>>
     <</timed>>
@@ -4824,7 +4902,7 @@ $(document.head).find('#style-ui-bar').remove();
 
 <<timed 15s>>
   <<replace "#inputMount">>
-    <<button "Finished">>
+    <<button "We’ve finished making">>
        <<set $making to true>>
        <<goto "missionplanner1">>
         <</button>>
@@ -5133,6 +5211,8 @@ $(document.head).find('#style-ui-bar').remove();
 </main>
 
 <<timed 3s>>
+   <<audio ":all" "stop">>
+   <<audio "button" "play">>
   <<append "#img">>
       <img src="assets/img/button-6.png" alt="sixth buttons" class="fadeInQuick"/>
     <</append>>
@@ -5224,13 +5304,16 @@ $(document.head).find('#style-ui-bar').remove();
 
 
 :: ucalogo [nobr purple]
+<<audio "button" "play">>
 <main class="logo-alone">
 
-  <<include "staticlogo">>
+  <<include "rotatelogo">>
 
-  <<button "Back to Front Door">>
-    <<goto "Start">>
-    <</button >>
+  <div class="fadeInQuick">
+    <<button "Back to Front Door">>
+      <<goto "Start">>
+      <</button >>
+  </div>
 
 </main>
 

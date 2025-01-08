@@ -1631,13 +1631,14 @@ margin-block-end: 0;
 /* LOGO ALONE */
 
 main.logo-alone{
-  width: 100%;
+  width: 80%;
   height: 90vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  gap:4rem
+  gap:4rem;
+  margin:auto
 }
 
 
@@ -1648,7 +1649,7 @@ main.logo-alone > div{
   align-items: center;
 }
 
-main.logo-alone  > button {
+main.logo-alone  >div> button {
   z-index: 99999;
   font-size: x-large;
 }
