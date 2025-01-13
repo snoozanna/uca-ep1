@@ -2513,7 +2513,7 @@ $(document.head).find('#style-ui-bar').remove();
         <</timed>>
 
   <</timed>>
-:: ucabreath [nobr ]
+:: ucabreath [nobr]
 
 <div class="uca-breath-container">
     <<type 60ms>><p>Hold your hand up so it’s in line with your face </p><</type>>
