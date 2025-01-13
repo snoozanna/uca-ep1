@@ -163,7 +163,7 @@ $(document.head).find('#style-ui-bar').remove();
    <img src="assets/img/logotitle.png" alt="logo"/>
    </div>
 <div/>
-   [img[assets/img/for.png][$nextpass]]
+   /* [img[assets/img/for.png][$nextpass]] */
 
 
 :: rotatelogo[nobr]
