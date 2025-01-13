@@ -163,7 +163,7 @@ $(document.head).find('#style-ui-bar').remove();
    <img src="assets/img/logotitle.png" alt="logo"/>
    </div>
 <div/>
-   /* [img[assets/img/for.png][$nextpass]] */
+   [img[assets/img/for.png][$nextpass]]
 
 
 :: rotatelogo[nobr]
@@ -1434,7 +1434,7 @@ $(document.head).find('#style-ui-bar').remove();
 <main class="main portal grid-container">
   <section class="hero" id="hero">
 /* VIDEO 4: */
-<<include "video4vid">>
+<<include "staticlogo">>
   </section>
   <section class="chat">
     <<include "jaychatheader">>
@@ -1449,7 +1449,8 @@ $(document.head).find('#style-ui-bar').remove();
   </section>
 </main>
 
-<<timed 60s>>
+<<timed 1s>>
+  <<audio "ping" "play">>
   <<replace "#inputMount">>
       <<include "codewordvideo4">>
     <</replace>>
@@ -1485,7 +1486,7 @@ $(document.head).find('#style-ui-bar').remove();
          <<replace "#inputMount">>
             <</replace>>
     <</timed>>
-    <<timed 12s>>
+    <<timed 70s>>
          <<replace "#inputMount">>
             <<button "Next">>
              <<replace "#inputMount">><</replace>>

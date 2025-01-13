@@ -223,7 +223,7 @@ $(document.head).find('#style-ui-bar').remove();
    &lt;img src=&quot;assets/img/logotitle.png&quot; alt=&quot;logo&quot;/&gt;
    &lt;/div&gt;
 &lt;div/&gt;
-   /* [img[assets/img/for.png][$nextpass]] */</tw-passagedata><tw-passagedata pid="7" name="rotatelogo" tags="nobr" position="850,100" size="100,100">&lt;div class=&quot;rotate-logo-wrapper&quot;&gt;
+   [img[assets/img/for.png][$nextpass]]</tw-passagedata><tw-passagedata pid="7" name="rotatelogo" tags="nobr" position="850,100" size="100,100">&lt;div class=&quot;rotate-logo-wrapper&quot;&gt;
 &lt;div class=&quot;animated rotateInDownLeft overlay-image&quot;&gt;[img[assets/img/logobutton.png]]&lt;/div&gt;
 &lt;div class=&quot;animated fadeInLeftBig overlay-image one&quot; &gt;[img[assets/img/undercover.png]]&lt;/div&gt;&lt;div
         class=&quot;animated fadeInRightBig overlay-image two&quot;&gt;[img[assets/img/caretaker.png]]&lt;/div&gt;&lt;div
@@ -1358,7 +1358,7 @@ $(document.head).find('#style-ui-bar').remove();
 &lt;main class=&quot;main portal grid-container&quot;&gt;
   &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
 /* VIDEO 4: */
-&lt;&lt;include &quot;video4vid&quot;&gt;&gt;
+&lt;&lt;include &quot;staticlogo&quot;&gt;&gt;
   &lt;/section&gt;
   &lt;section class=&quot;chat&quot;&gt;
     &lt;&lt;include &quot;jaychatheader&quot;&gt;&gt;
@@ -1373,7 +1373,8 @@ $(document.head).find('#style-ui-bar').remove();
   &lt;/section&gt;
 &lt;/main&gt;
 
-&lt;&lt;timed 60s&gt;&gt;
+&lt;&lt;timed 1s&gt;&gt;
+  &lt;&lt;audio &quot;ping&quot; &quot;play&quot;&gt;&gt;
   &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
       &lt;&lt;include &quot;codewordvideo4&quot;&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
@@ -1400,7 +1401,7 @@ $(document.head).find('#style-ui-bar').remove();
          &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
             &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
-    &lt;&lt;timed 12s&gt;&gt;
+    &lt;&lt;timed 70s&gt;&gt;
          &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;
             &lt;&lt;button &quot;Next&quot;&gt;&gt;
              &lt;&lt;replace &quot;#inputMount&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
